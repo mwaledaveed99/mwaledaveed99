@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "David Mwale's Portfolio"
+  title: "Data Science"
   navbar:
     left:
       - href: index.qmd

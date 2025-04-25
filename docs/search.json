@@ -2,51 +2,51 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "mwaledaveed99.github.io",
+    "title": "David Mwale’s Portfolio",
     "section": "",
-    "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning.\n\n\n\n\nData Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.\nData Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.\nStatistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.\nMachine Learning with R: Building predictive models using caret and other ML frameworks.\n\n\n\n\nDownload my resume: David Mwale Resume\n\n\n\n\n\n\nR\nSQL\nPython\n\n\n\n\n\n\nPowerBI"
+    "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning."
   },
   {
     "objectID": "index.html#welcome",
     "href": "index.html#welcome",
-    "title": "mwaledaveed99.github.io",
+    "title": "David Mwale’s Portfolio",
     "section": "",
     "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning."
   },
   {
     "objectID": "index.html#my-projects",
     "href": "index.html#my-projects",
-    "title": "mwaledaveed99.github.io",
-    "section": "",
-    "text": "Data Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.\nData Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.\nStatistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.\nMachine Learning with R: Building predictive models using caret and other ML frameworks."
+    "title": "David Mwale’s Portfolio",
+    "section": "My Projects",
+    "text": "My Projects\n\nData Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.\nData Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.\nStatistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.\nMachine Learning with R: Building predictive models using caret and other ML frameworks."
   },
   {
     "objectID": "index.html#resume",
     "href": "index.html#resume",
-    "title": "mwaledaveed99.github.io",
-    "section": "",
-    "text": "Download my resume: David Mwale Resume"
+    "title": "David Mwale’s Portfolio",
+    "section": "Resume",
+    "text": "Resume\nDownload my resume: David Mwale Resume"
   },
   {
     "objectID": "index.html#skills",
     "href": "index.html#skills",
-    "title": "mwaledaveed99.github.io",
-    "section": "",
-    "text": "R\nSQL\nPython"
+    "title": "David Mwale’s Portfolio",
+    "section": "Skills",
+    "text": "Skills\n\nLanguages\n\nR\nSQL\nPython"
   },
   {
     "objectID": "index.html#business-intelligence",
     "href": "index.html#business-intelligence",
-    "title": "mwaledaveed99.github.io",
-    "section": "",
-    "text": "PowerBI"
+    "title": "David Mwale’s Portfolio",
+    "section": "Business Intelligence ",
+    "text": "Business Intelligence \n\nPowerBI"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Me",
     "section": "",
-    "text": "My name is David Mwale. I am a second-year data science student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning.\n\n\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265 993 627 367"
+    "text": "My name is David Mwale. I am a second-year data science student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning.\n\nContact \n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265 993 627 367"
   },
   {
     "objectID": "about.html#about-me",
