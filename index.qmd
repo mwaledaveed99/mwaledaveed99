@@ -2,10 +2,48 @@
 title: "mwaledaveed99.github.io"
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+# David Mwale's Portfolio
 
-```{r}
-1 + 1
-```
+## Welcome
+
+Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning.
+
+## My Projects
+
+- Data Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.
+
+- Data Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.
+
+- Statistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.
+
+- Machine Learning with R: Building predictive models using caret and other ML frameworks.
+
+
+## Resume
+
+Download my resume: David Mwale Resume
+
+## Skills
+
+### Languages\n
+- R 
+
+- SQL
+
+- Python
+
+## Business Intelligence \n
+- PowerBI
+
+
+
+
+
+
+
+
+
+
+
+

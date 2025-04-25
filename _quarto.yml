@@ -3,12 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "My R projects"
+  title: "David Mwale's Portfolio"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - href: portfolio.qmd
+        text: Portfolio
 
 format:
   html:
