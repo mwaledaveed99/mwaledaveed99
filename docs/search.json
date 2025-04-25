@@ -4,13 +4,55 @@
     "href": "index.html",
     "title": "mwaledaveed99.github.io",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning.\n\n\n\n\nData Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.\nData Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.\nStatistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.\nMachine Learning with R: Building predictive models using caret and other ML frameworks.\n\n\n\n\nDownload my resume: David Mwale Resume\n\n\n\n\n\n\nR\nSQL\nPython\n\n\n\n\n\n\nPowerBI"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "mwaledaveed99.github.io",
+    "section": "",
+    "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning."
+  },
+  {
+    "objectID": "index.html#my-projects",
+    "href": "index.html#my-projects",
+    "title": "mwaledaveed99.github.io",
+    "section": "",
+    "text": "Data Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.\nData Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.\nStatistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.\nMachine Learning with R: Building predictive models using caret and other ML frameworks."
+  },
+  {
+    "objectID": "index.html#resume",
+    "href": "index.html#resume",
+    "title": "mwaledaveed99.github.io",
+    "section": "",
+    "text": "Download my resume: David Mwale Resume"
+  },
+  {
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "mwaledaveed99.github.io",
+    "section": "",
+    "text": "R\nSQL\nPython"
+  },
+  {
+    "objectID": "index.html#business-intelligence",
+    "href": "index.html#business-intelligence",
+    "title": "mwaledaveed99.github.io",
+    "section": "",
+    "text": "PowerBI"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "My name is David Mwale. I am a second-year data science student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning.\n\n\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265 993 627 367"
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "About",
+    "section": "",
+    "text": "My name is David Mwale. I am a second-year data science student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning.\n\n\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265 993 627 367"
   }
 ]

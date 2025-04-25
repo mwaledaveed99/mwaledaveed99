@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mwaledaveed99.github.io – My R projects</title>
+<title>mwaledaveed99.github.io – David Mwale’s Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,10 +35,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">My R projects</span>
+    <span class="navbar-title">David Mwale’s Portfolio</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -130,6 +96,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./portfolio.qmd"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -141,8 +111,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#david-mwales-portfolio" id="toc-david-mwales-portfolio" class="nav-link active" data-scroll-target="#david-mwales-portfolio">David Mwale’s Portfolio</a>
+  <ul class="collapse">
+  <li><a href="#welcome" id="toc-welcome" class="nav-link" data-scroll-target="#welcome">Welcome</a></li>
+  <li><a href="#my-projects" id="toc-my-projects" class="nav-link" data-scroll-target="#my-projects">My Projects</a></li>
+  <li><a href="#resume" id="toc-resume" class="nav-link" data-scroll-target="#resume">Resume</a></li>
+  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a>
+  <ul class="collapse">
+  <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages">Languages</a></li>
+  </ul></li>
+  <li><a href="#business-intelligence" id="toc-business-intelligence" class="nav-link" data-scroll-target="#business-intelligence">Business Intelligence </a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -166,16 +152,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="david-mwales-portfolio" class="level1">
+<h1>David Mwale’s Portfolio</h1>
+<section id="welcome" class="level2">
+<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
+<p>Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning.</p>
+</section>
+<section id="my-projects" class="level2">
+<h2 class="anchored" data-anchor-id="my-projects">My Projects</h2>
+<ul>
+<li><p>Data Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.</p></li>
+<li><p>Data Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.</p></li>
+<li><p>Statistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.</p></li>
+<li><p>Machine Learning with R: Building predictive models using caret and other ML frameworks.</p></li>
+</ul>
+</section>
+<section id="resume" class="level2">
+<h2 class="anchored" data-anchor-id="resume">Resume</h2>
+<p>Download my resume: David Mwale Resume</p>
+</section>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<section id="languages" class="level3">
+<h3 class="anchored" data-anchor-id="languages">Languages</h3>
+<ul>
+<li><p>R</p></li>
+<li><p>SQL</p></li>
+<li><p>Python</p></li>
+</ul>
+</section>
+</section>
+<section id="business-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="business-intelligence">Business Intelligence </h2>
+<ul>
+<li>PowerBI</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

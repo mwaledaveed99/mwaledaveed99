@@ -1,11 +1,8 @@
 ---
-title: "About"
+title: "About Me"
 ---
 
-## About Me\n
-
 My name is David Mwale. I am a second-year data science student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning.
-
 
 
 ### Contact \n
