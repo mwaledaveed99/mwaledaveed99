@@ -34,7 +34,7 @@ The explorations that I will conduct in this document will involve the following
 
 # Creating a messy dataset
 ```{r Messy dataset}
-#messy_iris<-messy(iris)
+messy_iris<-messy(iris)
 messy_iris %>%
   head() |> 
   gt()
