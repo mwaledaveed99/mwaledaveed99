@@ -4,7 +4,7 @@ title: " David Mwale's Portfolio"
 
 ## Welcome
 
-Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning.
+Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning. In my almost 2 years with the University of Edinburgh, i have learned, relearned, and unlearned  regarding Data science in health and social care. What I have learned is much more than i will be able to showcase through this platform. Experienced in Python, SQL, R programming, and health data analysis, with focus on reproducible research.
 
 ## My Projects
 
@@ -14,12 +14,8 @@ Welcome to my portfolio! I am a data science student showcasing my projects and 
 
 - Statistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.
 
-- Machine Learning with R: Building predictive models using caret and other ML frameworks.
+- Machine Learning with R: Building predictive models using tidymodels and other ML frameworks.
 
-
-## Resume
-
-Download my resume: David Mwale Resume
 
 ## Skills
 
@@ -29,9 +25,6 @@ Download my resume: David Mwale Resume
 - SQL
 
 - Python
-
-## Business Intelligence \n
-- PowerBI
 
 
 

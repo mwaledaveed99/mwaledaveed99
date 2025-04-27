@@ -3,21 +3,69 @@ project:
   output-dir: docs
 
 website:
-  title: "Data Science"
+  title: "David Mwale - Data Science Portfolio"
+  site-url: https://mwaledaveed99.github.io/mwaledaveed99/
+  description: "A portfolio showcasing David Mwale's R projects in data cleaning, visualization, statistical modeling, and machine learning."
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: about.qmd
         text: About
-      - href: portfolio.qmd
-        text: Portfolio
+      - href: projects.qmd
+        text: Projects
+      - href: iris_dataset.qmd
+        text: Data Cleaning
+      - href: resume.qmd
+        text: Resume
+      - href: contact.qmd
+        text: Contact
+  page-footer:
+    center: "© 2025 David Mwale"
 
 format:
   html:
     theme: flatly
     css: styles.css
     toc: true
+
+execute:
+  freeze: auto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#project:
+ # type: website
+ # output-dir: docs
+
+#website:
+#  title: "Data Science"
+ # navbar:
+ #   left:
+ #     - href: index.qmd
+ #       text: Home
+ #     - href: about.qmd
+ #       text: About
+ #     - href: Iris_dataset.qmd
+  #      text: Data Cleaning
+
+#format:
+ # html:
+#    theme: flatly
+ #   css: styles.css
+ #   toc: true
 
 
 

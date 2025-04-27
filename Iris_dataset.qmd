@@ -12,7 +12,8 @@ library(tidyverse)
 library(messy) # for creating messy data
 library(naniar) # for assessing missing values
 library(janitor) # Data cleaning
-library(gt) # generatiung tables
+library(gt) #generating tables
+library(gtExtras)
 ```
 
 # The Iris dataset
@@ -33,7 +34,7 @@ The explorations that I will conduct in this document will involve the following
 
 # Creating a messy dataset
 ```{r Messy dataset}
-messy_iris<-messy(iris)
+#messy_iris<-messy(iris)
 messy_iris %>%
   head() |> 
   gt()
@@ -80,7 +81,7 @@ clean_iris
 Note that our column names are now in lower case using the snake_case format. The next thing that we are going to do is wnnsure that the species column only has the three different values. 
 
 ```{r Unique values for species}
-clean_iris$species
+head(clean_iris$species)
 ```
 
 
@@ -127,12 +128,10 @@ clean_iris |>
 ```{r}
 clean_iris |> 
   miss_var_summary() |> 
-  gt() |>
-  gt_theme_guardian() |> 
-  tab_header(title = "Missingness in Iris dataset")
+  gt()
 ```
 
-We have up to 13.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is **not** the recommended method.
+We have up to 57.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is **not** the recommended method.
 
 
 # Our next sections will be EDA, and Data Visulisation
