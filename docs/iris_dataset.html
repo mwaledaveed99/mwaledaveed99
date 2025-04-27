@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cleaning Iris dataset – David Mwale - Data Science Portfolio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">David Mwale - Data Science Portfolio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./iris_dataset.html" aria-current="page"> 
+<span class="menu-text">Data Cleaning</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#loading-of-libraries" id="toc-loading-of-libraries" class="nav-link active" data-scroll-target="#loading-of-libraries">Loading of libraries</a></li>
+  <li><a href="#the-iris-dataset" id="toc-the-iris-dataset" class="nav-link" data-scroll-target="#the-iris-dataset">The Iris dataset</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning-eda" id="toc-data-cleaning-eda" class="nav-link" data-scroll-target="#data-cleaning-eda">Data cleaning &amp; EDA</a></li>
+  </ul></li>
+  <li><a href="#creating-a-messy-dataset" id="toc-creating-a-messy-dataset" class="nav-link" data-scroll-target="#creating-a-messy-dataset">Creating a messy dataset</a>
+  <ul class="collapse">
+  <li><a href="#key-observations" id="toc-key-observations" class="nav-link" data-scroll-target="#key-observations">Key observations</a></li>
+  <li><a href="#undersdaning-the-dataset" id="toc-undersdaning-the-dataset" class="nav-link" data-scroll-target="#undersdaning-the-dataset">Undersdaning the dataset</a></li>
+  <li><a href="#data-cleaning-process" id="toc-data-cleaning-process" class="nav-link" data-scroll-target="#data-cleaning-process">Data Cleaning process</a>
+  <ul class="collapse">
+  <li><a href="#converting-variables" id="toc-converting-variables" class="nav-link" data-scroll-target="#converting-variables">Converting variables</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#checking-for-missingness-in-iris-dataset" id="toc-checking-for-missingness-in-iris-dataset" class="nav-link" data-scroll-target="#checking-for-missingness-in-iris-dataset">Checking for missingness in Iris dataset</a></li>
+  <li><a href="#our-next-sections-will-be-eda-and-data-visulisation" id="toc-our-next-sections-will-be-eda-and-data-visulisation" class="nav-link" data-scroll-target="#our-next-sections-will-be-eda-and-data-visulisation">Our next sections will be EDA, and Data Visulisation</a>
+  <ul class="collapse">
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing values</a></li>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">VISUALISATION</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cleaning Iris dataset</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="loading-of-libraries" class="level1">
+<h1>Loading of libraries</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(messy) <span class="co"># for creating messy data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar) <span class="co"># for assessing missing values</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Data cleaning</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co">#generating tables</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtExtras)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-iris-dataset" class="level1">
+<h1>The Iris dataset</h1>
+<p>The Iris dataset is one of the most famous datasets in statistics and machine learning. It was first introduced by the British biologist and statistician Ronald Fisher in 1936 in his paper “The use of multiple measurements in taxonomic problems.” The dataset consists of 150 samples of iris flowers from three different species: Setosa, Versicolor, and Virginica. Each sample includes four features/columns/variables: sepal length, sepal width, petal length, and petal width</p>
+<section id="data-cleaning-eda" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-eda">Data cleaning &amp; EDA</h2>
+<p>The explorations that I will conduct in this document will involve the following:</p>
+<ol type="1">
+<li><p>Messy column names</p></li>
+<li><p>Improper variable types</p></li>
+<li><p>Invalid or inconsistent values</p></li>
+<li><p>Missing values</p></li>
+<li><p>Non-standard data formats</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-a-messy-dataset" class="level1">
+<h1>Creating a messy dataset</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>messy_iris<span class="ot">&lt;-</span><span class="fu">messy</span>(iris)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="nadwufnjty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nadwufnjty table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nadwufnjty thead, #nadwufnjty tbody, #nadwufnjty tfoot, #nadwufnjty tr, #nadwufnjty td, #nadwufnjty th {
+  border-style: none;
+}
+
+#nadwufnjty p {
+  margin: 0;
+  padding: 0;
+}
+
+#nadwufnjty .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nadwufnjty .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nadwufnjty .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nadwufnjty .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nadwufnjty .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nadwufnjty .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nadwufnjty .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nadwufnjty .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nadwufnjty .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nadwufnjty .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#nadwufnjty .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nadwufnjty .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nadwufnjty .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nadwufnjty .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nadwufnjty .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nadwufnjty .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nadwufnjty .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nadwufnjty .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nadwufnjty .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nadwufnjty .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nadwufnjty .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nadwufnjty .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nadwufnjty .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nadwufnjty .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nadwufnjty .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nadwufnjty .gt_left {
+  text-align: left;
+}
+
+#nadwufnjty .gt_center {
+  text-align: center;
+}
+
+#nadwufnjty .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nadwufnjty .gt_font_normal {
+  font-weight: normal;
+}
+
+#nadwufnjty .gt_font_bold {
+  font-weight: bold;
+}
+
+#nadwufnjty .gt_font_italic {
+  font-style: italic;
+}
+
+#nadwufnjty .gt_super {
+  font-size: 65%;
+}
+
+#nadwufnjty .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#nadwufnjty .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nadwufnjty .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nadwufnjty .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nadwufnjty .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nadwufnjty .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nadwufnjty .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#nadwufnjty .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#nadwufnjty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Sepal.Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sepal.Length</th>
+<th id="Sepal.Width" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sepal.Width</th>
+<th id="Petal.Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Petal.Length</th>
+<th id="Petal.Width" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Petal.Width</th>
+<th id="Species" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Species</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Sepal.Length">5.1</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3.5</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.4</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
+<td class="gt_row gt_left" headers="Species">setosa</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Sepal.Length">4.9</td>
+<td class="gt_row gt_right" headers="Sepal.Width">NA</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.4</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
+<td class="gt_row gt_left" headers="Species">setosa</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Sepal.Length">4.7</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3.2</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.3</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
+<td class="gt_row gt_left" headers="Species">setosa</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Sepal.Length">4.6</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3.1</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.5</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
+<td class="gt_row gt_left" headers="Species">setosa</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Sepal.Length">NA</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3.6</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.4</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
+<td class="gt_row gt_left" headers="Species">s!etosa</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Sepal.Length">5.4</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3.9</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.7</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.4</td>
+<td class="gt_row gt_left" headers="Species">set_osa</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="key-observations" class="level3">
+<h3 class="anchored" data-anchor-id="key-observations">Key observations</h3>
+<ul>
+<li>We can see that the column names are seperated by “.” and are not in lower case. we are going to convert these to lower snake_case.</li>
+<li>Even before we search for missing values, we can note that the dataset has missing values</li>
+</ul>
+</section>
+<section id="undersdaning-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="undersdaning-the-dataset">Undersdaning the dataset</h2>
+<p>Now, we are going to run diffrent codes, just to understand our dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">|&gt;</span> <span class="co">#Checking the dimensions of the data (The data has 150 rows, and 5 columns)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150   5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Taking a quick look at our dataset</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 5
+$ Sepal.Length &lt;chr&gt; "5.1 ", "4.9", "4.7", "4.6", NA, "5.4", "4.6", "5", NA, "…
+$ Sepal.Width  &lt;chr&gt; "3.5", NA, "3.2", "3.1 ", "3.6", "3.9", "3.4", "3.4", "2.…
+$ Petal.Length &lt;chr&gt; "1.4", "1.4", "1.3", "1.5", "1.4", "1.7", "1.4", "1.5 ", …
+$ Petal.Width  &lt;chr&gt; "0.2", "0.2", "0.2", "0.2", "0.2", "0.4", "0.3", "0.2", "…
+$ Species      &lt;chr&gt; "setosa", "setosa", "setosa ", "setosa ", "s!etosa", "set…</code></pre>
+</div>
+</div>
+<p>It’s good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Understanding the column names of the dataset</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Checking for unique values of Species. </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Species
+1          setosa
+2         setosa 
+3         s!etosa
+4         set_osa
+5         set#osa
+6         se$tosa
+7         @setosa
+8        s*et_osa
+9            &lt;NA&gt;
+10       s@e)tosa
+11        se&amp;tosa
+12         SETOSA
+13        seto#sa
+14       se_to$sa
+15        )setosa
+16      _set%o+sa
+17        &amp;setosa
+18        setos&amp;a
+19        seto.sa
+20        SETO%SA
+21       se_to.sa
+22      s)eto+sa 
+23        seto_sa
+24     versicolor
+25   versico*lo(r
+26 +versi_c-olor 
+27    vers(icolor
+28   V@ERSICO!LOR
+29    v.ersicolor
+30    v!ersicolor
+31    vers)icolor
+32   versi!color 
+33   ver_s(icolor
+34  ver%s@ico+lor
+35    versicol%or
+36    VE#RSICOLOR
+37    versicolor 
+38    v$ersicolor
+39    vers.icolor
+40    ver@sicolor
+41   ve#rsic*olor
+42   versico%l!or
+43    versicol.or
+44    versic%olor
+45   ve!rsicolor 
+46    versico!lor
+47    ve!rsicolor
+48    VERSICOLO!R
+49    ver%sicolor
+50   ve#rsic&amp;olor
+51     VERSICOLOR
+52  v*e-rs$icolor
+53   vers-ic^olor
+54   vers@icolo(r
+55      virginica
+56    virgin^i*ca
+57   virgini-c)a 
+58    v@irg%inica
+59     vi&amp;rginica
+60    vir)ginica 
+61     virg*inica
+62   (vi+rgin-ica
+63    vir&amp;ginic*a
+64     v!irginica
+65     VIRGINICA 
+66     virginic@a
+67     vi^rginica
+68     v_irginica
+69    vir.gin.ica
+70   vi(rgin^i@ca
+71     vi(rginica
+72     VIRGIN@ICA
+73   #v_irg.inica
+74    vir&amp;ginica 
+75     &amp;virginica
+76   vi_r.gin(ica
+77     virginica 
+78     vi.rginica
+79     v-irginica
+80  vir)g$in@ica 
+81    vi_rgi_nica
+82     vir_ginica
+83     v$irginica
+84     virgin*ica
+85    virgin*i@ca</code></pre>
+</div>
+</div>
+<p>The dataset is supposed to have three different species of the flower. Namely; setosa, viginica, and versicolor. However, can can quickly note from code output that we have over 68 diffent variations of these species. Again, we are going to fix this too!!</p>
+</section>
+<section id="data-cleaning-process" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-process">Data Cleaning process</h2>
+<p>Firstly, we are going to take the messy dataset, and load it into the clean_iris data object as this is what will finally house our clean dataset. Immediately, we will cleaning by working on the column names using the janitor clean_names() function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>clean_iris<span class="ot">&lt;-</span>messy_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>clean_iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    sepal_length sepal_width petal_length petal_width        species
+1           5.1          3.5          1.4         0.2         setosa
+2            4.9        &lt;NA&gt;          1.4         0.2         setosa
+3            4.7         3.2          1.3         0.2        setosa 
+4            4.6        3.1           1.5         0.2        setosa 
+5           &lt;NA&gt;         3.6          1.4         0.2        s!etosa
+6            5.4         3.9          1.7         0.4        set_osa
+7            4.6         3.4          1.4         0.3        set#osa
+8              5         3.4         1.5          0.2         setosa
+9           &lt;NA&gt;        2.9           1.4         0.2        se$tosa
+10           4.9         3.1          1.5         0.1         setosa
+11          5.4         3.7          &lt;NA&gt;         0.2        @setosa
+12           4.8         3.4          1.6        &lt;NA&gt;       s*et_osa
+13          4.8           3          1.4          0.1         setosa
+14           4.3           3          1.1         0.1           &lt;NA&gt;
+15           5.8        &lt;NA&gt;          1.2         0.2         setosa
+16           5.7         4.4          1.5         0.4           &lt;NA&gt;
+17           5.4         3.9          1.3         0.4         setosa
+18           5.1         3.5          1.4         0.3         setosa
+19           5.7         3.8         1.7          0.3           &lt;NA&gt;
+20           5.1         3.8          1.5         0.3       s@e)tosa
+21           5.4         3.4          1.7         0.2        se&amp;tosa
+22           5.1         3.7          1.5         0.4         SETOSA
+23           4.6        &lt;NA&gt;            1         0.2         setosa
+24           5.1         3.3          1.7         0.5         setosa
+25           4.8        &lt;NA&gt;          1.9         0.2         setosa
+26             5        &lt;NA&gt;          1.6         0.2        seto#sa
+27             5        &lt;NA&gt;          1.6         0.4           &lt;NA&gt;
+28           5.2         3.5          1.5        &lt;NA&gt;        setosa 
+29           5.2         3.4          1.4         0.2       se_to$sa
+30           4.7         3.2          1.6         0.2         setosa
+31           4.8         3.1          1.6        &lt;NA&gt;        setosa 
+32           5.4         3.4          1.5         0.4        )setosa
+33           5.2         4.1          1.5        0.1       _set%o+sa
+34           5.5        4.2           1.4         0.2        &amp;setosa
+35          &lt;NA&gt;         3.1          1.5         0.2         setosa
+36             5         3.2          1.2         0.2           &lt;NA&gt;
+37           5.5        3.5           1.3         0.2        setosa 
+38           4.9         3.6          1.4         0.1         setosa
+39           4.4           3          1.3         0.2        setos&amp;a
+40           5.1         3.4          1.5         0.2        seto.sa
+41             5         3.5          1.3         0.3         setosa
+42           4.5         2.3         &lt;NA&gt;        &lt;NA&gt;        SETO%SA
+43           4.4         3.2          1.3         0.2       se_to.sa
+44             5         3.5          1.6         0.6         setosa
+45          &lt;NA&gt;         3.8          1.9         0.4         setosa
+46           4.8           3          1.4         0.3         setosa
+47           5.1         3.8          1.6         0.2      s)eto+sa 
+48           4.6         3.2          1.4         0.2         setosa
+49           5.3        &lt;NA&gt;          1.5        0.2         seto_sa
+50             5         3.3          1.4        &lt;NA&gt;         setosa
+51             7         3.2          4.7         1.4     versicolor
+52           6.4         3.2          4.5         1.5           &lt;NA&gt;
+53           6.9         3.1          4.9         1.5   versico*lo(r
+54           5.5         2.3            4         1.3 +versi_c-olor 
+55           6.5         2.8          4.6         1.5    vers(icolor
+56           5.7        &lt;NA&gt;          4.5         1.3   V@ERSICO!LOR
+57           6.3         3.3         &lt;NA&gt;         1.6     versicolor
+58           4.9         2.4          3.3           1    v.ersicolor
+59           6.6         2.9          4.6        &lt;NA&gt;    v!ersicolor
+60          &lt;NA&gt;         2.7          3.9        1.4      versicolor
+61             5           2          3.5           1    vers)icolor
+62           5.9           3         4.2          1.5     versicolor
+63             6         2.2            4           1           &lt;NA&gt;
+64          6.1          2.9          4.7         1.4     versicolor
+65           5.6         2.9          3.6         1.3           &lt;NA&gt;
+66          6.7          3.1          4.4         1.4   versi!color 
+67           5.6           3          4.5         1.5     versicolor
+68           5.8        &lt;NA&gt;         &lt;NA&gt;           1     versicolor
+69           6.2         2.2          4.5        &lt;NA&gt;   ver_s(icolor
+70           5.6         2.5          3.9         1.1     versicolor
+71           5.9         3.2          4.8         1.8  ver%s@ico+lor
+72          &lt;NA&gt;         2.8            4         1.3    versicol%or
+73           6.3         2.5          4.9        1.5     VE#RSICOLOR
+74           6.1         2.8          4.7         1.2    versicolor 
+75          &lt;NA&gt;        &lt;NA&gt;         4.3          1.3    v$ersicolor
+76           6.6           3          4.4         1.4           &lt;NA&gt;
+77          6.8         2.8           4.8        1.4     vers.icolor
+78           6.7           3            5         1.7           &lt;NA&gt;
+79             6        2.9           4.5         1.5    ver@sicolor
+80          5.7          2.6          3.5           1   ve#rsic*olor
+81          5.5          2.4          3.8         1.1   versico%l!or
+82           5.5         2.4         3.7            1    versicol.or
+83           5.8         2.7          3.9        &lt;NA&gt;    versic%olor
+84             6         2.7          5.1         1.6   ve!rsicolor 
+85           5.4           3          4.5         1.5    v!ersicolor
+86             6         3.4          4.5         1.6    versico!lor
+87           6.7         3.1         4.7          1.5     versicolor
+88           6.3         2.3          4.4         1.3    ve!rsicolor
+89           5.6           3         &lt;NA&gt;         1.3    VERSICOLO!R
+90           5.5         2.5            4         1.3    ver%sicolor
+91          &lt;NA&gt;        &lt;NA&gt;          4.4         1.2     versicolor
+92           6.1           3          4.6        &lt;NA&gt;   ve#rsic&amp;olor
+93           5.8        2.6             4        &lt;NA&gt;     VERSICOLOR
+94             5         2.3          3.3           1     versicolor
+95          5.6          2.7          4.2         1.3  v*e-rs$icolor
+96           5.7           3          4.2         1.2   vers-ic^olor
+97           5.7         2.9          4.2        &lt;NA&gt;     versicolor
+98           6.2         2.9          4.3         1.3     versicolor
+99           5.1         2.5            3         1.1   vers@icolo(r
+100         5.7          2.8          4.1         1.3     versicolor
+101          6.3         3.3            6         2.5      virginica
+102          5.8        &lt;NA&gt;          5.1         1.9    virgin^i*ca
+103          7.1           3          5.9         2.1   virgini-c)a 
+104          6.3         2.9          5.6         1.8           &lt;NA&gt;
+105          6.5        &lt;NA&gt;         5.8          2.2      virginica
+106          7.6           3         6.6         &lt;NA&gt;      virginica
+107          4.9         2.5          4.5         1.7           &lt;NA&gt;
+108          7.3         2.9          6.3         1.8      virginica
+109         6.7          2.5          5.8        1.8     v@irg%inica
+110         &lt;NA&gt;        &lt;NA&gt;         &lt;NA&gt;         2.5     vi&amp;rginica
+111          6.5         3.2          5.1          2     vir)ginica 
+112          6.4         2.7          5.3         1.9           &lt;NA&gt;
+113          6.8           3          5.5         2.1     virg*inica
+114          5.7        &lt;NA&gt;            5           2   (vi+rgin-ica
+115          5.8         2.8          5.1        &lt;NA&gt;    vir&amp;ginic*a
+116         6.4         3.2           5.3         2.3     v!irginica
+117          6.5           3          5.5        1.8       virginica
+118          7.7        3.8           6.7         2.2           &lt;NA&gt;
+119          7.7         2.6          6.9         2.3     VIRGINICA 
+120            6        2.2            5          1.5     virginic@a
+121          6.9         3.2          5.7         2.3     vi^rginica
+122         &lt;NA&gt;        &lt;NA&gt;          4.9           2     v_irginica
+123          7.7         2.8          6.7          2     vir.gin.ica
+124          6.3         2.7          4.9        &lt;NA&gt;      virginica
+125         6.7          3.3          5.7        &lt;NA&gt;   vi(rgin^i@ca
+126          7.2        &lt;NA&gt;           6          1.8     vi(rginica
+127          6.2         2.8          4.8         1.8     VIRGIN@ICA
+128          6.1           3          4.9         1.8           &lt;NA&gt;
+129         &lt;NA&gt;         2.8          5.6         2.1      virginica
+130          7.2           3          5.8         1.6      virginica
+131          7.4        2.8           6.1         1.9     vi^rginica
+132          7.9         3.8          6.4           2           &lt;NA&gt;
+133          6.4         2.8          5.6         2.2   #v_irg.inica
+134          6.3         2.8          5.1         1.5    vir&amp;ginica 
+135          6.1        2.6           5.6         1.4     &amp;virginica
+136          7.7           3          6.1         2.3   vi_r.gin(ica
+137          6.3        &lt;NA&gt;          5.6        &lt;NA&gt;     virginica 
+138          6.4        &lt;NA&gt;          5.5         1.8     vi.rginica
+139            6           3          4.8         1.8           &lt;NA&gt;
+140         &lt;NA&gt;        3.1           5.4         2.1      virginica
+141         &lt;NA&gt;         3.1          5.6         2.4     v-irginica
+142          6.9        3.1           5.1         2.3  vir)g$in@ica 
+143          5.8         2.7          5.1        &lt;NA&gt;    vi_rgi_nica
+144          6.8         3.2          5.9         2.3     vir_ginica
+145          6.7         3.3          5.7         2.5     v$irginica
+146         6.7            3         5.2          2.3      virginica
+147         &lt;NA&gt;        2.5             5        &lt;NA&gt;           &lt;NA&gt;
+148          6.5          3          &lt;NA&gt;           2      virginica
+149         &lt;NA&gt;         3.4          5.4        2.3      virgin*ica
+150          5.9           3          5.1        &lt;NA&gt;    virgin*i@ca</code></pre>
+</div>
+</div>
+<p>Note that our column names are now in lower case using the snake_case format. The next thing that we are going to do is wnnsure that the species column only has the three different values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_iris<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "setosa"  "setosa"  "setosa " "setosa " "s!etosa" "set_osa"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bad_setosa <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"setos)a"</span>, <span class="st">"setosa "</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>, <span class="st">"setosa"</span>, <span class="st">"setosa "</span>, <span class="st">"seto_sa"</span>,  <span class="st">"s&amp;etosa"</span>,  <span class="st">"setosa"</span>, <span class="st">"SETOSA"</span>, <span class="st">"setosa"</span>, <span class="st">"se(tosa"</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>,<span class="st">"*setosa"</span>,<span class="st">"set_osa"</span>,<span class="st">"setosa"</span>,         <span class="st">"se@tosa"</span>,<span class="st">"setosa"</span>, <span class="st">"(s_etos.a"</span>,      <span class="st">"set(osa"</span>,<span class="st">"setos$a"</span>,<span class="st">"seto-s(a"</span>,<span class="st">"(SETOSA"</span>,<span class="st">"setosa "</span>, <span class="st">"s-eto%sa"</span>,       <span class="st">"setosa"</span>,<span class="st">"SETOSA"</span>, <span class="st">"seto.sa"</span>,<span class="st">"setosa"</span>,<span class="st">"setos^a"</span>, <span class="st">"setosa"</span>,<span class="st">"set$osa"</span>, <span class="st">"setosa"</span>, <span class="st">"se+tosa"</span>,<span class="st">"seto*sa"</span>,        <span class="st">"S)ETOSA"</span>,<span class="st">"setos*a"</span>, <span class="st">"setosa"</span>,<span class="st">"set!osa"</span>,<span class="st">"setosa"</span>,<span class="st">"setosa"</span>,<span class="st">"s@et#osa "</span>,<span class="st">"setosa"</span>,<span class="st">"setosa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>bad_versicolor<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"versic(olor"</span>,<span class="st">"ver@sicolor"</span>,<span class="st">"versico_lor"</span>,<span class="st">"ve#rsicolor"</span>,<span class="st">"versicolor"</span>,          <span class="st">"versico@lor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"vers_i%c#ol%or"</span>, <span class="st">"V*ERSICOLOR"</span>,<span class="st">"ver!sicolor"</span>,<span class="st">"+versicolo^r"</span>,<span class="st">"versicolor"</span>,<span class="st">"versico)l^or"</span>,<span class="st">"versicol^or"</span>,<span class="st">"ve&amp;rsicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"$vers+icolor"</span>,<span class="st">"versicolor "</span>,<span class="st">")versicolor"</span>, <span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor "</span>,<span class="st">"ver&amp;sicolor "</span>,<span class="st">"versico(lo$r"</span>,<span class="st">"versi_color"</span>,<span class="st">"versicolor"</span>,<span class="st">"vers-ic.ol%o&amp;r"</span>, <span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,     <span class="st">"versicolor"</span>,<span class="st">"*versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicol!or"</span>,<span class="st">"&amp;versicolor"</span>,<span class="st">"%versicol%or "</span>,  <span class="st">"v%ersicolor"</span>,<span class="st">"v+ersicolor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bad_virginica <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"virginica"</span>,<span class="st">"vir!ginica"</span>,<span class="st">"virginica"</span>,<span class="st">"VIRGINICA"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,     </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="st">"virginica"</span>,<span class="st">"virg^inica"</span>,<span class="st">"virginica"</span>,<span class="st">"$virg(inica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica "</span>,<span class="st">"virginica"</span>,     <span class="st">"virginica"</span>,<span class="st">"virgini+ca"</span>,<span class="st">"vir-ginica"</span>, <span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virgin!ica"</span>,<span class="st">"virginica"</span>,   <span class="st">".virginic#a"</span>,<span class="st">"virginica"</span>,<span class="st">"virginic_a"</span>,<span class="st">"virginica"</span>,<span class="st">"v(irgi$nica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginic#a"</span>,     <span class="st">"vir.gini@ca"</span>,<span class="st">"virginica "</span>,<span class="st">"v#irgini(ca"</span>, <span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,      <span class="st">"virgi^nica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"VIRGINICA"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code below, is going to replace bad species with the right value using dplyr case_when function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>clean_iris<span class="ot">&lt;-</span>clean_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">species_clean =</span> <span class="fu">case_when</span>(species <span class="sc">%in%</span> bad_setosa <span class="sc">~</span> <span class="st">"setosa"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                                    species <span class="sc">%in%</span> bad_versicolor <span class="sc">~</span> <span class="st">"versicolor"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                    species <span class="sc">%in%</span> bad_virginica <span class="sc">~</span> <span class="st">"virginica"</span>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(clean_iris<span class="sc">$</span>species_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "setosa"     NA           "versicolor" "virginica" </code></pre>
+</div>
+</div>
+<section id="converting-variables" class="level3">
+<h3 class="anchored" data-anchor-id="converting-variables">Converting variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species_clean=</span><span class="fu">as_factor</span>(species_clean),</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_length=</span><span class="fu">as.numeric</span>(sepal_length),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_width=</span><span class="fu">as.numeric</span>(sepal_width),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_length=</span><span class="fu">as.numeric</span>(petal_length),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_width=</span><span class="fu">as.numeric</span>(petal_width)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 6
+$ sepal_length  &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, NA, 5.4, 4.6, 5.0, NA, 4.9, 5.4, 4.8…
+$ sepal_width   &lt;dbl&gt; 3.5, NA, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…
+$ petal_length  &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, NA, 1.…
+$ petal_width   &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, N…
+$ species       &lt;chr&gt; "setosa", "setosa", "setosa ", "setosa ", "s!etosa", "se…
+$ species_clean &lt;fct&gt; setosa, setosa, setosa, setosa, NA, setosa, NA, setosa, …</code></pre>
+</div>
+</div>
+<p>After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.</p>
+</section>
+</section>
+</section>
+<section id="checking-for-missingness-in-iris-dataset" class="level1">
+<h1>Checking for missingness in Iris dataset</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">miss_var_summary</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="cctdfniyff" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cctdfniyff table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cctdfniyff thead, #cctdfniyff tbody, #cctdfniyff tfoot, #cctdfniyff tr, #cctdfniyff td, #cctdfniyff th {
+  border-style: none;
+}
+
+#cctdfniyff p {
+  margin: 0;
+  padding: 0;
+}
+
+#cctdfniyff .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cctdfniyff .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cctdfniyff .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cctdfniyff .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cctdfniyff .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cctdfniyff .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cctdfniyff .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cctdfniyff .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cctdfniyff .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cctdfniyff .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cctdfniyff .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cctdfniyff .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cctdfniyff .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cctdfniyff .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cctdfniyff .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cctdfniyff .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cctdfniyff .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cctdfniyff .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cctdfniyff .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cctdfniyff .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cctdfniyff .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cctdfniyff .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cctdfniyff .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cctdfniyff .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cctdfniyff .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cctdfniyff .gt_left {
+  text-align: left;
+}
+
+#cctdfniyff .gt_center {
+  text-align: center;
+}
+
+#cctdfniyff .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cctdfniyff .gt_font_normal {
+  font-weight: normal;
+}
+
+#cctdfniyff .gt_font_bold {
+  font-weight: bold;
+}
+
+#cctdfniyff .gt_font_italic {
+  font-style: italic;
+}
+
+#cctdfniyff .gt_super {
+  font-size: 65%;
+}
+
+#cctdfniyff .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cctdfniyff .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cctdfniyff .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cctdfniyff .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cctdfniyff .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cctdfniyff .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cctdfniyff .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#cctdfniyff .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#cctdfniyff div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">variable</th>
+<th id="n_miss" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_miss</th>
+<th id="pct_miss" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">pct_miss</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">species_clean</td>
+<td class="gt_row gt_right" headers="n_miss">93</td>
+<td class="gt_row gt_center" headers="pct_miss">62</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">sepal_width</td>
+<td class="gt_row gt_right" headers="n_miss">19</td>
+<td class="gt_row gt_center" headers="pct_miss">12.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">petal_width</td>
+<td class="gt_row gt_right" headers="n_miss">19</td>
+<td class="gt_row gt_center" headers="pct_miss">12.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">species</td>
+<td class="gt_row gt_right" headers="n_miss">18</td>
+<td class="gt_row gt_center" headers="pct_miss">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">sepal_length</td>
+<td class="gt_row gt_right" headers="n_miss">15</td>
+<td class="gt_row gt_center" headers="pct_miss">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">petal_length</td>
+<td class="gt_row gt_right" headers="n_miss">7</td>
+<td class="gt_row gt_center" headers="pct_miss">4.67</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We have up to 57.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is <strong>not</strong> the recommended method.</p>
+</section>
+<section id="our-next-sections-will-be-eda-and-data-visulisation" class="level1">
+<h1>Our next sections will be EDA, and Data Visulisation</h1>
+<section id="missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values">Missing values</h2>
+<p>Loading……………….</p>
+</section>
+<section id="exploratory-data-analysis-eda" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
+<p>Loading&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+</section>
+<section id="visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="visualisation">VISUALISATION</h2>
+<p>Loading&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/mwaledaveed99\.github\.io\/mwaledaveed99\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 David Mwale</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
