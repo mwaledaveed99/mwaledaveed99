@@ -8,12 +8,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Loading of libraries
 ```{r}
+#| message: false
+#| warning: false
+#| include: false
 library(tidyverse)
 library(messy) # for creating messy data
 library(naniar) # for assessing missing values
 library(janitor) # Data cleaning
 library(gt) #generating tables
 library(gtExtras)
+library(cowplot)
 ```
 
 # The Iris dataset
@@ -42,6 +46,7 @@ messy_iris %>%
 ### Key observations
 - We can see that the column names are seperated by "." and are not in lower case. we are going to convert these to lower snake_case.\n
 - Even before we search for missing values, we can note that the dataset has missing values
+- Finally we can also see that the species column has more that three variations of the setosa.
 
 ## Undersdaning the dataset
 Now, we are going to run diffrent codes, just to understand our dataset.
@@ -67,18 +72,19 @@ messy_iris %>% # Checking for unique values of Species.
   distinct()
 ```
 
-The dataset is supposed to have three different species of the flower. Namely; setosa, viginica, and versicolor. However, can can quickly note from code output that we have over 68 diffent variations of these species. Again, we are going to fix this too!!
+The dataset is supposed to have three different species of the flower namely; setosa, viginica, and versicolor. However, we can quickly note from code output that we have over 68 different variations of these species. Again, we are going to fix this too!!
 
 
 ## Data Cleaning process
-Firstly, we are going to take the messy dataset, and load it into the clean_iris data object as this is what will finally house our clean dataset. Immediately, we will cleaning by working on the column names using the janitor clean_names() function.
+Firstly, we are going to take the messy dataset, and load it into the clean_iris data object as this is what will finally house our clean dataset. Immediately, we will start cleaning by working on the column names using the clean_names() function from the janitor package.
 ```{r Fixing column names}
 clean_iris<-messy_iris %>% 
   clean_names()
-clean_iris
+clean_iris |> 
+  head(10)
 ```
 
-Note that our column names are now in lower case using the snake_case format. The next thing that we are going to do is wnnsure that the species column only has the three different values. 
+Note that our column names are now in lower case using the snake_case format. The next thing that we are going to do is ensure that the species column only has the three different values. 
 
 ```{r Unique values for species}
 head(clean_iris$species)
@@ -121,28 +127,89 @@ clean_iris |>
   glimpse()
 ```
  
- After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.
+After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.
  
 # Checking for missingness in Iris dataset
 
-```{r}
+```{r missing variables}
 clean_iris |> 
   miss_var_summary() |> 
   gt()
 ```
 
+```{r Visualising the missing variables}
+vis_miss(clean_iris)
+```
+
 We have up to 57.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is **not** the recommended method.
 
 
-# Our next sections will be EDA, and Data Visulisation
+# Our next sections will be on Missing Data, EDA, and Data Visulisation
 
 ## Missing values
+There are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package;  missForest, which uses random forest to train data of observed values of data matrix to predict missing values. 
 
-Loading...................
+```{r}
+install.packages("missForest")
+library(missForest)
+
+iris_impute<-clean_iris |> 
+  select(-species) |> 
+  mutate(across(c(sepal_length,sepal_width,petal_length,petal_width), as.numeric),
+         species_clean = as.factor(species_clean))
+
+
+iris_imputed<-missForest(iris_impute,xtrue = ,maxiter = 10,ntree = 100,verbose = FALSE)
+
+df_imputed<-iris_imputed$ximp
+
+df_imputed %>% 
+  miss_var_summary() %>% 
+  gt() 
+```
+
+```{r}
+iris_imputed$OOBerror
+```
+
+The error rates for both the categorical and numerical values are relatively low.
 
 ## Exploratory Data Analysis (EDA)
 
-Loading>>>>>>>>>>>>>>>>>>>
+In this section we will understand our data further using graphics to see the distribution of different variables. We will use boxplots, q-q plots, and histograms to assess distribution of variables.
+```{r}
+plot_sl_1<-df_imputed |> 
+  ggplot(aes(x = sepal_length))+
+  geom_histogram()+
+  theme_bw() +
+  labs(title = "Q-Q plot Imputed data")
+iris_sp1<-iris |> 
+  ggplot(aes(x = Sepal.Length))+
+  geom_histogram()+
+  theme_bw()+
+  labs(title = "Q-Q plot for original data")
+
+plot_sl_2<-df_imputed |> 
+  ggplot(aes(sample = sepal_length))+
+  stat_qq()+
+  stat_qq_line(color = "red")+
+  theme_bw() +
+  labs(title = "Q-Q plot for imputed data")
+
+iris_sl_2<-iris |> 
+  ggplot(aes(sample = Sepal.Length))+
+  stat_qq()+
+  stat_qq_line(color = "red")+
+  theme_bw() +
+  labs(title = "Q-Q Plot original data")
+
+cowplot::plot_grid(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, ncol = 2)
+```
+
+
+```{r}
+
+```
 
 ## VISUALISATION 
 

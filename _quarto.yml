@@ -14,8 +14,10 @@ website:
         text: About
       - href: iris_dataset.qmd
         text: Data Cleaning
+      - href: projects.qmd
+        text: Projects
   page-footer:
-    center: "© 2025 David Mwale"
+    center: "**© 2025 David Mwale**"
 
 format:
   html:
@@ -25,7 +27,6 @@ format:
 
 execute:
   freeze: auto
-
 
 
 

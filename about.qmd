@@ -5,7 +5,7 @@ title: "About Me"
 My name is David Mwale. I am a second-year student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning. 
 
 ## Educcation & Experience
-- MSc in Data Science for Health and Social care | [University of Edinburgh](https://www.ed.ac.uk/)| 2023-
+- MSc in Data Science for Health and Social care | [**University of Edinburgh**](https://www.ed.ac.uk/)| 2023- present
 - Diploma in Monitoring and Evaluation | [The Catholic University of Malawi](https://cunima1.online/) | 2018-20
 - BSc Agricultural Economics | [University of Malawi](https://www.luanar.ac.mw/luanar/) | 2011-15
 - RUsers Malawi lead organiser | Lilongwe, Malawi | 2024- present
