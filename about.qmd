@@ -12,6 +12,9 @@ about:
       - text: GitHub
         icon: github
         href: https://github.com/mwaledaveed99
+      - text: Linkedln
+        icon: Linkedln
+        href: www.linkedin.com/in/david-mwale-b47490103
       - text: resume
         icon: file-text
         href: resume.pdf
