@@ -1,32 +1,69 @@
 project:
-  type: website
-  output-dir: docs
+      type: website
+      output-dir: docs
+      resources:
+        - profile.jpg
+        - resume.pdf
 
-website:
-  title: "David Mwale - Data Science Portfolio"
-  site-url: https://mwaledaveed99.github.io/mwaledaveed99/
-  description: "A portfolio showcasing David Mwale's R projects in data cleaning, visualization, statistical modeling, and machine learning."
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: about.qmd
-        text: About
-      - href: iris_dataset.qmd
-        text: Data Cleaning
-      - href: projects.qmd
-        text: Projects
-  page-footer:
-    center: "**© 2025 David Mwale**"
+    website:
+      title: "David Mwale - D.Science Portfolio"
+      site-url: https://mwaledaveed99.github.io/mwaledaveed99/
+      description: "A portfolio showcasing David Mwale's R projects in data cleaning, visualization, statistical modeling, and machine learning."
+      navbar:
+        left:
+          - href: index.qmd
+            text: Home
+          - href: about.qmd
+            text: About
+          - href: projects.qmd
+            text: Projects
+          - href: iris_dataset.qmd
+            text: Data Cleaning
+          - href: resume.qmd
+            text: Resume
+      page-footer:
+        center: "**© 2025 David Mwale**"
 
-format:
-  html:
-    theme: flatly
-    css: styles.css
-    toc: true
+    format:
+      html:
+        theme: flatly
+        css: styles.css
+        toc: true
 
-execute:
-  freeze: auto
+    execute:
+      freeze: auto
+
+
+
+#project:
+#  type: website
+#  output-dir: docs
+
+#website:
+ # title: "David Mwale - Data Science Portfolio"
+ # site-url: https://mwaledaveed99.github.io/mwaledaveed99/
+ # description: "A portfolio showcasing David Mwale's R projects in data cleaning, visualization, statistical modeling, and machine learning."
+  #navbar:
+  #  left:
+  #    - href: index.qmd
+   #     text: Home
+   #   - href: about.qmd
+   #     text: About
+   #   - href: iris_dataset.qmd
+    #    text: Data Cleaning
+    #  - href: projects.qmd
+    #    text: Projects
+  #page-footer:
+    #center: "**© 2025 David Mwale**"
+
+#format:
+#  html:
+ #   theme: flatly
+ #   css: styles.css
+  #  toc: true
+
+#execute:
+ # freeze: auto
 
 
 

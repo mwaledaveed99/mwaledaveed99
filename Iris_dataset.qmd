@@ -8,9 +8,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Loading of libraries
 ```{r}
+#| echo: true
 #| message: false
 #| warning: false
-#| include: false
 library(tidyverse)
 library(messy) # for creating messy data
 library(naniar) # for assessing missing values

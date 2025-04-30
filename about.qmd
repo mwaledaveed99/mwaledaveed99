@@ -14,7 +14,7 @@ about:
         href: https://github.com/mwaledaveed99
       - text: Linkedln
         icon: Linkedln
-        href: www.linkedin.com/in/david-mwale-b47490103
+        href: https://www.linkedin.com/in/david-mwale-b47490103
       - text: resume
         icon: file-text
         href: resume.pdf
@@ -36,5 +36,5 @@ My name is David Mwale. I am a second-year student at the University of Edinburg
 - Email: **d.mwale@sms.ed.ac.uk**
 - Phone: +265 993 627 367
 - [LinkedIn](www.linkedin.com/in/david-mwale-b47490103)
-- image-alt: "David Mwale profile picture"
+
 
