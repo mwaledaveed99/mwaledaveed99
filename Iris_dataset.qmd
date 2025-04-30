@@ -150,7 +150,7 @@ We have up to 57.3% of missing dataset for species. There are many ways of handl
 There are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package;  missForest, which uses random forest to train data of observed values of data matrix to predict missing values. 
 
 ```{r}
-install.packages("missForest")
+#install.packages("missForest")
 library(missForest)
 
 iris_impute<-clean_iris |> 
@@ -182,12 +182,12 @@ plot_sl_1<-df_imputed |>
   ggplot(aes(x = sepal_length))+
   geom_histogram()+
   theme_bw() +
-  labs(title = "Q-Q plot Imputed data")
+  labs(title = "Histogram - Imputed data")
 iris_sp1<-iris |> 
   ggplot(aes(x = Sepal.Length))+
   geom_histogram()+
   theme_bw()+
-  labs(title = "Q-Q plot for original data")
+  labs(title = "Histogram - original data")
 
 plot_sl_2<-df_imputed |> 
   ggplot(aes(sample = sepal_length))+

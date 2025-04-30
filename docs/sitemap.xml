@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/resume.html</loc>
+    <lastmod>2025-04-30T21:06:16.020Z</lastmod>
+  </url>
+  <url>
     <loc>https://mwaledaveed99.github.io/mwaledaveed99/iris_dataset.html</loc>
-    <lastmod>2025-04-27T16:20:07.447Z</lastmod>
+    <lastmod>2025-04-30T21:34:22.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/contact.html</loc>
+    <lastmod>2025-04-30T21:18:38.223Z</lastmod>
   </url>
   <url>
     <loc>https://mwaledaveed99.github.io/mwaledaveed99/about.html</loc>
-    <lastmod>2025-04-27T16:07:26.453Z</lastmod>
+    <lastmod>2025-04-30T21:24:52.273Z</lastmod>
   </url>
   <url>
     <loc>https://mwaledaveed99.github.io/mwaledaveed99/index.html</loc>
-    <lastmod>2025-04-27T16:07:01.585Z</lastmod>
+    <lastmod>2025-04-27T16:50:42.798Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/projects.html</loc>
+    <lastmod>2025-04-30T21:05:04.936Z</lastmod>
   </url>
 </urlset>
