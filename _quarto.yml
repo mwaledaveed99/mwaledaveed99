@@ -12,14 +12,14 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: projects.qmd
-        text: Projects
+      #- href: projects.qmd
+       # text: Projects
       - href: iris_dataset.qmd
         text: Data Cleaning
-      - href: resume.qmd
-        text: Resume
-      - href: contact.qmd
-        text: Contact
+     # - href: resume.qmd
+     #   text: Resume
+      #- href: contact.qmd
+      #  text: Contact
   page-footer:
     center: "**© 2025 David Mwale**"
 
