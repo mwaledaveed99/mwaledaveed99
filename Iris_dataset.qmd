@@ -61,7 +61,7 @@ messy_iris |> #Checking the dimensions of the data (The data has 150 rows, and 5
 messy_iris %>% # Taking a quick look at our dataset
   glimpse()
 ```
-It's good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.
+It's good to understand our data. We have also noted that the data type for all the columns is character (chr) structure. This can limit certain operations that require our data to be in numeric or categorical (factor) form. We are also going to fix this.
 ```{r}
 messy_iris %>% # Understanding the column names of the dataset
   colnames()
