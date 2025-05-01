@@ -126,7 +126,6 @@ clean_iris |>
                   petal_width),as.numeric),
          species_clean=factor(species_clean)) |> 
   glimpse()
-
 ```
  
 After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.
@@ -143,7 +142,7 @@ clean_iris |>
 vis_miss(clean_iris)
 ```
 
-We have up to 57.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is **not** the recommended method.
+We have over 57.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is **not** the recommended method.
 
 
 # Our next sections will be on Missing Data, EDA, and Data Visulisation
@@ -173,6 +172,7 @@ df_imputed %>%
   gt() 
 ```
 
+Even though imputing datasets (multiple imputation) is better than methods like list wise deletion, along with it comes ethical implications especially for identity data.
 ```{r}
 iris_imputed$OOBerror
 ```
@@ -225,7 +225,7 @@ df_imputed |>
   labs(title = "Plot showing Petal width against Petal length")
 ```
 
-Loading>>>>>>>>>>>>>>>>>>>
+
 
 
 
