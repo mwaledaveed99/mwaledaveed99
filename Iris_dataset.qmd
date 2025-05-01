@@ -38,6 +38,7 @@ The explorations that I will conduct in this document will involve the following
 
 ## Creating a messy dataset
 ```{r Messy dataset}
+set.seed(123456)
 messy_iris<-messy(iris)
 messy_iris %>%
   head() |> 
@@ -119,12 +120,13 @@ unique(clean_iris$species_clean)
 ### Converting variables 
 ```{r}
 clean_iris |> 
-  mutate(species_clean=as_factor(species_clean),
-         sepal_length=as.numeric(sepal_length),
-         sepal_width=as.numeric(sepal_width),
-         petal_length=as.numeric(petal_length),
-         petal_width=as.numeric(petal_width)) |> 
+  mutate(across(c(sepal_length,
+                  sepal_width,
+                  petal_length,
+                  petal_width),as.numeric),
+         species_clean=factor(species_clean)) |> 
   glimpse()
+
 ```
  
 After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.
@@ -155,7 +157,10 @@ library(missForest)
 
 iris_impute<-clean_iris |> 
   select(-species) |> 
-  mutate(across(c(sepal_length,sepal_width,petal_length,petal_width), as.numeric),
+  mutate(across(c(sepal_length,
+                  sepal_width,
+                  petal_length,
+                  petal_width), as.numeric),
          species_clean = as.factor(species_clean))
 
 
@@ -209,6 +214,16 @@ cowplot::plot_grid(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, ncol = 2)
 
 
 ## VISUALISATION 
+
+```{r}
+df_imputed |> 
+  ggplot(aes(x = sepal_length,y = petal_width))+
+  geom_point(aes(colour = species_clean, size = petal_length), alpha = 0.5) +
+  scale_color_manual(values = c("#00AFBB", "#e7b800","#FC4E07"))+
+  scale_size(range = c(0.5, 12)) +
+  theme_bw()+
+  labs(title = "Plot showing Petal width against Petal length")
+```
 
 Loading>>>>>>>>>>>>>>>>>>>
 
