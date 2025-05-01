@@ -131,12 +131,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./iris_dataset.html" aria-current="page"> 
 <span class="menu-text">Data Cleaning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="./resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -163,10 +171,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#key-observations" id="toc-key-observations" class="nav-link" data-scroll-target="#key-observations">Key observations</a></li>
   <li><a href="#undersdaning-the-dataset" id="toc-undersdaning-the-dataset" class="nav-link" data-scroll-target="#undersdaning-the-dataset">Undersdaning the dataset</a></li>
+  </ul></li>
   <li><a href="#data-cleaning-process" id="toc-data-cleaning-process" class="nav-link" data-scroll-target="#data-cleaning-process">Data Cleaning process</a>
   <ul class="collapse">
   <li><a href="#converting-variables" id="toc-converting-variables" class="nav-link" data-scroll-target="#converting-variables">Converting variables</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#checking-for-missingness-in-iris-dataset" id="toc-checking-for-missingness-in-iris-dataset" class="nav-link" data-scroll-target="#checking-for-missingness-in-iris-dataset">Checking for missingness in Iris dataset</a></li>
   <li><a href="#our-next-sections-will-be-on-missing-data-eda-and-data-visulisation" id="toc-our-next-sections-will-be-on-missing-data-eda-and-data-visulisation" class="nav-link" data-scroll-target="#our-next-sections-will-be-on-missing-data-eda-and-data-visulisation">Our next sections will be on Missing Data, EDA, and Data Visulisation</a>
@@ -200,14 +208,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="loading-of-libraries" class="level1">
-<h1>Loading of libraries</h1>
+<section id="loading-of-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="loading-of-libraries">Loading of libraries</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(messy) <span class="co"># for creating messy data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar) <span class="co"># for assessing missing values</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Data cleaning</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co">#generating tables</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtExtras)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="the-iris-dataset" class="level1">
-<h1>The Iris dataset</h1>
+<section id="the-iris-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="the-iris-dataset">The Iris dataset</h2>
 <p>The Iris dataset is one of the most famous datasets in statistics and machine learning. It was first introduced by the British biologist and statistician Ronald Fisher in 1936 in his paper “The use of multiple measurements in taxonomic problems.” The dataset consists of 150 samples of iris flowers from three different species: Setosa, Versicolor, and Virginica. Each sample includes four features/columns/variables: sepal length, sepal width, petal length, and petal width</p>
-<section id="data-cleaning-eda" class="level2">
-<h2 class="anchored" data-anchor-id="data-cleaning-eda">Data cleaning &amp; EDA</h2>
+<section id="data-cleaning-eda" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning-eda">Data cleaning &amp; EDA</h3>
 <p>The explorations that I will conduct in this document will involve the following:</p>
 <ol type="1">
 <li><p>Messy column names</p></li>
@@ -218,31 +235,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 </section>
-<section id="creating-a-messy-dataset" class="level1">
-<h1>Creating a messy dataset</h1>
+<section id="creating-a-messy-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-messy-dataset">Creating a messy dataset</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>messy_iris<span class="ot">&lt;-</span><span class="fu">messy</span>(iris)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>messy_iris<span class="ot">&lt;-</span><span class="fu">messy</span>(iris)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="eewjjrzqqy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#eewjjrzqqy table {
+<div id="xsgzesgpeb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xsgzesgpeb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#eewjjrzqqy thead, #eewjjrzqqy tbody, #eewjjrzqqy tfoot, #eewjjrzqqy tr, #eewjjrzqqy td, #eewjjrzqqy th {
+#xsgzesgpeb thead, #xsgzesgpeb tbody, #xsgzesgpeb tfoot, #xsgzesgpeb tr, #xsgzesgpeb td, #xsgzesgpeb th {
   border-style: none;
 }
 
-#eewjjrzqqy p {
+#xsgzesgpeb p {
   margin: 0;
   padding: 0;
 }
 
-#eewjjrzqqy .gt_table {
+#xsgzesgpeb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -268,12 +285,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_caption {
+#xsgzesgpeb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#eewjjrzqqy .gt_title {
+#xsgzesgpeb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -285,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#eewjjrzqqy .gt_subtitle {
+#xsgzesgpeb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -297,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#eewjjrzqqy .gt_heading {
+#xsgzesgpeb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -309,13 +326,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_bottom_border {
+#xsgzesgpeb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_col_headings {
+#xsgzesgpeb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -330,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_col_heading {
+#xsgzesgpeb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -350,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#eewjjrzqqy .gt_column_spanner_outer {
+#xsgzesgpeb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -362,15 +379,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#eewjjrzqqy .gt_column_spanner_outer:first-child {
+#xsgzesgpeb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#eewjjrzqqy .gt_column_spanner_outer:last-child {
+#xsgzesgpeb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#eewjjrzqqy .gt_column_spanner {
+#xsgzesgpeb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -382,11 +399,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#eewjjrzqqy .gt_spanner_row {
+#xsgzesgpeb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#eewjjrzqqy .gt_group_heading {
+#xsgzesgpeb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -412,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#eewjjrzqqy .gt_empty_group_heading {
+#xsgzesgpeb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -427,15 +444,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#eewjjrzqqy .gt_from_md > :first-child {
+#xsgzesgpeb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#eewjjrzqqy .gt_from_md > :last-child {
+#xsgzesgpeb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#eewjjrzqqy .gt_row {
+#xsgzesgpeb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -454,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#eewjjrzqqy .gt_stub {
+#xsgzesgpeb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -467,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#eewjjrzqqy .gt_stub_row_group {
+#xsgzesgpeb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -481,15 +498,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#eewjjrzqqy .gt_row_group_first td {
+#xsgzesgpeb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#eewjjrzqqy .gt_row_group_first th {
+#xsgzesgpeb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#eewjjrzqqy .gt_summary_row {
+#xsgzesgpeb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -499,16 +516,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#eewjjrzqqy .gt_first_summary_row {
+#xsgzesgpeb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_first_summary_row.thick {
+#xsgzesgpeb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#eewjjrzqqy .gt_last_summary_row {
+#xsgzesgpeb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -518,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_grand_summary_row {
+#xsgzesgpeb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -528,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#eewjjrzqqy .gt_first_grand_summary_row {
+#xsgzesgpeb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -538,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_last_grand_summary_row_top {
+#xsgzesgpeb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -548,11 +565,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_striped {
+#xsgzesgpeb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#eewjjrzqqy .gt_table_body {
+#xsgzesgpeb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -561,7 +578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_footnotes {
+#xsgzesgpeb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -575,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_footnote {
+#xsgzesgpeb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -584,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#eewjjrzqqy .gt_sourcenotes {
+#xsgzesgpeb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -598,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#eewjjrzqqy .gt_sourcenote {
+#xsgzesgpeb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -606,72 +623,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#eewjjrzqqy .gt_left {
+#xsgzesgpeb .gt_left {
   text-align: left;
 }
 
-#eewjjrzqqy .gt_center {
+#xsgzesgpeb .gt_center {
   text-align: center;
 }
 
-#eewjjrzqqy .gt_right {
+#xsgzesgpeb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#eewjjrzqqy .gt_font_normal {
+#xsgzesgpeb .gt_font_normal {
   font-weight: normal;
 }
 
-#eewjjrzqqy .gt_font_bold {
+#xsgzesgpeb .gt_font_bold {
   font-weight: bold;
 }
 
-#eewjjrzqqy .gt_font_italic {
+#xsgzesgpeb .gt_font_italic {
   font-style: italic;
 }
 
-#eewjjrzqqy .gt_super {
+#xsgzesgpeb .gt_super {
   font-size: 65%;
 }
 
-#eewjjrzqqy .gt_footnote_marks {
+#xsgzesgpeb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#eewjjrzqqy .gt_asterisk {
+#xsgzesgpeb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#eewjjrzqqy .gt_indent_1 {
+#xsgzesgpeb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#eewjjrzqqy .gt_indent_2 {
+#xsgzesgpeb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#eewjjrzqqy .gt_indent_3 {
+#xsgzesgpeb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#eewjjrzqqy .gt_indent_4 {
+#xsgzesgpeb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#eewjjrzqqy .gt_indent_5 {
+#xsgzesgpeb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#eewjjrzqqy .katex-display {
+#xsgzesgpeb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#eewjjrzqqy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xsgzesgpeb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -689,14 +706,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_right" headers="Sepal.Length">5.1</td>
-<td class="gt_row gt_right" headers="Sepal.Width">3.5</td>
-<td class="gt_row gt_right" headers="Petal.Length">1.4</td>
-<td class="gt_row gt_right" headers="Petal.Width">NA</td>
-<td class="gt_row gt_left" headers="Species">setosa</td>
+<td class="gt_row gt_right" headers="Sepal.Width">NA</td>
+<td class="gt_row gt_right" headers="Petal.Length">NA</td>
+<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
+<td class="gt_row gt_left" headers="Species">setos@a</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Sepal.Length">4.9</td>
-<td class="gt_row gt_right" headers="Sepal.Width">NA</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.4</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
 <td class="gt_row gt_left" headers="Species">setosa</td>
@@ -706,28 +723,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="Sepal.Width">3.2</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.3</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">set-o(sa</td>
+<td class="gt_row gt_left" headers="Species">set!os#a</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Sepal.Length">4.6</td>
-<td class="gt_row gt_right" headers="Sepal.Width">NA</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3.1</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.5</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">SETOSA</td>
+<td class="gt_row gt_left" headers="Species">setosa</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Sepal.Length">5</td>
 <td class="gt_row gt_right" headers="Sepal.Width">3.6</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.4</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">SETOSA</td>
+<td class="gt_row gt_left" headers="Species">NA</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Sepal.Length">5.4</td>
-<td class="gt_row gt_right" headers="Sepal.Width">3.9</td>
+<td class="gt_row gt_right" headers="Sepal.Width">NA</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.7</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.4</td>
-<td class="gt_row gt_left" headers="Species">setos%a</td>
+<td class="gt_row gt_left" headers="Species">setosa</td>
 </tr>
 </tbody>
 </table>
@@ -743,238 +760,234 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Finally we can also see that the species column has more that three variations of the setosa.</li>
 </ul>
 </section>
-<section id="undersdaning-the-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="undersdaning-the-dataset">Undersdaning the dataset</h2>
+<section id="undersdaning-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="undersdaning-the-dataset">Undersdaning the dataset</h3>
 <p>Now, we are going to run diffrent codes, just to understand our dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">|&gt;</span> <span class="co">#Checking the dimensions of the data (The data has 150 rows, and 5 columns)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">|&gt;</span> <span class="co">#Checking the dimensions of the data (The data has 150 rows, and 5 columns)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 150   5</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Taking a quick look at our dataset</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Taking a quick look at our dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
-$ Sepal.Length &lt;chr&gt; "5.1", "4.9", "4.7", "4.6", "5", "5.4", "4.6", "5", "4.4"…
-$ Sepal.Width  &lt;chr&gt; "3.5", NA, "3.2", NA, "3.6", "3.9", "3.4", "3.4", "2.9", …
-$ Petal.Length &lt;chr&gt; "1.4", "1.4", "1.3 ", "1.5", "1.4", "1.7", "1.4", "1.5", …
-$ Petal.Width  &lt;chr&gt; NA, "0.2", "0.2", "0.2", "0.2", "0.4", "0.3", "0.2", "0.2…
-$ Species      &lt;chr&gt; "setosa", "setosa", "set-o(sa", "SETOSA", "SETOSA", "seto…</code></pre>
+$ Sepal.Length &lt;chr&gt; "5.1", "4.9", "4.7", "4.6", "5 ", "5.4", NA, "5", "4.4", …
+$ Sepal.Width  &lt;chr&gt; NA, "3 ", "3.2", "3.1", "3.6", NA, "3.4", "3.4", "2.9 ", …
+$ Petal.Length &lt;chr&gt; NA, "1.4", "1.3", "1.5 ", "1.4", "1.7", "1.4", "1.5", "1.…
+$ Petal.Width  &lt;chr&gt; "0.2", "0.2", "0.2", "0.2", "0.2", "0.4", NA, "0.2", "0.2…
+$ Species      &lt;chr&gt; "setos@a", "setosa", "set!os#a", "setosa", NA, "setosa", …</code></pre>
 </div>
 </div>
 <p>It’s good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Understanding the column names of the dataset</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Understanding the column names of the dataset</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Checking for unique values of Species. </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Checking for unique values of Species. </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          Species
-1          setosa
-2        set-o(sa
-3          SETOSA
-4         setos%a
-5         se-tosa
-6         setos)a
-7        (setosa 
-8         (setosa
-9         seto_sa
-10        set+osa
-11           &lt;NA&gt;
-12        se&amp;tosa
-13        s-etosa
-14        seto^sa
-15       s^e!tosa
-16        setosa 
-17        seto*sa
-18        )setosa
-19        set*osa
-20        s$etosa
-21        set^osa
-22        SETOSA 
-23        set)osa
-24        seto+sa
-25        se.tosa
-26       se^t%osa
-27        s*etosa
-28  ve.r*sicolo&amp;r
-29    versicolo$r
-30   v^ersicolo!r
-31  (ver%sicolor 
-32    ver&amp;sicolor
-33     versicolor
-34   versic-olor 
-35    $versicolor
-36   versic+olor 
-37   ve_rsicolo_r
-38   V!ERSICOL_OR
-39    ver%sicolor
-40   ver)sic#olor
-41   $versico$lor
-42   (ve!rsicolor
-43    vers+icolor
-44  -ve^rsicolor 
-45   VER%SICOLO)R
-46    VERSI(COLOR
-47     VERSICOLOR
-48    vers&amp;icolor
-49   ve-rsi%color
-50   VER_SICOLO&amp;R
-51   ve+rsicol^or
-52   versic@o_lor
-53   versic!olo*r
-54   v&amp;ersico^lor
-55    (versicolor
-56    versico!lor
-57   ver)sic)olor
-58   vers(i(color
-59   ve.rsicolor 
-60    v%ersicolor
-61   versi_co.lor
-62   ver&amp;sic-olor
-63   .versicol.or
-64    vi^r%ginica
-65    vir*gi@nica
-66      virginica
-67    $virgin@ica
-68   %vi_rgini.ca
-69     virg!inica
-70     vir^ginica
-71     virgin(ica
-72     virgin^ica
-73     vi)rginica
-74    vi_rgi)nica
-75     v(irginica
-76    virgini&amp;c!a
-77    virgini$ca 
-78     virgi(nica
-79     virginic$a
-80 +vir$gin$i%c-a
-81   *v^irgin-ica
-82    vir%gini@ca
-83      VIRGINICA
-84     v#irginica
-85    v$irginica 
-86    virg#inic)a
-87    (virg$inica
-88     virginica 
-89    virgini(ca 
-90   @virgi$ni)ca
-91    vir.g.inica</code></pre>
+<pre><code>           Species
+1          setos@a
+2           setosa
+3         set!os#a
+4             &lt;NA&gt;
+5          se)tosa
+6          setosa 
+7          s*etosa
+8          s^etosa
+9          setos-a
+10         s)etosa
+11         s$etosa
+12        !s#etosa
+13         setos#a
+14         se_tosa
+15         setos*a
+16        s(eto$sa
+17        s*et)osa
+18          SETOSA
+19         set.osa
+20         set*osa
+21        )S+ETOSA
+22         se-tosa
+23        setos_a 
+24         s_etosa
+25         SETOS%A
+26       se$t%osa 
+27         setos(a
+28    ve+rsi^color
+29 &amp;ve%r@s!icolo-r
+30      versicolor
+31   versi#c&amp;olor 
+32     ve#rsicolor
+33     vers+icolor
+34    versicol$o-r
+35     ve(rsicolor
+36     versicol.or
+37     ver*sicolor
+38    versicol&amp;or 
+39     versico&amp;lor
+40    v-ersicolor 
+41    v&amp;ersicolo^r
+42     vers#icolor
+43    versic$ol.or
+44    ve+rsicolo.r
+45    vers^icolor 
+46     versicolo$r
+47    ve-rsi-color
+48   ve+rsi^colo&amp;r
+49     versico(lor
+50    ve^rsic#olor
+51     versicolor 
+52     !versicolor
+53     versicolo#r
+54    )VE%RSICOLOR
+55    ve_r-sicolor
+56     versico-lor
+57     versi(color
+58    )ver$sicolor
+59    ver_s*icolor
+60    v_ersicolo#r
+61       VIRGINICA
+62      )virginica
+63    v#ir@ginica 
+64       virginica
+65     virgin-ic@a
+66    v)irgin+ic)a
+67     vi^r&amp;ginica
+68      virgi+nica
+69      virgini@ca
+70     virgin*ica 
+71     vi(rg(inica
+72     virg-ini@ca
+73     vi&amp;r$ginica
+74     virg!in$ica
+75      @virginica
+76      virgin+ica
+77      virg*inica
+78     vi.r^ginica
+79      virgin@ica
+80      virg!inica
+81      virgi)nica
+82      virg^inica
+83      virginica 
+84     virgini&amp;c!a
+85   v*irg)i#nica 
+86     virgini#c.a
+87     virgin*i$ca</code></pre>
 </div>
 </div>
 <p>The dataset is supposed to have three different species of the flower namely; setosa, viginica, and versicolor. However, we can quickly note from code output that we have over 68 different variations of these species. Again, we are going to fix this too!!</p>
+</section>
 </section>
 <section id="data-cleaning-process" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning-process">Data Cleaning process</h2>
 <p>Firstly, we are going to take the messy dataset, and load it into the clean_iris data object as this is what will finally house our clean dataset. Immediately, we will start cleaning by working on the column names using the clean_names() function from the janitor package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean_iris<span class="ot">&lt;-</span>messy_iris <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>clean_iris<span class="ot">&lt;-</span>messy_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   sepal_length sepal_width petal_length petal_width  species
-1           5.1         3.5          1.4        &lt;NA&gt;   setosa
-2           4.9        &lt;NA&gt;          1.4         0.2   setosa
-3           4.7         3.2         1.3          0.2 set-o(sa
-4           4.6        &lt;NA&gt;          1.5         0.2   SETOSA
-5             5         3.6          1.4         0.2   SETOSA
-6           5.4         3.9          1.7         0.4  setos%a
-7           4.6         3.4          1.4         0.3  se-tosa
-8             5         3.4          1.5         0.2  setos)a
-9           4.4         2.9          1.4         0.2 (setosa 
-10          4.9         3.1          1.5         0.1  (setosa</code></pre>
+1           5.1        &lt;NA&gt;         &lt;NA&gt;         0.2  setos@a
+2           4.9          3           1.4         0.2   setosa
+3           4.7         3.2          1.3         0.2 set!os#a
+4           4.6         3.1         1.5          0.2   setosa
+5            5          3.6          1.4         0.2     &lt;NA&gt;
+6           5.4        &lt;NA&gt;          1.7         0.4   setosa
+7          &lt;NA&gt;         3.4          1.4        &lt;NA&gt;  se)tosa
+8             5         3.4          1.5         0.2  setosa 
+9           4.4        2.9           1.4         0.2  s*etosa
+10          4.9         3.1         &lt;NA&gt;         0.1  s^etosa</code></pre>
 </div>
 </div>
 <p>Note that our column names are now in lower case using the snake_case format. The next thing that we are going to do is ensure that the species column only has the three different values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_iris<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_iris<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "setosa"   "setosa"   "set-o(sa" "SETOSA"   "SETOSA"   "setos%a" </code></pre>
+<pre><code>[1] "setos@a"  "setosa"   "set!os#a" "setosa"   NA         "setosa"  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bad_setosa <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"setos)a"</span>, <span class="st">"setosa "</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>, <span class="st">"setosa"</span>, <span class="st">"setosa "</span>, <span class="st">"seto_sa"</span>,  <span class="st">"s&amp;etosa"</span>,  <span class="st">"setosa"</span>, <span class="st">"SETOSA"</span>, <span class="st">"setosa"</span>, <span class="st">"se(tosa"</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>,<span class="st">"*setosa"</span>,<span class="st">"set_osa"</span>,<span class="st">"setosa"</span>,         <span class="st">"se@tosa"</span>,<span class="st">"setosa"</span>, <span class="st">"(s_etos.a"</span>,      <span class="st">"set(osa"</span>,<span class="st">"setos$a"</span>,<span class="st">"seto-s(a"</span>,<span class="st">"(SETOSA"</span>,<span class="st">"setosa "</span>, <span class="st">"s-eto%sa"</span>,       <span class="st">"setosa"</span>,<span class="st">"SETOSA"</span>, <span class="st">"seto.sa"</span>,<span class="st">"setosa"</span>,<span class="st">"setos^a"</span>, <span class="st">"setosa"</span>,<span class="st">"set$osa"</span>, <span class="st">"setosa"</span>, <span class="st">"se+tosa"</span>,<span class="st">"seto*sa"</span>,        <span class="st">"S)ETOSA"</span>,<span class="st">"setos*a"</span>, <span class="st">"setosa"</span>,<span class="st">"set!osa"</span>,<span class="st">"setosa"</span>,<span class="st">"setosa"</span>,<span class="st">"s@et#osa "</span>,<span class="st">"setosa"</span>,<span class="st">"setosa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bad_setosa <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"setos)a"</span>, <span class="st">"setosa "</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>, <span class="st">"setosa"</span>, <span class="st">"setosa "</span>, <span class="st">"seto_sa"</span>,  <span class="st">"s&amp;etosa"</span>,  <span class="st">"setosa"</span>, <span class="st">"SETOSA"</span>, <span class="st">"setosa"</span>, <span class="st">"se(tosa"</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>, <span class="st">"setosa"</span>,<span class="st">"setosa"</span>,<span class="st">"*setosa"</span>,<span class="st">"set_osa"</span>,<span class="st">"setosa"</span>,         <span class="st">"se@tosa"</span>,<span class="st">"setosa"</span>, <span class="st">"(s_etos.a"</span>,      <span class="st">"set(osa"</span>,<span class="st">"setos$a"</span>,<span class="st">"seto-s(a"</span>,<span class="st">"(SETOSA"</span>,<span class="st">"setosa "</span>, <span class="st">"s-eto%sa"</span>,       <span class="st">"setosa"</span>,<span class="st">"SETOSA"</span>, <span class="st">"seto.sa"</span>,<span class="st">"setosa"</span>,<span class="st">"setos^a"</span>, <span class="st">"setosa"</span>,<span class="st">"set$osa"</span>, <span class="st">"setosa"</span>, <span class="st">"se+tosa"</span>,<span class="st">"seto*sa"</span>,        <span class="st">"S)ETOSA"</span>,<span class="st">"setos*a"</span>, <span class="st">"setosa"</span>,<span class="st">"set!osa"</span>,<span class="st">"setosa"</span>,<span class="st">"setosa"</span>,<span class="st">"s@et#osa "</span>,<span class="st">"setosa"</span>,<span class="st">"setosa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bad_versicolor<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"versic(olor"</span>,<span class="st">"ver@sicolor"</span>,<span class="st">"versico_lor"</span>,<span class="st">"ve#rsicolor"</span>,<span class="st">"versicolor"</span>,          <span class="st">"versico@lor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"vers_i%c#ol%or"</span>, <span class="st">"V*ERSICOLOR"</span>,<span class="st">"ver!sicolor"</span>,<span class="st">"+versicolo^r"</span>,<span class="st">"versicolor"</span>,<span class="st">"versico)l^or"</span>,<span class="st">"versicol^or"</span>,<span class="st">"ve&amp;rsicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"$vers+icolor"</span>,<span class="st">"versicolor "</span>,<span class="st">")versicolor"</span>, <span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor "</span>,<span class="st">"ver&amp;sicolor "</span>,<span class="st">"versico(lo$r"</span>,<span class="st">"versi_color"</span>,<span class="st">"versicolor"</span>,<span class="st">"vers-ic.ol%o&amp;r"</span>, <span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,     <span class="st">"versicolor"</span>,<span class="st">"*versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicol!or"</span>,<span class="st">"&amp;versicolor"</span>,<span class="st">"%versicol%or "</span>,  <span class="st">"v%ersicolor"</span>,<span class="st">"v+ersicolor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bad_versicolor<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"versic(olor"</span>,<span class="st">"ver@sicolor"</span>,<span class="st">"versico_lor"</span>,<span class="st">"ve#rsicolor"</span>,<span class="st">"versicolor"</span>,          <span class="st">"versico@lor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"vers_i%c#ol%or"</span>, <span class="st">"V*ERSICOLOR"</span>,<span class="st">"ver!sicolor"</span>,<span class="st">"+versicolo^r"</span>,<span class="st">"versicolor"</span>,<span class="st">"versico)l^or"</span>,<span class="st">"versicol^or"</span>,<span class="st">"ve&amp;rsicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"$vers+icolor"</span>,<span class="st">"versicolor "</span>,<span class="st">")versicolor"</span>, <span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicolor "</span>,<span class="st">"ver&amp;sicolor "</span>,<span class="st">"versico(lo$r"</span>,<span class="st">"versi_color"</span>,<span class="st">"versicolor"</span>,<span class="st">"vers-ic.ol%o&amp;r"</span>, <span class="st">"versicolor"</span>,<span class="st">"versicolor"</span>,     <span class="st">"versicolor"</span>,<span class="st">"*versicolor"</span>,<span class="st">"versicolor"</span>,<span class="st">"versicol!or"</span>,<span class="st">"&amp;versicolor"</span>,<span class="st">"%versicol%or "</span>,  <span class="st">"v%ersicolor"</span>,<span class="st">"v+ersicolor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bad_virginica <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"virginica"</span>,<span class="st">"vir!ginica"</span>,<span class="st">"virginica"</span>,<span class="st">"VIRGINICA"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,     </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">"virginica"</span>,<span class="st">"virg^inica"</span>,<span class="st">"virginica"</span>,<span class="st">"$virg(inica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica "</span>,<span class="st">"virginica"</span>,     <span class="st">"virginica"</span>,<span class="st">"virgini+ca"</span>,<span class="st">"vir-ginica"</span>, <span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virgin!ica"</span>,<span class="st">"virginica"</span>,   <span class="st">".virginic#a"</span>,<span class="st">"virginica"</span>,<span class="st">"virginic_a"</span>,<span class="st">"virginica"</span>,<span class="st">"v(irgi$nica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginic#a"</span>,     <span class="st">"vir.gini@ca"</span>,<span class="st">"virginica "</span>,<span class="st">"v#irgini(ca"</span>, <span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,      <span class="st">"virgi^nica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"VIRGINICA"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bad_virginica <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"virginica"</span>,<span class="st">"vir!ginica"</span>,<span class="st">"virginica"</span>,<span class="st">"VIRGINICA"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,     </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">"virginica"</span>,<span class="st">"virg^inica"</span>,<span class="st">"virginica"</span>,<span class="st">"$virg(inica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica "</span>,<span class="st">"virginica"</span>,     <span class="st">"virginica"</span>,<span class="st">"virgini+ca"</span>,<span class="st">"vir-ginica"</span>, <span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virgin!ica"</span>,<span class="st">"virginica"</span>,   <span class="st">".virginic#a"</span>,<span class="st">"virginica"</span>,<span class="st">"virginic_a"</span>,<span class="st">"virginica"</span>,<span class="st">"v(irgi$nica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginic#a"</span>,     <span class="st">"vir.gini@ca"</span>,<span class="st">"virginica "</span>,<span class="st">"v#irgini(ca"</span>, <span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,      <span class="st">"virgi^nica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>,<span class="st">"VIRGINICA"</span>,<span class="st">"virginica"</span>,<span class="st">"virginica"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The code below, is going to replace bad species with the right value using dplyr case_when function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>clean_iris<span class="ot">&lt;-</span>clean_iris <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">species_clean =</span> <span class="fu">case_when</span>(species <span class="sc">%in%</span> bad_setosa <span class="sc">~</span> <span class="st">"setosa"</span>,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                                    species <span class="sc">%in%</span> bad_versicolor <span class="sc">~</span> <span class="st">"versicolor"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                                    species <span class="sc">%in%</span> bad_virginica <span class="sc">~</span> <span class="st">"virginica"</span>))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(clean_iris<span class="sc">$</span>species_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>clean_iris<span class="ot">&lt;-</span>clean_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">species_clean =</span> <span class="fu">case_when</span>(species <span class="sc">%in%</span> bad_setosa <span class="sc">~</span> <span class="st">"setosa"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                    species <span class="sc">%in%</span> bad_versicolor <span class="sc">~</span> <span class="st">"versicolor"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                    species <span class="sc">%in%</span> bad_virginica <span class="sc">~</span> <span class="st">"virginica"</span>))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(clean_iris<span class="sc">$</span>species_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "setosa"     NA           "versicolor" "virginica" </code></pre>
+<pre><code>[1] NA           "setosa"     "versicolor" "virginica" </code></pre>
 </div>
 </div>
 <section id="converting-variables" class="level3">
 <h3 class="anchored" data-anchor-id="converting-variables">Converting variables</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species_clean=</span><span class="fu">as_factor</span>(species_clean),</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_length=</span><span class="fu">as.numeric</span>(sepal_length),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_width=</span><span class="fu">as.numeric</span>(sepal_width),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_length=</span><span class="fu">as.numeric</span>(petal_length),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_width=</span><span class="fu">as.numeric</span>(petal_width)) <span class="sc">|&gt;</span> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species_clean=</span><span class="fu">as_factor</span>(species_clean),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_length=</span><span class="fu">as.numeric</span>(sepal_length),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_width=</span><span class="fu">as.numeric</span>(sepal_width),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_length=</span><span class="fu">as.numeric</span>(petal_length),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_width=</span><span class="fu">as.numeric</span>(petal_width)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 6
-$ sepal_length  &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4…
-$ sepal_width   &lt;dbl&gt; 3.5, NA, 3.2, NA, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4…
-$ petal_length  &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1…
-$ petal_width   &lt;dbl&gt; NA, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…
-$ species       &lt;chr&gt; "setosa", "setosa", "set-o(sa", "SETOSA", "SETOSA", "set…
-$ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, NA, …</code></pre>
+$ sepal_length  &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, NA, 5.0, 4.4, 4.9, 5.4, NA…
+$ sepal_width   &lt;dbl&gt; NA, 3.0, 3.2, 3.1, 3.6, NA, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4…
+$ petal_length  &lt;dbl&gt; NA, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, NA, 1.5, 1.6…
+$ petal_width   &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, NA, 0.2, 0.2, 0.1, 0.2, 0.…
+$ species       &lt;chr&gt; "setos@a", "setosa", "set!os#a", "setosa", NA, "setosa",…
+$ species_clean &lt;fct&gt; NA, setosa, NA, setosa, NA, setosa, NA, setosa, NA, NA, …</code></pre>
 </div>
 </div>
 <p>After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.</p>
 </section>
 </section>
-</section>
 <section id="checking-for-missingness-in-iris-dataset" class="level1">
 <h1>Checking for missingness in Iris dataset</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">miss_var_summary</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>clean_iris <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">miss_var_summary</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="slubuyxqva" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#slubuyxqva table {
+<div id="cffvfozrbc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cffvfozrbc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#slubuyxqva thead, #slubuyxqva tbody, #slubuyxqva tfoot, #slubuyxqva tr, #slubuyxqva td, #slubuyxqva th {
+#cffvfozrbc thead, #cffvfozrbc tbody, #cffvfozrbc tfoot, #cffvfozrbc tr, #cffvfozrbc td, #cffvfozrbc th {
   border-style: none;
 }
 
-#slubuyxqva p {
+#cffvfozrbc p {
   margin: 0;
   padding: 0;
 }
 
-#slubuyxqva .gt_table {
+#cffvfozrbc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1000,12 +1013,12 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-left-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_caption {
+#cffvfozrbc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#slubuyxqva .gt_title {
+#cffvfozrbc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1017,7 +1030,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-width: 0;
 }
 
-#slubuyxqva .gt_subtitle {
+#cffvfozrbc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1029,7 +1042,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-top-width: 0;
 }
 
-#slubuyxqva .gt_heading {
+#cffvfozrbc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1041,13 +1054,13 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_bottom_border {
+#cffvfozrbc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_col_headings {
+#cffvfozrbc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1062,7 +1075,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_col_heading {
+#cffvfozrbc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1082,7 +1095,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   overflow-x: hidden;
 }
 
-#slubuyxqva .gt_column_spanner_outer {
+#cffvfozrbc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1094,15 +1107,15 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 4px;
 }
 
-#slubuyxqva .gt_column_spanner_outer:first-child {
+#cffvfozrbc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#slubuyxqva .gt_column_spanner_outer:last-child {
+#cffvfozrbc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#slubuyxqva .gt_column_spanner {
+#cffvfozrbc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1114,11 +1127,11 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   width: 100%;
 }
 
-#slubuyxqva .gt_spanner_row {
+#cffvfozrbc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#slubuyxqva .gt_group_heading {
+#cffvfozrbc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1144,7 +1157,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   text-align: left;
 }
 
-#slubuyxqva .gt_empty_group_heading {
+#cffvfozrbc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1159,15 +1172,15 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   vertical-align: middle;
 }
 
-#slubuyxqva .gt_from_md > :first-child {
+#cffvfozrbc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#slubuyxqva .gt_from_md > :last-child {
+#cffvfozrbc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#slubuyxqva .gt_row {
+#cffvfozrbc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1186,7 +1199,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   overflow-x: hidden;
 }
 
-#slubuyxqva .gt_stub {
+#cffvfozrbc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1199,7 +1212,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#slubuyxqva .gt_stub_row_group {
+#cffvfozrbc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1213,15 +1226,15 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   vertical-align: top;
 }
 
-#slubuyxqva .gt_row_group_first td {
+#cffvfozrbc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#slubuyxqva .gt_row_group_first th {
+#cffvfozrbc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#slubuyxqva .gt_summary_row {
+#cffvfozrbc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1231,16 +1244,16 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#slubuyxqva .gt_first_summary_row {
+#cffvfozrbc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_first_summary_row.thick {
+#cffvfozrbc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#slubuyxqva .gt_last_summary_row {
+#cffvfozrbc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1250,7 +1263,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_grand_summary_row {
+#cffvfozrbc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1260,7 +1273,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#slubuyxqva .gt_first_grand_summary_row {
+#cffvfozrbc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1270,7 +1283,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-top-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_last_grand_summary_row_top {
+#cffvfozrbc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1280,11 +1293,11 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_striped {
+#cffvfozrbc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#slubuyxqva .gt_table_body {
+#cffvfozrbc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1293,7 +1306,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_footnotes {
+#cffvfozrbc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1307,7 +1320,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_footnote {
+#cffvfozrbc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1316,7 +1329,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#slubuyxqva .gt_sourcenotes {
+#cffvfozrbc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1330,7 +1343,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#slubuyxqva .gt_sourcenote {
+#cffvfozrbc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1338,72 +1351,72 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#slubuyxqva .gt_left {
+#cffvfozrbc .gt_left {
   text-align: left;
 }
 
-#slubuyxqva .gt_center {
+#cffvfozrbc .gt_center {
   text-align: center;
 }
 
-#slubuyxqva .gt_right {
+#cffvfozrbc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#slubuyxqva .gt_font_normal {
+#cffvfozrbc .gt_font_normal {
   font-weight: normal;
 }
 
-#slubuyxqva .gt_font_bold {
+#cffvfozrbc .gt_font_bold {
   font-weight: bold;
 }
 
-#slubuyxqva .gt_font_italic {
+#cffvfozrbc .gt_font_italic {
   font-style: italic;
 }
 
-#slubuyxqva .gt_super {
+#cffvfozrbc .gt_super {
   font-size: 65%;
 }
 
-#slubuyxqva .gt_footnote_marks {
+#cffvfozrbc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#slubuyxqva .gt_asterisk {
+#cffvfozrbc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#slubuyxqva .gt_indent_1 {
+#cffvfozrbc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#slubuyxqva .gt_indent_2 {
+#cffvfozrbc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#slubuyxqva .gt_indent_3 {
+#cffvfozrbc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#slubuyxqva .gt_indent_4 {
+#cffvfozrbc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#slubuyxqva .gt_indent_5 {
+#cffvfozrbc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#slubuyxqva .katex-display {
+#cffvfozrbc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#slubuyxqva div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cffvfozrbc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1419,33 +1432,33 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="variable">species_clean</td>
-<td class="gt_row gt_right" headers="n_miss">94</td>
-<td class="gt_row gt_center" headers="pct_miss">62.7</td>
+<td class="gt_row gt_right" headers="n_miss">95</td>
+<td class="gt_row gt_center" headers="pct_miss">63.3</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="variable">sepal_length</td>
-<td class="gt_row gt_right" headers="n_miss">16</td>
-<td class="gt_row gt_center" headers="pct_miss">10.7</td>
+<td class="gt_row gt_left" headers="variable">species</td>
+<td class="gt_row gt_right" headers="n_miss">18</td>
+<td class="gt_row gt_center" headers="pct_miss">12</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="variable">petal_length</td>
-<td class="gt_row gt_right" headers="n_miss">16</td>
-<td class="gt_row gt_center" headers="pct_miss">10.7</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left" headers="variable">petal_width</td>
 <td class="gt_row gt_right" headers="n_miss">16</td>
 <td class="gt_row gt_center" headers="pct_miss">10.7</td>
 </tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">species</td>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">sepal_width</td>
 <td class="gt_row gt_right" headers="n_miss">15</td>
 <td class="gt_row gt_center" headers="pct_miss">10</td>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="variable">sepal_width</td>
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">sepal_length</td>
 <td class="gt_row gt_right" headers="n_miss">14</td>
 <td class="gt_row gt_center" headers="pct_miss">9.33</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">petal_length</td>
+<td class="gt_row gt_right" headers="n_miss">10</td>
+<td class="gt_row gt_center" headers="pct_miss">6.67</td>
 </tr>
 </tbody>
 </table>
@@ -1454,7 +1467,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(clean_iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(clean_iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1471,40 +1484,40 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
 <h2 class="anchored" data-anchor-id="missing-values">Missing values</h2>
 <p>There are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package; missForest, which uses random forest to train data of observed values of data matrix to predict missing values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("missForest")</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(missForest)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>iris_impute<span class="ot">&lt;-</span>clean_iris <span class="sc">|&gt;</span> </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>species) <span class="sc">|&gt;</span> </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(sepal_length,sepal_width,petal_length,petal_width), as.numeric),</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">species_clean =</span> <span class="fu">as.factor</span>(species_clean))</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>iris_imputed<span class="ot">&lt;-</span><span class="fu">missForest</span>(iris_impute,<span class="at">xtrue =</span> ,<span class="at">maxiter =</span> <span class="dv">10</span>,<span class="at">ntree =</span> <span class="dv">100</span>,<span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>df_imputed<span class="ot">&lt;-</span>iris_imputed<span class="sc">$</span>ximp</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>df_imputed <span class="sc">%&gt;%</span> </span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">miss_var_summary</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("missForest")</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(missForest)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>iris_impute<span class="ot">&lt;-</span>clean_iris <span class="sc">|&gt;</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(sepal_length,sepal_width,petal_length,petal_width), as.numeric),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">species_clean =</span> <span class="fu">as.factor</span>(species_clean))</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>iris_imputed<span class="ot">&lt;-</span><span class="fu">missForest</span>(iris_impute,<span class="at">xtrue =</span> ,<span class="at">maxiter =</span> <span class="dv">10</span>,<span class="at">ntree =</span> <span class="dv">100</span>,<span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>df_imputed<span class="ot">&lt;-</span>iris_imputed<span class="sc">$</span>ximp</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>df_imputed <span class="sc">%&gt;%</span> </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">miss_var_summary</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="mpjqmnlgzt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mpjqmnlgzt table {
+<div id="ddouoxbkva" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ddouoxbkva table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mpjqmnlgzt thead, #mpjqmnlgzt tbody, #mpjqmnlgzt tfoot, #mpjqmnlgzt tr, #mpjqmnlgzt td, #mpjqmnlgzt th {
+#ddouoxbkva thead, #ddouoxbkva tbody, #ddouoxbkva tfoot, #ddouoxbkva tr, #ddouoxbkva td, #ddouoxbkva th {
   border-style: none;
 }
 
-#mpjqmnlgzt p {
+#ddouoxbkva p {
   margin: 0;
   padding: 0;
 }
 
-#mpjqmnlgzt .gt_table {
+#ddouoxbkva .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1530,12 +1543,12 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-left-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_caption {
+#ddouoxbkva .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mpjqmnlgzt .gt_title {
+#ddouoxbkva .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1547,7 +1560,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-width: 0;
 }
 
-#mpjqmnlgzt .gt_subtitle {
+#ddouoxbkva .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1559,7 +1572,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-top-width: 0;
 }
 
-#mpjqmnlgzt .gt_heading {
+#ddouoxbkva .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1571,13 +1584,13 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_bottom_border {
+#ddouoxbkva .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_col_headings {
+#ddouoxbkva .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1592,7 +1605,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_col_heading {
+#ddouoxbkva .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1612,7 +1625,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   overflow-x: hidden;
 }
 
-#mpjqmnlgzt .gt_column_spanner_outer {
+#ddouoxbkva .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1624,15 +1637,15 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 4px;
 }
 
-#mpjqmnlgzt .gt_column_spanner_outer:first-child {
+#ddouoxbkva .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mpjqmnlgzt .gt_column_spanner_outer:last-child {
+#ddouoxbkva .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mpjqmnlgzt .gt_column_spanner {
+#ddouoxbkva .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1644,11 +1657,11 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   width: 100%;
 }
 
-#mpjqmnlgzt .gt_spanner_row {
+#ddouoxbkva .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mpjqmnlgzt .gt_group_heading {
+#ddouoxbkva .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1674,7 +1687,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   text-align: left;
 }
 
-#mpjqmnlgzt .gt_empty_group_heading {
+#ddouoxbkva .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1689,15 +1702,15 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   vertical-align: middle;
 }
 
-#mpjqmnlgzt .gt_from_md > :first-child {
+#ddouoxbkva .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mpjqmnlgzt .gt_from_md > :last-child {
+#ddouoxbkva .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mpjqmnlgzt .gt_row {
+#ddouoxbkva .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1716,7 +1729,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   overflow-x: hidden;
 }
 
-#mpjqmnlgzt .gt_stub {
+#ddouoxbkva .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1729,7 +1742,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#mpjqmnlgzt .gt_stub_row_group {
+#ddouoxbkva .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1743,15 +1756,15 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   vertical-align: top;
 }
 
-#mpjqmnlgzt .gt_row_group_first td {
+#ddouoxbkva .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mpjqmnlgzt .gt_row_group_first th {
+#ddouoxbkva .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mpjqmnlgzt .gt_summary_row {
+#ddouoxbkva .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1761,16 +1774,16 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#mpjqmnlgzt .gt_first_summary_row {
+#ddouoxbkva .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_first_summary_row.thick {
+#ddouoxbkva .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mpjqmnlgzt .gt_last_summary_row {
+#ddouoxbkva .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1780,7 +1793,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_grand_summary_row {
+#ddouoxbkva .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1790,7 +1803,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#mpjqmnlgzt .gt_first_grand_summary_row {
+#ddouoxbkva .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1800,7 +1813,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-top-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_last_grand_summary_row_top {
+#ddouoxbkva .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1810,11 +1823,11 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_striped {
+#ddouoxbkva .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mpjqmnlgzt .gt_table_body {
+#ddouoxbkva .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1823,7 +1836,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_footnotes {
+#ddouoxbkva .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1837,7 +1850,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_footnote {
+#ddouoxbkva .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1846,7 +1859,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#mpjqmnlgzt .gt_sourcenotes {
+#ddouoxbkva .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1860,7 +1873,7 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#mpjqmnlgzt .gt_sourcenote {
+#ddouoxbkva .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1868,72 +1881,72 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
   padding-right: 5px;
 }
 
-#mpjqmnlgzt .gt_left {
+#ddouoxbkva .gt_left {
   text-align: left;
 }
 
-#mpjqmnlgzt .gt_center {
+#ddouoxbkva .gt_center {
   text-align: center;
 }
 
-#mpjqmnlgzt .gt_right {
+#ddouoxbkva .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mpjqmnlgzt .gt_font_normal {
+#ddouoxbkva .gt_font_normal {
   font-weight: normal;
 }
 
-#mpjqmnlgzt .gt_font_bold {
+#ddouoxbkva .gt_font_bold {
   font-weight: bold;
 }
 
-#mpjqmnlgzt .gt_font_italic {
+#ddouoxbkva .gt_font_italic {
   font-style: italic;
 }
 
-#mpjqmnlgzt .gt_super {
+#ddouoxbkva .gt_super {
   font-size: 65%;
 }
 
-#mpjqmnlgzt .gt_footnote_marks {
+#ddouoxbkva .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mpjqmnlgzt .gt_asterisk {
+#ddouoxbkva .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mpjqmnlgzt .gt_indent_1 {
+#ddouoxbkva .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mpjqmnlgzt .gt_indent_2 {
+#ddouoxbkva .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mpjqmnlgzt .gt_indent_3 {
+#ddouoxbkva .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mpjqmnlgzt .gt_indent_4 {
+#ddouoxbkva .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mpjqmnlgzt .gt_indent_5 {
+#ddouoxbkva .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mpjqmnlgzt .katex-display {
+#ddouoxbkva .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mpjqmnlgzt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ddouoxbkva div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1979,10 +1992,10 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>iris_imputed<span class="sc">$</span>OOBerror</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>iris_imputed<span class="sc">$</span>OOBerror</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     NRMSE        PFC 
-0.14080577 0.05357143 </code></pre>
+0.13475051 0.05454545 </code></pre>
 </div>
 </div>
 <p>The error rates for both the categorical and numerical values are relatively low.</p>
@@ -1991,32 +2004,32 @@ $ species_clean &lt;fct&gt; setosa, setosa, NA, setosa, setosa, NA, NA, setosa, 
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
 <p>In this section we will understand our data further using graphics to see the distribution of different variables. We will use boxplots, q-q plots, and histograms to assess distribution of variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_sl_1<span class="ot">&lt;-</span>df_imputed <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sepal_length))<span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram - Imputed data"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>iris_sp1<span class="ot">&lt;-</span>iris <span class="sc">|&gt;</span> </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length))<span class="sc">+</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram - original data"</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plot_sl_2<span class="ot">&lt;-</span>df_imputed <span class="sc">|&gt;</span> </span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> sepal_length))<span class="sc">+</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>()<span class="sc">+</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Q-Q plot for imputed data"</span>)</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>iris_sl_2<span class="ot">&lt;-</span>iris <span class="sc">|&gt;</span> </span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> Sepal.Length))<span class="sc">+</span></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>()<span class="sc">+</span></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Q-Q Plot original data"</span>)</span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_sl_1<span class="ot">&lt;-</span>df_imputed <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sepal_length))<span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram - Imputed data"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>iris_sp1<span class="ot">&lt;-</span>iris <span class="sc">|&gt;</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length))<span class="sc">+</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram - original data"</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>plot_sl_2<span class="ot">&lt;-</span>df_imputed <span class="sc">|&gt;</span> </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> sepal_length))<span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>()<span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Q-Q plot for imputed data"</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>iris_sl_2<span class="ot">&lt;-</span>iris <span class="sc">|&gt;</span> </span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> Sepal.Length))<span class="sc">+</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>()<span class="sc">+</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Q-Q Plot original data"</span>)</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>

@@ -6,7 +6,7 @@ title: "Cleaning Iris dataset"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Loading of libraries
+## Loading of libraries
 ```{r}
 #| echo: true
 #| message: false
@@ -20,10 +20,10 @@ library(gtExtras)
 library(cowplot)
 ```
 
-# The Iris dataset
+## The Iris dataset
 The Iris dataset is one of the most famous datasets in statistics and machine learning. It was first introduced by the British biologist and statistician Ronald Fisher in 1936 in his paper "The use of multiple measurements in taxonomic problems." The dataset consists of 150 samples of iris flowers from three different species: Setosa, Versicolor, and Virginica. Each sample includes four features/columns/variables: sepal length, sepal width, petal length, and petal width
 
-## Data cleaning & EDA 
+### Data cleaning & EDA 
 The explorations that I will conduct in this document will involve the following:
 
 1.  Messy column names
@@ -36,7 +36,7 @@ The explorations that I will conduct in this document will involve the following
 
 5.  Non-standard data formats
 
-# Creating a messy dataset
+## Creating a messy dataset
 ```{r Messy dataset}
 messy_iris<-messy(iris)
 messy_iris %>%
@@ -44,12 +44,12 @@ messy_iris %>%
   gt()
 ```
 ### Key observations
-- We can see that the column names are seperated by "." and are not in lower case. we are going to convert these to lower snake_case.\n
+- We can see that the column names are separated by "." and are not in lower case. we are going to convert these to lower snake_case.\n
 - Even before we search for missing values, we can note that the dataset has missing values
 - Finally we can also see that the species column has more that three variations of the setosa.
 
-## Undersdaning the dataset
-Now, we are going to run diffrent codes, just to understand our dataset.
+### Understanding the dataset
+Now, we are going to run different codes, just to understand our dataset.
 
 ```{r}
 messy_iris |> #Checking the dimensions of the data (The data has 150 rows, and 5 columns)
@@ -207,9 +207,6 @@ cowplot::plot_grid(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, ncol = 2)
 ```
 
 
-```{r}
-
-```
 
 ## VISUALISATION 
 

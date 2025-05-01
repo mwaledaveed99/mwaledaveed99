@@ -1,14 +1,14 @@
 ---
-title: "contact"
+title: "Contact"
 editor: visual
 ---
 
-## Contact Me
-
-## Get in Touch
+## Lets Get in Touch
 
 Reach out for collaborations, R workshops, or data science opportunities:
 
 -   **Email**: d.mwale\@sms.ed.ac.uk
 -   **Phone**: +265993627367
 -   **GitHub**: mwaledaveed99
+
+I am willing to take full-time, part-time, and remote data science related roles.
