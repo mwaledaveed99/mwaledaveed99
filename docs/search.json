@@ -1,51 +1,58 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "My Portfolio",
+    "objectID": "iris_dataset.html",
+    "href": "iris_dataset.html",
+    "title": "Cleaning Iris dataset",
     "section": "",
-    "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning. In my 2 years with the University of Edinburgh, i have learned, relearned, and unlearned quite a lot regarding Data science in health and social care. What I have learned is much more than i will be able to showcase through this platform. I am experienced in Python, SQL, R programming, and health data analysis, with focus on reproducible research."
+    "text": "library(tidyverse)\nlibrary(messy) # for creating messy data\nlibrary(naniar) # for assessing missing values\nlibrary(janitor) # Data cleaning\nlibrary(gt) #generating tables\nlibrary(gtExtras)\nlibrary(cowplot)"
   },
   {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "My Portfolio",
+    "objectID": "iris_dataset.html#loading-of-libraries",
+    "href": "iris_dataset.html#loading-of-libraries",
+    "title": "Cleaning Iris dataset",
     "section": "",
-    "text": "Welcome to my portfolio! I am a data science student showcasing my projects and skills in data science, statistical modeling, and machine learning. In my 2 years with the University of Edinburgh, i have learned, relearned, and unlearned quite a lot regarding Data science in health and social care. What I have learned is much more than i will be able to showcase through this platform. I am experienced in Python, SQL, R programming, and health data analysis, with focus on reproducible research."
+    "text": "library(tidyverse)\nlibrary(messy) # for creating messy data\nlibrary(naniar) # for assessing missing values\nlibrary(janitor) # Data cleaning\nlibrary(gt) #generating tables\nlibrary(gtExtras)\nlibrary(cowplot)"
   },
   {
-    "objectID": "index.html#my-projects",
-    "href": "index.html#my-projects",
-    "title": "My Portfolio",
-    "section": "My Projects",
-    "text": "My Projects\n\nData Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages.\nData Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards.\nStatistical Modelling for Epidemiology: Applying statistical models to analyze health data trends.\nMachine Learning with R: Building predictive models using tidymodels and other ML frameworks."
+    "objectID": "iris_dataset.html#the-iris-dataset",
+    "href": "iris_dataset.html#the-iris-dataset",
+    "title": "Cleaning Iris dataset",
+    "section": "The Iris dataset",
+    "text": "The Iris dataset\nThe Iris dataset is one of the most famous datasets in statistics and machine learning. It was first introduced by the British biologist and statistician Ronald Fisher in 1936 in his paper “The use of multiple measurements in taxonomic problems.” The dataset consists of 150 samples of iris flowers from three different species: Setosa, Versicolor, and Virginica. Each sample includes four features/columns/variables: sepal length, sepal width, petal length, and petal width\n\nData cleaning & EDA\nThe explorations that I will conduct in this document will involve the following:\n\nMessy column names\nImproper variable types\nInvalid or inconsistent values\nMissing values\nNon-standard data formats"
   },
   {
-    "objectID": "index.html#skills",
-    "href": "index.html#skills",
-    "title": "My Portfolio",
-    "section": "Skills",
-    "text": "Skills\n\nLanguages\n\nR\nSQL\nPython"
+    "objectID": "iris_dataset.html#creating-a-messy-dataset",
+    "href": "iris_dataset.html#creating-a-messy-dataset",
+    "title": "Cleaning Iris dataset",
+    "section": "Creating a messy dataset",
+    "text": "Creating a messy dataset\n\nset.seed(123456)\nmessy_iris&lt;-messy(iris)\nmessy_iris %&gt;%\n  head() |&gt; \n  gt()\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\nNA\nsetosa\n\n\n4.9\n3\nNA\n0.2\ns$etosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\nNA\n3.1\n1.5\n0.2\nNA\n\n\n5\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nNA\n\n\n\n\n\n\n\n\nKey observations\n\nWe can see that the column names are separated by “.” and are not in lower case. we are going to convert these to lower snake_case.\nEven before we search for missing values, we can note that the dataset has missing values\nFinally we can also see that the species column has more that three variations of the setosa.\n\n\n\nUnderstanding the dataset\nNow, we are going to run different codes, just to understand our dataset.\n\nmessy_iris |&gt; #Checking the dimensions of the data (The data has 150 rows, and 5 columns)\n  dim()\n\n[1] 150   5\n\n\n\nmessy_iris %&gt;% # Taking a quick look at our dataset\n  glimpse()\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;chr&gt; \"5.1\", \"4.9\", \"4.7\", NA, \"5\", \"5.4 \", \"4.6\", \"5\", \"4.4\", …\n$ Sepal.Width  &lt;chr&gt; \"3.5\", \"3\", \"3.2\", \"3.1 \", \"3.6\", \"3.9\", \"3.4\", \"3.4\", \"2…\n$ Petal.Length &lt;chr&gt; \"1.4\", NA, \"1.3\", \"1.5 \", \"1.4\", \"1.7\", \"1.4\", \"1.5\", \"1.…\n$ Petal.Width  &lt;chr&gt; NA, \"0.2\", \"0.2\", \"0.2\", \"0.2 \", \"0.4\", \"0.3\", \"0.2\", NA,…\n$ Species      &lt;chr&gt; \"setosa\", \"s$etosa\", \"setosa\", NA, \"setosa\", NA, \"setosa\"…\n\n\nIt’s good to understand our data. We have also noted that the data type for all the columns is character (chr) structure. This can limit certain operations that require our data to be in numeric or categorical (factor) form. We are also going to fix this.\n\nmessy_iris %&gt;% # Understanding the column names of the dataset\n  colnames()\n\n[1] \"Sepal.Length\" \"Sepal.Width\"  \"Petal.Length\" \"Petal.Width\"  \"Species\"     \n\n\n\nmessy_iris %&gt;% # Checking for unique values of Species. \n  select(Species) %&gt;% \n  distinct()\n\n          Species\n1          setosa\n2         s$etosa\n3            &lt;NA&gt;\n4         set)osa\n5        s+et&osa\n6          SETOSA\n7         se+tosa\n8         set_osa\n9         s@etosa\n10       s)eto!sa\n11        $setosa\n12        setos%a\n13        set-osa\n14        *setosa\n15       s^e*tosa\n16        s)etosa\n17        (setosa\n18        setos.a\n19        se(tosa\n20        setosa \n21      se#t#o)sa\n22        s-etosa\n23        s_etosa\n24        s&etosa\n25        s^etosa\n26        seto^sa\n27    ^set.o(s-a \n28    ver!sicolor\n29   ver)sicolor \n30   vers$icolor \n31   ve%rsicol!or\n32    ver$sicolor\n33    versic(olor\n34    versi(color\n35    versi-color\n36     versicolor\n37    versicol(or\n38    *versicolor\n39    versic+olor\n40   versi_co%lor\n41    VERS!ICOLOR\n42   versi$c$olor\n43   versi%c%olor\n44    versico&lor\n45   ve^rsicolor \n46    ^versicolor\n47    ve.rsicolor\n48   ver#sico!lor\n49  $v%ersicolo_r\n50    versicol#or\n51   ve@rs(icolor\n52    versicolor \n53   ve@rsicolo%r\n54    vers&icolor\n55  v_e)rsicolo)r\n56  ve(rsi.col*or\n57    versico)lor\n58   %versicolo#r\n59  versi&col#o!r\n60    versic^olor\n61  *versico!lo.r\n62   &vers)icolor\n63    ver^sicolor\n64   ver#sicolor \n65 ve_rs#ic-olo$r\n66   vers.icolor \n67      virginica\n68     @virginica\n69    virginic@a \n70  v-i*rg%i#nica\n71     virgin*ica\n72     virgi*nica\n73     virgin&ica\n74   v%irgini%ca \n75     virgini+ca\n76     virgini)ca\n77     v.irginica\n78   virgi(nic-a \n79     -virginica\n80    virg*inica \n81     virginic$a\n82    vir&gini(ca\n83     v-irginica\n84     virgi@nica\n85     &virginica\n86     virginica \n87   vir@ginic)a \n88    #virgin(ica\n89    virg(inica \n90   virg_i%nic^a\n91     virginic.a\n\n\nThe dataset is supposed to have three different species of the flower namely; setosa, viginica, and versicolor. However, we can quickly note from code output that we have over 68 different variations of these species. Again, we are going to fix this too!!"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "My name is David Mwale. I am a second-year student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning."
+    "objectID": "iris_dataset.html#data-cleaning-process",
+    "href": "iris_dataset.html#data-cleaning-process",
+    "title": "Cleaning Iris dataset",
+    "section": "Data Cleaning process",
+    "text": "Data Cleaning process\nFirstly, we are going to take the messy dataset, and load it into the clean_iris data object as this is what will finally house our clean dataset. Immediately, we will start cleaning by working on the column names using the clean_names() function from the janitor package.\n\nclean_iris&lt;-messy_iris %&gt;% \n  clean_names()\nclean_iris |&gt; \n  head(10)\n\n   sepal_length sepal_width petal_length petal_width species\n1           5.1         3.5          1.4        &lt;NA&gt;  setosa\n2           4.9           3         &lt;NA&gt;         0.2 s$etosa\n3           4.7         3.2          1.3         0.2  setosa\n4          &lt;NA&gt;        3.1          1.5          0.2    &lt;NA&gt;\n5             5         3.6          1.4        0.2   setosa\n6          5.4          3.9          1.7         0.4    &lt;NA&gt;\n7           4.6         3.4          1.4         0.3  setosa\n8             5         3.4          1.5         0.2  setosa\n9           4.4         2.9         1.4         &lt;NA&gt;  setosa\n10          4.9         3.1         &lt;NA&gt;        0.1  set)osa\n\n\nNote that our column names are now in lower case using the snake_case format. The next thing that we are going to do is ensure that the species column only has the three different values.\n\nhead(clean_iris$species)\n\n[1] \"setosa\"  \"s$etosa\" \"setosa\"  NA        \"setosa\"  NA       \n\n\n\nbad_setosa &lt;- c( \"setos)a\", \"setosa \", \"setosa\",\"setosa\", \"setosa\", \"setosa \", \"seto_sa\",  \"s&etosa\",  \"setosa\", \"SETOSA\", \"setosa\", \"se(tosa\", \"setosa\",\"setosa\", \"setosa\",\"setosa\",\"*setosa\",\"set_osa\",\"setosa\",         \"se@tosa\",\"setosa\", \"(s_etos.a\",      \"set(osa\",\"setos$a\",\"seto-s(a\",\"(SETOSA\",\"setosa \", \"s-eto%sa\",       \"setosa\",\"SETOSA\", \"seto.sa\",\"setosa\",\"setos^a\", \"setosa\",\"set$osa\", \"setosa\", \"se+tosa\",\"seto*sa\",        \"S)ETOSA\",\"setos*a\", \"setosa\",\"set!osa\",\"setosa\",\"setosa\",\"s@et#osa \",\"setosa\",\"setosa\")\n\n\nbad_versicolor&lt;-c(\"versic(olor\",\"ver@sicolor\",\"versico_lor\",\"ve#rsicolor\",\"versicolor\",          \"versico@lor\",\"versicolor\",\"versicolor\",\"versicolor\",\"versicolor\",\"versicolor\",\"vers_i%c#ol%or\", \"V*ERSICOLOR\",\"ver!sicolor\",\"+versicolo^r\",\"versicolor\",\"versico)l^or\",\"versicol^or\",\"ve&rsicolor\",\"versicolor\",\"$vers+icolor\",\"versicolor \",\")versicolor\", \"versicolor\",\"versicolor\",\"versicolor\",\"versicolor \",\"ver&sicolor \",\"versico(lo$r\",\"versi_color\",\"versicolor\",\"vers-ic.ol%o&r\", \"versicolor\",\"versicolor\",     \"versicolor\",\"*versicolor\",\"versicolor\",\"versicol!or\",\"&versicolor\",\"%versicol%or \",  \"v%ersicolor\",\"v+ersicolor\")\n\n\nbad_virginica &lt;- c(\"virginica\",\"vir!ginica\",\"virginica\",\"VIRGINICA\",\"virginica\",\"virginica\",     \n\"virginica\",\"virg^inica\",\"virginica\",\"$virg(inica\",\"virginica\",\"virginica \",\"virginica\",     \"virginica\",\"virgini+ca\",\"vir-ginica\", \"virginica\",\"virginica\",\"virgin!ica\",\"virginica\",   \".virginic#a\",\"virginica\",\"virginic_a\",\"virginica\",\"v(irgi$nica\",\"virginica\",\"virginic#a\",     \"vir.gini@ca\",\"virginica \",\"v#irgini(ca\", \"virginica\",\"virginica\",\"virginica\",\"virginica\",      \"virgi^nica\",\"virginica\",\"virginica\",\"virginica\",\"VIRGINICA\",\"virginica\",\"virginica\")\n\nThe code below, is going to replace bad species with the right value using dplyr case_when function\n\nclean_iris&lt;-clean_iris %&gt;% \n   mutate(species_clean = case_when(species %in% bad_setosa ~ \"setosa\",\n                                    species %in% bad_versicolor ~ \"versicolor\",\n                                    species %in% bad_virginica ~ \"virginica\"))\n\nunique(clean_iris$species_clean)\n\n[1] \"setosa\"     NA           \"versicolor\" \"virginica\" \n\n\n\nConverting variables\n\nclean_iris |&gt; \n  mutate(across(c(sepal_length,\n                  sepal_width,\n                  petal_length,\n                  petal_width),as.numeric),\n         species_clean=factor(species_clean)) |&gt; \n  glimpse()\n\nRows: 150\nColumns: 6\n$ sepal_length  &lt;dbl&gt; 5.1, 4.9, 4.7, NA, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…\n$ sepal_width   &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3…\n$ petal_length  &lt;dbl&gt; 1.4, NA, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, NA, 1.5, 1.6…\n$ petal_width   &lt;dbl&gt; NA, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, NA, 0.1, 0.2, 0.2…\n$ species       &lt;chr&gt; \"setosa\", \"s$etosa\", \"setosa\", NA, \"setosa\", NA, \"setosa…\n$ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, seto…\n\n\nAfter conversion, we now have the double precision, factor, and character data types. This will be important in our analysis."
   },
   {
-    "objectID": "about.html#education-experience",
-    "href": "about.html#education-experience",
-    "title": "About Me",
-    "section": "Education & Experience",
-    "text": "Education & Experience\n\nMSc in Data Science for Health and Social care | University of Edinburgh| 2023- present\nDiploma in Monitoring and Evaluation | The Catholic University of Malawi | 2018-20\nBSc Agricultural Economics | University of Malawi | 2011-15\nRUsers Malawi Lead organiser | Lilongwe, Malawi | 2024- present"
+    "objectID": "iris_dataset.html#missing-values",
+    "href": "iris_dataset.html#missing-values",
+    "title": "Cleaning Iris dataset",
+    "section": "Missing values",
+    "text": "Missing values\nThere are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package; missForest, which uses random forest to train data of observed values of data matrix to predict missing values.\n\n#install.packages(\"missForest\")\nlibrary(missForest)\n\niris_impute&lt;-clean_iris |&gt; \n  select(-species) |&gt; \n  mutate(across(c(sepal_length,\n                  sepal_width,\n                  petal_length,\n                  petal_width), as.numeric),\n         species_clean = as.factor(species_clean))\n\n\niris_imputed&lt;-missForest(iris_impute,xtrue = ,maxiter = 10,ntree = 100,verbose = FALSE)\n\ndf_imputed&lt;-iris_imputed$ximp\n\ndf_imputed %&gt;% \n  miss_var_summary() %&gt;% \n  gt() \n\n\n\n\n\n\n\nvariable\nn_miss\npct_miss\n\n\n\n\nsepal_length\n0\n0\n\n\nsepal_width\n0\n0\n\n\npetal_length\n0\n0\n\n\npetal_width\n0\n0\n\n\nspecies_clean\n0\n0\n\n\n\n\n\n\n\nEven though imputing datasets (multiple imputation) is better than methods like list wise deletion, along with it comes ethical implications especially for identity data.\n\niris_imputed$OOBerror\n\n     NRMSE        PFC \n0.13960904 0.01587302 \n\n\nThe error rates for both the categorical and numerical values are relatively low."
   },
   {
-    "objectID": "about.html#business-intelligence",
-    "href": "about.html#business-intelligence",
-    "title": "About Me",
-    "section": "Business Intelligence ",
-    "text": "Business Intelligence \n\nPowerBI\n\n\nContact \n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265 993 627 367\nLinkedIn"
+    "objectID": "iris_dataset.html#exploratory-data-analysis-eda",
+    "href": "iris_dataset.html#exploratory-data-analysis-eda",
+    "title": "Cleaning Iris dataset",
+    "section": "Exploratory Data Analysis (EDA)",
+    "text": "Exploratory Data Analysis (EDA)\nIn this section we will understand our data further using graphics to see the distribution of different variables. We will use boxplots, q-q plots, and histograms to assess distribution of variables.\n\nplot_sl_1&lt;-df_imputed |&gt; \n  ggplot(aes(x = sepal_length))+\n  geom_histogram()+\n  theme_bw() +\n  labs(title = \"Histogram - Imputed data\")\niris_sp1&lt;-iris |&gt; \n  ggplot(aes(x = Sepal.Length))+\n  geom_histogram()+\n  theme_bw()+\n  labs(title = \"Histogram - original data\")\n\nplot_sl_2&lt;-df_imputed |&gt; \n  ggplot(aes(sample = sepal_length))+\n  stat_qq()+\n  stat_qq_line(color = \"red\")+\n  theme_bw() +\n  labs(title = \"Q-Q plot for imputed data\")\n\niris_sl_2&lt;-iris |&gt; \n  ggplot(aes(sample = Sepal.Length))+\n  stat_qq()+\n  stat_qq_line(color = \"red\")+\n  theme_bw() +\n  labs(title = \"Q-Q Plot original data\")\n\ncowplot::plot_grid(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, ncol = 2)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "iris_dataset.html#visualisation",
+    "href": "iris_dataset.html#visualisation",
+    "title": "Cleaning Iris dataset",
+    "section": "VISUALISATION",
+    "text": "VISUALISATION\n\ndf_imputed |&gt; \n  ggplot(aes(x = sepal_length,y = petal_width))+\n  geom_point(aes(colour = species_clean, size = petal_length), alpha = 0.5) +\n  scale_color_manual(values = c(\"#00AFBB\", \"#e7b800\",\"#FC4E07\"))+\n  scale_size(range = c(0.5, 12)) +\n  theme_bw()+\n  labs(title = \"Plot showing Petal width against Petal length\")"
   }
 ]
