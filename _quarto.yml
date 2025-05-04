@@ -14,7 +14,7 @@ website:
         text: About
       #- href: projects.qmd
        # text: Projects
-      - href: iris_dataset.qmd
+      - href: cleaning.qmd
         text: Data Cleaning
      # - href: resume.qmd
      #   text: Resume
