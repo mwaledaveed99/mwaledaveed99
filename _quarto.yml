@@ -16,8 +16,8 @@ website:
        # text: Projects
       - href: cleaning.qmd
         text: Data Cleaning
-     # - href: resume.qmd
-     #   text: Resume
+      - href: stat_modelling.qmd
+        text: Statistical Modelling
       #- href: contact.qmd
       #  text: Contact
   page-footer:

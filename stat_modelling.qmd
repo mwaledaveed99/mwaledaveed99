@@ -1,0 +1,478 @@
+---
+title: "stat_modelling"
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# 1.0 Introduction
+
+In this project we will be using a subset of the data from the Behavioral Risk Factor Surveillance System (BRFSS) from the CDC to investigate possible risk factors for arthritis. The BRFSS is a system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services. It was established in 1984 with 15 states, BRFSS now collects data in all 50 states. This dataset contains health and social information about non-institutionalized adults in the US in 2013. There are 359,925 individuals included (rows) and 16 variables (columns). The goal is of the study is to investigate risk factors associated with arthritis.
+
+```{r input, include=FALSE}
+# Enter R code to load packages and import data here
+library(tidyverse,warn.conflicts = FALSE)
+library(gt)
+library(gtExtras)
+library(readr)
+library(readxl)
+library(here) # For file path management and flawless importation
+library(gtsummary)
+#install.packages("broom")
+library(broom)
+library(reportROC)
+library(survival)
+#Loading the dataset
+here()
+file<-here("Assessment Dataset.xlsx")
+
+df_brfss<-read_xlsx(file)
+```
+
+# Data preparation
+
+The following chucks of code have bee used to understand the structure, variability, and completeness of the dataset. Firstly, we check the number of unique values in each column using 'map_df()', followed by checking the dimensions using dim(), and obtaining summary statistics with summary().
+
+```{r}
+map_df(df_brfss,n_distinct)
+```
+
+```{r}
+df_brfss |> 
+  dim() # checking dimensions of the dataset
+```
+
+The dataset has 359,925 rows, and 16 columns
+
+```{r}
+df_brfss |> 
+  summary()
+```
+
+```{r}
+df_brfss |> 
+  head()
+```
+
+In the code below we are going to subset the dataset to include the following variables of importance: - Arthritis - Physical activity - BMI - Age(65 or over) - Sex
+
+```{r Data subsetting and preparation}
+# Sub-setting and inspecting the dataset
+lean_brfss<-df_brfss |> 
+  select(arthritis,female,age65plus,active,bmi) |> 
+  mutate(arthritis=factor(if_else(arthritis==1,"Yes","No"),
+                          levels = c("Yes","No")),
+         age_65_or_over=factor(if_else(age65plus==1,"Yes","No"),
+                               levels = c("Yes","No")),
+         Sex=factor(if_else(female==1,"Female","Male"),levels = c("Female","Male")),
+         physical_activity=factor(if_else(active==1,"Yes","No"))) |> 
+  glimpse()
+```
+
+# Exploratory Data Analysis
+
+In this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. To do this I used a range of graphical, and numerical methods including means, histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, hQ-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.
+
+```{r Checking for missing values}
+lean_brfss |> 
+  is.na() |> 
+  sum()
+```
+
+The dataset does not have missing values as the sum of all missing values is zero.
+
+```{r Checking for Outliers}
+lean_brfss |> 
+  ggplot(aes(x = bmi)) +
+  geom_boxplot(aes(),color = "steelblue") +
+  coord_flip() +
+  #facet_grid(~arthritis)+
+  theme_bw()
+```
+
+Seeing from the output, the variable bmi, has significant outliers which could affected the analysis, and result in biased outputs. In the subsequent section, we are going to remove outliers.
+
+## Removing outliers
+
+```{r Removing outliers}
+Q <- quantile(lean_brfss$bmi, probs=c(.25, .75), na.rm = FALSE) # Specifying the lower and upper quatiles
+iqr <- IQR(lean_brfss$bmi) # Interquatile range
+up <-  Q[2]+1.5*iqr # Upper Range  
+low<- Q[1]-1.5*iqr # Lower Range
+brfss_eliminated<- subset(lean_brfss, lean_brfss$bmi > (Q[1] - 1.5*iqr) & lean_brfss$bmi < (Q[2]+1.5*iqr))
+
+```
+
+```{r with outliers}
+with_outliers<-lean_brfss |> 
+  ggplot(aes(x = bmi)) +
+  geom_boxplot(aes(),color = "steelblue") +
+  coord_flip() +
+  #facet_grid(~arthritis)+
+  theme_bw() +
+  labs(title = "With outliers")
+```
+
+```{r without outliers}
+without_outliers<-brfss_eliminated |> 
+  ggplot(aes(x = bmi)) +
+  geom_boxplot(aes(),color = "steelblue") +
+  coord_flip() +
+  #facet_grid(~arthritis)+
+  theme_bw() +
+  labs(title = "Without outliers")
+```
+
+```{r Comparing with and without outliers}
+cowplot::plot_grid(with_outliers, without_outliers)
+```
+
+```{r Histogram for BMI}
+brfss_eliminated |> 
+  ggplot(aes(x = bmi))+
+  geom_histogram(aes(y = after_stat(density), fill = ..count..),bins = 30)+
+  facet_grid(~arthritis) +
+  theme_bw()
+```
+
+```{r}
+sex_subt<-brfss_eliminated |> 
+  select(Sex,arthritis)
+
+activity_subt<-brfss_eliminated |> 
+  select(physical_activity,arthritis)
+
+age_subt<-brfss_eliminated |> 
+  select(age_65_or_over,arthritis)
+```
+
+```{r Arthritis Sex contingency table}
+sex_subt |> 
+  tbl_cross(row = Sex,
+            col = arthritis,
+            percent = "column") |> 
+  bold_labels()
+```
+
+```{r Arthritis activity contingency table}
+activity_subt |> 
+  tbl_cross(row = physical_activity,
+            col = arthritis,
+            percent = "column") |> 
+  bold_labels()
+```
+
+```{r Arthritis Age contigency table}
+age_subt |> 
+  tbl_cross(row = age_65_or_over,
+            col = arthritis,
+            percent = "column") |> 
+  bold_labels()
+```
+
+```{r Arthritis and Sex Tile plot}
+brfss_eliminated %>% 
+  count(Sex, arthritis) %>%
+  ggplot(aes(x = Sex, 
+             y = arthritis)) +
+  geom_tile(aes(fill=n)) +
+  labs(x = "Sex",
+       y = "Arthritis",
+       fill = "Count") +
+  scale_fill_distiller(palette = "RdPu") +
+  theme_classic(base_size = 16)
+```
+
+## Observations
+
+The box plots show higher median BMI in the arthritis group with just fewer outliers after filtering. Histograms show a right skewed distribution where as contingency tables suggest higher arthritis prevalence among females (63%), those aged 65 or over (49% vs 22%), and those with no physical activity. the distribution of BMI as a variable indicates skewness and presence of outliers. This variables will be transformed prior to analysis.
+
+# Analysis plan
+
+The analysis aims to investigate and quantify associations between arthritis (Yes/No) and risk factors: Sex (Female, Male), age (Less or More than 65), physical activity (Yes/No), and BMI. We will use both descriptive, and inferential methods to address the research questions. Descriptive statistics will be used as they are appropriate for generating summary statistics (means, medians) which will be useful in identifying preliminary patterns.
+
+Chi square tests will be performed to assess the association between arthritis and each categorical variable (physical exercise, sex, age category).
+
+We will also employ t tests or Wilcoxon Rank Sum test (depending on normality) to compare the means of BMI for those that have arthritis, and those that do not.BMI is numeric and continuous variable, and arthritis is a categorical variable, requiring a a two group comparison, and this makes t-tests or Wilcoxon Rank Sum Test a method of choice.
+
+We will also calculate the relative risk ratio to assess the relative risk of having arthritis depending on the sex, age, and physical activity of an individual. Relative Risk is preferred over odds ration in this case due to direct interpretation as a risk.
+
+Finally, we will run a logistic regression model to understand the collective relative risk of sex, age, physical activity, BMI, on the target variable (arthritis).
+
+## Data dictionary
+
+-   Arthritis: A binary outcome variable taking the values of Yes(1), and No(2).
+-   Physical activity: A binary explanatory variable taking the values of Yes(1), or No(2) to indicate whether an individual is exercising or not respectively.
+-   Age 65 or over: A binary explanatory variable taking the values of Yes(1), or No(2) to indicate whether or not the individual is above or below 65 years of age respectively.
+-   Sex: A binary explanatory variable taking the values of Female(1), or Male(2) to indicate whether or not the individual is Female or Male respectively.
+-   BMI: A numeric continuous variable showing the Body Mass Index (BMI) for an individual.
+
+# Hypothesis
+
+In our analysis we are going to make the following hypotheses: \## Chi-square tests. - Null: There is no association between arthritis, and Sex of an individual. - Alternative: There is an association between arthritis, and Sex of an individual.
+
+-   Null: There is no association between arthritis, and physical activity of an individual.
+
+-   Alternative: There is an association between arthritis, and physical activity of an individual.
+
+-   Null: There is no association between arthritis, and of an individual.
+
+-   Alternative: There is an association between arthritis, and Sex of an individual.
+
+-   
+
+# Normality-tests
+
+-   Null: The sample data comes from a normally distributed population.
+-   Alternative: The sample data does not come from a normally distributed population
+
+# Investigation of assumptions
+
+In this analysis, we are making the following assumptions about our data: - The data is normally distributed - The expected values in the contingency table for categorical variables are not less than 5 in each cell. - \## Visual inspection using graphs
+
+```{r Generating Q-Q plots}
+lean_brfss |> 
+  select(arthritis,bmi) |> 
+  ggplot(aes(sample = bmi))+
+  geom_qq()+
+  geom_qq_line(colour = "red", linewidth = 1) +
+  facet_grid(~arthritis) +
+  theme_bw() 
+```
+
+```{r}
+brfss_eliminated |> 
+  ggplot(aes(x = bmi))+
+  geom_histogram(aes(y = after_stat(density), 
+                     fill = ..count..))+
+  #geom_density(aes(y = after_stat(density)), color = "red", linewidth = 1) +
+  geom_vline(xintercept = mean(lean_brfss$bmi), 
+             color = "purple", 
+             linewidth = 0.8)+
+  geom_vline(xintercept = median(lean_brfss$bmi), 
+             color = "orange", 
+             linewidth = 0.8)+
+  facet_grid(~arthritis) +
+  theme_bw()
+```
+
+The graphical analysis shows that bmi variable is not normally distributed. Both the qq-plot and histograms show that data is skewed. For the qq plots, the points deviate upwards from the red line the for the arthritis variable indicating violations of normality. The histogram for the same shows that the mean and median is not equal, and hence skewed. We will attempt to transform the bmi variable by taking the log to base 10 of the bmi.
+
+## Data Transformation
+
+Observations from the visual inspection of the data, show that the bmi variable is not normally distributed, as the histograms and Q-Q plots have longer tails to the right, and data points deviating from red line respectively. Below, we are methods to transform the variable (bmi) using the three methods.
+
+### Log transformation
+
+```{r}
+lean_brfss |> 
+  ggplot(aes(x = log(bmi)))+
+  geom_histogram(aes(y = after_stat(density), 
+                     fill = ..count..))+
+  #geom_density(aes(y = after_stat(density)), color = "red", linewidth = 1) +
+  geom_vline(xintercept = mean(log(lean_brfss$bmi)), 
+             color = "purple", linewidth = 0.8)+
+  geom_vline(xintercept = median(log(lean_brfss$bmi)), 
+             color = "orange", linewidth = 0.8)+
+  facet_grid(~arthritis) +
+  theme_bw()
+```
+
+### Square root transformation
+
+```{r}
+lean_brfss |> 
+  ggplot(aes(x = sqrt(bmi)))+
+  geom_histogram(aes(y = after_stat(density), 
+                     fill = ..count..))+
+  #geom_density(aes(y = after_stat(density)), color = "red", linewidth = 1) +
+  geom_vline(xintercept = mean(sqrt(lean_brfss$bmi)), 
+             color = "purple", linewidth = 0.8)+
+  geom_vline(xintercept = median(sqrt(lean_brfss$bmi)), 
+             color = "orange", linewidth = 0.8)+
+  facet_grid(~arthritis) +
+  theme_bw()
+```
+
+### Square transformation
+
+```{r}
+lean_brfss |> 
+  ggplot(aes(x = (bmi^2)))+
+  geom_histogram(aes(y = after_stat(density), 
+                     fill = ..count..))+
+  #geom_density(aes(y = after_stat(density)), color = "red", linewidth = 1) +
+  geom_vline(xintercept = mean((lean_brfss$bmi^2)), 
+             color = "purple", linewidth = 0.8)+
+  geom_vline(xintercept = median((lean_brfss$bmi^2)), 
+             color = "orange", linewidth = 0.8)+
+  facet_grid(~arthritis) +
+  theme_bw()
+```
+
+From the above outputs we can see that all methods of data transformation have not been able to result in normal distribution of bmi. Since graphic visualizations of tests are necessary but not sufficient we have further used the Shapiro test of significance below.
+
+## Test of signifcance
+
+Using a sample of 4999 observations from the main dataset, we test for normality using the Shapiro Wilks test.
+
+```{r}
+set.seed(1234) # for reproducibility
+bmi_sample<-lean_brfss |>
+  select(bmi) |> 
+  drop_na(bmi) |> 
+  sample_n(4999) 
+
+bmi_sample |> 
+  pull(bmi) |> 
+  shapiro.test()
+```
+
+The test results from the test show that firstly, the test statistic of 0.69345 is far from 1, indicating the deviation from the mean. The p-value is significant, is extremely low showing that there is strong evidence to reject the null hypothesis, and conclude that data for bmi is not coming from a normally distributed population.
+
+All the assumptions except for chi-square test of independence have not been met for both the graphics, and significance tests. Since parametric methods such as students t tests, anova require data to be normally distributed, we are going to use non-parametric methods to analyse the dataset even as these methods have less power.
+
+# Primary data analysis
+
+## Assessing associations
+
+```{r Sex arthritis association}
+sex_subt |> 
+  table() |> 
+  chisq.test()
+```
+
+```{r Age arthritis association}
+age_subt |> 
+  table() |> 
+  chisq.test()
+```
+
+```{r activity arthritis association}
+activity_subt |> 
+  table() |> 
+  chisq.test()
+```
+
+```{r bmi arhtritis association}
+wilcox.test(bmi~arthritis,data=brfss_eliminated,conf.int=T)
+```
+
+## Assessing relative risk (RR)
+
+```{r Riskratio, sex with arthritis}
+sex_subt |> 
+  table() |> 
+  epitools::epitab(method="riskratio")
+```
+
+```{r Risk ratio, Age with Arthritis}
+age_subt |> 
+  table() |> 
+  epitools::epitab(method="riskratio")
+```
+
+```{r }
+activity_subt |> 
+  table()|> 
+  epitools::epitab(method="riskratio")
+```
+
+```{r }
+model_data<-brfss_eliminated |> 
+  select(arthritis,bmi,age_65_or_over,Sex,physical_activity)
+
+model_lr<-glm(arthritis~.,data = model_data,family = binomial("logit"))
+summary(model_lr)
+
+model_lr |> 
+  tbl_regression(exponentiate = TRUE, conf.int = TRUE) |> 
+  add_global_p() |> 
+  bold_labels() |> 
+  add_glance_table(include = c(nobs,BIC,AIC,logLik))
+  
+```
+
+# Using the finalfit package
+
+```{r eval=FALSE, include=FALSE}
+dependent<-"arthritis"
+explanatory<-c("bmi","age_65_or_over","Sex","physical_activity")
+
+model_data |> 
+  finalfit::finalfit.glm(dependent, explanatory, metrics = TRUE)
+
+model_data |> 
+  finalfit::finalfit(dependent,explanatory, metrics = TRUE)
+```
+
+```{r OR and confidence intervals}
+dependent <- "arthritis"
+explanatory_multi <- c("bmi","age_65_or_over","Sex","physical_activity")
+model_data %>% 
+  finalfit::or_plot(dependent, explanatory_multi,
+          breaks = c(0.5, 1, 2, 3, 4,5),
+          table_text_size = 3.5,
+          title_text_size = 16)
+```
+
+```{r Model Diagnostics, eval=FALSE, include=FALSE}
+brfss_roc<-brfss_eliminated |> 
+  mutate(arthritis_roc=factor(if_else(arthritis=="Yes",0,1)),
+         Sex_roc = factor(if_else(Sex == "Female",0,1)),
+         active_roc = factor(if_else(physical_activity == "Yes",0,1)),
+         age_roc = factor(if_else(age_65_or_over == "Yes",0,1)))
+
+reportROC::reportROC(gold = brfss_roc$arthritis_roc,predictor.binary = brfss_roc$.,plot = T,positive = 's')
+
+```
+
+```{r eval=FALSE, include=FALSE}
+clr<-brfss_eliminated |> 
+  mutate(arthritis_clr=if_else(arthritis=="Yes",0,1))
+
+brfss_clr<-clogit(arthritis_clr~Sex + physical_activity, strata(arthritis_clr),data=clr)
+
+summary(brfss_clr)
+anova(clr,test="Chisq")
+```
+
+# Interpretation
+
+The results from both bivariate, and multivariate analysis present strong evidence of association between arthritis, and explanatory variables (sex, age, physical activity, and BMI):
+
+## 1. Sex, and Arthritis
+
+-   Chi-square test of indeoendence shows a statistically significant relationship between sex and arthritis (X-squared = 27231 = 3016, df = 1, p\<0.001), indicating that arthritis prevalence is different in males and females.
+
+-   Risk Ratio: Males have a lower risk of arthritis comppared to females (RR = 0.86, 95% CI: 0.86-0.88, p\<0.001). This means that the risk of arthritis in males is about 14% lower than in females.
+
+-   Logistic regression: Adjusted OR = 1.54 (95% CI: 1.52-1.57), p\<0.001. This means that after adjusting for BMI, age, and physical activity, females have 54% higher odds of having arthritis compared to males. The 95% confidence interval does not include 1, and extremely narrow indicating that the estimate is quite precise.
+
+## 2. Age and Arthritis
+
+-   Chi-square test results show that there is a strong evidence of association between age (65and over) and arthritis (X-squared = 27231, df = 1, p \< 0.001). The p-value is less than 0.05, we therefore reject the null hypothesis, and conclude that the association between age and arthritis is not by chance.
+
+-   Risk Ratio: Individuals aged 65 or older have a relative risk of 2.18 (95% CI: 2.15-2.20, p \< 0.001), suggesting that they are more than twice as likely to have arthritis compared to individuals below 65.
+
+Logistic regression: Adjusted OR = 3.56 (95% CI: 3.51-3.62, p \< 0.001), showing that being 65 or older increases the odds of having arthritis by 3.5 times after adjusting for other variables. Again, the low p - value (less than 0.05) as well as the narrow confidence interval shows that the estimate is both significant and quite precise.
+
+## 3. Physical Activity and Arthritis
+
+-   Chi-square test: The association between physical activity, and arthritis is significant (X-squared = 4413, df = 1, p \< 0.001). Given the small p value (less than 0.05), we reject the null hypothesis, and conclude that the difference is unlikely to be due to random variation alone.
+
+-   Risk Ratio: Individuals who are physically inactive have higher risk of developing athritis (RR = 1.21, 95% CI: 1.20-1.22, p \< 0.001), showing that there is a 21% increased risk compared to physically active individuals.
+
+-   Logistic regression: With Adjusted OR = 1.45 (95% CI: 1.43-1.47, p \< 0.001). This means that physical inactivity increases the odds of arthritis by 45% holding other variables constant.The p value is less than 0.05 (given alpha level), and therefore significant. Note that the confidence interval is narrow, and does not include 1 making the estimate so certain and precise.
+
+## 4. BMI and Arthritis
+
+-   Wilcoxon Rank-Sum Test (Mann-Whitney U Test): Since BMI is numeric and skewed, this test is ideal because it is non-parametric. The p - value is less than 0.05 (0.001), and the confidence interval is narrow(W-Statistic 1.52, 95% CI:1.49-1.56, p \< 0.001) and does not include 0, we reject the null hypothesis, and conclude that individuals with arthritis tend to have higher BMI than those without arthritis.
+
+-   Logistic regression: The adjusted OR = 0.94 (95% CI: 0.93-0.94, p \< 0.001) suggests that there is a 6% decrease in the odds of arthritis for every unit of BMI gained. Even as this is significant the result is inverse relationship could suggest possible confounding in our model.
+
+#### 
+
+# Machine Learning
+
+Loading \>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>
