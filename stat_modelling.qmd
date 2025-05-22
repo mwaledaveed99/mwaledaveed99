@@ -31,7 +31,7 @@ df_brfss<-read_xlsx(file)
 
 # Data preparation
 
-The following chucks of code have bee used to understand the structure, variability, and completeness of the dataset. Firstly, we check the number of unique values in each column using 'map_df()', followed by checking the dimensions using dim(), and obtaining summary statistics with summary().
+To prepare the dataset for analysis, we used a variety of functions to explore its structure, variability, and completeness. The map_df() function was used to check the number of unique values for each variable, dim() to confirm the dimensions (359,925 rows, and 16 columns), and the summary() function was used to obtain summary statistics.
 
 ```{r}
 map_df(df_brfss,n_distinct)
@@ -54,7 +54,17 @@ df_brfss |>
   head()
 ```
 
-In the code below we are going to subset the dataset to include the following variables of importance: - Arthritis - Physical activity - BMI - Age(65 or over) - Sex
+In the code below we are going to subset the dataset to include the following variables of importance:
+
+\- Arthritis
+
+\- Physical activity
+
+\- BMI
+
+\- Age(65 or over)
+
+ - Sex
 
 ```{r Data subsetting and preparation}
 # Sub-setting and inspecting the dataset
@@ -71,7 +81,7 @@ lean_brfss<-df_brfss |>
 
 # Exploratory Data Analysis
 
-In this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. To do this I used a range of graphical, and numerical methods including means, histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, hQ-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.
+In this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. To do this I used a range of graphical, and numerical methods including means, histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, Q-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.
 
 ```{r Checking for missing values}
 lean_brfss |> 
@@ -80,6 +90,18 @@ lean_brfss |>
 ```
 
 The dataset does not have missing values as the sum of all missing values is zero.
+
+```{r Distribution of the target variable}
+lean_brfss %>% 
+  ggplot(aes(x = arthritis, fill = arthritis))+
+  geom_bar(aes(y = after_stat(count/sum(count))), stat = "count") +
+  theme_bw() +
+  labs(title = "Arthritis prevalence",
+       x = "Arthritis Status",
+       y = "Proportion",
+       fill = "Arthritis") +
+   scale_y_continuous(labels = scales::percent_format(scale = 100))
+```
 
 ```{r Checking for Outliers}
 lean_brfss |> 
@@ -219,7 +241,9 @@ In our analysis we are going to make the following hypotheses: \## Chi-square te
 
 -   Alternative: There is an association between arthritis, and Sex of an individual.
 
--   
+-   Null: There is no association between arthritis, and age catagory (65 or over) of an individual.
+
+-   Alternative: There is an association between arthritis, and age category(65 or over) of an individual.
 
 # Normality-tests
 
@@ -414,27 +438,6 @@ model_data %>%
           breaks = c(0.5, 1, 2, 3, 4,5),
           table_text_size = 3.5,
           title_text_size = 16)
-```
-
-```{r Model Diagnostics, eval=FALSE, include=FALSE}
-brfss_roc<-brfss_eliminated |> 
-  mutate(arthritis_roc=factor(if_else(arthritis=="Yes",0,1)),
-         Sex_roc = factor(if_else(Sex == "Female",0,1)),
-         active_roc = factor(if_else(physical_activity == "Yes",0,1)),
-         age_roc = factor(if_else(age_65_or_over == "Yes",0,1)))
-
-reportROC::reportROC(gold = brfss_roc$arthritis_roc,predictor.binary = brfss_roc$.,plot = T,positive = 's')
-
-```
-
-```{r eval=FALSE, include=FALSE}
-clr<-brfss_eliminated |> 
-  mutate(arthritis_clr=if_else(arthritis=="Yes",0,1))
-
-brfss_clr<-clogit(arthritis_clr~Sex + physical_activity, strata(arthritis_clr),data=clr)
-
-summary(brfss_clr)
-anova(clr,test="Chisq")
 ```
 
 # Interpretation
