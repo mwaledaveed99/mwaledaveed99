@@ -20,13 +20,13 @@ Welcome to my portfolio! I am a David Mwale, a second-year MSc student in Data S
 ## Skills
 
 ### Languages\n
-- R : Proficient in data manipulation, visualisation and modelling with experience in reproducible workflows using RMarkdown, and Quarto.
+- **R** : Proficient in data manipulation, visualisation and modelling with experience in reproducible workflows using RMarkdown, and Quarto.
 
-- SQL : Skilled in querying health databases, optimizing joins, sub-queries, common table expressions(CTEs) using SQLite, MySQL, and PostgreSQL.
+- **SQL** : Skilled in querying health databases, optimizing joins, sub-queries, common table expressions(CTEs) using SQLite, MySQL, and PostgreSQL.
 
-- Python: Experienced in pandas for data wrangling, matplotlib/seaborn for visualization.
+- **Python**: Experienced in pandas for data wrangling, matplotlib/seaborn for visualization.
 
-- Version Control: Git and Github for collaborative and reproducible research.
+- **Version Control**: Git and Github for collaborative and reproducible research.
 
 
 
