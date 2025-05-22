@@ -8,13 +8,13 @@ Welcome to my portfolio! I am a David Mwale, a second-year MSc student in Data S
 
 ## My Projects
 
-- Data Wrangling in R: Cleaning and transforming datasets using tidyverse and other R packages like nanair, and janitor. A quick example is my work in the adjacent with the Iris dataset where i have cleaned the data, and handled missing values.
+- **Data Wrangling in R**: Cleaning and transforming datasets using tidyverse and other R packages like nanair, and janitor. A quick example is my work in the adjacent with the Iris dataset where i have cleaned the data, and handled missing values.
 
-- Data Visualization: Creating insightful visualizations with ggplot2 and interactive dashboards. Through out my projects in this portfolio, I use ggplot2 to make visualizations.
+- **Data Visualization**: Creating insightful visualizations with ggplot2 and interactive dashboards. Through out my projects in this portfolio, I use ggplot2 to make visualizations.
 
-- Statistical Modelling for Epidemiology: Applying statistical models to analyze health data trends. In the stats modelling tab i apply one of the commonly used models - logistic regression to analyse health data, and using other packages like epitools and reportROC.
+- **Statistical Modelling for Epidemiology**: Applying statistical models to analyze health data trends. In the stats modelling tab i apply one of the commonly used models - logistic regression to analyse health data, and using other packages like epitools and reportROC.
 
-- Machine Learning with R: Building predictive models using tidymodels. A highlight of this project is under the Machine Learning tab where i use bothe logistic regression and Random Forest models to predict diabetes.
+- **Machine Learning with R**: Building predictive models using tidymodels. A highlight of this project is under the Machine Learning tab where i use bothe logistic regression and Random Forest models to predict diabetes.
 
 
 ## Skills
