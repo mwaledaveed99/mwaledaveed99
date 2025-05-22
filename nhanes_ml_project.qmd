@@ -77,6 +77,7 @@ Using the hypothetical threshold of 0.8, we can conclude that the predictors are
 In the code below we are going to specify a recipe object after which we will add steps for engineering our features (feature engineering). The steps are to preprocess the data into a form that will allegedly improve our analysis.
 
 ```{r Recipe Object}
+set.seed(123)
 lr_recipe<-recipe(diabetes~.,data = ml_training) |>
   step_log(all_numeric()) |> 
   step_normalize(all_numeric()) |> #Centering and scaling
@@ -90,6 +91,7 @@ lr_worflow<-workflow() |>
 ```
 
 ```{r Fit the model}
+set.seed(123)
 lr_worflow_fit<-lr_worflow |> 
   last_fit(split = ml_split)
 
@@ -107,6 +109,7 @@ lr_resultss
 In this section we are going to visualize the model results
 
 ```{r Confusion matrix}
+set.seed(123)
 lr_resultss |> 
   conf_mat(truth = diabetes,
            estimate = .pred_class)
@@ -114,13 +117,14 @@ lr_resultss |>
 
 -   The logistic regression correctly classifies 1237 out 1358 individuals (91%).
 
--   118 false negatives
+-   116 false negatives
 
--   3 false positives
+-   8 false positives
 
 To check other metrics, we are going to create a metric set
 
 ```{r Metric set}
+set.seed(112)
 lr_metric<-metric_set(sens,accuracy, yardstick::spec)
 
 
@@ -132,6 +136,7 @@ lr_resultss |>
 ```
 
 ```{r Model metrics}
+set.seed(123)
 lr_resultss |>
   roc_curve(truth = diabetes,.pred_Yes) |>
   autoplot()
@@ -142,6 +147,7 @@ roc_auc(lr_resultss, truth = diabetes, .pred_Yes)
 ```
 
 ```{r}
+set.seed(123)
 heatmap_lr<-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |> 
   autoplot(type = "heatmap")
 
@@ -155,6 +161,7 @@ cowplot::plot_grid(mosaic_lr,heatmap_lr)
 The results from the confusion matrix, metrics and plots show that the model is excellent at predicting people that do not have diabetes, hence it has a low false positive rate. Even though the accuracy of the model is 91.1%, the model struggles to correctly predict people that actually have diabetes, making accuracy not the ideal measure in this case. Out of 123 positive cases, the model only predicts 5 cases. To add more nuance to the results we will also plot the ROC curve, and check the area under the curve which shows the models discriminative ability.
 
 ```{r}
+set.seed(123)
 roc_auc(lr_resultss,truth = diabetes,.pred_Yes)
 
 lr_roc_plot<-lr_resultss |> 
@@ -176,6 +183,7 @@ rf<-rand_forest() |>
 ```
 
 ```{r Recipe}
+set.seed(123)
 rf_recipe<-recipe(diabetes~.,data = ml_training) |> 
   step_log(all_numeric()) |> 
   step_normalize(all_numeric()) |> 
@@ -189,6 +197,7 @@ rf_workflow<-workflow() |>
 ```
 
 ```{r Fitting the model}
+set.seed(123)
 rf_wrkflw_fit<-rf_workflow |> 
   tune::last_fit(split = ml_split)
 
@@ -200,6 +209,7 @@ rf_results<-rf_wrkflw_fit |>
 ```
 
 ```{r Conf Matrix}
+set.seed(123)
 mosaic_rf<-rf_results |> 
   conf_mat(truth = diabetes,.pred_class) |> 
   autoplot(type = "mosaic")
@@ -212,6 +222,7 @@ cowplot::plot_grid(heatmap_rf,mosaic_rf)
 ```
 
 ```{r Custom metrics}
+set.seed(123)
 rf_metrics<-metric_set(yardstick::sens, yardstick::spec, yardstick::accuracy)
 
 rf_results |> 
