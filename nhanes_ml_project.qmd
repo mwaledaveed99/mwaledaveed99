@@ -20,6 +20,7 @@ library(janitor)
 library(cowplot)
 library(gtsummary)
 library(ranger)
+library(randomForest)
 ```
 
 ### Inspecting the dataset
@@ -106,7 +107,7 @@ lr_resultss
 In this section we are going to visualize the model results
 
 ```{r Confusion matrix}
-lr_results |> 
+lr_resultss |> 
   conf_mat(truth = diabetes,
            estimate = .pred_class)
 ```
@@ -124,28 +125,28 @@ lr_metric<-metric_set(sens,accuracy, yardstick::spec)
 
 
 
-lr_results |> 
+lr_resultss |> 
   lr_metric(truth = diabetes, 
             estimate = .pred_class)
 
 ```
 
 ```{r Model metrics}
-lr_results |>
+lr_resultss |>
   roc_curve(truth = diabetes,.pred_Yes) |>
   autoplot()
 
 
-roc_auc(lr_results, truth = diabetes, .pred_Yes)
+roc_auc(lr_resultss, truth = diabetes, .pred_Yes)
 
 ```
 
 ```{r}
-heatmap_lr<-conf_mat(lr_results, truth = diabetes, estimate = .pred_class) |> 
+heatmap_lr<-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |> 
   autoplot(type = "heatmap")
 
 
-mosaic_lr<-conf_mat(lr_results, truth = diabetes, estimate = .pred_class) |> 
+mosaic_lr<-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |> 
   autoplot(type = "mosaic")
 
 cowplot::plot_grid(mosaic_lr,heatmap_lr)
@@ -154,9 +155,9 @@ cowplot::plot_grid(mosaic_lr,heatmap_lr)
 The results from the confusion matrix, metrics and plots show that the model is excellent at predicting people that do not have diabetes, hence it has a low false positive rate. Even though the accuracy of the model is 91.1%, the model struggles to correctly predict people that actually have diabetes, making accuracy not the ideal measure in this case. Out of 123 positive cases, the model only predicts 5 cases. To add more nuance to the results we will also plot the ROC curve, and check the area under the curve which shows the models discriminative ability.
 
 ```{r}
-roc_auc(lr_results,truth = diabetes,.pred_Yes)
+roc_auc(lr_resultss,truth = diabetes,.pred_Yes)
 
-lr_roc_plot<-lr_results |> 
+lr_roc_plot<-lr_resultss |> 
   roc_curve(truth = diabetes, .pred_Yes) |> 
   autoplot()
   
@@ -167,7 +168,7 @@ lr_roc_plot
 
 We are going to try a different model, Random Forest to predict diabetes, as our previous model could only predict correctly negative cases.
 
-```{r Model specification}
+```{r RF Model specification}
 rf<-rand_forest() |> 
   set_args(mtry = 10) |> 
   set_engine("ranger") |> 
@@ -198,7 +199,7 @@ rf_results<-rf_wrkflw_fit |>
   collect_predictions()
 ```
 
-```{r Confusion Matrix}
+```{r Conf Matrix}
 mosaic_rf<-rf_results |> 
   conf_mat(truth = diabetes,.pred_class) |> 
   autoplot(type = "mosaic")
