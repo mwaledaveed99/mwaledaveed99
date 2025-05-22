@@ -18,8 +18,8 @@ website:
         text: Data Cleaning
       - href: stat_modelling.qmd
         text: Statistical Modelling
-      #- href: contact.qmd
-      #  text: Contact
+      - href: nhanes_ml_project.qmd
+        text: Machine Learning
   page-footer:
     center: "**© 2025 David Mwale**"
 

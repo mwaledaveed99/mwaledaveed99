@@ -1,0 +1,250 @@
+---
+title: "MLearning"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Introduction
+
+In this project we will use the NHANES dataset to predict diabetes given the available risk factors. The National Health ans Nutrition Survey is a a program in the US designed to assess the health and nutritional status pf adults, and children in the US. The data includes demographic, socio-economic, dietary, and health-related information.
+
+### Loading packages including the dataset
+
+```{r}
+library(NHANES)
+library(tidymodels)
+library(tidyverse)
+library(janitor)
+library(cowplot)
+library(gtsummary)
+library(ranger)
+```
+
+### Inspecting the dataset
+
+We are going to save the dataset into the nhanes_df object to maintain the original dataset intact.
+
+```{r Data subsetting}
+nhanes_df<-NHANES |> 
+  select(Diabetes,DirectChol,BMI,MaritalStatus,Age,Gender) |>
+  drop_na() |> 
+  clean_names()
+
+# Changing the levels for appropriate analysis
+nhanes_df<-nhanes_df |> 
+  mutate(diabetes=factor(diabetes, 
+                         levels = c("Yes", "No"))) |> 
+           glimpse()
+```
+
+In the code belwo, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the target variable so that we do not end up having all the data from the target variable.
+
+```{r Resampling}
+set.seed(123) #For reproducubility
+ml_split<-initial_split(nhanes_df,
+                        prop = 0.8,
+                        strata = diabetes)
+
+ml_training<-ml_split |> 
+  training()
+
+ml_test<-ml_split |>
+  testing()
+  
+```
+
+We are going to specify 2 models, logistic regression, and Random Forest.
+
+```{r Model specification}
+
+lr_model<-logistic_reg() |> 
+  set_engine("glm") |> 
+  set_mode("classification") 
+
+```
+
+```{r Checking for Correlated predictors}
+ml_training |> 
+  select_if(is.numeric) |> 
+  cor()
+```
+
+Using the hypothetical threshold of 0.8, we can conclude that the predictors are not collerated. In the code below, we are going to fit both models using the fit function. After which we are going to collect and combine predictions, and load them.
+
+In the code below we are going to specify a recipe object after which we will add steps for engineering our features (feature engineering). The steps are to preprocess the data into a form that will allegedly improve our analysis.
+
+```{r Recipe Object}
+lr_recipe<-recipe(diabetes~.,data = ml_training) |>
+  step_log(all_numeric()) |> 
+  step_normalize(all_numeric()) |> #Centering and scaling
+  step_dummy(all_nominal(), -all_outcomes())
+```
+
+```{r Workflow object}
+lr_worflow<-workflow() |> 
+  add_model(lr_model) |> 
+  add_recipe(lr_recipe)
+```
+
+```{r Fit the model}
+lr_worflow_fit<-lr_worflow |> 
+  last_fit(split = ml_split)
+
+lr_worflow_fit |> 
+  collect_metrics()
+
+lr_resultss<-lr_worflow_fit |> 
+  collect_predictions()
+
+lr_resultss
+```
+
+## Model Metrics
+
+In this section we are going to visualize the model results
+
+```{r Confusion matrix}
+lr_results |> 
+  conf_mat(truth = diabetes,
+           estimate = .pred_class)
+```
+
+-   The logistic regression correctly classifies 1237 out 1358 individuals (91%).
+
+-   118 false negatives
+
+-   3 false positives
+
+To check other metrics, we are going to create a metric set
+
+```{r Metric set}
+lr_metric<-metric_set(sens,accuracy, yardstick::spec)
+
+
+
+lr_results |> 
+  lr_metric(truth = diabetes, 
+            estimate = .pred_class)
+
+```
+
+```{r Model metrics}
+lr_results |>
+  roc_curve(truth = diabetes,.pred_Yes) |>
+  autoplot()
+
+
+roc_auc(lr_results, truth = diabetes, .pred_Yes)
+
+```
+
+```{r}
+heatmap_lr<-conf_mat(lr_results, truth = diabetes, estimate = .pred_class) |> 
+  autoplot(type = "heatmap")
+
+
+mosaic_lr<-conf_mat(lr_results, truth = diabetes, estimate = .pred_class) |> 
+  autoplot(type = "mosaic")
+
+cowplot::plot_grid(mosaic_lr,heatmap_lr)
+```
+
+The results from the confusion matrix, metrics and plots show that the model is excellent at predicting people that do not have diabetes, hence it has a low false positive rate. Even though the accuracy of the model is 91.1%, the model struggles to correctly predict people that actually have diabetes, making accuracy not the ideal measure in this case. Out of 123 positive cases, the model only predicts 5 cases. To add more nuance to the results we will also plot the ROC curve, and check the area under the curve which shows the models discriminative ability.
+
+```{r}
+roc_auc(lr_results,truth = diabetes,.pred_Yes)
+
+lr_roc_plot<-lr_results |> 
+  roc_curve(truth = diabetes, .pred_Yes) |> 
+  autoplot()
+  
+lr_roc_plot
+```
+
+### Random Forest
+
+We are going to try a different model, Random Forest to predict diabetes, as our previous model could only predict correctly negative cases.
+
+```{r Model specification}
+rf<-rand_forest() |> 
+  set_args(mtry = 10) |> 
+  set_engine("ranger") |> 
+  set_mode("classification")
+```
+
+```{r Recipe}
+rf_recipe<-recipe(diabetes~.,data = ml_training) |> 
+  step_log(all_numeric()) |> 
+  step_normalize(all_numeric()) |> 
+  step_dummy(all_nominal(),-all_outcomes())
+```
+
+```{r Creating a  workflow object}
+rf_workflow<-workflow() |> 
+  add_model(rf) |> 
+  add_recipe(rf_recipe)
+```
+
+```{r Fitting the model}
+rf_wrkflw_fit<-rf_workflow |> 
+  tune::last_fit(split = ml_split)
+
+rf_wrkflw_fit |> 
+  collect_metrics()
+
+rf_results<-rf_wrkflw_fit |> 
+  collect_predictions()
+```
+
+```{r Confusion Matrix}
+mosaic_rf<-rf_results |> 
+  conf_mat(truth = diabetes,.pred_class) |> 
+  autoplot(type = "mosaic")
+
+heatmap_rf<-rf_results |> 
+  conf_mat(truth = diabetes,.pred_class) |>
+  autoplot(type = "heatmap")
+  
+cowplot::plot_grid(heatmap_rf,mosaic_rf)
+```
+
+```{r Custom metrics}
+rf_metrics<-metric_set(yardstick::sens, yardstick::spec, yardstick::accuracy)
+
+rf_results |> 
+  rf_metrics(truth = diabetes, estimate = .pred_class)
+
+rf_results |> 
+  roc_auc(truth = diabetes,.pred_Yes)
+```
+
+```{r ROC CURVE}
+rf_roc_plot<-rf_results |> 
+  roc_curve(truth = diabetes,.pred_Yes) |> 
+  autoplot()
+```
+
+### Model comparison
+
+```{r Model comparison}
+
+cowplot::plot_grid(rf_roc_plot, lr_roc_plot)
+```
+
+The random Forest model performs better that logistic regression my almost all metrics.
+
+-   Accuracy : 0.934
+
+-   Sensitivity : 0.358
+
+-   Specificity : 0.991
+
+-   ROC-AUC : 0.886
+
+The random forest model improves sensitivity from 4.07% (in logistic regression) to 35.8%, meaning that the model is relatively better at identifying positive cases compared to logistic regression, even as it still fails to predict around 64% of the positive cases correctly.
+
+Note that other model buiding practices such as hyperparameter tuning (k-fold cross validation) have been skipped.
+
+### Using the model\>\>\>\>\>\>\>\>\>\>\>\>Loading
