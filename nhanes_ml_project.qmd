@@ -159,7 +159,7 @@ mosaic_lr<-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |>
 cowplot::plot_grid(mosaic_lr,heatmap_lr)
 ```
 
-The results from the confusion matrix, metrics and plots show that the model is excellent at predicting people that do not have diabetes, hence it has a low false positive rate. Even though the accuracy of the model is 91.1%, the model struggles to correctly predict people that actually have diabetes, making accuracy not the ideal measure in this case. Out of 123 positive cases, the model only predicts 5 cases. To add more nuance to the results we will also plot the ROC curve, and check the area under the curve which shows the models discriminative ability.
+The results from the confusion matrix, metrics and plots show that the model is excellent at predicting people that do not have diabetes, hence it has a low false positive rate. Even though the accuracy of the model is 91.1%, the model struggles to correctly predict people that actually have diabetes, making accuracy not the ideal measure in this case. Out of 120 positive cases, the model only predicts 4 cases. To add more nuance to the results we will also plot the ROC curve, and check the area under the curve which shows the models discriminative ability.
 
 ```{r}
 set.seed(123)
