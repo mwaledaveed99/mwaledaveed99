@@ -23,7 +23,7 @@ about:
 My name is David Mwale. I am a second-year Masters student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning. I have over 10 years experience working with data in the fields of health (SRH), agriculture, livelihoods, and nutrition. Currently I am working with Family Planning Association of Malawi as an M&E Lead.
 
 ## Education & Experience
-- MSc in Data Science for Health and Social care | [**University of Edinburgh**](https://www.ed.ac.uk/)| 2023- present
+- [MSc in Data Science for Health and Social care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care) | [**University of Edinburgh**](https://www.ed.ac.uk/)| 2023- present
 - Diploma in Monitoring and Evaluation | [The Catholic University of Malawi](https://cunima1.online/) | 2018-20
 - BSc Agricultural Economics | [University of Malawi](https://www.luanar.ac.mw/luanar/) | 2011-15
 - [RUsers Malawi](https://www.meetup.com/r-users-malawi/) Lead organiser | Lilongwe, Malawi | 2024- present

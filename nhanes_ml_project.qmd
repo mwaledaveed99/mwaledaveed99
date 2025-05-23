@@ -13,6 +13,7 @@ In this project we will use the NHANES dataset to predict diabetes given the ava
 ### Loading packages including the dataset
 
 ```{r}
+#| include: false
 library(NHANES)
 library(tidymodels)
 library(tidyverse)
@@ -177,7 +178,7 @@ We are going to try a different model, Random Forest to predict diabetes, as our
 
 ```{r RF Model specification}
 rf<-rand_forest() |> 
-  set_args(mtry = 10) |> 
+  set_args(mtry = 10, trees = 201) |> 
   set_engine("ranger") |> 
   set_mode("classification")
 ```
@@ -225,6 +226,11 @@ cowplot::plot_grid(heatmap_rf,mosaic_rf)
 set.seed(123)
 rf_metrics<-metric_set(yardstick::sens, yardstick::spec, yardstick::accuracy)
 
+
+lr_resultss |> 
+  rf_metrics(truth = diabetes, 
+            estimate = .pred_class)
+
 rf_results |> 
   rf_metrics(truth = diabetes, estimate = .pred_class)
 
@@ -242,21 +248,33 @@ rf_roc_plot<-rf_results |>
 
 ```{r Model comparison}
 
-cowplot::plot_grid(rf_roc_plot, lr_roc_plot)
+cowplot::plot_grid(rf_roc_plot, lr_roc_plot,labels = c("Random Forest", "Logistic Regression (Classification)"),label_size = 12)
 ```
 
 The random Forest model performs better that logistic regression my almost all metrics.
 
--   Accuracy : 0.934
+-   Accuracy : 0.93
 
--   Sensitivity : 0.358
+-   Sensitivity : 0.34
 
 -   Specificity : 0.991
 
 -   ROC-AUC : 0.886
 
-The random forest model improves sensitivity from 4.07% (in logistic regression) to 35.8%, meaning that the model is relatively better at identifying positive cases compared to logistic regression, even as it still fails to predict around 64% of the positive cases correctly.
+The random forest model improves sensitivity from 4.07% (in logistic regression) to 34% (Random Forest), meaning that the model is relatively better at identifying positive cases compared to logistic regression, even as it still fails to predict around 64% of the positive cases correctly.
 
 Note that other model buiding practices such as hyperparameter tuning (k-fold cross validation) have been skipped.
 
-### Using the model\>\>\>\>\>\>\>\>\>\>\>\>Loading
+### Using the model (Use case)
+
+```{r}
+patient1<-tribble(~age,~bmi,~direct_chol,~marital_status,~gender,
+                  40,27.3,1.5,"Divorced","female")
+
+rf_pred<-rf_wrkflw_fit |> 
+  extract_workflow()
+
+predict(rf_pred, new_data = patient1)
+```
+
+Given the dataset, we can predict that our patient (patient 1) does not have diabetes. Remember the model has a high accuracy and high specificity (excels at identifying negative cases).
