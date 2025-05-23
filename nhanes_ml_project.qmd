@@ -178,7 +178,7 @@ We are going to try a different model, Random Forest to predict diabetes, as our
 
 ```{r RF Model specification}
 rf<-rand_forest() |> 
-  set_args(mtry = 10, trees = 201) |> 
+  set_args(mtry = 10) |> 
   set_engine("ranger") |> 
   set_mode("classification")
 ```
