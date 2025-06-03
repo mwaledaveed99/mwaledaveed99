@@ -22,6 +22,8 @@ library(cowplot)
 library(gtsummary)
 library(ranger)
 library(randomForest)
+install.packages("ggstatsplot")
+library(ggstatsplot)
 ```
 
 ### Inspecting the dataset
@@ -70,7 +72,9 @@ lr_model<-logistic_reg() |>
 ```{r Checking for Correlated predictors}
 ml_training |> 
   select_if(is.numeric) |> 
-  cor()
+  ggcorrmat(colors = c("#B2182B", "White", "#4D4D4D"),
+            title = "Colleration Matrix"
+            )
 ```
 
 Using the hypothetical threshold of 0.8, we can conclude that the predictors are not collerated. In the code below, we are going to fit both models using the fit function. After which we are going to collect and combine predictions, and load them.
@@ -179,7 +183,7 @@ We are going to try a different model, Random Forest to predict diabetes, as our
 ```{r RF Model specification}
 rf<-rand_forest() |> 
   set_args(mtry = 10) |> 
-  set_engine("ranger") |> 
+  set_engine("ranger", importance = T) |> 
   set_mode("classification")
 ```
 

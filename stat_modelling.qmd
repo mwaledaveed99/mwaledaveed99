@@ -64,7 +64,7 @@ In the code below we are going to subset the dataset to include the following va
 
 \- Age(65 or over)
 
- - Sex
+-   Sex
 
 ```{r Data subsetting and preparation}
 # Sub-setting and inspecting the dataset
@@ -89,7 +89,7 @@ lean_brfss |>
   sum()
 ```
 
-The dataset does not have missing values as the sum of all missing values is zero.
+The dataset does not have missing values as the sum of all missing values is zero. The visual below show distribution of the data by target variable.
 
 ```{r Distribution of the target variable}
 lean_brfss %>% 
