@@ -10,7 +10,7 @@ editor_options:
 
 In this project we will use the NHANES dataset to predict diabetes given the available risk factors. The National Health ans Nutrition Survey is a a program in the US designed to assess the health and nutritional status pf adults, and children in the US. The data includes demographic, socio-economic, dietary, and health-related information.
 
-### Loading packages including the dataset
+### Loading packages including the dataset.
 
 ```{r}
 #| include: false
@@ -111,7 +111,7 @@ lr_resultss
 
 ## Model Metrics
 
-In this section we are going to visualize the model results
+In this section we are going to visualize the model results. We will start with the **confusion matrix**.
 
 ```{r Confusion matrix}
 set.seed(123)
