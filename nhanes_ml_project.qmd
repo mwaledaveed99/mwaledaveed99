@@ -43,7 +43,7 @@ nhanes_df<-nhanes_df |>
            glimpse()
 ```
 
-In the code belwo, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the target variable so that we do not end up having all the data from the target variable.
+In the code below, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the target variable so that we do not end up having all the data from the target variable.
 
 ```{r Resampling}
 set.seed(123) #For reproducubility
