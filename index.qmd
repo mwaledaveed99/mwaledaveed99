@@ -14,7 +14,7 @@ Welcome to my portfolio! I am a David Mwale, a final-year MSc student in [Data S
 
 - **Statistical Modelling for Epidemiology** : Applying statistical models to analyze health data trends. In the stats modelling tab i apply one of the commonly used models - logistic regression to analyse health data, and using other packages like epitools and reportROC.
 
-- **Machine Learning with R** : Building predictive models using tidymodels. A highlight of this project is under the Machine Learning tab where i use both logistic regression and Random Forest models to predict diabetes.
+- **Machine Learning** : Building predictive models using tidymodels. A highlight of this project is under the Machine Learning tab where i use both logistic regression and Random Forest models to predict diabetes.
 
 
 ## Skills
