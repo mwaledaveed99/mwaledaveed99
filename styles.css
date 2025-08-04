@@ -67,24 +67,20 @@ main {
   background-color: #18bc9c;
   color: #ffffff !important;
 }
-/* Ensure dropdown menu is styled correctly */
+/* Dropdown menu: dark background and visible text */
 .navbar .dropdown-menu {
-  background-color: #2c3e50 !important;
-  border: 1px solid #444;
-  display: block; /* Forces display, can help with some theme quirks */
-  visibility: visible;
-  opacity: 1;
+  background-color: #2c3e50 !important; /* Dark background */
+  border: none;
 }
 
-/* Dropdown menu links */
+/* Dropdown menu links: white text */
 .navbar .dropdown-menu a {
   color: #ffffff !important;
-  padding: 10px 15px;
-  display: block;
+  background-color: transparent !important;
 }
 
-/* Hover effect */
+/* Dropdown link hover effect */
 .navbar .dropdown-menu a:hover {
-  background-color: #18bc9c;
+  background-color: #18bc9c !important; /* Teal hover */
   color: #ffffff !important;
 }
