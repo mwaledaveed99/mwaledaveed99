@@ -20,7 +20,7 @@ about:
         href: resume.pdf
 ---
 
-My name is David Mwale. I am a final-year Masters student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning. I have over 10 years experience working with data in the fields of health (SRH), agriculture, livelihoods, and nutrition. Currently I am working with Family Planning Association of Malawi as an M&E Lead.
+My name is David Mwale. I am a final-year Masters student at the University of Edinburgh, studying Data Science for Health and Social Care. My interests include Statistical Modelling, Data Cleaning, Visualization, building data pipelines for automation, and Machine Learning. I have over 10 years experience working with data in the fields of health (SRH), HIV, agriculture, livelihoods, and nutrition. Currently I am working with Family Planning Association of Malawi as an M&E and Data Use Specialist.
 
 ## Education & Experience
 - [MSc in Data Science for Health and Social care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care) | [**University of Edinburgh**](https://www.ed.ac.uk/)| 2023- present
