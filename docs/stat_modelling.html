@@ -130,18 +130,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./cleaning.html"> 
-<span class="menu-text">Data Cleaning</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./cleaning.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./stat_modelling.html" aria-current="page"> 
-<span class="menu-text">Statistical Modelling</span></a>
+        <li>
+    <a class="dropdown-item" href="./stat_modelling.html">
+ <span class="dropdown-text">Statistical Modelling</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./nhanes_ml_project.html"> 
-<span class="menu-text">Machine Learning</span></a>
+        <li>
+    <a class="dropdown-item" href="./nhanes_ml_project.html">
+ <span class="dropdown-text">Machine Learning</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -341,7 +348,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
-<p>The dataset does not have missing values as the sum of all missing values is zero.</p>
+<p>The dataset does not have missing values as the sum of all missing values is zero. The visual below show distribution of the data by target variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lean_brfss <span class="sc">%&gt;%</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> arthritis, <span class="at">fill =</span> arthritis))<span class="sc">+</span></span>
@@ -448,23 +455,23 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="laxcjekogx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#laxcjekogx table {
+<div id="dchewzsjey" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dchewzsjey table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#laxcjekogx thead, #laxcjekogx tbody, #laxcjekogx tfoot, #laxcjekogx tr, #laxcjekogx td, #laxcjekogx th {
+#dchewzsjey thead, #dchewzsjey tbody, #dchewzsjey tfoot, #dchewzsjey tr, #dchewzsjey td, #dchewzsjey th {
   border-style: none;
 }
 
-#laxcjekogx p {
+#dchewzsjey p {
   margin: 0;
   padding: 0;
 }
 
-#laxcjekogx .gt_table {
+#dchewzsjey .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -490,12 +497,12 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-left-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_caption {
+#dchewzsjey .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#laxcjekogx .gt_title {
+#dchewzsjey .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -507,7 +514,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-width: 0;
 }
 
-#laxcjekogx .gt_subtitle {
+#dchewzsjey .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -519,7 +526,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-width: 0;
 }
 
-#laxcjekogx .gt_heading {
+#dchewzsjey .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -531,13 +538,13 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_bottom_border {
+#dchewzsjey .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_col_headings {
+#dchewzsjey .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -552,7 +559,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_col_heading {
+#dchewzsjey .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -572,7 +579,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#laxcjekogx .gt_column_spanner_outer {
+#dchewzsjey .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -584,15 +591,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 4px;
 }
 
-#laxcjekogx .gt_column_spanner_outer:first-child {
+#dchewzsjey .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#laxcjekogx .gt_column_spanner_outer:last-child {
+#dchewzsjey .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#laxcjekogx .gt_column_spanner {
+#dchewzsjey .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -604,11 +611,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   width: 100%;
 }
 
-#laxcjekogx .gt_spanner_row {
+#dchewzsjey .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#laxcjekogx .gt_group_heading {
+#dchewzsjey .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -634,7 +641,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   text-align: left;
 }
 
-#laxcjekogx .gt_empty_group_heading {
+#dchewzsjey .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -649,15 +656,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: middle;
 }
 
-#laxcjekogx .gt_from_md > :first-child {
+#dchewzsjey .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#laxcjekogx .gt_from_md > :last-child {
+#dchewzsjey .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#laxcjekogx .gt_row {
+#dchewzsjey .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -676,7 +683,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#laxcjekogx .gt_stub {
+#dchewzsjey .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -689,7 +696,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#laxcjekogx .gt_stub_row_group {
+#dchewzsjey .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -703,15 +710,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: top;
 }
 
-#laxcjekogx .gt_row_group_first td {
+#dchewzsjey .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#laxcjekogx .gt_row_group_first th {
+#dchewzsjey .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#laxcjekogx .gt_summary_row {
+#dchewzsjey .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -721,16 +728,16 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#laxcjekogx .gt_first_summary_row {
+#dchewzsjey .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_first_summary_row.thick {
+#dchewzsjey .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#laxcjekogx .gt_last_summary_row {
+#dchewzsjey .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -740,7 +747,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_grand_summary_row {
+#dchewzsjey .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -750,7 +757,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#laxcjekogx .gt_first_grand_summary_row {
+#dchewzsjey .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,7 +767,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_last_grand_summary_row_top {
+#dchewzsjey .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -770,11 +777,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_striped {
+#dchewzsjey .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#laxcjekogx .gt_table_body {
+#dchewzsjey .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -783,7 +790,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_footnotes {
+#dchewzsjey .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -797,7 +804,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_footnote {
+#dchewzsjey .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -806,7 +813,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#laxcjekogx .gt_sourcenotes {
+#dchewzsjey .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -820,7 +827,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#laxcjekogx .gt_sourcenote {
+#dchewzsjey .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -828,72 +835,72 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#laxcjekogx .gt_left {
+#dchewzsjey .gt_left {
   text-align: left;
 }
 
-#laxcjekogx .gt_center {
+#dchewzsjey .gt_center {
   text-align: center;
 }
 
-#laxcjekogx .gt_right {
+#dchewzsjey .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#laxcjekogx .gt_font_normal {
+#dchewzsjey .gt_font_normal {
   font-weight: normal;
 }
 
-#laxcjekogx .gt_font_bold {
+#dchewzsjey .gt_font_bold {
   font-weight: bold;
 }
 
-#laxcjekogx .gt_font_italic {
+#dchewzsjey .gt_font_italic {
   font-style: italic;
 }
 
-#laxcjekogx .gt_super {
+#dchewzsjey .gt_super {
   font-size: 65%;
 }
 
-#laxcjekogx .gt_footnote_marks {
+#dchewzsjey .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#laxcjekogx .gt_asterisk {
+#dchewzsjey .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#laxcjekogx .gt_indent_1 {
+#dchewzsjey .gt_indent_1 {
   text-indent: 5px;
 }
 
-#laxcjekogx .gt_indent_2 {
+#dchewzsjey .gt_indent_2 {
   text-indent: 10px;
 }
 
-#laxcjekogx .gt_indent_3 {
+#dchewzsjey .gt_indent_3 {
   text-indent: 15px;
 }
 
-#laxcjekogx .gt_indent_4 {
+#dchewzsjey .gt_indent_4 {
   text-indent: 20px;
 }
 
-#laxcjekogx .gt_indent_5 {
+#dchewzsjey .gt_indent_5 {
   text-indent: 25px;
 }
 
-#laxcjekogx .katex-display {
+#dchewzsjey .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#laxcjekogx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dchewzsjey div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -959,23 +966,23 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="lsljofelrj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lsljofelrj table {
+<div id="rcypbqefuy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rcypbqefuy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lsljofelrj thead, #lsljofelrj tbody, #lsljofelrj tfoot, #lsljofelrj tr, #lsljofelrj td, #lsljofelrj th {
+#rcypbqefuy thead, #rcypbqefuy tbody, #rcypbqefuy tfoot, #rcypbqefuy tr, #rcypbqefuy td, #rcypbqefuy th {
   border-style: none;
 }
 
-#lsljofelrj p {
+#rcypbqefuy p {
   margin: 0;
   padding: 0;
 }
 
-#lsljofelrj .gt_table {
+#rcypbqefuy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1001,12 +1008,12 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-left-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_caption {
+#rcypbqefuy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lsljofelrj .gt_title {
+#rcypbqefuy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1018,7 +1025,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-width: 0;
 }
 
-#lsljofelrj .gt_subtitle {
+#rcypbqefuy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1030,7 +1037,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-width: 0;
 }
 
-#lsljofelrj .gt_heading {
+#rcypbqefuy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1042,13 +1049,13 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_bottom_border {
+#rcypbqefuy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_col_headings {
+#rcypbqefuy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1063,7 +1070,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_col_heading {
+#rcypbqefuy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1083,7 +1090,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#lsljofelrj .gt_column_spanner_outer {
+#rcypbqefuy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1095,15 +1102,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 4px;
 }
 
-#lsljofelrj .gt_column_spanner_outer:first-child {
+#rcypbqefuy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lsljofelrj .gt_column_spanner_outer:last-child {
+#rcypbqefuy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lsljofelrj .gt_column_spanner {
+#rcypbqefuy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1115,11 +1122,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   width: 100%;
 }
 
-#lsljofelrj .gt_spanner_row {
+#rcypbqefuy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lsljofelrj .gt_group_heading {
+#rcypbqefuy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1145,7 +1152,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   text-align: left;
 }
 
-#lsljofelrj .gt_empty_group_heading {
+#rcypbqefuy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1160,15 +1167,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: middle;
 }
 
-#lsljofelrj .gt_from_md > :first-child {
+#rcypbqefuy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lsljofelrj .gt_from_md > :last-child {
+#rcypbqefuy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lsljofelrj .gt_row {
+#rcypbqefuy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1187,7 +1194,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#lsljofelrj .gt_stub {
+#rcypbqefuy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1200,7 +1207,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#lsljofelrj .gt_stub_row_group {
+#rcypbqefuy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1214,15 +1221,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: top;
 }
 
-#lsljofelrj .gt_row_group_first td {
+#rcypbqefuy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lsljofelrj .gt_row_group_first th {
+#rcypbqefuy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lsljofelrj .gt_summary_row {
+#rcypbqefuy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1232,16 +1239,16 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#lsljofelrj .gt_first_summary_row {
+#rcypbqefuy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_first_summary_row.thick {
+#rcypbqefuy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lsljofelrj .gt_last_summary_row {
+#rcypbqefuy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1251,7 +1258,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_grand_summary_row {
+#rcypbqefuy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1261,7 +1268,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#lsljofelrj .gt_first_grand_summary_row {
+#rcypbqefuy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1271,7 +1278,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_last_grand_summary_row_top {
+#rcypbqefuy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1281,11 +1288,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_striped {
+#rcypbqefuy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lsljofelrj .gt_table_body {
+#rcypbqefuy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1294,7 +1301,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_footnotes {
+#rcypbqefuy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1308,7 +1315,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_footnote {
+#rcypbqefuy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1317,7 +1324,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#lsljofelrj .gt_sourcenotes {
+#rcypbqefuy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1331,7 +1338,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#lsljofelrj .gt_sourcenote {
+#rcypbqefuy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1339,72 +1346,72 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#lsljofelrj .gt_left {
+#rcypbqefuy .gt_left {
   text-align: left;
 }
 
-#lsljofelrj .gt_center {
+#rcypbqefuy .gt_center {
   text-align: center;
 }
 
-#lsljofelrj .gt_right {
+#rcypbqefuy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lsljofelrj .gt_font_normal {
+#rcypbqefuy .gt_font_normal {
   font-weight: normal;
 }
 
-#lsljofelrj .gt_font_bold {
+#rcypbqefuy .gt_font_bold {
   font-weight: bold;
 }
 
-#lsljofelrj .gt_font_italic {
+#rcypbqefuy .gt_font_italic {
   font-style: italic;
 }
 
-#lsljofelrj .gt_super {
+#rcypbqefuy .gt_super {
   font-size: 65%;
 }
 
-#lsljofelrj .gt_footnote_marks {
+#rcypbqefuy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lsljofelrj .gt_asterisk {
+#rcypbqefuy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lsljofelrj .gt_indent_1 {
+#rcypbqefuy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lsljofelrj .gt_indent_2 {
+#rcypbqefuy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lsljofelrj .gt_indent_3 {
+#rcypbqefuy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lsljofelrj .gt_indent_4 {
+#rcypbqefuy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lsljofelrj .gt_indent_5 {
+#rcypbqefuy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lsljofelrj .katex-display {
+#rcypbqefuy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lsljofelrj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rcypbqefuy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1470,23 +1477,23 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="nawagiukdj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nawagiukdj table {
+<div id="fzjpqullbd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fzjpqullbd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nawagiukdj thead, #nawagiukdj tbody, #nawagiukdj tfoot, #nawagiukdj tr, #nawagiukdj td, #nawagiukdj th {
+#fzjpqullbd thead, #fzjpqullbd tbody, #fzjpqullbd tfoot, #fzjpqullbd tr, #fzjpqullbd td, #fzjpqullbd th {
   border-style: none;
 }
 
-#nawagiukdj p {
+#fzjpqullbd p {
   margin: 0;
   padding: 0;
 }
 
-#nawagiukdj .gt_table {
+#fzjpqullbd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1512,12 +1519,12 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-left-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_caption {
+#fzjpqullbd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nawagiukdj .gt_title {
+#fzjpqullbd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1529,7 +1536,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-width: 0;
 }
 
-#nawagiukdj .gt_subtitle {
+#fzjpqullbd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1541,7 +1548,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-width: 0;
 }
 
-#nawagiukdj .gt_heading {
+#fzjpqullbd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1553,13 +1560,13 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_bottom_border {
+#fzjpqullbd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_col_headings {
+#fzjpqullbd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1574,7 +1581,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_col_heading {
+#fzjpqullbd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1594,7 +1601,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#nawagiukdj .gt_column_spanner_outer {
+#fzjpqullbd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1606,15 +1613,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 4px;
 }
 
-#nawagiukdj .gt_column_spanner_outer:first-child {
+#fzjpqullbd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nawagiukdj .gt_column_spanner_outer:last-child {
+#fzjpqullbd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nawagiukdj .gt_column_spanner {
+#fzjpqullbd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1626,11 +1633,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   width: 100%;
 }
 
-#nawagiukdj .gt_spanner_row {
+#fzjpqullbd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nawagiukdj .gt_group_heading {
+#fzjpqullbd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1656,7 +1663,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   text-align: left;
 }
 
-#nawagiukdj .gt_empty_group_heading {
+#fzjpqullbd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1671,15 +1678,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: middle;
 }
 
-#nawagiukdj .gt_from_md > :first-child {
+#fzjpqullbd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nawagiukdj .gt_from_md > :last-child {
+#fzjpqullbd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nawagiukdj .gt_row {
+#fzjpqullbd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1698,7 +1705,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#nawagiukdj .gt_stub {
+#fzjpqullbd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1711,7 +1718,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#nawagiukdj .gt_stub_row_group {
+#fzjpqullbd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1725,15 +1732,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: top;
 }
 
-#nawagiukdj .gt_row_group_first td {
+#fzjpqullbd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nawagiukdj .gt_row_group_first th {
+#fzjpqullbd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nawagiukdj .gt_summary_row {
+#fzjpqullbd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1743,16 +1750,16 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#nawagiukdj .gt_first_summary_row {
+#fzjpqullbd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_first_summary_row.thick {
+#fzjpqullbd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nawagiukdj .gt_last_summary_row {
+#fzjpqullbd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1762,7 +1769,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_grand_summary_row {
+#fzjpqullbd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1772,7 +1779,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#nawagiukdj .gt_first_grand_summary_row {
+#fzjpqullbd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1782,7 +1789,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_last_grand_summary_row_top {
+#fzjpqullbd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1792,11 +1799,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_striped {
+#fzjpqullbd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nawagiukdj .gt_table_body {
+#fzjpqullbd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1805,7 +1812,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_footnotes {
+#fzjpqullbd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1819,7 +1826,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_footnote {
+#fzjpqullbd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1828,7 +1835,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#nawagiukdj .gt_sourcenotes {
+#fzjpqullbd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1842,7 +1849,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#nawagiukdj .gt_sourcenote {
+#fzjpqullbd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1850,72 +1857,72 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#nawagiukdj .gt_left {
+#fzjpqullbd .gt_left {
   text-align: left;
 }
 
-#nawagiukdj .gt_center {
+#fzjpqullbd .gt_center {
   text-align: center;
 }
 
-#nawagiukdj .gt_right {
+#fzjpqullbd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nawagiukdj .gt_font_normal {
+#fzjpqullbd .gt_font_normal {
   font-weight: normal;
 }
 
-#nawagiukdj .gt_font_bold {
+#fzjpqullbd .gt_font_bold {
   font-weight: bold;
 }
 
-#nawagiukdj .gt_font_italic {
+#fzjpqullbd .gt_font_italic {
   font-style: italic;
 }
 
-#nawagiukdj .gt_super {
+#fzjpqullbd .gt_super {
   font-size: 65%;
 }
 
-#nawagiukdj .gt_footnote_marks {
+#fzjpqullbd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nawagiukdj .gt_asterisk {
+#fzjpqullbd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nawagiukdj .gt_indent_1 {
+#fzjpqullbd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nawagiukdj .gt_indent_2 {
+#fzjpqullbd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nawagiukdj .gt_indent_3 {
+#fzjpqullbd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nawagiukdj .gt_indent_4 {
+#fzjpqullbd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nawagiukdj .gt_indent_5 {
+#fzjpqullbd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nawagiukdj .katex-display {
+#fzjpqullbd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nawagiukdj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fzjpqullbd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

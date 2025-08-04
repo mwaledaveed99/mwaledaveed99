@@ -130,18 +130,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./cleaning.html" aria-current="page"> 
-<span class="menu-text">Data Cleaning</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./cleaning.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./stat_modelling.html"> 
-<span class="menu-text">Statistical Modelling</span></a>
+        <li>
+    <a class="dropdown-item" href="./stat_modelling.html">
+ <span class="dropdown-text">Statistical Modelling</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./nhanes_ml_project.html"> 
-<span class="menu-text">Machine Learning</span></a>
+        <li>
+    <a class="dropdown-item" href="./nhanes_ml_project.html">
+ <span class="dropdown-text">Machine Learning</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">

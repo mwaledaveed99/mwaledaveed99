@@ -22,7 +22,7 @@ library(cowplot)
 library(gtsummary)
 library(ranger)
 library(randomForest)
-install.packages("ggstatsplot")
+#install.packages("ggstatsplot")
 library(ggstatsplot)
 ```
 
@@ -182,8 +182,8 @@ We are going to try a different model, Random Forest to predict diabetes, as our
 
 ```{r RF Model specification}
 rf<-rand_forest() |> 
-  set_args(mtry = 10) |> 
-  set_engine("ranger", importance = T) |> 
+  set_args(mtry = 9) |> 
+  set_engine("ranger", importance = "impurity") |> 
   set_mode("classification")
 ```
 
@@ -252,18 +252,18 @@ rf_roc_plot<-rf_results |>
 
 ```{r Model comparison}
 
-cowplot::plot_grid(rf_roc_plot, lr_roc_plot,labels = c("Random Forest", "Logistic Regression (Classification)"),label_size = 12)
+cowplot::plot_grid(rf_roc_plot, lr_roc_plot,labels = c("Random Forest", "Logistic Regression"),label_size = 12)
 ```
 
 The random Forest model performs better that logistic regression my almost all metrics.
 
 -   Accuracy : 0.93
 
--   Sensitivity : 0.34
+-   Sensitivity : 0.35
 
 -   Specificity : 0.991
 
--   ROC-AUC : 0.886
+-   ROC-AUC : 0.89
 
 The random forest model improves sensitivity from 4.07% (in logistic regression) to 34% (Random Forest), meaning that the model is relatively better at identifying positive cases compared to logistic regression, even as it still fails to predict around 64% of the positive cases correctly.
 
@@ -281,4 +281,4 @@ rf_pred<-rf_wrkflw_fit |>
 predict(rf_pred, new_data = patient1)
 ```
 
-Given the dataset, we can predict that our patient (patient 1) does not have diabetes. Remember the model has a high accuracy and high specificity (excels at identifying negative cases).
+Given the dataset, we can predict that our patient (patient 1) does not have diabetes. Remember the model has a high accuracy and high specificity (excels at identifying negative cases). Since there are fewer patients with diabetes than those without, it means the dataset is imbalanced. We will adjust our threshold from the default 0.5 by over sampling the rare class or undersampling the majority class.
