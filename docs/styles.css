@@ -54,3 +54,33 @@ main {
   border-top: 1px solid #ddd;
   margin-top: 3em;
 }
+/* Dropdown menu background and text color */
+.navbar .dropdown-menu {
+  background-color: #2c3e50;
+}
+
+.navbar .dropdown-menu a {
+  color: #ffffff !important;
+}
+
+.navbar .dropdown-menu a:hover {
+  background-color: #18bc9c;
+  color: #ffffff !important;
+}
+/* Force dark background for all dropdown menus */
+.dropdown-menu {
+  background-color: #2c3e50 !important;
+  border: none !important;
+}
+
+/* Set text color to white */
+.dropdown-menu .dropdown-item {
+  color: #ffffff !important;
+}
+
+/* Hover effect */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #18bc9c !important;
+  color: #ffffff !important;
+}
