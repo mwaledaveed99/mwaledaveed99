@@ -20,6 +20,9 @@ website:
             text: Statistical Modelling
           - href: nhanes_ml_project.qmd
             text: Machine Learning
+          - href: weekly_report.qmd
+          - text: weekly reports
+            
       
   page-footer:
     center: "**© 2025 David Mwale**"
