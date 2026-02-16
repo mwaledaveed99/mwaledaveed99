@@ -1,0 +1,366 @@
+---
+title: "Weekly reports"
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Introduction
+
+This is a parameterised report focusing on monitoring weekly progress for different teams especially those that submit data through Kobotoolbox.
+
+```{r}
+library(tidyverse, warn.conflicts = FALSE)
+#install.packages("KoboconnectR")
+library(KoboconnectR)
+library(janitor)
+library(gt)
+library(httr)
+library(readxl)
+library(here)
+library(lubridate)
+```
+
+so far the following projects are being implemented
+
+-   Nzatonse V
+
+-   Harm Mitigation
+
+## Nzatonse V
+
+```{r}
+file_1<-here("nzatonse_v.csv")
+nzatonse_v<- read.csv(file_1, sep = ";")
+```
+
+```{r}
+nzatonse_clean<-nzatonse_v |> 
+  clean_names()
+
+nzatonse_cleaner<-nzatonse_clean |>
+  select(district:name_of_service_provider_1,method_if_other,x_id)
+```
+
+```{r}
+nzatonse_cleaner<-nzatonse_cleaner|> 
+  mutate(date = ymd(date),
+         week_of_the_month = factor(week_of_the_month),
+         facility_name_neno = factor(facility_name_neno),
+         facility_name_ntcheu = factor(facility_name_ntcheu),
+         on_art = factor(on_art, levels = c("Yes","No")),
+         service_delivery_point = factor(service_delivery_point),
+         team = factor(team),
+         client_consent = factor(client_consent),
+         sex = factor(sex),
+         marital_status = factor(marital_status),
+         education_level = factor(education_level),
+         age_category = factor(age_category),
+         method = factor(method),
+         parity = factor(parity,levels = c("Zero","One","Two","Three","Four above")),
+         hiv_status = factor(hiv_status),
+         age = as.integer(age),
+         number_of_doses = as.integer(number_of_doses),
+         number_of_cycles = as.integer(number_of_cycles),
+         number_of_condoms = as.integer(number_of_condoms),
+         number_of_ec_ps = as.integer(number_of_ec_ps),
+         number_of_condoms_back_up = as.integer(number_of_condoms_back_up),
+         client_category = factor(client_category)) |> 
+  as_tibble()
+```
+
+```{r}
+methods<-c("DMPA (IM)","DMPA-SC (SI)","Implant Insertion (3 years)","Implant Insertion (5 years)", "DMPA-SC (PI)","Condoms","COC", "IUD-Copper T","Emergency Contraceptive Pills","Implant Insertion (4 Years)")
+
+other_services_cols <- c(
+  "CC Screening",
+  "HIV Only",
+  "STI Only",
+  "Pregnancy Testing",
+  "GBV only",
+  "PAC"
+)
+
+family_planning<-c("DMPA (IM)","DMPA-SC (SI)","Implant Insertion (3 years)","Implant Insertion (5 years)", "DMPA-SC (PI)","Condoms","COC", "IUD-Copper T","Emergency Contraceptive Pills","Implant Insertion (4 Years)","Implant Removal 3 years","Implant Removal 5 years","IUCD Removal","Implant Removal 4 years")
+
+cols<-c("other_services_counselled_without_a_method","other_services_cervical_cancer_screening","other_services_cryo_therapy","other_services_hts","other_services_sti_service",            "other_services_art_therapy","other_services_pregnancy_test",         "other_services_post_abortion_care","other_services_gbv_service", "team","district")
+```
+
+```{r}
+other_services<-nzatonse_cleaner |>
+  filter(between(date, as.Date("2026-02-09"), as.Date("2026-02-13"))) |> 
+  select(district, team, starts_with("other_services")) |> 
+  select(-c(other_services,other_services_2)) |> 
+  pivot_longer(cols = other_services_counselled_without_a_method:other_services_gbv_service,
+               names_to = "service_type", 
+               values_to = "value") |>
+  filter(value == 1) |> 
+  mutate(service_col = case_when(service_type = str_detect(service_type,"gbv") ~ "GBV only",
+                               service_type = str_detect(service_type, "sti") ~ "STI Only",
+                               service_type = str_detect(service_type, "cervical") ~ "CC Screening",
+                               service_type = str_detect(service_type, "therapy") ~ "CC Screening",
+                               service_type = str_detect(service_type, "art") ~ "HIV Only",
+                               service_type = str_detect(service_type, "pregnancy") ~ "Pregnancy Testing",
+                               service_type = str_detect(service_type, "abortion") ~ "PAC",
+                               service_type = str_detect(service_type, "hts") ~ "HIV Only",
+                               service_type = str_detect(service_type, "hts") ~ "HIV Only")) |> 
+  drop_na() |> 
+  mutate(district = factor(district),
+         indicator = factor(service_col, levels = c("HIV Only","STI Only", "GBV only","Pregnancy Testing")))
+
+
+performance_serv<-other_services |> 
+  group_by(team, service_col) %>%
+  summarise(
+    total_clients = n(),
+    .groups = "drop")
+```
+
+```{r weekly update}
+client_visits<-nzatonse_cleaner |> 
+  filter(between(date,as.Date("2026-02-09"), as.Date("2026-12-12"))) |> 
+  select(method, district, client_category, team, date,week_of_the_month,other_services_counselled_without_a_method, other_services_gbv_service,other_services_pregnancy_test, other_services_art_therapy, other_services_sti_service,other_services_hts,other_services_cervical_cancer_screening)
+
+aggregate_visits<-client_visits |> 
+  group_by(client_category, team, date) |> 
+  summarise(n = n()) |> 
+  ungroup() |> 
+  mutate(percentage = round(n/sum(n)*100,2))
+  
+
+          
+  
+aggregate_visits |> 
+  group_by(team,n) |> 
+  gt()
+```
+
+## Indicators
+
+Family Planning
+
+HIV Only
+
+STI Only
+
+GBV
+
+PGT
+
+CC Screening
+
+Total SRH
+
+## Total SRH
+
+```{r Total SRH performance}
+
+# Set weekly target per team
+weekly_target <- 500
+
+# Aggregate data by week and team
+weekly_performance <- aggregate_visits %>%
+  # Ensure date is in Date format
+  mutate(date = as.Date(date)) %>%
+  # Create week variable (adjust based on your week definition)
+  mutate(
+    week = floor_date(date, unit = "week", week_start = 1),  # Starts on Sunday
+    # Alternative: week = floor_date(date, unit = "week", week_start = 1) # Starts on Monday
+    week_label = format(week, "%b %d, %Y")) %>%
+  # Group by team and week
+  group_by(team, week) %>%
+  summarise(achieved = sum(n, na.rm = TRUE),
+    .groups = "drop") %>%
+  # Add target and calculate variance
+  mutate(target = weekly_target,
+    variance = achieved - target,
+    achievement_pct = round((achieved / target) * 100, 1),
+    status = case_when(
+      achievement_pct >= 100 ~ "✅ Met/Exceeded",
+      achievement_pct >= 80 ~ "⚠️ Near Target",
+      TRUE ~ "❌ Below Target" )) %>%
+  # Sort by team and week
+  arrange(team, week)
+
+weekly_performance |> 
+  gt() %>%
+  tab_header(
+    title = md("**Team-Specific Service Target Achievement - Total SRH**"),
+    subtitle = md("Based on data from **Feb 09-13, 2026** | Targets vary by team and service"))%>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+  # Make team names (row groups) bold
+  tab_style(
+    style = cell_text(weight = "bold", size = "large"),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  data_color(
+    columns = achievement_pct,
+    colors = scales::col_numeric(
+      palette = c("#FF6B6B", "#FFE66D", "#4ECDC4"),
+      domain = c(0, 100, 200)
+    ))
+```
+
+```{r}
+# Define service columns
+other_services_cols <- c(
+ "CC Screening",
+  "HIV Only",
+  "STI Only",
+  "Pregnancy Testing",
+  "GBV only",
+  "PAC")
+
+# Create a comprehensive targets dataframe with team AND service specific targets
+nzatonse_team_service_targets <- expand.grid(
+  team = c("Team A", "Team B", "Team C (Neno)"),  # Add all your teams
+  service_col = other_services_cols,
+  stringsAsFactors = FALSE
+) %>%
+  mutate(
+      weekly_target = case_when(
+      # HTS targets vary by team
+      service_col == "HIV Only" & team == "Team A" ~ 112.5
+,
+      service_col == "HIV Only" & team == "Team B" ~ 112.5,
+      service_col == "HIV Only" & team == "Team C (Neno)" ~ 17,
+      
+      # STI service targets
+      service_col == "STI Only" & team == "Team A" ~ 62.5
+,
+      service_col == "STI Only" & team == "Team B" ~ 62.5
+,
+      service_col == "STI Only" & team == "Team C (Neno)" ~ 17,
+      
+      # Cervical cancer screening
+      service_col == "CC Screening" & team == "Team A" ~ 8,
+      service_col == "CC Screening" & team == "Team B" ~ 8,
+      service_col == "CC Screening" & team == "Team C (Neno)" ~3,
+      
+      # Pregnancy test
+      service_col == "Pregnancy Testing" & team == "Team A" ~ 38,
+      service_col == "Pregnancy Testing" & team == "Team B" ~ 38,
+      service_col == "Pregnancy Testing" & team == "Team C (Neno)" ~ 7,
+      
+      # GBV service
+      service_col == "GBV only" & team == "Team A" ~ 13,
+      service_col == "GBV only" & team == "Team B" ~ 13,
+      service_col == "GBV only" & team == "Team C (Neno)" ~ 3,
+      
+      # Default fallback
+      TRUE ~ 50
+    )
+  )
+```
+
+```{r}
+#| message: false
+#| warning: false
+# First, create the team_service_performance dataframe
+team_service_performance <- performance_serv %>%
+  # Rename to match target dataset
+  rename(service_name = service_col) %>%
+  
+  # Join with targets
+  left_join(
+    nzatonse_team_service_targets,
+    by = c("team" = "team", "service_name" = "service_col")
+  ) %>%
+  
+  # Calculate metrics
+  mutate(
+    # For a single week (Feb 09-13, 2026), weekly_target is the target
+    weekly_target = weekly_target,
+    expected_total = weekly_target,  # Since it's just one week
+    achievement_pct = (total_clients / weekly_target) * 100,
+    
+    # Create status based on achievement percentage
+    status = case_when(
+      achievement_pct >= 100 ~ "✅ Met/Exceeded",
+      achievement_pct >= 80 ~ "⚠️ Near Target",
+      TRUE ~ "❌ Below Target"
+    ),
+    
+    gap_to_target = total_clients - weekly_target,
+    
+    # Weekly average is just total_clients since it's one week
+    weekly_average = total_clients
+  ) %>%
+  
+  # Select and arrange columns
+  select(team, service_name, achieved = total_clients, weekly_average, 
+         weekly_target, expected_total, achievement_pct, status, gap_to_target) %>%
+  arrange(team, desc(achievement_pct))
+
+# Now create the GT table
+team_service_performance %>%
+  gt(groupname_col = "team") %>%
+  tab_header(
+    title = md("**Team-Specific Service Target Achievement**"),
+    subtitle = md("Based on data from **Feb 09-13, 2026** | Targets vary by team and service")
+  ) %>%
+  cols_label(
+    service_name = "Service",
+    achieved = "Total Achieved",
+    weekly_average = "Weekly Avg",
+    weekly_target = "Weekly Target",
+    expected_total = "Expected Total",
+    achievement_pct = "Achievement %",
+    status = "Status",
+    gap_to_target = "Gap"
+  ) %>%
+  fmt_number(columns = c(achieved, expected_total, weekly_average, gap_to_target), 
+             decimals = 0) %>%
+  fmt_number(columns = achievement_pct, decimals = 1, suffix = "%") %>%
+  data_color(
+    columns = achievement_pct,
+    colors = scales::col_numeric(
+      palette = c("#FF6B6B", "#FFE66D", "#4ECDC4"),
+      domain = c(0, 100, 200)
+    )
+  ) %>%
+  data_color(
+    columns = gap_to_target,
+    colors = scales::col_numeric(
+      palette = c("#FF6B6B", "white", "#4ECDC4"),
+      domain = c(-100, 0, 100)
+    )
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "#DFF0D8"),
+    locations = cells_body(
+      columns = status,
+      rows = status == "✅ Met/Exceeded"
+    )
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "#FCF8E3"),
+    locations = cells_body(
+      columns = status,
+      rows = status == "⚠️ Near Target"
+    )
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "#F2DEDE"),
+    locations = cells_body(
+      columns = status,
+      rows = status == "❌ Below Target"
+    )
+  ) %>%
+  tab_footnote(
+    footnote = "Gap = Actual - Expected | Red = Below target, Green = Above target",
+    locations = cells_column_labels(columns = gap_to_target)
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+  # Make team names (row groups) bold
+  tab_style(
+    style = cell_text(weight = "bold", size = "large"),
+    locations = cells_row_groups(groups = everything())
+  )
+```
