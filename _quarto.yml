@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "David Mwale - Data Science Portfolio"
+  title: "David Mwale"
   site-url: https://mwaledaveed99.github.io/mwaledaveed99/
-  description: "A portfolio showcasing my projects in R."
+  description: "Data Science Portfolio | MSc Data Science, University of Edinburgh"
   navbar:
     left:
       - href: index.qmd
@@ -20,12 +20,18 @@ website:
             text: Statistical Modelling
           - href: nhanes_ml_project.qmd
             text: Machine Learning
-          - href: weekly_report.qmd
-          - text: weekly reports
-            
-      
+      - text: Dashboards
+        menu:
+          - href: https://ztv548-david-mwale.shinyapps.io/shiny_app/
+            text: Shiny Dashboard
+    right:
+      - icon: github
+        href: https://github.com/mwaledaveed99
+      - icon: linkedin
+        href: https://www.linkedin.com/in/david-mwale-b47490103
+
   page-footer:
-    center: "**© 2025 David Mwale**"
+    center: "© 2025 David Mwale. Built with Quarto."
 
 format:
   html:
@@ -35,6 +41,7 @@ format:
 
 execute:
   freeze: auto
+
 
 
 

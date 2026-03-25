@@ -1,12 +1,23 @@
 ---
-title: "Cleaning Iris dataset"
+title: "Data Cleaning and Imputation"
+subtitle: "Handling Messy Data with tidyverse, janitor, naniar, and missForest"
 ---
+## Project Summary
+
+**Goal:** Demonstrate a systematic approach to data cleaning: fixing column names, standardizing inconsistent categorical values, handling missing data through Random Forest imputation, and validating results.
+
+**Data:** The Iris dataset (150 observations, 3 species, 4 numeric features), deliberately messed up using the `messy` package to simulate real-world data quality issues.
+
+**Techniques:** snake_case style standardization (janitor), string matching with case_when (dplyr), missingness assessment using  (naniar), Random Forest imputation (missForest), and visualization with ggplot2.
+
+**Tools:** R, tidyverse, janitor, naniar, missForest, cowplot, gt
+
+## Loading of libraries
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Loading of libraries
 ```{r}
 #| echo: true
 #| message: false
@@ -36,7 +47,9 @@ The explorations that I will conduct in this document will involve the following
 
 5.  Non-standard data formats
 
-## Creating a messy dataset
+## Creating a Messy dataset
+The `messy` package introduces realistic data quality problems: inconsistent column names, corrupted string values, changed data types, and missing values.
+
 ```{r Messy dataset}
 set.seed(123456)
 messy_iris<-messy(iris)
@@ -44,13 +57,15 @@ messy_iris %>%
   head() |> 
   gt()
 ```
+
 ### Key observations
 - We can see that the column names are separated by "." and are not in lower case. we are going to convert these to lower snake_case.\n
 - Even before we search for missing values, we can note that the dataset has missing values
-- Finally we can also see that the species column has more that three variations of the setosa.
+- Finally we can also see that the species column has more that three variations of the setosa (with over 68 different messed variations of the thre species).
+- All columns are stored as character.
 
-### Understanding the dataset
-Now, we are going to run different codes, just to understand our dataset.
+### Understanding/Inspecting the Dataset
+
 
 ```{r}
 messy_iris |> #Checking the dimensions of the data (The data has 150 rows, and 5 columns)
@@ -61,7 +76,9 @@ messy_iris |> #Checking the dimensions of the data (The data has 150 rows, and 5
 messy_iris %>% # Taking a quick look at our dataset
   glimpse()
 ```
-It's good to understand our data. We have also noted that the data type for all the columns is character (chr) structure. This can limit certain operations that require our data to be in numeric or categorical (factor) form. We are also going to fix this.
+
+It can be immediately observed that all columns are of character type, and the species column needs standardisation.
+
 ```{r}
 messy_iris %>% # Understanding the column names of the dataset
   colnames()
@@ -77,7 +94,9 @@ The dataset is supposed to have three different species of the flower namely; se
 
 
 ## Data Cleaning process
-Firstly, we are going to take the messy dataset, and load it into the clean_iris data object as this is what will finally house our clean dataset. Immediately, we will start cleaning by working on the column names using the clean_names() function from the janitor package.
+
+### Step 1: Fix Column Names
+
 ```{r Fixing column names}
 clean_iris<-messy_iris %>% 
   clean_names()
@@ -86,6 +105,8 @@ clean_iris |>
 ```
 
 Note that our column names are now in lower case using the snake_case format. The next thing that we are going to do is ensure that the species column only has the three different values. 
+
+### Step 2 : Standardise Species Values
 
 ```{r Unique values for species}
 head(clean_iris$species)
@@ -117,18 +138,22 @@ clean_iris<-clean_iris %>%
 unique(clean_iris$species_clean)
 ```
 
-### Converting variables 
+Species column now only contains the three designated species
+
+### Step 3 : Converting Data Types
 ```{r}
-clean_iris |> 
+clean_iris<-clean_iris |> 
   mutate(across(c(sepal_length,
                   sepal_width,
                   petal_length,
                   petal_width),as.numeric),
-         species_clean=factor(species_clean)) |> 
+         species_clean=factor(species_clean)) 
+
+clean_iris |> 
   glimpse()
 ```
  
-After conversion, we now have the double precision, factor, and character data types. This will be important in our analysis.
+After conversion, we now have numeric columns converted to  double precision, Species (character) converted to factor.
  
 # Checking for missingness in Iris dataset
 
@@ -145,9 +170,7 @@ vis_miss(clean_iris)
 We have over 57.3% of missing dataset for species. There are many ways of handling missing values including list-wise deletion to drop all missing values. This is **not** the recommended method.
 
 
-# Our next sections will be on Missing Data, EDA, and Data Visulisation
-
-## Missing values
+## Imputation with missForest
 There are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package;  missForest, which uses random forest to train data of observed values of data matrix to predict missing values. 
 
 ```{r}
@@ -173,15 +196,17 @@ df_imputed %>%
 ```
 
 Even though imputing datasets (multiple imputation) is better than methods like list wise deletion, along with it comes ethical implications especially for identity data.
+
 ```{r}
 iris_imputed$OOBerror
 ```
 
-The error rates for both the categorical and numerical values are relatively low.
+Out of the bag  error rates for both the categorical  and numerical predictions indicating reliable imputation.
 
-## Exploratory Data Analysis (EDA)
+## Validation: Comparing Imputed vs Original Data
 
-In this section we will understand our data further using graphics to see the distribution of different variables. We will use boxplots, q-q plots, and histograms to assess distribution of variables.
+In this section we will compare distributions of the imputed dataset against the original Iris dataset to check whether or not imputation preserved the original data structure.
+
 ```{r}
 plot_sl_1<-df_imputed |> 
   ggplot(aes(x = sepal_length))+
@@ -211,7 +236,7 @@ iris_sl_2<-iris |>
 cowplot::plot_grid(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, ncol = 2)
 ```
 
-
+The imputed distributions closely match that of the original dataset, confirming that missForest preserved the underlaying data structure.
 
 ## VISUALISATION 
 
@@ -225,7 +250,7 @@ df_imputed |>
   labs(title = "Plot showing Petal width against Petal length")
 ```
 
-
+The scatter plot shows clear clustering by species, with Setoisa separating distinctly from both Versicolor and Virginica. This confirms that the imputed dataset retains the original grouping or classification structure.
 
 
 

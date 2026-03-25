@@ -6,6 +6,18 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Project Summary
+
+**Goal:** Predict diabetes status from demographic and clinical risk factors using the NHANES dataset.
+
+**Data:** National Health and Nutrition Examination Survey collected in the US. Variables include age, BMI, direct cholesterol, marital status, and gender.
+
+**Models:** Logistic Regression and Random Forest (tidymodels framework).
+
+**Key Finding:** Random Forest outperformed logistic regression across all metrics. Sensitivity improved from 4% (logistic regression) to 34% (Random Forest), with ROC-AUC of 0.89. Both models struggled with the minority class due to class imbalance.
+
+**Tools:** R, tidymodels, ranger, ggstatsplot, cowplot, gtsummary
+
 ## Introduction
 
 In this project we will use the NHANES dataset to predict diabetes given the available risk factors. The National Health ans Nutrition Survey is a a program in the US designed to assess the health and nutritional status pf adults, and children in the US. The data includes demographic, socio-economic, dietary, and health-related information.
@@ -26,14 +38,14 @@ library(randomForest)
 library(ggstatsplot)
 ```
 
-### Inspecting the dataset
+### Data Preparation
 
 We are going to save the dataset into the nhanes_df object to maintain the original dataset intact.
 
 ```{r Data subsetting}
 nhanes_df<-NHANES |> 
   select(Diabetes,DirectChol,BMI,MaritalStatus,Age,Gender) |>
-  drop_na() |> 
+  drop_na() |> # Assuming variables are missing completely at Random
   clean_names()
 
 # Changing the levels for appropriate analysis
@@ -43,7 +55,9 @@ nhanes_df<-nhanes_df |>
            glimpse()
 ```
 
-In the code below, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the target variable so that we do not end up having all the data from the target variable.
+## Train/Test Split
+
+In the code below, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the diabetes to preserve class proportions.
 
 ```{r Resampling}
 set.seed(123) #For reproducubility
@@ -59,7 +73,7 @@ ml_test<-ml_split |>
   
 ```
 
-We are going to specify 2 models, logistic regression, and Random Forest.
+## Logistic Regression
 
 ```{r Model specification}
 
@@ -68,6 +82,8 @@ lr_model<-logistic_reg() |>
   set_mode("classification") 
 
 ```
+
+### Correlation Check
 
 ```{r Checking for Correlated predictors}
 ml_training |> 
@@ -80,6 +96,8 @@ ml_training |>
 Using the hypothetical threshold of 0.8, we can conclude that the predictors are not collerated. In the code below, we are going to fit both models using the fit function. After which we are going to collect and combine predictions, and load them.
 
 In the code below we are going to specify a recipe object after which we will add steps for engineering our features (feature engineering). The steps are to preprocess the data into a form that will allegedly improve our analysis.
+
+### Workflow and Fit
 
 ```{r Recipe Object}
 set.seed(123)
@@ -109,7 +127,9 @@ lr_resultss<-lr_worflow_fit |>
 lr_resultss
 ```
 
-## Model Metrics
+## Logistic Regression Results
+
+### Confusion Matrix
 
 In this section we are going to visualize the model results. We will start with the **confusion matrix**.
 
@@ -120,13 +140,9 @@ lr_resultss |>
            estimate = .pred_class)
 ```
 
--   The logistic regression correctly classifies 1237 out 1358 individuals (91%).
+-   The logistic regression correctly classifies 1,237 out of 1,358 individuals (91%). 116 false negatives and 8 false positives.
 
--   116 false negatives
-
--   8 false positives
-
-To check other metrics, we are going to create a metric set
+    ### Performance Metrics
 
 ```{r Metric set}
 set.seed(112)
@@ -163,7 +179,7 @@ mosaic_lr<-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |>
 cowplot::plot_grid(mosaic_lr,heatmap_lr)
 ```
 
-The results from the confusion matrix, metrics and plots show that the model is excellent at predicting people that do not have diabetes, hence it has a low false positive rate. Even though the accuracy of the model is 91.1%, the model struggles to correctly predict people that actually have diabetes, making accuracy not the ideal measure in this case. Out of 120 positive cases, the model only predicts 4 cases. To add more nuance to the results we will also plot the ROC curve, and check the area under the curve which shows the models discriminative ability.
+The 91.1% accuracy is misleading. The model predicts negative cases well (high specificity) but identifies only 4 out of 120 positive cases. Accuracy alone is not a useful metric here due to class imbalance.
 
 ```{r}
 set.seed(123)
@@ -178,7 +194,9 @@ lr_roc_plot
 
 ### Random Forest
 
-We are going to try a different model, Random Forest to predict diabetes, as our previous model could only predict correctly negative cases.
+Logistic regression failed to correctly identify positive cases. Random Forest offers more flexibility for nonlinear relationships and imbalanced data.
+
+### Model Specification
 
 ```{r RF Model specification}
 rf<-rand_forest() |> 
@@ -212,6 +230,8 @@ rf_wrkflw_fit |>
 rf_results<-rf_wrkflw_fit |> 
   collect_predictions()
 ```
+
+### Random Forest Results
 
 ```{r Conf Matrix}
 set.seed(123)
@@ -255,21 +275,18 @@ rf_roc_plot<-rf_results |>
 cowplot::plot_grid(rf_roc_plot, lr_roc_plot,labels = c("Random Forest", "Logistic Regression"),label_size = 12)
 ```
 
-The random Forest model performs better that logistic regression my almost all metrics.
+Random Forest outperforms logistic regression on all metrics:
 
--   Accuracy : 0.93
+| Metric      | Logistic Regression | Random Forest |
+|-------------|---------------------|---------------|
+| Accuracy    | 0.91                | 0.93          |
+| Sensitivity | 0.04                | 0.35          |
+| Specificity | 0.99                | 0.99          |
+| ROC-AUC     | 0.83                | 0.89          |
 
--   Sensitivity : 0.35
+: The Random Forest improves sensitivity from 4% to 34%. The model still misses 64% of positive cases due to class imbalance.
 
--   Specificity : 0.991
-
--   ROC-AUC : 0.89
-
-The random forest model improves sensitivity from 4.07% (in logistic regression) to 34% (Random Forest), meaning that the model is relatively better at identifying positive cases compared to logistic regression, even as it still fails to predict around 64% of the positive cases correctly.
-
-Note that other model buiding practices such as hyperparameter tuning (k-fold cross validation) have been skipped.
-
-### Using the model (Use case)
+### Prediction Example (Use case)
 
 ```{r}
 patient1<-tribble(~age,~bmi,~direct_chol,~marital_status,~gender,
@@ -281,4 +298,8 @@ rf_pred<-rf_wrkflw_fit |>
 predict(rf_pred, new_data = patient1)
 ```
 
-Given the dataset, we can predict that our patient (patient 1) does not have diabetes. Remember the model has a high accuracy and high specificity (excels at identifying negative cases). Since there are fewer patients with diabetes than those without, it means the dataset is imbalanced. We will adjust our threshold from the default 0.5 by over sampling the rare class or undersampling the majority class.
+The model predicts this patient does not have diabetes. Given the model's high specificity, negative predictions are reliable.
+
+## Limitations and Next Steps
+
+This analysis skipped hyperparameter tuning (k-fold cross validation) and did not address class imbalance through oversampling (SMOTE) or threshold adjustment. These are the clear next steps for improving sensitivity on the minority class.

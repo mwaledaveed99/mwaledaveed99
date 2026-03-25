@@ -5,6 +5,23 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Project Summary
+
+**Goal:** Investigate and quantify risk factors associated with arthritis using data from the CDC Behavioral Risk Factor Surveillance System (BRFSS) in USA.
+
+**Data:** 359,925 US adults surveyed in 2013. Selected Variables: arthritis status, sex, age (65+), physical activity, and BMI.
+
+**Methods:** Chi-square tests, Wilcoxon rank-sum test, relative risk ratios, and multivariate logistic regression.
+
+**Key Findings:**
+
+-   Females had 54% higher odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57)
+-   Adults 65+ had 3.5 times the odds of arthritis (OR = 3.56, 95% CI: 3.51-3.62)
+-   Physical inactivity increased odds by 45% (OR = 1.45, 95% CI: 1.43-1.47)
+-   All associations are significant at p \< 0.001
+
+**Tools:** R, tidyverse, gtsummary, epitools, finalfit, reportROC
+
 # 1.0 Introduction
 
 In this project we will be using a subset of the data from the Behavioral Risk Factor Surveillance System (BRFSS) from the CDC to investigate possible risk factors for arthritis. The BRFSS is a system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services. It was established in 1984 with 15 states, BRFSS now collects data in all 50 states. This dataset contains health and social information about non-institutionalized adults in the US in 2013. There are 359,925 individuals included (rows) and 16 variables (columns). The goal is of the study is to investigate risk factors associated with arthritis.
@@ -23,7 +40,6 @@ library(broom)
 library(reportROC)
 library(survival)
 #Loading the dataset
-here()
 file<-here("Assessment Dataset.xlsx")
 
 df_brfss<-read_xlsx(file)
@@ -54,17 +70,9 @@ df_brfss |>
   head()
 ```
 
-In the code below we are going to subset the dataset to include the following variables of importance:
+### Variable Selection
 
-\- Arthritis
-
-\- Physical activity
-
-\- BMI
-
-\- Age(65 or over)
-
--   Sex
+Selected five variables for analysis: arthritis (outcome), physical activity, BMI, age (65+), and sex.
 
 ```{r Data subsetting and preparation}
 # Sub-setting and inspecting the dataset
@@ -79,9 +87,17 @@ lean_brfss<-df_brfss |>
   glimpse()
 ```
 
-# Exploratory Data Analysis
+### Data Dictionary
 
-In this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. To do this I used a range of graphical, and numerical methods including means, histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, Q-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.
+-   **Arthritis:** Binary outcome. Yes (1) or No (0).
+-   **Physical activity:** Binary. Yes (exercising) or No.
+-   **Age 65 or over:** Binary. Yes or No.
+-   **Sex:** Female or Male.
+-   **BMI:** Continuous numeric variable.
+
+## Exploratory Data Analysis
+
+In this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. This will be done using histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, Q-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.
 
 ```{r Checking for missing values}
 lean_brfss |> 
@@ -89,7 +105,7 @@ lean_brfss |>
   sum()
 ```
 
-The dataset does not have missing values as the sum of all missing values is zero. The visual below show distribution of the data by target variable.
+The dataset has zero missing values. The visual below show distribution of the data by target variable.
 
 ```{r Distribution of the target variable}
 lean_brfss %>% 
@@ -103,6 +119,8 @@ lean_brfss %>%
    scale_y_continuous(labels = scales::percent_format(scale = 100))
 ```
 
+### Outlier Detection
+
 ```{r Checking for Outliers}
 lean_brfss |> 
   ggplot(aes(x = bmi)) +
@@ -112,9 +130,9 @@ lean_brfss |>
   theme_bw()
 ```
 
-Seeing from the output, the variable bmi, has significant outliers which could affected the analysis, and result in biased outputs. In the subsequent section, we are going to remove outliers.
+Seeing from the output, the variable bmi, has significant outliers bias the results. In the subsequent section, we are going to remove outliers.
 
-## Removing outliers
+### Outlier Removal
 
 ```{r Removing outliers}
 Q <- quantile(lean_brfss$bmi, probs=c(.25, .75), na.rm = FALSE) # Specifying the lower and upper quatiles
@@ -156,6 +174,8 @@ brfss_eliminated |>
   facet_grid(~arthritis) +
   theme_bw()
 ```
+
+### Contingency Tables
 
 ```{r}
 sex_subt<-brfss_eliminated |> 
@@ -245,14 +265,18 @@ In our analysis we are going to make the following hypotheses: \## Chi-square te
 
 -   Alternative: There is an association between arthritis, and age category(65 or over) of an individual.
 
-# Normality-tests
+## Normality Testing
+
+### Hypotheses
 
 -   Null: The sample data comes from a normally distributed population.
 -   Alternative: The sample data does not come from a normally distributed population
 
 # Investigation of assumptions
 
-In this analysis, we are making the following assumptions about our data: - The data is normally distributed - The expected values in the contingency table for categorical variables are not less than 5 in each cell. - \## Visual inspection using graphs
+In this analysis, we are making the following assumptions about our data: - The data is normally distributed - The expected values in the contingency table for categorical variables are not less than 5 in each cell.
+
+### Visual Inspection
 
 ```{r Generating Q-Q plots}
 lean_brfss |> 
@@ -308,7 +332,7 @@ lean_brfss |>
 lean_brfss |> 
   ggplot(aes(x = sqrt(bmi)))+
   geom_histogram(aes(y = after_stat(density), 
-                     fill = ..count..))+
+                     fill = after_stat(count)))+
   #geom_density(aes(y = after_stat(density)), color = "red", linewidth = 1) +
   geom_vline(xintercept = mean(sqrt(lean_brfss$bmi)), 
              color = "purple", linewidth = 0.8)+
@@ -324,7 +348,7 @@ lean_brfss |>
 lean_brfss |> 
   ggplot(aes(x = (bmi^2)))+
   geom_histogram(aes(y = after_stat(density), 
-                     fill = ..count..))+
+                     fill = after_stat(count)))+
   #geom_density(aes(y = after_stat(density)), color = "red", linewidth = 1) +
   geom_vline(xintercept = mean((lean_brfss$bmi^2)), 
              color = "purple", linewidth = 0.8)+
@@ -336,7 +360,7 @@ lean_brfss |>
 
 From the above outputs we can see that all methods of data transformation have not been able to result in normal distribution of bmi. Since graphic visualizations of tests are necessary but not sufficient we have further used the Shapiro test of significance below.
 
-## Test of signifcance
+## Test of significance
 
 Using a sample of 4999 observations from the main dataset, we test for normality using the Shapiro Wilks test.
 
@@ -356,9 +380,24 @@ The test results from the test show that firstly, the test statistic of 0.69345 
 
 All the assumptions except for chi-square test of independence have not been met for both the graphics, and significance tests. Since parametric methods such as students t tests, anova require data to be normally distributed, we are going to use non-parametric methods to analyse the dataset even as these methods have less power.
 
-# Primary data analysis
+## Analysis Plan
 
-## Assessing associations
+1.  Chi-square tests for associations between arthritis and each categorical variable
+2.  Wilcoxon rank-sum test for BMI comparison between groups (non-parametric alternative to t-test)
+3.  Relative risk ratios for sex, age, and physical activity
+4.  Multivariate logistic regression for the collective effect of all predictors
+
+### Hypotheses
+
+**Chi-square tests:**
+
+-   Null: No association between arthritis and sex. Alternative: Association exists.
+-   Null: No association between arthritis and physical activity. Alternative: Association exists.
+-   Null: No association between arthritis and age category (65+). Alternative: Association exists.
+
+# Primary Analysis
+
+### Chi-Square Tests
 
 ```{r Sex arthritis association}
 sex_subt |> 
@@ -446,9 +485,9 @@ The results from both bivariate, and multivariate analysis present strong eviden
 
 ## 1. Sex, and Arthritis
 
--   Chi-square test of indeoendence shows a statistically significant relationship between sex and arthritis (X-squared = 27231 = 3016, df = 1, p\<0.001), indicating that arthritis prevalence is different in males and females.
+-   Chi-square test of indeoendence shows a statistically significant relationship between sex and arthritis (X-squared = 3016, df = 1, p\<0.001), indicating that arthritis prevalence is different in males and females.
 
--   Risk Ratio: Males have a lower risk of arthritis comppared to females (RR = 0.86, 95% CI: 0.86-0.88, p\<0.001). This means that the risk of arthritis in males is about 14% lower than in females.
+-   Risk Ratio: Males have a lower risk of arthritis compared to females (RR = 0.86, 95% CI: 0.86-0.88, p\<0.001). This means that the risk of arthritis in males is about 14% lower than in females.
 
 -   Logistic regression: Adjusted OR = 1.54 (95% CI: 1.52-1.57), p\<0.001. This means that after adjusting for BMI, age, and physical activity, females have 54% higher odds of having arthritis compared to males. The 95% confidence interval does not include 1, and extremely narrow indicating that the estimate is quite precise.
 
@@ -472,10 +511,6 @@ Logistic regression: Adjusted OR = 3.56 (95% CI: 3.51-3.62, p \< 0.001), showing
 
 -   Wilcoxon Rank-Sum Test (Mann-Whitney U Test): Since BMI is numeric and skewed, this test is ideal because it is non-parametric. The p - value is less than 0.05 (0.001), and the confidence interval is narrow(W-Statistic 1.52, 95% CI:1.49-1.56, p \< 0.001) and does not include 0, we reject the null hypothesis, and conclude that individuals with arthritis tend to have higher BMI than those without arthritis.
 
--   Logistic regression: The adjusted OR = 0.94 (95% CI: 0.93-0.94, p \< 0.001) suggests that there is a 6% decrease in the odds of arthritis for every unit of BMI gained. Even as this is significant the result is inverse relationship could suggest possible confounding in our model.
+-   Logistic regression: The adjusted OR = 0.94 (95% CI: 0.93-0.94, p \< 0.001) suggests that there is a 6% decrease in the odds of arthritis for every unit of BMI gained. Even as this is significant the result's inverse relationship could suggest possible confounding in our model.
 
 #### 
-
-# Machine Learning
-
-Loading \>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>

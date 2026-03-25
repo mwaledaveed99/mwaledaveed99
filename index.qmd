@@ -1,34 +1,34 @@
 ---
-title: " My Portfolio"
+title: "David Mwale"
+subtitle: "Data Scientist | MSc Data Science for Health and Social Care, University of Edinburgh"
 ---
 
-## Welcome
+I build data science products that improve health outcomes. With over 10 years of experience working with health, agriculture, and nutrition data across Malawi, I apply statistical modelling, machine learning, and reproducible research to solve real problems.
 
-Welcome to my portfolio! I am a David Mwale, a final-year MSc student in [Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care) at the [University of Edinburgh](https://www.ed.ac.uk/). I am using this platform to showcase my evolving journey in data science, in doing so intend to use data to to improve health and social care outcomes. Over the past 2 years, I have immersed my self in a continuous learning process, learning foundational concepts, unlearning, and re-learning through practical application.  What I have learned, shaped by intensive course work, hands on projects, is much more than i will be able to showcase through this platform. I am experienced in Python, SQL, R programming, and health data analysis, with focus on reproducible research, and ethical data practices. Explore my work, and feel free to connect with me to discuss potential collaborations, role openings in data science, or insights.
+Currently finishing my MSc at the [University of Edinburgh](https://www.ed.ac.uk/) in [Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care). Open to data science roles.
 
-## My Projects
+## Featured Projects
 
-- **Data Wrangling in R** : Cleaning and transforming datasets using tidyverse and other R packages like nanair, and janitor. A quick example is my work in the adjacent with the Iris dataset where i have cleaned the data, and handled missing values.
+### [Data Cleaning and Imputation](cleaning.qmd)
+Demonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 "messed" species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finaly, I  Validated that imputed distributions almost matched the original dataset.
 
-- **Data Visualization** : Creating insightful visualizations with ggplot2 and interactive dashboards. Through out my projects in this portfolio, I use ggplot2 to make visualizations.
+### [Predicting Diabetes with Machine Learning](nhanes_ml_project.qmd)
+Built logistic regression and Random Forest classifiers on NHANES data using tidymodels. Random Forest improved sensitivity from 4% to 34% for positive diabetes cases. Model evaluation showed  a  ROC-AUC of 0.89, indicating better performance interms of distinguishing non diabetic, and diabetic participants.
 
-- **Statistical Modelling for Epidemiology** : Applying statistical models to analyze health data trends. In the stats modelling tab i apply one of the commonly used models - logistic regression to analyse health data, and using other packages like epitools and reportROC.
+### [Risk Factors for Arthritis: Statistical Modelling](stat_modelling.qmd)
+Investigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios, and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57).
 
-- **Machine Learning** : Building predictive models using tidymodels. A highlight of this project is under the Machine Learning tab where i use both logistic regression and Random Forest models to predict diabetes.
+### [Interactive Shiny Dashboard](https://ztv548-david-mwale.shinyapps.io/shiny_app/)
+A live, interactive R Shiny application deployed on shinyapps.io. to enable realtime tracking and fastracking project decisions.
 
 
-## Skills
+## Technical Skills
 
-### Languages\n
-- **R** : Proficient in data manipulation, visualization and modelling with experience in reproducible workflows using RMarkdown, and Quarto.
+**Languages:** R (tidyverse, tidymodels, ggplot2, Shiny), Python (pandas, matplotlib, seaborn), SQL (SQLite, MySQL, PostgreSQL)
 
-- **SQL** : Skilled in querying health databases, optimizing joins, sub-queries, common table expressions(CTEs) using SQLite, MySQL, and PostgreSQL.
+**Tools:** Git/GitHub, Quarto, RMarkdown, Microsoft Azure Databricks, Power BI
 
-- **Python**: Experienced in pandas for data wrangling, matplotlib/seaborn for visualization.
-
-- **Version Control**: Git and Github for collaborative and reproducible research.
-
-- **Microsoft Azure Databricks** : Experienced in using MS Azure to create storage containers, resource groups, SQL database, workspace  and building data pipelines. 
+**Methods:** Logistic regression, random forests, data wrangling, reproducible research, epidemiological analysis
 
 
 
