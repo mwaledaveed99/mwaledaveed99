@@ -1,0 +1,72 @@
+---
+title: "Iris_dataset"
+---
+
+# Loading of libraries
+
+```{r}
+library(tidyverse)
+library(messy) # for creating messy data
+library(naniar) # for assessing missing values
+library(janitor) # Data cleaning
+library(gt) # generatiung tables
+```
+
+# The Iris dataset
+
+The Iris dataset is one of the most famous datasets in statistics and machine learning. It was first introduced by the British biologist and statistician Ronald Fisher in 1936 in his paper "The use of multiple measurements in taxonomic problems." The dataset consists of 150 samples of iris flowers from three different species: Setosa, Versicolor, and Virginica. Each sample includes four features/columns/variables: sepal length, sepal width, petal length, and petal width
+
+## Data cleaning & EDA
+
+The explorations that I will conduct in this document will involve the following:
+
+1.  Messy column names
+
+2.  Improper variable types
+
+3.  Invalid or inconsistent values
+
+4.  Missing values
+
+5.  Non-standard data formats
+
+# Creating a messy dataset
+
+```{r Messy dataset}
+messy_iris<-messy(iris)
+messy_iris %>%
+  head() |> 
+  gt()
+```
+
+### Key observations
+
+-   We can see that the column names are seperated by "." and are not in lower case. we are going to convert these to lower snake_case.\n
+-   Even before we search for missing values, we can note that the dataset has missing values
+
+## Undersdaning the dataset
+
+Now, we are going to run diffrent codes, just to understand our dataset.
+
+```{r}
+messy_iris |> #Checking the dimensions of the data (The data has 150 rows, and 5 columns)
+  dim()
+```
+
+```{r}
+messy_iris %>% # Taking a quick look at our dataset
+  glimpse()
+```
+
+It's good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.
+
+```{r}
+messy_iris %>% # Understanding the column names of the dataset
+  colnames()
+```
+
+```{r}
+messy_iris %>% # Checking for unique values of Species. 
+  select(Species) %>% 
+  distinct()
+```
