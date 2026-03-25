@@ -108,7 +108,7 @@ lean_brfss |>
 The dataset has zero missing values. The visual below show distribution of the data by target variable.
 
 ```{r Distribution of the target variable}
-lean_brfss %>% 
+lean_brfss |>  
   ggplot(aes(x = arthritis, fill = arthritis))+
   geom_bar(aes(y = after_stat(count/sum(count))), stat = "count") +
   theme_bw() +
@@ -213,8 +213,8 @@ age_subt |>
 ```
 
 ```{r Arthritis and Sex Tile plot}
-brfss_eliminated %>% 
-  count(Sex, arthritis) %>%
+brfss_eliminated |>  
+  count(Sex, arthritis) |> 
   ggplot(aes(x = Sex, 
              y = arthritis)) +
   geom_tile(aes(fill=n)) +
@@ -472,7 +472,7 @@ model_data |>
 ```{r OR and confidence intervals}
 dependent <- "arthritis"
 explanatory_multi <- c("bmi","age_65_or_over","Sex","physical_activity")
-model_data %>% 
+model_data |>  
   finalfit::or_plot(dependent, explanatory_multi,
           breaks = c(0.5, 1, 2, 3, 4,5),
           table_text_size = 3.5,

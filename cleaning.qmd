@@ -53,7 +53,7 @@ The `messy` package introduces realistic data quality problems: inconsistent col
 ```{r Messy dataset}
 set.seed(123456)
 messy_iris<-messy(iris)
-messy_iris %>%
+messy_iris |> 
   head() |> 
   gt()
 ```
@@ -73,20 +73,20 @@ messy_iris |> #Checking the dimensions of the data (The data has 150 rows, and 5
 ```
 
 ```{r}
-messy_iris %>% # Taking a quick look at our dataset
+messy_iris |>  # Taking a quick look at our dataset
   glimpse()
 ```
 
 It can be immediately observed that all columns are of character type, and the species column needs standardisation.
 
 ```{r}
-messy_iris %>% # Understanding the column names of the dataset
+messy_iris |>  # Understanding the column names of the dataset
   colnames()
 ```
 
 ```{r}
-messy_iris %>% # Checking for unique values of Species. 
-  select(Species) %>% 
+messy_iris |>  # Checking for unique values of Species. 
+  select(Species) |>  
   distinct()
 ```
 
@@ -98,7 +98,7 @@ The dataset is supposed to have three different species of the flower namely; se
 ### Step 1: Fix Column Names
 
 ```{r Fixing column names}
-clean_iris<-messy_iris %>% 
+clean_iris<-messy_iris |> 
   clean_names()
 clean_iris |> 
   head(10)
@@ -130,7 +130,7 @@ bad_virginica <- c("virginica","vir!ginica","virginica","VIRGINICA","virginica",
 The code below, is going to replace bad species with the right value using dplyr case_when function
 
 ```{r Cleaning}
-clean_iris<-clean_iris %>% 
+clean_iris<-clean_iris |>  
    mutate(species_clean = case_when(species %in% bad_setosa ~ "setosa",
                                     species %in% bad_versicolor ~ "versicolor",
                                     species %in% bad_virginica ~ "virginica"))
@@ -190,8 +190,8 @@ iris_imputed<-missForest(iris_impute,xtrue = ,maxiter = 10,ntree = 100,verbose =
 
 df_imputed<-iris_imputed$ximp
 
-df_imputed %>% 
-  miss_var_summary() %>% 
+df_imputed |>  
+  miss_var_summary() |> 
   gt() 
 ```
 
@@ -209,7 +209,7 @@ In this section we will compare distributions of the imputed dataset against the
 
 ```{r}
 plot_sl_1<-df_imputed |> 
-  ggplot(aes(x = sepal_length))+
+  ggplot(aes(x = sepal_length)) +
   geom_histogram()+
   theme_bw() +
   labs(title = "Histogram - Imputed data")
