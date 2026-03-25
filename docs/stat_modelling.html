@@ -413,7 +413,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 </div>
 <p>The dataset has zero missing values. The visual below show distribution of the data by target variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lean_brfss <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lean_brfss <span class="sc">|&gt;</span>  </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> arthritis, <span class="at">fill =</span> arthritis))<span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(count<span class="sc">/</span><span class="fu">sum</span>(count))), <span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
@@ -524,23 +524,23 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="coivguxyze" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#coivguxyze table {
+<div id="pdggjrqutc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pdggjrqutc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#coivguxyze thead, #coivguxyze tbody, #coivguxyze tfoot, #coivguxyze tr, #coivguxyze td, #coivguxyze th {
+#pdggjrqutc thead, #pdggjrqutc tbody, #pdggjrqutc tfoot, #pdggjrqutc tr, #pdggjrqutc td, #pdggjrqutc th {
   border-style: none;
 }
 
-#coivguxyze p {
+#pdggjrqutc p {
   margin: 0;
   padding: 0;
 }
 
-#coivguxyze .gt_table {
+#pdggjrqutc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -566,12 +566,12 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-left-color: #D3D3D3;
 }
 
-#coivguxyze .gt_caption {
+#pdggjrqutc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#coivguxyze .gt_title {
+#pdggjrqutc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -583,7 +583,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-width: 0;
 }
 
-#coivguxyze .gt_subtitle {
+#pdggjrqutc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -595,7 +595,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-width: 0;
 }
 
-#coivguxyze .gt_heading {
+#pdggjrqutc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -607,13 +607,13 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#coivguxyze .gt_bottom_border {
+#pdggjrqutc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#coivguxyze .gt_col_headings {
+#pdggjrqutc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -628,7 +628,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#coivguxyze .gt_col_heading {
+#pdggjrqutc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -648,7 +648,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#coivguxyze .gt_column_spanner_outer {
+#pdggjrqutc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -660,15 +660,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 4px;
 }
 
-#coivguxyze .gt_column_spanner_outer:first-child {
+#pdggjrqutc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#coivguxyze .gt_column_spanner_outer:last-child {
+#pdggjrqutc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#coivguxyze .gt_column_spanner {
+#pdggjrqutc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -680,11 +680,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   width: 100%;
 }
 
-#coivguxyze .gt_spanner_row {
+#pdggjrqutc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#coivguxyze .gt_group_heading {
+#pdggjrqutc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -710,7 +710,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   text-align: left;
 }
 
-#coivguxyze .gt_empty_group_heading {
+#pdggjrqutc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -725,15 +725,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: middle;
 }
 
-#coivguxyze .gt_from_md > :first-child {
+#pdggjrqutc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#coivguxyze .gt_from_md > :last-child {
+#pdggjrqutc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#coivguxyze .gt_row {
+#pdggjrqutc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -752,7 +752,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#coivguxyze .gt_stub {
+#pdggjrqutc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -765,7 +765,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#coivguxyze .gt_stub_row_group {
+#pdggjrqutc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -779,15 +779,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: top;
 }
 
-#coivguxyze .gt_row_group_first td {
+#pdggjrqutc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#coivguxyze .gt_row_group_first th {
+#pdggjrqutc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#coivguxyze .gt_summary_row {
+#pdggjrqutc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -797,16 +797,16 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#coivguxyze .gt_first_summary_row {
+#pdggjrqutc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#coivguxyze .gt_first_summary_row.thick {
+#pdggjrqutc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#coivguxyze .gt_last_summary_row {
+#pdggjrqutc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -816,7 +816,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#coivguxyze .gt_grand_summary_row {
+#pdggjrqutc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -826,7 +826,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#coivguxyze .gt_first_grand_summary_row {
+#pdggjrqutc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -836,7 +836,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-color: #D3D3D3;
 }
 
-#coivguxyze .gt_last_grand_summary_row_top {
+#pdggjrqutc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -846,11 +846,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#coivguxyze .gt_striped {
+#pdggjrqutc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#coivguxyze .gt_table_body {
+#pdggjrqutc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -859,7 +859,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#coivguxyze .gt_footnotes {
+#pdggjrqutc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -873,7 +873,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#coivguxyze .gt_footnote {
+#pdggjrqutc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -882,7 +882,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#coivguxyze .gt_sourcenotes {
+#pdggjrqutc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -896,7 +896,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#coivguxyze .gt_sourcenote {
+#pdggjrqutc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -904,72 +904,72 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#coivguxyze .gt_left {
+#pdggjrqutc .gt_left {
   text-align: left;
 }
 
-#coivguxyze .gt_center {
+#pdggjrqutc .gt_center {
   text-align: center;
 }
 
-#coivguxyze .gt_right {
+#pdggjrqutc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#coivguxyze .gt_font_normal {
+#pdggjrqutc .gt_font_normal {
   font-weight: normal;
 }
 
-#coivguxyze .gt_font_bold {
+#pdggjrqutc .gt_font_bold {
   font-weight: bold;
 }
 
-#coivguxyze .gt_font_italic {
+#pdggjrqutc .gt_font_italic {
   font-style: italic;
 }
 
-#coivguxyze .gt_super {
+#pdggjrqutc .gt_super {
   font-size: 65%;
 }
 
-#coivguxyze .gt_footnote_marks {
+#pdggjrqutc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#coivguxyze .gt_asterisk {
+#pdggjrqutc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#coivguxyze .gt_indent_1 {
+#pdggjrqutc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#coivguxyze .gt_indent_2 {
+#pdggjrqutc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#coivguxyze .gt_indent_3 {
+#pdggjrqutc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#coivguxyze .gt_indent_4 {
+#pdggjrqutc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#coivguxyze .gt_indent_5 {
+#pdggjrqutc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#coivguxyze .katex-display {
+#pdggjrqutc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#coivguxyze div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pdggjrqutc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1035,23 +1035,23 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="mdvdkevngm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mdvdkevngm table {
+<div id="irtbdwdgvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#irtbdwdgvu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mdvdkevngm thead, #mdvdkevngm tbody, #mdvdkevngm tfoot, #mdvdkevngm tr, #mdvdkevngm td, #mdvdkevngm th {
+#irtbdwdgvu thead, #irtbdwdgvu tbody, #irtbdwdgvu tfoot, #irtbdwdgvu tr, #irtbdwdgvu td, #irtbdwdgvu th {
   border-style: none;
 }
 
-#mdvdkevngm p {
+#irtbdwdgvu p {
   margin: 0;
   padding: 0;
 }
 
-#mdvdkevngm .gt_table {
+#irtbdwdgvu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1077,12 +1077,12 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-left-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_caption {
+#irtbdwdgvu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mdvdkevngm .gt_title {
+#irtbdwdgvu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1094,7 +1094,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-width: 0;
 }
 
-#mdvdkevngm .gt_subtitle {
+#irtbdwdgvu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1106,7 +1106,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-width: 0;
 }
 
-#mdvdkevngm .gt_heading {
+#irtbdwdgvu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1118,13 +1118,13 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_bottom_border {
+#irtbdwdgvu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_col_headings {
+#irtbdwdgvu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1139,7 +1139,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_col_heading {
+#irtbdwdgvu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1159,7 +1159,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#mdvdkevngm .gt_column_spanner_outer {
+#irtbdwdgvu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1171,15 +1171,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 4px;
 }
 
-#mdvdkevngm .gt_column_spanner_outer:first-child {
+#irtbdwdgvu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mdvdkevngm .gt_column_spanner_outer:last-child {
+#irtbdwdgvu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mdvdkevngm .gt_column_spanner {
+#irtbdwdgvu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1191,11 +1191,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   width: 100%;
 }
 
-#mdvdkevngm .gt_spanner_row {
+#irtbdwdgvu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mdvdkevngm .gt_group_heading {
+#irtbdwdgvu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1221,7 +1221,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   text-align: left;
 }
 
-#mdvdkevngm .gt_empty_group_heading {
+#irtbdwdgvu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1236,15 +1236,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: middle;
 }
 
-#mdvdkevngm .gt_from_md > :first-child {
+#irtbdwdgvu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mdvdkevngm .gt_from_md > :last-child {
+#irtbdwdgvu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mdvdkevngm .gt_row {
+#irtbdwdgvu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1263,7 +1263,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#mdvdkevngm .gt_stub {
+#irtbdwdgvu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1276,7 +1276,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#mdvdkevngm .gt_stub_row_group {
+#irtbdwdgvu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1290,15 +1290,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: top;
 }
 
-#mdvdkevngm .gt_row_group_first td {
+#irtbdwdgvu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mdvdkevngm .gt_row_group_first th {
+#irtbdwdgvu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mdvdkevngm .gt_summary_row {
+#irtbdwdgvu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1308,16 +1308,16 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#mdvdkevngm .gt_first_summary_row {
+#irtbdwdgvu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_first_summary_row.thick {
+#irtbdwdgvu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mdvdkevngm .gt_last_summary_row {
+#irtbdwdgvu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1327,7 +1327,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_grand_summary_row {
+#irtbdwdgvu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1337,7 +1337,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#mdvdkevngm .gt_first_grand_summary_row {
+#irtbdwdgvu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1347,7 +1347,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_last_grand_summary_row_top {
+#irtbdwdgvu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1357,11 +1357,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_striped {
+#irtbdwdgvu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mdvdkevngm .gt_table_body {
+#irtbdwdgvu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1370,7 +1370,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_footnotes {
+#irtbdwdgvu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1384,7 +1384,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_footnote {
+#irtbdwdgvu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1393,7 +1393,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#mdvdkevngm .gt_sourcenotes {
+#irtbdwdgvu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1407,7 +1407,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#mdvdkevngm .gt_sourcenote {
+#irtbdwdgvu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1415,72 +1415,72 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#mdvdkevngm .gt_left {
+#irtbdwdgvu .gt_left {
   text-align: left;
 }
 
-#mdvdkevngm .gt_center {
+#irtbdwdgvu .gt_center {
   text-align: center;
 }
 
-#mdvdkevngm .gt_right {
+#irtbdwdgvu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mdvdkevngm .gt_font_normal {
+#irtbdwdgvu .gt_font_normal {
   font-weight: normal;
 }
 
-#mdvdkevngm .gt_font_bold {
+#irtbdwdgvu .gt_font_bold {
   font-weight: bold;
 }
 
-#mdvdkevngm .gt_font_italic {
+#irtbdwdgvu .gt_font_italic {
   font-style: italic;
 }
 
-#mdvdkevngm .gt_super {
+#irtbdwdgvu .gt_super {
   font-size: 65%;
 }
 
-#mdvdkevngm .gt_footnote_marks {
+#irtbdwdgvu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mdvdkevngm .gt_asterisk {
+#irtbdwdgvu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mdvdkevngm .gt_indent_1 {
+#irtbdwdgvu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mdvdkevngm .gt_indent_2 {
+#irtbdwdgvu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mdvdkevngm .gt_indent_3 {
+#irtbdwdgvu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mdvdkevngm .gt_indent_4 {
+#irtbdwdgvu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mdvdkevngm .gt_indent_5 {
+#irtbdwdgvu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mdvdkevngm .katex-display {
+#irtbdwdgvu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mdvdkevngm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#irtbdwdgvu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1546,23 +1546,23 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="oesdfkkvvm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oesdfkkvvm table {
+<div id="uxslcbsqme" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uxslcbsqme table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oesdfkkvvm thead, #oesdfkkvvm tbody, #oesdfkkvvm tfoot, #oesdfkkvvm tr, #oesdfkkvvm td, #oesdfkkvvm th {
+#uxslcbsqme thead, #uxslcbsqme tbody, #uxslcbsqme tfoot, #uxslcbsqme tr, #uxslcbsqme td, #uxslcbsqme th {
   border-style: none;
 }
 
-#oesdfkkvvm p {
+#uxslcbsqme p {
   margin: 0;
   padding: 0;
 }
 
-#oesdfkkvvm .gt_table {
+#uxslcbsqme .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1588,12 +1588,12 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-left-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_caption {
+#uxslcbsqme .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oesdfkkvvm .gt_title {
+#uxslcbsqme .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1605,7 +1605,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-width: 0;
 }
 
-#oesdfkkvvm .gt_subtitle {
+#uxslcbsqme .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1617,7 +1617,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-width: 0;
 }
 
-#oesdfkkvvm .gt_heading {
+#uxslcbsqme .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1629,13 +1629,13 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_bottom_border {
+#uxslcbsqme .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_col_headings {
+#uxslcbsqme .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1650,7 +1650,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_col_heading {
+#uxslcbsqme .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1670,7 +1670,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#oesdfkkvvm .gt_column_spanner_outer {
+#uxslcbsqme .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1682,15 +1682,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 4px;
 }
 
-#oesdfkkvvm .gt_column_spanner_outer:first-child {
+#uxslcbsqme .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oesdfkkvvm .gt_column_spanner_outer:last-child {
+#uxslcbsqme .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oesdfkkvvm .gt_column_spanner {
+#uxslcbsqme .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1702,11 +1702,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   width: 100%;
 }
 
-#oesdfkkvvm .gt_spanner_row {
+#uxslcbsqme .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oesdfkkvvm .gt_group_heading {
+#uxslcbsqme .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1732,7 +1732,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   text-align: left;
 }
 
-#oesdfkkvvm .gt_empty_group_heading {
+#uxslcbsqme .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1747,15 +1747,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: middle;
 }
 
-#oesdfkkvvm .gt_from_md > :first-child {
+#uxslcbsqme .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oesdfkkvvm .gt_from_md > :last-child {
+#uxslcbsqme .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oesdfkkvvm .gt_row {
+#uxslcbsqme .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1774,7 +1774,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   overflow-x: hidden;
 }
 
-#oesdfkkvvm .gt_stub {
+#uxslcbsqme .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1787,7 +1787,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#oesdfkkvvm .gt_stub_row_group {
+#uxslcbsqme .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1801,15 +1801,15 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   vertical-align: top;
 }
 
-#oesdfkkvvm .gt_row_group_first td {
+#uxslcbsqme .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oesdfkkvvm .gt_row_group_first th {
+#uxslcbsqme .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oesdfkkvvm .gt_summary_row {
+#uxslcbsqme .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1819,16 +1819,16 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#oesdfkkvvm .gt_first_summary_row {
+#uxslcbsqme .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_first_summary_row.thick {
+#uxslcbsqme .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oesdfkkvvm .gt_last_summary_row {
+#uxslcbsqme .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1838,7 +1838,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_grand_summary_row {
+#uxslcbsqme .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1848,7 +1848,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#oesdfkkvvm .gt_first_grand_summary_row {
+#uxslcbsqme .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1858,7 +1858,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-top-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_last_grand_summary_row_top {
+#uxslcbsqme .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1868,11 +1868,11 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_striped {
+#uxslcbsqme .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oesdfkkvvm .gt_table_body {
+#uxslcbsqme .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1881,7 +1881,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-bottom-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_footnotes {
+#uxslcbsqme .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1895,7 +1895,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_footnote {
+#uxslcbsqme .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1904,7 +1904,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#oesdfkkvvm .gt_sourcenotes {
+#uxslcbsqme .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1918,7 +1918,7 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   border-right-color: #D3D3D3;
 }
 
-#oesdfkkvvm .gt_sourcenote {
+#uxslcbsqme .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1926,72 +1926,72 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
   padding-right: 5px;
 }
 
-#oesdfkkvvm .gt_left {
+#uxslcbsqme .gt_left {
   text-align: left;
 }
 
-#oesdfkkvvm .gt_center {
+#uxslcbsqme .gt_center {
   text-align: center;
 }
 
-#oesdfkkvvm .gt_right {
+#uxslcbsqme .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oesdfkkvvm .gt_font_normal {
+#uxslcbsqme .gt_font_normal {
   font-weight: normal;
 }
 
-#oesdfkkvvm .gt_font_bold {
+#uxslcbsqme .gt_font_bold {
   font-weight: bold;
 }
 
-#oesdfkkvvm .gt_font_italic {
+#uxslcbsqme .gt_font_italic {
   font-style: italic;
 }
 
-#oesdfkkvvm .gt_super {
+#uxslcbsqme .gt_super {
   font-size: 65%;
 }
 
-#oesdfkkvvm .gt_footnote_marks {
+#uxslcbsqme .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oesdfkkvvm .gt_asterisk {
+#uxslcbsqme .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oesdfkkvvm .gt_indent_1 {
+#uxslcbsqme .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oesdfkkvvm .gt_indent_2 {
+#uxslcbsqme .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oesdfkkvvm .gt_indent_3 {
+#uxslcbsqme .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oesdfkkvvm .gt_indent_4 {
+#uxslcbsqme .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oesdfkkvvm .gt_indent_5 {
+#uxslcbsqme .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oesdfkkvvm .katex-display {
+#uxslcbsqme .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oesdfkkvvm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uxslcbsqme div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2051,8 +2051,8 @@ $ physical_activity &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, No, No, Ye
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>brfss_eliminated <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Sex, arthritis) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>brfss_eliminated <span class="sc">|&gt;</span>  </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Sex, arthritis) <span class="sc">|&gt;</span> </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sex, </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> arthritis)) <span class="sc">+</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill=</span>n)) <span class="sc">+</span></span>
@@ -3043,7 +3043,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dependent <span class="ot">&lt;-</span> <span class="st">"arthritis"</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>explanatory_multi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"bmi"</span>,<span class="st">"age_65_or_over"</span>,<span class="st">"Sex"</span>,<span class="st">"physical_activity"</span>)</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>model_data <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>model_data <span class="sc">|&gt;</span>  </span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  finalfit<span class="sc">::</span><span class="fu">or_plot</span>(dependent, explanatory_multi,</span>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>,<span class="dv">5</span>),</span>
 <span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">table_text_size =</span> <span class="fl">3.5</span>,</span>
