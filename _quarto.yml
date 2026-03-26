@@ -5,7 +5,7 @@ project:
 website:
   title: "David Mwale"
   site-url: https://mwaledaveed99.github.io/mwaledaveed99/
-  description: "Data Science Portfolio | MSc Data Science, University of Edinburgh"
+  description: "Data Science Portfolio | MSc Data Science | University of Edinburgh"
   navbar:
     left:
       - href: index.qmd
@@ -20,6 +20,8 @@ website:
             text: Statistical Modelling
           - href: nhanes_ml_project.qmd
             text: Machine Learning
+          - href: Data_extraction.qmd
+            text: DHIS2 Data Pipeline
       - text: Dashboards
         menu:
           - href: https://ztv548-david-mwale.shinyapps.io/shiny_app/
@@ -31,7 +33,7 @@ website:
         href: https://www.linkedin.com/in/david-mwale-b47490103
 
   page-footer:
-    center: "© 2025 David Mwale. Built with Quarto."
+    center: "© 2025 David Mwale"
 
 format:
   html:
@@ -41,7 +43,3 @@ format:
 
 execute:
   freeze: auto
-
-
-
-

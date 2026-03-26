@@ -1,16 +1,16 @@
 ---
 title: "David Mwale"
-subtitle: "Data Scientist | MSc Data Science for Health and Social Care, University of Edinburgh"
+subtitle: "Data Scientist | MSc Data Science for Health and Social Care | University of Edinburgh"
 ---
 
 I build data science products that improve health outcomes. With over 10 years of experience working with health, agriculture, and nutrition data across Malawi, I apply statistical modelling, machine learning, and reproducible research to solve real problems.
 
-Currently finishing my MSc at the [University of Edinburgh](https://www.ed.ac.uk/) in [Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care). Open to data science roles.
+Currently finalising my MSc at the [University of Edinburgh](https://www.ed.ac.uk/) in [Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care). Open to Data Science roles.
 
 ## Featured Projects
 
 ### [Data Cleaning and Imputation](cleaning.qmd)
-Demonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 "messed" species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finaly, I  Validated that imputed distributions almost matched the original dataset.
+Demonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 "messed" species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finally, I  Validated that imputed distributions almost matched the original dataset.
 
 ### [Predicting Diabetes with Machine Learning](nhanes_ml_project.qmd)
 Built logistic regression and Random Forest classifiers on NHANES data using tidymodels. Random Forest improved sensitivity from 4% to 34% for positive diabetes cases. Model evaluation showed  a  ROC-AUC of 0.89, indicating better performance interms of distinguishing non diabetic, and diabetic participants.
@@ -21,6 +21,8 @@ Investigated associations between arthritis and risk factors (sex, age, BMI, phy
 ### [Interactive Shiny Dashboard](https://ztv548-david-mwale.shinyapps.io/shiny_app/)
 A live, interactive R Shiny application deployed on shinyapps.io. to enable realtime tracking and fastracking project decisions.
 
+### [DHIS2 Data Pipeline](Data_extraction.qmd)
+Built a reproducible R pipeline to extract, clean, and structure family planning service data from DHIS2 using the khisr package. Parsed composite DHIS2 category column with strings, mapped 61 data elements to respective FP method groups, calculated Couple Years of Protection (CYP), and exported analysis-ready data for 59 service delivery points across Malawi.
 
 ## Technical Skills
 

@@ -87,14 +87,6 @@ lean_brfss<-df_brfss |>
   glimpse()
 ```
 
-### Data Dictionary
-
--   **Arthritis:** Binary outcome. Yes (1) or No (0).
--   **Physical activity:** Binary. Yes (exercising) or No.
--   **Age 65 or over:** Binary. Yes or No.
--   **Sex:** Female or Male.
--   **BMI:** Continuous numeric variable.
-
 ## Exploratory Data Analysis
 
 In this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. This will be done using histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, Q-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.
