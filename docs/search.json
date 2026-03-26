@@ -28,8 +28,8 @@
     "text": "Observations\nThe box plots show higher median BMI in the arthritis group with just fewer outliers after filtering. Histograms show a right skewed distribution where as contingency tables suggest higher arthritis prevalence among females (63%), those aged 65 or over (49% vs 22%), and those with no physical activity. the distribution of BMI as a variable indicates skewness and presence of outliers. This variables will be transformed prior to analysis."
   },
   {
-    "objectID": "stat_modelling.html#data-dictionary-1",
-    "href": "stat_modelling.html#data-dictionary-1",
+    "objectID": "stat_modelling.html#data-dictionary",
+    "href": "stat_modelling.html#data-dictionary",
     "title": "stat_modelling",
     "section": "Data dictionary",
     "text": "Data dictionary\n\nArthritis: A binary outcome variable taking the values of Yes(1), and No(2).\nPhysical activity: A binary explanatory variable taking the values of Yes(1), or No(2) to indicate whether an individual is exercising or not respectively.\nAge 65 or over: A binary explanatory variable taking the values of Yes(1), or No(2) to indicate whether or not the individual is above or below 65 years of age respectively.\nSex: A binary explanatory variable taking the values of Female(1), or Male(2) to indicate whether or not the individual is Female or Male respectively.\nBMI: A numeric continuous variable showing the Body Mass Index (BMI) for an individual."
@@ -119,53 +119,67 @@
     "text": "Undersdaning the dataset\nNow, we are going to run diffrent codes, just to understand our dataset.\n\nmessy_iris |&gt; #Checking the dimensions of the data (The data has 150 rows, and 5 columns)\n  dim()\n\n[1] 150   5\n\n\n\nmessy_iris %&gt;% # Taking a quick look at our dataset\n  glimpse()\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;chr&gt; \"5.1\", \"4.9\", \"4.7\", \"4.6\", \"5\", \"5.4\", \"4.6\", \"5\", \"4.4\"…\n$ Sepal.Width  &lt;chr&gt; \"3.5\", NA, \"3.2\", \"3.1\", \"3.6\", \"3.9\", \"3.4\", \"3.4\", \"2.9…\n$ Petal.Length &lt;chr&gt; \"1.4\", \"1.4\", \"1.3\", \"1.5\", NA, NA, \"1.4 \", \"1.5\", \"1.4 \"…\n$ Petal.Width  &lt;chr&gt; \"0.2\", \"0.2\", \"0.2\", \"0.2\", \"0.2 \", \"0.4\", \"0.3 \", \"0.2\",…\n$ Species      &lt;chr&gt; \"s!eto(sa\", \"setosa\", \"setos&a\", \"setosa\", \"seto)sa\", \"se…\n\n\nIt’s good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.\n\nmessy_iris %&gt;% # Understanding the column names of the dataset\n  colnames()\n\n[1] \"Sepal.Length\" \"Sepal.Width\"  \"Petal.Length\" \"Petal.Width\"  \"Species\"     \n\n\n\nmessy_iris %&gt;% # Checking for unique values of Species. \n  select(Species) %&gt;% \n  distinct()\n\n          Species\n1        s!eto(sa\n2          setosa\n3         setos&a\n4         seto)sa\n5         se$tosa\n6         setosa \n7            &lt;NA&gt;\n8         set!osa\n9         setos$a\n10        seto^sa\n11        SE#TOSA\n12        seto_sa\n13        seto+sa\n14        set%osa\n15        SET*OSA\n16        s*etosa\n17        s$etosa\n18        .setosa\n19       se#t%osa\n20       set-os$a\n21         SETOSA\n22       s.eto#sa\n23        set&osa\n24  ^versic_ol-or\n25   VER@SICOLOR \n26   ver+sic-olor\n27     versicolor\n28   #versicolor \n29    VER-SICOLOR\n30    versicol.or\n31    versicol@or\n32  #versi*colo^r\n33     VERSICOLOR\n34   *versicol!or\n35  versico&l.or \n36 versi-co$lo*r \n37    versicolor \n38    v%ersicolor\n39   $versic(olor\n40 v*e.r%sicol!or\n41   versicolo@r \n42    versicol&or\n43  v+e%rsico-lor\n44    versicolo_r\n45    +versicolor\n46    versicolo-r\n47   -versicolor \n48   +vers*icolor\n49   VE+RSI+COLOR\n50   versico)lo-r\n51    versic-olor\n52    vers@icolor\n53   ver$sicol$or\n54    versic)olor\n55    ver^sicolor\n56   ve%rsicolo_r\n57      virginica\n58     virg!inica\n59    vi@rg%inica\n60   virgi+n@ic%a\n61     virgini%ca\n62     virg$inica\n63     vir-ginica\n64    v+i*rginica\n65     virginic+a\n66     virgin-ica\n67     virgini$ca\n68    *virgini-ca\n69     virg-inica\n70     virgi_nica\n71    %virgi%nica\n72   vir&gini-c*a\n73     virginica \n74    vi#rginica \n75     virgini+ca\n76     VIRGI@NICA\n77     virgini_ca\n78    virg!inica \n79    -virgini)ca\n80     virginic.a\n81    virg-in&ica\n82     vir!ginica\n83     vir+ginica\n84    virg%ini#ca\n85     #virginica\n86   v%i+rgini*ca\n87     +virginica\n88    virgi_nic%a\n89     vi&rginica\n90     %virginica\n91    vir)ginic^a"
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
+    "objectID": "Data_extraction.html",
+    "href": "Data_extraction.html",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
     "section": "",
-    "text": "Reach out for collaborations, R workshops, or data science opportunities:\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265993627367\nGitHub: mwaledaveed99\n\nI am willing to take full-time, part-time, and remote data science related roles."
+    "text": "Goal: Extract family planning service delivery data from a FPAM’s DHIS2 instance using R, clean and reshape the raw output, create derived indicators (service type, client category, CYP), and produce an analysis-ready dataset.\nContext: DHIS2 is the most widely used health management information system in low- and middle-income countries. Manual data exports from the DHIS2 web interface are slow, error-prone, and not reproducible. This project demonstrates a fully programmatic pipeline from API connection to clean a CSV output.\nPipeline: API authentication, metadata exploration (org units, data elements, indicators), bulk analytics extraction, string parsing of composite category fields, indicator classification, and CYP (Couple Years of Protection) calculation.\nTools: R, khisr, tidyverse, janitor, naniar, here"
   },
   {
-    "objectID": "contact.html#lets-get-in-touch",
-    "href": "contact.html#lets-get-in-touch",
-    "title": "Contact",
+    "objectID": "Data_extraction.html#project-summary",
+    "href": "Data_extraction.html#project-summary",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
     "section": "",
-    "text": "Reach out for collaborations, R workshops, or data science opportunities:\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265993627367\nGitHub: mwaledaveed99\n\nI am willing to take full-time, part-time, and remote data science related roles."
+    "text": "Goal: Extract family planning service delivery data from a FPAM’s DHIS2 instance using R, clean and reshape the raw output, create derived indicators (service type, client category, CYP), and produce an analysis-ready dataset.\nContext: DHIS2 is the most widely used health management information system in low- and middle-income countries. Manual data exports from the DHIS2 web interface are slow, error-prone, and not reproducible. This project demonstrates a fully programmatic pipeline from API connection to clean a CSV output.\nPipeline: API authentication, metadata exploration (org units, data elements, indicators), bulk analytics extraction, string parsing of composite category fields, indicator classification, and CYP (Couple Years of Protection) calculation.\nTools: R, khisr, tidyverse, janitor, naniar, here"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I am a data scientist with over 10 years of experience working with data in health (SRH), HIV, agriculture, livelihoods, and nutrition. Currently finishing my MSc in Data Science for Health and Social Care at the University of Edinburgh.\nMy work focuses on statistical modelling, machine learning, data visualization, and building reproducible data pipelines. I lead the RUsers Malawi community in Lilongwe."
+    "objectID": "Data_extraction.html#step-1-load-packages",
+    "href": "Data_extraction.html#step-1-load-packages",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Step 1: Load Packages",
+    "text": "Step 1: Load Packages\n\nlibrary(khisr)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(naniar)\nlibrary(here)"
   },
   {
-    "objectID": "about.html#education-experience",
-    "href": "about.html#education-experience",
-    "title": "About Me",
-    "section": "Education & Experience",
-    "text": "Education & Experience\n\nMSc in Data Science for Health and Social care | University of Edinburgh| 2023- present\nDiploma in Monitoring and Evaluation | The Catholic University of Malawi | 2018-20\nBSc Agricultural Economics | University of Malawi | 2011-15"
+    "objectID": "Data_extraction.html#step-2-connect-to-dhis2",
+    "href": "Data_extraction.html#step-2-connect-to-dhis2",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Step 2: Connect to DHIS2",
+    "text": "Step 2: Connect to DHIS2\nThe khisr package provides R bindings to the DHIS2 Web API. Authentication uses a base URL, username, and password. Credentials are stored securely and never hardcoded in shared scripts like this one.\n\n# Credentials stored in .Renviron for security\n# DHIS2_BASE_URL, DHIS2_USERNAME, DHIS2_PASSWORD\n\nbase_url &lt;- Sys.getenv(\"FPAM_DHIS2_BASE_URL\")\nusername &lt;- Sys.getenv(\"FPAM_DHIS2_USERNAME\")\npassword &lt;- Sys.getenv(\"FPAM_DHIS2_PASSWORD\")\n\ndhis2_connection &lt;- khis_cred(\n  username = username,\n  password = password,\n  server   = base_url\n)\n\nIn practice, I set these environment variables in my .Renviron file so credentials stay out of version control."
   },
   {
-    "objectID": "about.html#current-role",
-    "href": "about.html#current-role",
-    "title": "About Me",
-    "section": "Current role",
-    "text": "Current role\nMonitoring,Evaluation and Data Use Specialist at Family Planning Association of Malawi."
+    "objectID": "Data_extraction.html#step-3-explore-dhis2-metadata",
+    "href": "Data_extraction.html#step-3-explore-dhis2-metadata",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Step 3: Explore DHIS2 Metadata",
+    "text": "Step 3: Explore DHIS2 Metadata\nBefore extracting data, I explore the DHIS2 metadata to identify the correct IDs for organisation units, data elements, indicators, and category combinations. This step is necessary because DHIS2 stores everything by UID, not by name.\n\nOrganisation Units\nOrganisation units represent the geographic and administrative hierarchy: national, regional, district, and service delivery point (SDP) levels.\n\norg_units &lt;- get_organisation_units()\n\n# Preview the org unit hierarchy\norg_units |&gt; \n  head(20)\n\nI filtered the full list down to 59 SDPs by selecting only relevant organisation units ids to our projects:\n\norg_id &lt;- c(\"oFHX9KdPmvq\", \"pWgcJqTDaR6\", \"ZBJZ84GRg8T\", \"FioTrY26WbQ\",  \"qADMYLLGeof\", \"KtvkHQyYVrM\", \"FFB1iq38BbR\", \"k0lDJ1PtPic\",  \"JqBOUCD9fy6\", \"uYGZAP1vriT\", \"Oay6QzUgYuL\", \"Ny1hpCtux3y\",  \"PU2zDIptR7U\", \"EB7epqcMzF4\", \"D5qiBUI3k8G\", \"ike32nYVxfD\",  \"VQY6DZDlC29\", \"wNY0hZm1WOI\", \"CM2IVSh3Atq\", \"iwmLCeYmDms\",\n  \"BG1pb5DtYhg\", \"AzeIukoY6lH\", \"Ro9iFw5Kyd8\", \"jXpsTENuryd\",  \"kzTLZPcEuIJ\", \"KBa6xDhcUnO\", \"AOeFNxC7zRn\", \"ycdjNkkY8LK\",  \"tWrBEq7DpeQ\", \"xqKcIvkUpDr\", \"mNOLTn5nj71\", \"i2smYapUm85\",  \"Uu3xAwwG6Q6\", \"ouj5uTN3ecR\", \"ISyZ4sSvcAN\", \"n3ROWDE4oxm\",  \"Y0eMusceYzl\", \"GAmB6ajj1E0\", \"StMM0959QJU\", \"iaV1nG9GEPS\",  \"mXwvMIb1z40\", \"lWpazEuoOil\", \"YcUVBPS3DYO\", \"LgAGspUhatq\",  \"iAFjbgJukkc\", \"rLBCWv3QtOM\", \"E4IIABpkuT1\", \"pd6s2OsPnrs\",\n  \"x0Bo9zDgE85\", \"U5FGVOxMHPG\", \"z64iYPQFfgz\", \"qF5j8wHj8ax\",  \"nxSuQduPyAI\", \"Pk43HlRvlxK\", \"QiiJs70qbiR\", \"BJ7NARvScbH\",  \"xeZFQsKcoQL\", \"Khd1okEVaHz\", \"b53t9dVC7g1\")\n\n\n\nDimensions and Category Combinations\nDHIS2 disaggregates data by category combinations (age group, client type, gender). Understanding these is necessary for parsing extracted data.\n\ndimensions &lt;- get_dimensions()\ndimensions\n\ncat_combos &lt;- get_category_option_combos()\ncat_combos |&gt; \n  head(20)\n\n\n\nIndicators and Data Elements\nIndicators are calculated values (e.g., percentages). Data elements are raw reported values (e.g., number of clients served).\n\nindicators &lt;- get_indicators()\nindicators |&gt; \n  head(20)\n\n\ndata_element_group &lt;- get_data_element_groups()\ndata_element_group |&gt; \n  head(20)\n\n# 61 data element IDs covering SRV (service) and Items (commodities) data\nd_elements_ids &lt;- c(\"pFMjZXlfAf7\", \"Krdr1AlUQ8N\", \"aOz9WW0pPO4\", \"C5P131CTInb\",  \"N057bnpkZkx\", \"vMPhO6JOlnk\", \"fG5OLScYkeK\", \"aPUhz2LnX5X\",\"icy8aA0g0kl\", \"ksuWY4XNe2T\", \"Wt9yNZBo8nP\", \"ve4iq3vU00H\",  \"vTjYQWr90ry\", \"wD2kg2pbHpx\", \"gVIx8BrlUne\", \"L5yXk6pkft7\",  \"QJsqAcTX3GQ\", \"Kh7aznnxzgp\", \"CBbJFfDj55n\", \"J1xTOgyF6uy\",  \"mSIGrBYiRGe\", \"dINzbge9RMX\", \"N1sig4akeCt\", \"tDhThTdnFXZ\",  \"Stj1UElUNLq\", \"zezfiM6WS8c\", \"j9OOIxKU1Il\", \"P6RUHBiShIk\",  \"wqkK7PhnyQ9\", \"yuoB7pCFfsG\", \"lCyEE5JH8Dz\", \"gXki5ZovDDB\",  \"erac6GM8IoY\", \"WPGYUvPGant\", \"UGF1QZsTdlW\", \"xzdCm0QxCO5\",  \"We91kItyQ7B\", \"a65L6xsaSGc\", \"XZgcxmmwSdr\", \"lAJqjUjXqoU\",  \"rYj5ng5yFZF\", \"wMn75u7Ng7t\", \"VnOGlJ5KaJS\", \"zaFd5ecHFT9\",  \"fpNvBVNaS4m\", \"O5hC9FtmEbe\", \"KncZyhzMrN0\", \"oUNffjs9rOa\",  \"feSIdEJFMHR\", \"tLqkd0OcZ4k\", \"pcDpDC9obr8\", \"DsTTM3lqCW4\",  \"txTi3OALHRL\", \"EMmmVwlCTRp\", \"EAe58lagJ0W\", \"r5UEluRz1TA\",  \"tyFGIFRt2S2\", \"kULUnkOQtaF\", \"cu0ukG91Zc0\", \"GT09A1kzoAg\",  \"rOHUZld4vO6\")"
   },
   {
-    "objectID": "about.html#community",
-    "href": "about.html#community",
-    "title": "About Me",
-    "section": "Community",
-    "text": "Community\n\nRUsers Malawi Lead organiser | Lilongwe, Malawi | 2024- present"
+    "objectID": "Data_extraction.html#step-4-extract-data-from-the-analytics-api",
+    "href": "Data_extraction.html#step-4-extract-data-from-the-analytics-api",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Step 4: Extract Data from the Analytics API",
+    "text": "Step 4: Extract Data from the Analytics API\nThe get_analytics_by_level() function pulls aggregated data across all specified org units, data elements, and time periods in a single API call. Level 5 corresponds to individual service delivery points.\n\nfpam_dhis2 &lt;- get_analytics_by_level(\n  element_ids = d_elements_ids,\n  start_date  = \"2023-01-01\",\n  end_date    = NULL,\n  level       = 5,\n  org_ids     = org_id)\n\n# Check the disaggregation categories returned\nunique(fpam_dhis2$category)\n\nThe raw output contains one row per data element, per org unit, per period, per category combination. The category column is a comma-separated string combining age group, client type (New/Revisit), and gender."
   },
   {
-    "objectID": "about.html#business-intelligence",
-    "href": "about.html#business-intelligence",
-    "title": "About Me",
-    "section": "Business Intelligence ",
-    "text": "Business Intelligence \n\nPowerBI\n\n\nContact \n\nEmail: d dot mwale at sms dot ed dot ac dot uk\nPhone: +265 993 627 367\nLinkedIn"
+    "objectID": "Data_extraction.html#step-5-clean-and-reshape",
+    "href": "Data_extraction.html#step-5-clean-and-reshape",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Step 5: Clean and Reshape",
+    "text": "Step 5: Clean and Reshape\n\n5.1 Parse the Category Column\nThe category field after extraction arrives as a single string (e.g., “15-19, RVT, Female”). I split this into three separate columns using separate() and then standardize the values with case_when().\n\nfpam_clean &lt;- fpam_dhis2 |&gt; \n  select(year, sdp, ta_town, district, region, national,\n         element, category, period, month, value) |&gt; \n  separate(category,\n    into  = c(\"age_raw\", \"client_raw\", \"gender_raw\"),\n    sep   = \", \",\n    fill  = \"right\",\n    extra = \"drop\") |&gt; \n  mutate(age_category = age_raw,\n    client_category = case_when(client_raw %in% c(\"RVT\", \"NU\") ~ client_raw,\n      TRUE ~ NA_character_),\n    gender = case_when(client_raw %in% c(\"Male\", \"Female\") ~ client_raw,\n      gender_raw %in% c(\"Male\", \"Female\") ~ gender_raw,\n      TRUE ~ NA_character_)) |&gt; \n  mutate(client_category = case_when(\n      client_category == \"NU\"  ~ \"New\",\n      client_category == \"RVT\" ~ \"Revisit\",\n      .default = NA))\n\n\n\n5.2 Classify Contraceptive Methods\nEach data element name contains the method type. I use str_detect() to group these into broad method categories.\n\nfpam_clean &lt;- fpam_clean |&gt; \n  mutate(methods_group = case_when(\n      str_detect(element, \"Implant\") ~ \"Implants\",\n      str_detect(element, \"Injectable\") ~ \"Injectables\",\n      str_detect(element, \"Oral Contraceptives\") ~ \"Pills\",\n      str_detect(element, \"Pills\") ~ \"Pills\",\n      str_detect(element, \"condom\") ~ \"Condoms\",\n      str_detect(element, \"IUCD\") ~ \"IUD\",\n      str_detect(element, \"MVSC\")  ~ \"Surgical Contraception\",\n      str_detect(element, \"FVSC\")  ~ \"Surgical Contraception\"))\n\n\n\n5.3 Create Service Indicators\nI classify each data element into a high-level service indicator (Family Planning, Abortion, HIV, STI, etc.) for reporting.\n\nFP &lt;- c(\n  \"SRV - FP - Injectable - Consultation ( 3 month)-DEPO\",\n  \"SRV - FP - Implant - Consultation (3 years)\",\n  \"SRV - FP - Injectable - Consultation -3 month ( Sayana press)\",\n  \"SRV - FP - Male condom - Consultation\",\n  \"SRV - FP - Implant - Consultation (4 years)\",\n  \"SRV - FP - Implant - Consultation - Removal - 5 Yrs\",\n  \"SRV - FP - Implant - Consultation (5 years)\",\n  \"SRV - FP - Oral Contraceptives - Consultation-COC\",\n  \"SRV - FP - Implant - Consultation - Removal -3 Yrs\",\n  \"SRV - FP - Implant - Consultation - Removal - 4 Yrs\",\n  \"SRV - FP - Injectable - Consultation ( 2 month)\",\n  \"SRV - FP - IUCD - Consultation (10 years)\",\n  \"SRV - FP - EC - Consultation - Pills\",\n  \"SRV - FP - Oral Contraceptives - Consultation-POP\",\n  \"SRV - FP - IUCD - Consultation - Removal - 10 Yrs\",\n  \"SRV - FP - IUCD - Consultation (5 years)\",\n  \"SRV - FP - EC - Consultation - IUCD\",\n  \"SRV - FP - FVSC - Consultation\",\n  \"SRV - FP - Female condom - Consultation\",\n  \"SRV - FP - IUCD - Consultation - Removal - 5 Yrs\",\n  \"SRV - FP - Injectable - Consultation (1 month)\",\n  \"SRV - FP - MVSC - Consultation\")\n\nfpam_clean &lt;- fpam_clean |&gt; \n  mutate(indicator = case_when(element %in% FP ~ \"Family Planning\",\n      str_detect(element, \"Abortion\")  ~ \"Abortion\",\n      str_detect(element, \"Subfertility\") ~ \"Infertility\",\n      str_detect(element, \"HIV and AIDS\") ~ \"HIV\",\n      str_detect(element, \"STI/RTI\") ~ \"STI\",\n      str_detect(element, \"Gynaecology\") ~ \"Cervical Cancer Screening\",\n      str_detect(element, \"Other\")  ~ \"GBV Screening\",\n      str_detect(element, \"Obstetrics\") ~ \"Pregnancy Test\"))\n\n\n\n5.4 Classify Service Delivery Points\nSDPs are grouped by type: static clinics, associated facilities (public health facilities supported by FPAM), outreach teams, and community-based reproductive health providers (CRHP).\n\nstatic_clinics &lt;- c(\"Kasungu FPAM Static\", \"Dowa Static\", \"Ntcheu Static\",  \"Mangochi Static\", \"Kawale Static\", \"Mzuzu Static\", \"Dedza Static\")\n\nassociated &lt;- c(\"Nandumbo Static\", \"Mwima Static\", \"Namanolo Static\",  \"Kalembo Static\", \"Neno District Hospital\", \"Ntcheu District Hospital\")\n\noutreach &lt;- c(\"Salima Outreach\", \"Kawale Outreach Team B\", \"Chitipa Outreach Team A\", \"Ntcheu Outreach Team A\", \"Mzuzu Outreach Team B\", \"Ntcheu Outreach Team B\",\"Dedza Outreach Team C\", \"Dedza Outreach Team A\", \"Dedza Outreach Team B\",\"Kasungu Outreach Team D\", \"Mchinji Outreach Team A\", \"Mangochi Outreach Team A\",\n\"Kasungu Outreach Team C\", \"Kasungu Outreach Team B\", \"Kasungu Outreach\",  \"Mchinji Outreach Team B\", \"Mangochi Outreach Team B\", \"Kawale Outreach Team C\",  \"Kawale Outreach Team E\", \"Dowa Outreach\", \"Balaka Outreach\",  \"Karonga Outreach Team A\", \"Dowa Outreach Team C\", \"Dowa Outreach Team B\",  \"Salima Outreach Team C\", \"Mzuzu Outreach\", \"Salima Outreach Team B\", \"Kawale Outreach Team A\", \"Kawale Outreach Team D\", \"Karonga Outreach Team B\")\n\nCRHP &lt;- c(\"Ntcheu CBD - CRHP 2\", \"Ntcheu CBD - CRHP 3\", \"Ntcheu CBD - CRHP 1\",\"Salima CBDA - CRHP\", \"Neno CBD - CRHP\", \"Mchinji CBD-CRHP\",  \"Mangochi CBD - CRHP\", \"Balaka  CBD\", \"Dedza CBD - CRHP\", \"Mzuzu CBD - CRHP\", \"Dowa CBD-CRHP\", \"Salima CBDA - CRHP 2\")\n\nfpam_clean &lt;- fpam_clean |&gt; \n  mutate(sdp_group = case_when(\n      sdp %in% static_clinics ~ \"Static Clinic\",\n      sdp %in% associated  ~ \"Associated Facility\",\n      sdp %in% outreach  ~ \"Outreach\",\n      sdp %in% CRHP  ~ \"CRHP\"))\n\n\n\n5.5 Calculate Couple Years of Protection (CYP)\nCYP is a standard family planning metric defined by IPPF and other SRH organisations. Each contraceptive method has a fixed conversion factor. In this analysis each data element has been mapped to its CYP value.\n\nfpam_cleaner &lt;- fpam_clean |&gt; \n  mutate(CYP = case_when(\n      element == \"Items - FP - BTL-Caesarian Section\" ~ 10,\n      element == \"Items - FP - BTL-Interval\"  ~ 10,\n      element == \"Items - FP - BTL-Postpartum\"  ~ 10,\n      element == \"Items - FP - EC - IUCD\"      ~ 4.6,\n      element == \"Items - FP - EC - Pills\"        ~ 0.05,\n      element == \"Items - FP - Female condom (Registered FP)\"  ~ 0.00833,\n      element == \"Items - FP - Female condom back up\"  ~ 0.00833,\n      element == \"Items - FP - Implant - 3 years-Implanon-Insertion\"   ~ 2.5,\n      element == \"Items - FP - Implant - 4 years- Levoplant-Insertion\" ~ 2.5,\n      element == \"Items - FP - Implant - 5 years-Jadelle Insertion\"    ~ 3.8,\n      element == \"Items - FP - Injectable - 1 month\"  ~ 0.25,\n      element == \"Items - FP - Injectable - 2 month\"  ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month Sayana press\" ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month-DEPO-IM\"   ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month-DEPO-SC P\"  ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month-DEPO-SC SI\"~ 0.25,\n      element == \"Items - FP - IUCD Insertion-  (5 years)\"   ~ 4.6,\n      element == \"Items - FP - IUCD Insertion- (10 years)\"    ~ 4.6,\n      element == \"Items - FP - Male condom (Registered FP)\"~ 0.00833,\n      element == \"Items - FP - Male condom back up\" ~ 0.00833,\n      element == \"Items - FP - Oral Contraceptives (COC)\" ~ 0.0667,\n      element == \"Items - FP - Oral Contraceptives (POP)\"    ~ 0.0833,\n      element == \"Items - FP - Vasectomy\"   ~ 10))"
+  },
+  {
+    "objectID": "Data_extraction.html#step-6-final-dataset",
+    "href": "Data_extraction.html#step-6-final-dataset",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Step 6: Final Dataset",
+    "text": "Step 6: Final Dataset\nSubsetting columns analysis.\n\nfpam_cleaner &lt;- fpam_cleaner |&gt;\n  select(region, district, ta_town, sdp, sdp_group,\n         methods_group, element, indicator,  gender, \n         client_category, age_category,\n         year, month, period, CYP, value) |&gt; \n  mutate(across(c(district, age_category, methods_group,\n        indicator, gender, client_category),as.factor))\n\n\nwrite_csv(fpam_cleaner, here(\"fpam_data.csv\"))"
+  },
+  {
+    "objectID": "Data_extraction.html#summary",
+    "href": "Data_extraction.html#summary",
+    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "section": "Summary",
+    "text": "Summary\nThe complete pipeline moves from raw DHIS2 API output to an analysis-ready dataset in six steps:\n\nConnect to the DHIS2 API using secure credentials\nExplore metadata to identify relevant org units, data elements, and category combinations\nExtract disaggregated analytics data for 59 SDPs and 61 data elements from January 2023 up to date.\nParsing of the the category column into age group, client type, and gender\nClassifying each record by contraceptive method group, service indicator, and SDP type\nCalculating and assigning CYP conversion factors for each commodity line\n\nThe output CSV feeds directely into downstream dashboards (Shiny, Power BI) and routine programme reports. This approach replaces manual DHIS2 exports, reduces errors, and makes the extraction fully reproducible."
   },
   {
     "objectID": "cleaning.html",
@@ -231,18 +245,67 @@
     "text": "VISUALISATION\n\ndf_imputed |&gt; \n  ggplot(aes(x = sepal_length,y = petal_width))+\n  geom_point(aes(colour = species_clean, size = petal_length), alpha = 0.5) +\n  scale_color_manual(values = c(\"#00AFBB\", \"#e7b800\",\"#FC4E07\"))+\n  scale_size(range = c(0.5, 12)) +\n  theme_bw()+\n  labs(title = \"Plot showing Petal width against Petal length\")\n\n\n\n\n\n\n\n\nThe scatter plot shows clear clustering by species, with Setoisa separating distinctly from both Versicolor and Virginica. This confirms that the imputed dataset retains the original grouping or classification structure."
   },
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a data scientist with over 10 years of experience working with data in health (SRH), HIV, agriculture, livelihoods, and nutrition. Currently finishing my MSc in Data Science for Health and Social Care at the University of Edinburgh.\nMy work focuses on statistical modelling, machine learning, data visualization, and building reproducible data pipelines. I lead the RUsers Malawi community in Lilongwe."
+  },
+  {
+    "objectID": "about.html#education-experience",
+    "href": "about.html#education-experience",
+    "title": "About Me",
+    "section": "Education & Experience",
+    "text": "Education & Experience\n\nMSc in Data Science for Health and Social care | University of Edinburgh| 2023- present\nDiploma in Monitoring and Evaluation | The Catholic University of Malawi | 2018-20\nBSc Agricultural Economics | University of Malawi | 2011-15"
+  },
+  {
+    "objectID": "about.html#current-role",
+    "href": "about.html#current-role",
+    "title": "About Me",
+    "section": "Current role",
+    "text": "Current role\nMonitoring, Evaluation and Data Use Specialist at Family Planning Association of Malawi."
+  },
+  {
+    "objectID": "about.html#community",
+    "href": "about.html#community",
+    "title": "About Me",
+    "section": "Community",
+    "text": "Community\n\nRUsers Malawi Lead organiser | Lilongwe, Malawi | 2024- present"
+  },
+  {
+    "objectID": "about.html#business-intelligence",
+    "href": "about.html#business-intelligence",
+    "title": "About Me",
+    "section": "Business Intelligence ",
+    "text": "Business Intelligence \n\nPowerBI\n\n\nContact \n\nEmail: d dot mwale at sms dot ed dot ac dot uk\nPhone: +265 993 627 367\nLinkedIn"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Reach out for collaborations, R workshops, or data science opportunities:\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265993627367\nGitHub: mwaledaveed99\n\nI am willing to take full-time, part-time, and remote data science related roles."
+  },
+  {
+    "objectID": "contact.html#lets-get-in-touch",
+    "href": "contact.html#lets-get-in-touch",
+    "title": "Contact",
+    "section": "",
+    "text": "Reach out for collaborations, R workshops, or data science opportunities:\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265993627367\nGitHub: mwaledaveed99\n\nI am willing to take full-time, part-time, and remote data science related roles."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "David Mwale",
     "section": "",
-    "text": "I build data science products that improve health outcomes. With over 10 years of experience working with health, agriculture, and nutrition data across Malawi, I apply statistical modelling, machine learning, and reproducible research to solve real problems.\nCurrently finishing my MSc at the University of Edinburgh in Data Science for Health and Social Care. Open to data science roles."
+    "text": "I build data science products that improve health outcomes. With over 10 years of experience working with health, agriculture, and nutrition data across Malawi, I apply statistical modelling, machine learning, and reproducible research to solve real problems.\nCurrently finalising my MSc at the University of Edinburgh in Data Science for Health and Social Care. Open to Data Science roles."
   },
   {
     "objectID": "index.html#featured-projects",
     "href": "index.html#featured-projects",
     "title": "David Mwale",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\nData Cleaning and Imputation\nDemonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 “messed” species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finaly, I Validated that imputed distributions almost matched the original dataset.\n\n\nPredicting Diabetes with Machine Learning\nBuilt logistic regression and Random Forest classifiers on NHANES data using tidymodels. Random Forest improved sensitivity from 4% to 34% for positive diabetes cases. Model evaluation showed a ROC-AUC of 0.89, indicating better performance interms of distinguishing non diabetic, and diabetic participants.\n\n\nRisk Factors for Arthritis: Statistical Modelling\nInvestigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios, and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57).\n\n\nInteractive Shiny Dashboard\nA live, interactive R Shiny application deployed on shinyapps.io. to enable realtime tracking and fastracking project decisions."
+    "text": "Featured Projects\n\nData Cleaning and Imputation\nDemonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 “messed” species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finally, I Validated that imputed distributions almost matched the original dataset.\n\n\nPredicting Diabetes with Machine Learning\nBuilt logistic regression and Random Forest classifiers on NHANES data using tidymodels. Random Forest improved sensitivity from 4% to 34% for positive diabetes cases. Model evaluation showed a ROC-AUC of 0.89, indicating better performance interms of distinguishing non diabetic, and diabetic participants.\n\n\nRisk Factors for Arthritis: Statistical Modelling\nInvestigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios, and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57).\n\n\nInteractive Shiny Dashboard\nA live, interactive R Shiny application deployed on shinyapps.io. to enable realtime tracking and fastracking project decisions.\n\n\nDHIS2 Data Pipeline\nBuilt a reproducible R pipeline to extract, clean, and structure family planning service data from DHIS2 using the khisr package. Parsed composite DHIS2 category column with strings, mapped 61 data elements to respective FP method groups, calculated Couple Years of Protection (CYP), and exported analysis-ready data for 59 service delivery points across Malawi."
   },
   {
     "objectID": "index.html#technical-skills",
