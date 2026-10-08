@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script data-goatcounter="https://mwaledaveed.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -141,6 +142,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
+    <a class="dropdown-item" href="./dissertation.html">
+ <span class="dropdown-text">MSc Dissertation (NHS Digital Health)</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./cleaning.html">
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
@@ -164,11 +169,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dashboards">    
         <li>
+    <a class="dropdown-item" href="./powerbi_dashboard.html">
+ <span class="dropdown-text">Power BI - SACCO Performance</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ztv548-david-mwale.shinyapps.io/shiny_app/">
  <span class="dropdown-text">Shiny Dashboard</span></a>
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -350,11 +363,11 @@ $ gender         &lt;fct&gt; male, male, male, female, female, female, female, m
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
-  .metric     .estimator .estimate .config             
-  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-1 accuracy    binary        0.909  Preprocessor1_Model1
-2 roc_auc     binary        0.790  Preprocessor1_Model1
-3 brier_class binary        0.0743 Preprocessor1_Model1</code></pre>
+  .metric     .estimator .estimate .config        
+  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;          
+1 accuracy    binary        0.909  pre0_mod0_post0
+2 roc_auc     binary        0.790  pre0_mod0_post0
+3 brier_class binary        0.0743 pre0_mod0_post0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lr_resultss<span class="ot">&lt;-</span>lr_worflow_fit <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_predictions</span>()</span>
@@ -362,18 +375,18 @@ $ gender         &lt;fct&gt; male, male, male, female, female, female, female, m
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>lr_resultss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,358 × 7
-   .pred_class .pred_Yes .pred_No id                .row diabetes .config       
-   &lt;fct&gt;           &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;int&gt; &lt;fct&gt;    &lt;chr&gt;         
- 1 No             0.0774    0.923 train/test split     4 No       Preprocessor1…
- 2 No             0.0941    0.906 train/test split    10 No       Preprocessor1…
- 3 No             0.103     0.897 train/test split    11 No       Preprocessor1…
- 4 No             0.101     0.899 train/test split    12 No       Preprocessor1…
- 5 No             0.112     0.888 train/test split    14 No       Preprocessor1…
- 6 No             0.0235    0.976 train/test split    15 No       Preprocessor1…
- 7 No             0.207     0.793 train/test split    19 No       Preprocessor1…
- 8 No             0.131     0.869 train/test split    22 Yes      Preprocessor1…
- 9 No             0.122     0.878 train/test split    24 Yes      Preprocessor1…
-10 No             0.0877    0.912 train/test split    28 No       Preprocessor1…
+   .pred_class .pred_Yes .pred_No id               diabetes  .row .config       
+   &lt;fct&gt;           &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;fct&gt;    &lt;int&gt; &lt;chr&gt;         
+ 1 No             0.0774    0.923 train/test split No           4 pre0_mod0_pos…
+ 2 No             0.0941    0.906 train/test split No          10 pre0_mod0_pos…
+ 3 No             0.103     0.897 train/test split No          11 pre0_mod0_pos…
+ 4 No             0.101     0.899 train/test split No          12 pre0_mod0_pos…
+ 5 No             0.112     0.888 train/test split No          14 pre0_mod0_pos…
+ 6 No             0.0235    0.976 train/test split No          15 pre0_mod0_pos…
+ 7 No             0.207     0.793 train/test split No          19 pre0_mod0_pos…
+ 8 No             0.131     0.869 train/test split Yes         22 pre0_mod0_pos…
+ 9 No             0.122     0.878 train/test split Yes         24 pre0_mod0_pos…
+10 No             0.0877    0.912 train/test split No          28 pre0_mod0_pos…
 # ℹ 1,348 more rows</code></pre>
 </div>
 </div>
@@ -513,11 +526,11 @@ Prediction  Yes   No
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
-  .metric     .estimator .estimate .config             
-  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-1 accuracy    binary        0.935  Preprocessor1_Model1
-2 roc_auc     binary        0.896  Preprocessor1_Model1
-3 brier_class binary        0.0551 Preprocessor1_Model1</code></pre>
+  .metric     .estimator .estimate .config        
+  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;          
+1 accuracy    binary        0.935  pre0_mod0_post0
+2 roc_auc     binary        0.896  pre0_mod0_post0
+3 brier_class binary        0.0551 pre0_mod0_post0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>rf_results<span class="ot">&lt;-</span>rf_wrkflw_fit <span class="sc">|&gt;</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_predictions</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1066,7 +1079,7 @@ Prediction  Yes   No
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 David Mwale</p>
+<p>© 2026 David Mwale</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

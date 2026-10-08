@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script data-goatcounter="https://mwaledaveed.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -141,6 +142,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
+    <a class="dropdown-item" href="./dissertation.html">
+ <span class="dropdown-text">MSc Dissertation (NHS Digital Health)</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./cleaning.html">
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
@@ -164,11 +169,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dashboards">    
         <li>
+    <a class="dropdown-item" href="./powerbi_dashboard.html">
+ <span class="dropdown-text">Power BI - SACCO Performance</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ztv548-david-mwale.shinyapps.io/shiny_app/">
  <span class="dropdown-text">Shiny Dashboard</span></a>
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -237,35 +250,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.0     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ dplyr     1.2.0     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.2     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
 ✔ purrr     1.2.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(messy) <span class="co"># for creating messy data</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar) <span class="co"># for assessing missing values</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Data cleaning</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(messy) <span class="co"># for creating messy data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar) <span class="co"># for assessing missing values</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># Data cleaning</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'janitor'
@@ -274,7 +272,7 @@ The following objects are masked from 'package:stats':
 
     chisq.test, fisher.test</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co"># generatiung tables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co"># generatiung tables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="the-iris-dataset" class="level1">
@@ -295,28 +293,28 @@ The following objects are masked from 'package:stats':
 <section id="creating-a-messy-dataset" class="level1">
 <h1>Creating a messy dataset</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>messy_iris<span class="ot">&lt;-</span><span class="fu">messy</span>(iris)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>messy_iris<span class="ot">&lt;-</span><span class="fu">messy</span>(iris)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="yfcafjewkf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yfcafjewkf table {
+<div id="aihaptrcxy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aihaptrcxy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yfcafjewkf thead, #yfcafjewkf tbody, #yfcafjewkf tfoot, #yfcafjewkf tr, #yfcafjewkf td, #yfcafjewkf th {
+#aihaptrcxy thead, #aihaptrcxy tbody, #aihaptrcxy tfoot, #aihaptrcxy tr, #aihaptrcxy td, #aihaptrcxy th {
   border-style: none;
 }
 
-#yfcafjewkf p {
+#aihaptrcxy p {
   margin: 0;
   padding: 0;
 }
 
-#yfcafjewkf .gt_table {
+#aihaptrcxy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -342,12 +340,12 @@ The following objects are masked from 'package:stats':
   border-left-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_caption {
+#aihaptrcxy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yfcafjewkf .gt_title {
+#aihaptrcxy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -359,7 +357,7 @@ The following objects are masked from 'package:stats':
   border-bottom-width: 0;
 }
 
-#yfcafjewkf .gt_subtitle {
+#aihaptrcxy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -371,7 +369,7 @@ The following objects are masked from 'package:stats':
   border-top-width: 0;
 }
 
-#yfcafjewkf .gt_heading {
+#aihaptrcxy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -383,13 +381,13 @@ The following objects are masked from 'package:stats':
   border-right-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_bottom_border {
+#aihaptrcxy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_col_headings {
+#aihaptrcxy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -404,7 +402,7 @@ The following objects are masked from 'package:stats':
   border-right-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_col_heading {
+#aihaptrcxy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -424,7 +422,7 @@ The following objects are masked from 'package:stats':
   overflow-x: hidden;
 }
 
-#yfcafjewkf .gt_column_spanner_outer {
+#aihaptrcxy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -436,15 +434,15 @@ The following objects are masked from 'package:stats':
   padding-right: 4px;
 }
 
-#yfcafjewkf .gt_column_spanner_outer:first-child {
+#aihaptrcxy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yfcafjewkf .gt_column_spanner_outer:last-child {
+#aihaptrcxy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yfcafjewkf .gt_column_spanner {
+#aihaptrcxy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -456,11 +454,11 @@ The following objects are masked from 'package:stats':
   width: 100%;
 }
 
-#yfcafjewkf .gt_spanner_row {
+#aihaptrcxy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yfcafjewkf .gt_group_heading {
+#aihaptrcxy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -486,7 +484,7 @@ The following objects are masked from 'package:stats':
   text-align: left;
 }
 
-#yfcafjewkf .gt_empty_group_heading {
+#aihaptrcxy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -501,15 +499,15 @@ The following objects are masked from 'package:stats':
   vertical-align: middle;
 }
 
-#yfcafjewkf .gt_from_md > :first-child {
+#aihaptrcxy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yfcafjewkf .gt_from_md > :last-child {
+#aihaptrcxy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yfcafjewkf .gt_row {
+#aihaptrcxy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -528,7 +526,7 @@ The following objects are masked from 'package:stats':
   overflow-x: hidden;
 }
 
-#yfcafjewkf .gt_stub {
+#aihaptrcxy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -541,7 +539,7 @@ The following objects are masked from 'package:stats':
   padding-right: 5px;
 }
 
-#yfcafjewkf .gt_stub_row_group {
+#aihaptrcxy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,15 +553,15 @@ The following objects are masked from 'package:stats':
   vertical-align: top;
 }
 
-#yfcafjewkf .gt_row_group_first td {
+#aihaptrcxy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yfcafjewkf .gt_row_group_first th {
+#aihaptrcxy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yfcafjewkf .gt_summary_row {
+#aihaptrcxy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -573,16 +571,16 @@ The following objects are masked from 'package:stats':
   padding-right: 5px;
 }
 
-#yfcafjewkf .gt_first_summary_row {
+#aihaptrcxy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_first_summary_row.thick {
+#aihaptrcxy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yfcafjewkf .gt_last_summary_row {
+#aihaptrcxy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -592,7 +590,7 @@ The following objects are masked from 'package:stats':
   border-bottom-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_grand_summary_row {
+#aihaptrcxy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -602,7 +600,7 @@ The following objects are masked from 'package:stats':
   padding-right: 5px;
 }
 
-#yfcafjewkf .gt_first_grand_summary_row {
+#aihaptrcxy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -612,7 +610,7 @@ The following objects are masked from 'package:stats':
   border-top-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_last_grand_summary_row_top {
+#aihaptrcxy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -622,11 +620,11 @@ The following objects are masked from 'package:stats':
   border-bottom-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_striped {
+#aihaptrcxy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yfcafjewkf .gt_table_body {
+#aihaptrcxy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -635,7 +633,7 @@ The following objects are masked from 'package:stats':
   border-bottom-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_footnotes {
+#aihaptrcxy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -649,7 +647,7 @@ The following objects are masked from 'package:stats':
   border-right-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_footnote {
+#aihaptrcxy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -658,7 +656,7 @@ The following objects are masked from 'package:stats':
   padding-right: 5px;
 }
 
-#yfcafjewkf .gt_sourcenotes {
+#aihaptrcxy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -672,7 +670,7 @@ The following objects are masked from 'package:stats':
   border-right-color: #D3D3D3;
 }
 
-#yfcafjewkf .gt_sourcenote {
+#aihaptrcxy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -680,72 +678,72 @@ The following objects are masked from 'package:stats':
   padding-right: 5px;
 }
 
-#yfcafjewkf .gt_left {
+#aihaptrcxy .gt_left {
   text-align: left;
 }
 
-#yfcafjewkf .gt_center {
+#aihaptrcxy .gt_center {
   text-align: center;
 }
 
-#yfcafjewkf .gt_right {
+#aihaptrcxy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yfcafjewkf .gt_font_normal {
+#aihaptrcxy .gt_font_normal {
   font-weight: normal;
 }
 
-#yfcafjewkf .gt_font_bold {
+#aihaptrcxy .gt_font_bold {
   font-weight: bold;
 }
 
-#yfcafjewkf .gt_font_italic {
+#aihaptrcxy .gt_font_italic {
   font-style: italic;
 }
 
-#yfcafjewkf .gt_super {
+#aihaptrcxy .gt_super {
   font-size: 65%;
 }
 
-#yfcafjewkf .gt_footnote_marks {
+#aihaptrcxy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yfcafjewkf .gt_asterisk {
+#aihaptrcxy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yfcafjewkf .gt_indent_1 {
+#aihaptrcxy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yfcafjewkf .gt_indent_2 {
+#aihaptrcxy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yfcafjewkf .gt_indent_3 {
+#aihaptrcxy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yfcafjewkf .gt_indent_4 {
+#aihaptrcxy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yfcafjewkf .gt_indent_5 {
+#aihaptrcxy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yfcafjewkf .katex-display {
+#aihaptrcxy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yfcafjewkf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aihaptrcxy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -762,25 +760,25 @@ The following objects are masked from 'package:stats':
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_right" headers="Sepal.Length">5.1</td>
+<td class="gt_row gt_right" headers="Sepal.Length">NA</td>
 <td class="gt_row gt_right" headers="Sepal.Width">3.5</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.4</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">s!eto(sa</td>
+<td class="gt_row gt_left" headers="Species">seto-sa</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="Sepal.Length">4.9</td>
-<td class="gt_row gt_right" headers="Sepal.Width">NA</td>
+<td class="gt_row gt_right" headers="Sepal.Length">NA</td>
+<td class="gt_row gt_right" headers="Sepal.Width">3</td>
 <td class="gt_row gt_right" headers="Petal.Length">1.4</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">setosa</td>
+<td class="gt_row gt_left" headers="Species">se)tosa</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Sepal.Length">4.7</td>
+<td class="gt_row gt_right" headers="Sepal.Length">NA</td>
 <td class="gt_row gt_right" headers="Sepal.Width">3.2</td>
-<td class="gt_row gt_right" headers="Petal.Length">1.3</td>
-<td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">setos&amp;a</td>
+<td class="gt_row gt_right" headers="Petal.Length">NA</td>
+<td class="gt_row gt_right" headers="Petal.Width">NA</td>
+<td class="gt_row gt_left" headers="Species">set@os!a</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Sepal.Length">4.6</td>
@@ -792,16 +790,16 @@ The following objects are masked from 'package:stats':
 <tr class="odd">
 <td class="gt_row gt_right" headers="Sepal.Length">5</td>
 <td class="gt_row gt_right" headers="Sepal.Width">3.6</td>
-<td class="gt_row gt_right" headers="Petal.Length">NA</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.4</td>
 <td class="gt_row gt_right" headers="Petal.Width">0.2</td>
-<td class="gt_row gt_left" headers="Species">seto)sa</td>
+<td class="gt_row gt_left" headers="Species">setos$a</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right" headers="Sepal.Length">5.4</td>
 <td class="gt_row gt_right" headers="Sepal.Width">3.9</td>
-<td class="gt_row gt_right" headers="Petal.Length">NA</td>
-<td class="gt_row gt_right" headers="Petal.Width">0.4</td>
-<td class="gt_row gt_left" headers="Species">se$tosa</td>
+<td class="gt_row gt_right" headers="Petal.Length">1.7</td>
+<td class="gt_row gt_right" headers="Petal.Width">NA</td>
+<td class="gt_row gt_left" headers="Species">setos*a</td>
 </tr>
 </tbody>
 </table>
@@ -820,130 +818,112 @@ The following objects are masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="undersdaning-the-dataset">Undersdaning the dataset</h2>
 <p>Now, we are going to run diffrent codes, just to understand our dataset.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">|&gt;</span> <span class="co">#Checking the dimensions of the data (The data has 150 rows, and 5 columns)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">|&gt;</span> <span class="co">#Checking the dimensions of the data (The data has 150 rows, and 5 columns)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 150   5</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Taking a quick look at our dataset</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Taking a quick look at our dataset</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
-$ Sepal.Length &lt;chr&gt; "5.1", "4.9", "4.7", "4.6", "5", "5.4", "4.6", "5", "4.4"…
-$ Sepal.Width  &lt;chr&gt; "3.5", NA, "3.2", "3.1", "3.6", "3.9", "3.4", "3.4", "2.9…
-$ Petal.Length &lt;chr&gt; "1.4", "1.4", "1.3", "1.5", NA, NA, "1.4 ", "1.5", "1.4 "…
-$ Petal.Width  &lt;chr&gt; "0.2", "0.2", "0.2", "0.2", "0.2 ", "0.4", "0.3 ", "0.2",…
-$ Species      &lt;chr&gt; "s!eto(sa", "setosa", "setos&amp;a", "setosa", "seto)sa", "se…</code></pre>
+$ Sepal.Length &lt;chr&gt; NA, NA, NA, "4.6", "5", "5.4 ", "4.6", "5", "4.4", "4.9",…
+$ Sepal.Width  &lt;chr&gt; "3.5", "3", "3.2 ", "3.1", "3.6", "3.9", "3.4", "3.4", NA…
+$ Petal.Length &lt;chr&gt; "1.4", "1.4", NA, "1.5", "1.4", "1.7 ", "1.4", "1.5", "1.…
+$ Petal.Width  &lt;chr&gt; "0.2", "0.2", NA, "0.2", "0.2", NA, "0.3", "0.2", "0.2", …
+$ Species      &lt;chr&gt; "seto-sa", "se)tosa", "set@os!a", "setosa", "setos$a", "s…</code></pre>
 </div>
 </div>
 <p>It’s good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Understanding the column names of the dataset</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Understanding the column names of the dataset</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Checking for unique values of Species. </span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>messy_iris <span class="sc">%&gt;%</span> <span class="co"># Checking for unique values of Species. </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          Species
-1        s!eto(sa
-2          setosa
-3         setos&amp;a
-4         seto)sa
-5         se$tosa
-6         setosa 
-7            &lt;NA&gt;
-8         set!osa
-9         setos$a
-10        seto^sa
-11        SE#TOSA
-12        seto_sa
-13        seto+sa
-14        set%osa
-15        SET*OSA
-16        s*etosa
-17        s$etosa
-18        .setosa
-19       se#t%osa
-20       set-os$a
-21         SETOSA
-22       s.eto#sa
-23        set&amp;osa
-24  ^versic_ol-or
-25   VER@SICOLOR 
-26   ver+sic-olor
-27     versicolor
-28   #versicolor 
-29    VER-SICOLOR
-30    versicol.or
-31    versicol@or
-32  #versi*colo^r
-33     VERSICOLOR
-34   *versicol!or
-35  versico&amp;l.or 
-36 versi-co$lo*r 
-37    versicolor 
-38    v%ersicolor
-39   $versic(olor
-40 v*e.r%sicol!or
-41   versicolo@r 
-42    versicol&amp;or
-43  v+e%rsico-lor
-44    versicolo_r
-45    +versicolor
-46    versicolo-r
-47   -versicolor 
-48   +vers*icolor
-49   VE+RSI+COLOR
-50   versico)lo-r
-51    versic-olor
-52    vers@icolor
-53   ver$sicol$or
-54    versic)olor
-55    ver^sicolor
-56   ve%rsicolo_r
-57      virginica
-58     virg!inica
-59    vi@rg%inica
-60   virgi+n@ic%a
-61     virgini%ca
-62     virg$inica
-63     vir-ginica
-64    v+i*rginica
-65     virginic+a
-66     virgin-ica
-67     virgini$ca
-68    *virgini-ca
-69     virg-inica
-70     virgi_nica
-71    %virgi%nica
-72   vir&amp;gini-c*a
-73     virginica 
-74    vi#rginica 
-75     virgini+ca
-76     VIRGI@NICA
-77     virgini_ca
-78    virg!inica 
-79    -virgini)ca
-80     virginic.a
-81    virg-in&amp;ica
-82     vir!ginica
-83     vir+ginica
-84    virg%ini#ca
-85     #virginica
-86   v%i+rgini*ca
-87     +virginica
-88    virgi_nic%a
-89     vi&amp;rginica
-90     %virginica
-91    vir)ginic^a</code></pre>
+<pre><code>           Species
+1          seto-sa
+2          se)tosa
+3         set@os!a
+4           setosa
+5          setos$a
+6          setos*a
+7          se_tosa
+8          s%etosa
+9          se#tosa
+10         setos^a
+11         s.etosa
+12        #setosa 
+13         set_osa
+14            &lt;NA&gt;
+15          SETOSA
+16         set&amp;osa
+17         -setosa
+18         setosa 
+19        se@tos+a
+20         setos@a
+21       _set&amp;osa 
+22         s*etosa
+23     ver$sicolor
+24     &amp;versicolor
+25    VE@RSIC(OLOR
+26     v@ersicolor
+27      versicolor
+28    V@ERSICOLOR 
+29     versic$olor
+30     versicol)or
+31    versic_ol!or
+32     v$ersicolor
+33     (versicolor
+34    !vers#icolor
+35   vers-i)colo#r
+36     vers!icolor
+37 ver(si*c@o+lor 
+38   &amp;VE.RSICO.LOR
+39     versicolo-r
+40     VERSICOLOR 
+41    vers)icolo$r
+42    versic_ol@or
+43     versicolo_r
+44     versic+olor
+45     versicolo)r
+46     v(ersicolor
+47     v!ersicolor
+48     VERSIC@OLOR
+49    ve#rsicolo@r
+50     v#ir.ginica
+51       virginica
+52      virginica 
+53      virg.inica
+54      virginic&amp;a
+55      v@irginica
+56      vi*rginica
+57      virginic.a
+58     virgin-ic_a
+59     v(irginic)a
+60     )vi*rginica
+61      v)irginica
+62    virgi.n%ic)a
+63      virg_inica
+64      virgini_ca
+65     @virginica 
+66     virgini(ca 
+67      virginic)a
+68      virginic#a
+69    *v#i(rginica
+70      virg%inica
+71      virgin_ica
+72      virgi^nica
+73       VIRGINICA</code></pre>
 </div>
 </div>
 
@@ -1359,7 +1339,7 @@ $ Species      &lt;chr&gt; "s!eto(sa", "setosa", "setos&amp;a", "setosa", "seto)
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 David Mwale</p>
+<p>© 2026 David Mwale</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

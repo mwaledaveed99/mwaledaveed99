@@ -47,6 +47,7 @@ password <- Sys.getenv("FPAM_DHIS2_PASSWORD")
 ```
 
 ```{r}
+#| eval: false
 khis_cred(username = username,password = password, server = base_url)
 
 
