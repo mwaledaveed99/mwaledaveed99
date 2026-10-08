@@ -5,7 +5,7 @@ project:
 website:
   title: "David Mwale"
   site-url: https://mwaledaveed99.github.io/mwaledaveed99/
-  description: "Data Science Portfolio | MSc Data Science | University of Edinburgh"
+  description: "Data, MEL & Health Information Systems Portfolio | MSc Data Science for Health and Social Care (Merit), University of Edinburgh"
   navbar:
     left:
       - href: index.qmd
@@ -14,6 +14,8 @@ website:
         text: About
       - text: Projects
         menu:
+          - href: dissertation.qmd
+            text: MSc Dissertation (NHS Digital Health)
           - href: cleaning.qmd
             text: Data Cleaning
           - href: stat_modelling.qmd
@@ -24,8 +26,12 @@ website:
             text: DHIS2 Data Pipeline
       - text: Dashboards
         menu:
+          - href: powerbi_dashboard.qmd
+            text: Power BI - SACCO Performance
           - href: https://ztv548-david-mwale.shinyapps.io/shiny_app/
             text: Shiny Dashboard
+      - href: contact.qmd
+        text: Contact
     right:
       - icon: github
         href: https://github.com/mwaledaveed99
@@ -33,13 +39,17 @@ website:
         href: https://www.linkedin.com/in/david-mwale-b47490103
 
   page-footer:
-    center: "© 2025 David Mwale"
+    center: "© 2026 David Mwale"
 
 format:
   html:
     theme: yeti
     css: styles.css
     toc: true
+    include-in-header:
+      text: |
+        <script data-goatcounter="https://mwaledaveed.goatcounter.com/count"
+                async src="//gc.zgo.at/count.js"></script>
 
 execute:
   freeze: auto

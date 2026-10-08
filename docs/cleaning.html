@@ -141,6 +141,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
+    <a class="dropdown-item" href="./dissertation.html">
+ <span class="dropdown-text">MSc Dissertation (NHS Digital Health)</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./cleaning.html">
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
@@ -164,11 +168,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dashboards">    
         <li>
+    <a class="dropdown-item" href="./powerbi_dashboard.html">
+ <span class="dropdown-text">Power BI - SACCO Performance</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ztv548-david-mwale.shinyapps.io/shiny_app/">
  <span class="dropdown-text">Shiny Dashboard</span></a>
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -1560,23 +1572,23 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
 <span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">miss_var_summary</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="pjkgifdvjr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pjkgifdvjr table {
+<div id="ktasoeewwy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ktasoeewwy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pjkgifdvjr thead, #pjkgifdvjr tbody, #pjkgifdvjr tfoot, #pjkgifdvjr tr, #pjkgifdvjr td, #pjkgifdvjr th {
+#ktasoeewwy thead, #ktasoeewwy tbody, #ktasoeewwy tfoot, #ktasoeewwy tr, #ktasoeewwy td, #ktasoeewwy th {
   border-style: none;
 }
 
-#pjkgifdvjr p {
+#ktasoeewwy p {
   margin: 0;
   padding: 0;
 }
 
-#pjkgifdvjr .gt_table {
+#ktasoeewwy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1602,12 +1614,12 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-left-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_caption {
+#ktasoeewwy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pjkgifdvjr .gt_title {
+#ktasoeewwy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1619,7 +1631,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-bottom-width: 0;
 }
 
-#pjkgifdvjr .gt_subtitle {
+#ktasoeewwy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1631,7 +1643,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-top-width: 0;
 }
 
-#pjkgifdvjr .gt_heading {
+#ktasoeewwy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1643,13 +1655,13 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_bottom_border {
+#ktasoeewwy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_col_headings {
+#ktasoeewwy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1664,7 +1676,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_col_heading {
+#ktasoeewwy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1684,7 +1696,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   overflow-x: hidden;
 }
 
-#pjkgifdvjr .gt_column_spanner_outer {
+#ktasoeewwy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1696,15 +1708,15 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   padding-right: 4px;
 }
 
-#pjkgifdvjr .gt_column_spanner_outer:first-child {
+#ktasoeewwy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pjkgifdvjr .gt_column_spanner_outer:last-child {
+#ktasoeewwy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pjkgifdvjr .gt_column_spanner {
+#ktasoeewwy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1716,11 +1728,11 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   width: 100%;
 }
 
-#pjkgifdvjr .gt_spanner_row {
+#ktasoeewwy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pjkgifdvjr .gt_group_heading {
+#ktasoeewwy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1746,7 +1758,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   text-align: left;
 }
 
-#pjkgifdvjr .gt_empty_group_heading {
+#ktasoeewwy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1761,15 +1773,15 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   vertical-align: middle;
 }
 
-#pjkgifdvjr .gt_from_md > :first-child {
+#ktasoeewwy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pjkgifdvjr .gt_from_md > :last-child {
+#ktasoeewwy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pjkgifdvjr .gt_row {
+#ktasoeewwy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1788,7 +1800,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   overflow-x: hidden;
 }
 
-#pjkgifdvjr .gt_stub {
+#ktasoeewwy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1801,7 +1813,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   padding-right: 5px;
 }
 
-#pjkgifdvjr .gt_stub_row_group {
+#ktasoeewwy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1815,15 +1827,15 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   vertical-align: top;
 }
 
-#pjkgifdvjr .gt_row_group_first td {
+#ktasoeewwy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pjkgifdvjr .gt_row_group_first th {
+#ktasoeewwy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pjkgifdvjr .gt_summary_row {
+#ktasoeewwy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1833,16 +1845,16 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   padding-right: 5px;
 }
 
-#pjkgifdvjr .gt_first_summary_row {
+#ktasoeewwy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_first_summary_row.thick {
+#ktasoeewwy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pjkgifdvjr .gt_last_summary_row {
+#ktasoeewwy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1852,7 +1864,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_grand_summary_row {
+#ktasoeewwy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1862,7 +1874,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   padding-right: 5px;
 }
 
-#pjkgifdvjr .gt_first_grand_summary_row {
+#ktasoeewwy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1872,7 +1884,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-top-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_last_grand_summary_row_top {
+#ktasoeewwy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1882,11 +1894,11 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_striped {
+#ktasoeewwy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pjkgifdvjr .gt_table_body {
+#ktasoeewwy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1895,7 +1907,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-bottom-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_footnotes {
+#ktasoeewwy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1909,7 +1921,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_footnote {
+#ktasoeewwy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1918,7 +1930,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   padding-right: 5px;
 }
 
-#pjkgifdvjr .gt_sourcenotes {
+#ktasoeewwy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1932,7 +1944,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   border-right-color: #D3D3D3;
 }
 
-#pjkgifdvjr .gt_sourcenote {
+#ktasoeewwy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1940,72 +1952,72 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
   padding-right: 5px;
 }
 
-#pjkgifdvjr .gt_left {
+#ktasoeewwy .gt_left {
   text-align: left;
 }
 
-#pjkgifdvjr .gt_center {
+#ktasoeewwy .gt_center {
   text-align: center;
 }
 
-#pjkgifdvjr .gt_right {
+#ktasoeewwy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pjkgifdvjr .gt_font_normal {
+#ktasoeewwy .gt_font_normal {
   font-weight: normal;
 }
 
-#pjkgifdvjr .gt_font_bold {
+#ktasoeewwy .gt_font_bold {
   font-weight: bold;
 }
 
-#pjkgifdvjr .gt_font_italic {
+#ktasoeewwy .gt_font_italic {
   font-style: italic;
 }
 
-#pjkgifdvjr .gt_super {
+#ktasoeewwy .gt_super {
   font-size: 65%;
 }
 
-#pjkgifdvjr .gt_footnote_marks {
+#ktasoeewwy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pjkgifdvjr .gt_asterisk {
+#ktasoeewwy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pjkgifdvjr .gt_indent_1 {
+#ktasoeewwy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pjkgifdvjr .gt_indent_2 {
+#ktasoeewwy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pjkgifdvjr .gt_indent_3 {
+#ktasoeewwy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pjkgifdvjr .gt_indent_4 {
+#ktasoeewwy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pjkgifdvjr .gt_indent_5 {
+#ktasoeewwy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pjkgifdvjr .katex-display {
+#ktasoeewwy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pjkgifdvjr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ktasoeewwy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2055,7 +2067,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>iris_imputed<span class="sc">$</span>OOBerror</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     NRMSE        PFC 
-0.13960904 0.01587302 </code></pre>
+0.13968505 0.01587302 </code></pre>
 </div>
 </div>
 <p>Out of the bag error rates for both the categorical and numerical predictions indicating reliable imputation.</p>
@@ -2536,7 +2548,7 @@ $ species_clean &lt;fct&gt; setosa, NA, setosa, NA, setosa, NA, setosa, setosa, 
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 David Mwale</p>
+<p>© 2026 David Mwale</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

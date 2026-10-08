@@ -1,43 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/stat_modelling.html</loc>
-    <lastmod>2026-03-26T19:07:44.467Z</lastmod>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/index.html</loc>
+    <lastmod>2026-10-08T14:56:31.881Z</lastmod>
   </url>
   <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/projects.html</loc>
-    <lastmod>2025-05-04T05:00:01.426Z</lastmod>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/about.html</loc>
+    <lastmod>2026-10-08T08:59:19.457Z</lastmod>
   </url>
   <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/iris_back_up.html</loc>
-    <lastmod>2025-09-06T09:58:07.099Z</lastmod>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/contact.html</loc>
+    <lastmod>2026-10-08T14:56:31.881Z</lastmod>
   </url>
   <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/Data_extraction.html</loc>
-    <lastmod>2026-03-26T19:33:03.544Z</lastmod>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/dissertation.html</loc>
+    <lastmod>2026-10-08T08:44:09.749Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mwaledaveed99.github.io/mwaledaveed99/powerbi_dashboard.html</loc>
+    <lastmod>2026-10-08T14:31:43.414Z</lastmod>
   </url>
   <url>
     <loc>https://mwaledaveed99.github.io/mwaledaveed99/cleaning.html</loc>
     <lastmod>2026-03-25T20:22:32.591Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/about.html</loc>
-    <lastmod>2026-03-26T19:37:31.909Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/contact.html</loc>
-    <lastmod>2025-05-04T05:00:01.278Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/index.html</loc>
-    <lastmod>2026-03-26T19:35:30.743Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/nhanes_ml_project.html</loc>
-    <lastmod>2026-03-24T15:48:08.282Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mwaledaveed99.github.io/mwaledaveed99/resume.html</loc>
-    <lastmod>2025-05-04T05:00:01.441Z</lastmod>
   </url>
 </urlset>

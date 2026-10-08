@@ -1,44 +1,48 @@
 ---
 title: "David Mwale"
-subtitle: "Data Scientist | MSc Data Science for Health and Social Care | University of Edinburgh"
+subtitle: "Data Scientist || MEL Specialist · Health Information Systems · BI & Analytics"
 ---
 
-I build data science products that improve health outcomes. With over 10 years of experience working with health, agriculture, and nutrition data across Malawi, I apply statistical modelling, machine learning, and reproducible research to solve real problems.
+I build data systems, data products that health and development programmes use for decision making: from DHIS2 extraction and ETL pipelines to Power BI dashboards, data quality assurance and statistical models. I have nearly ten years of experience with health (SRH, HIV), agriculture and nutrition data across Malawi.
 
-Currently finalising my MSc at the [University of Edinburgh](https://www.ed.ac.uk/) in [Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care). Open to Data Science roles.
+I hold an MSc in [Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care) **with Merit** from the [University of Edinburgh](https://www.ed.ac.uk/). I'm open to Data Science, MEL and health information roles and consultancies.
+
+[About me](about.qmd){.btn .btn-primary} [Request my resume](mailto:mwaledaveed@gmail.com?subject=Resume%20request%20-%20%5BYour%20organisation%5D&body=Hello%20David%2C%0A%0AI%20would%20like%20to%20request%20your%20resume.%0A%0AOrganisation%3A%20%0ARole%20%2F%20opportunity%3A%20%0A%0AThank%20you.){.btn .btn-outline-primary data-goatcounter-click="resume-request"}
+
+## Key Achievements
+
+- **45%** faster data processing after consolidating DHIS2, KoboToolbox and OpenEMR into one ETL pipeline
+- **25%** better indicator reporting consistency and **30%** higher data accuracy from structured data quality exercises
+- **40%** fewer data errors after migrating to digital collection
+- **Over 30** KPIs across **20** service delivery points, and **at least 50** staff trained on data use (dashboards - DHIS2, RShiny) and related tools
 
 ## Featured Projects
 
-### [Data Cleaning and Imputation](cleaning.qmd)
-Demonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 "messed" species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finally, I  Validated that imputed distributions almost matched the original dataset.
+### [MSc Dissertation: Digital Health Engagement in NHS England](dissertation.qmd)
+A service evaluation of 15,571 My Way Diabetes users in three NHS localities. I benchmarked users against the National Diabetes Audit and modelled time to disengagement with a stratified Cox regression. Users disengaged almost immediately (median 0.5 days), and the most deprived and older users were under-represented.
 
-### [Predicting Diabetes with Machine Learning](nhanes_ml_project.qmd)
-Built logistic regression and Random Forest classifiers on NHANES data using tidymodels. Random Forest improved sensitivity from 4% to 34% for positive diabetes cases. Model evaluation showed  a  ROC-AUC of 0.89, indicating better performance interms of distinguishing non diabetic, and diabetic participants.
-
-### [Risk Factors for Arthritis: Statistical Modelling](stat_modelling.qmd)
-Investigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios, and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57).
-
-### [Interactive Shiny Dashboard](https://ztv548-david-mwale.shinyapps.io/shiny_app/)
-A live, interactive R Shiny application deployed on shinyapps.io. to enable realtime tracking and fastracking project decisions.
+### [SACCO Performance Dashboard (Power BI)](powerbi_dashboard.qmd)
+A nine-page Power BI report for a savings and credit co-operative, tracking membership, loan disbursement, exits, complaints and savings against targets across six branches. DAX target and variance measures, gauges and slicers. A view-only, anonymised client work sample.
 
 ### [DHIS2 Data Pipeline](Data_extraction.qmd)
-Built a reproducible R pipeline to extract, clean, and structure family planning service data from DHIS2 using the khisr package. Parsed composite DHIS2 category column with strings, mapped 61 data elements to respective FP method groups, calculated Couple Years of Protection (CYP), and exported analysis-ready data for 59 service delivery points across Malawi.
+Built a reproducible R pipeline to extract, clean and structure family planning service data from DHIS2 using the khisr package. Parsed composite DHIS2 category columns, mapped 61 data elements to their FP method groups, calculated Couple Years of Protection (CYP), and exported analysis-ready data for 59 service delivery points across Malawi.
+
+### [Risk Factors for Arthritis: Statistical Modelling](stat_modelling.qmd)
+Investigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52–1.57).
+
+### [Predicting Diabetes with Machine Learning](nhanes_ml_project.qmd)
+Built logistic regression and random forest classifiers on NHANES data using tidymodels. Random forest improved sensitivity for positive diabetes cases from 4% to 34%, with a ROC-AUC of 0.89, showing better discrimination between diabetic and non-diabetic participants.
+
+### [Data Cleaning and Imputation](cleaning.qmd)
+A full data cleaning pipeline on deliberately messed Iris data (using the messy package). I standardised 68 "messed" species strings, converted data types, assessed missingness with naniar and imputed missing values with random forest (missForest). The imputed distributions closely matched the original data.
+
+### [Interactive Shiny Dashboard](https://ztv548-david-mwale.shinyapps.io/shiny_app/)
+A live, interactive R Shiny application deployed on shinyapps.io for real-time project tracking and faster decisions.
 
 ## Technical Skills
 
-**Languages:** R (tidyverse, tidymodels, ggplot2, Shiny), Python (pandas, matplotlib, seaborn), SQL (SQLite, MySQL, PostgreSQL)
+**Languages:** R (tidyverse, tidymodels, ggplot2, Shiny), Python (pandas, scikit-learn, matplotlib), SQL (SQLite, MySQL, PostgreSQL)
 
-**Tools:** Git/GitHub, Quarto, RMarkdown, Microsoft Azure Databricks, Power BI
+**BI & data platforms:** Power BI (DAX, Power Query, row-level security), DHIS2, KoboToolbox/ODK, OpenEMR, Microsoft Azure Databricks, Git/GitHub, Quarto
 
-**Methods:** Logistic regression, random forests, data wrangling, reproducible research, epidemiological analysis
-
-
-
-
-
-
-
-
-
-
-
+**Methods:** Logistic regression, survival analysis (Cox models), random forest, ETL pipeline design, data quality assessment, indicator design, survey design, reproducible research

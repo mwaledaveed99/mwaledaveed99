@@ -1,0 +1,51 @@
+---
+title: "MSc Dissertation: Digital Health Engagement in NHS England"
+subtitle: "Evaluating user characteristics and engagement patterns of the My Way Diabetes platform"
+toc: true
+---
+
+::: {.callout-note appearance="simple"}
+MSc Data Science for Health and Social Care (with Merit), University of Edinburgh, 2026. A work-based placement project with My Way Digital Health. This page summarises the abstract only; the full dissertation is available on request.
+:::
+
+## Why it matters
+
+Digital health platforms can only improve outcomes if people register **and keep using them**. Earlier studies looked at engagement or time to discontinuation, but few asked whether platform users represent the wider population. No previous study in England had done both at once: benchmarking users against the national diabetes population and estimating how long they stay engaged.
+
+## Aims
+
+1. Assess how representative My Way Diabetes users are of the diabetes population recorded in the **National Diabetes Audit** in each locality.
+2. Estimate the time from registration to disengagement.
+
+## Design and methods
+
+- **Design:** a retrospective cohort service evaluation in three NHS localities: Somerset, North West London and Greater Manchester.
+- **Representativeness:** compared users' age, sex, deprivation and ethnicity with National Diabetes Audit data, expressing differences in percentage points.
+- **Disengagement:** defined as the first prolonged inactivity, i.e. a 90-day gap after the last qualifying activity.
+- **Model:** a Cox proportional hazards regression stratified by locality.
+
+## Key findings
+
+| Measure | Result |
+|---|---|
+| Platform users analysed | 15,571 |
+| Median time from registration to last activity before a 90-day gap | 0.5 days |
+| Users who disengaged during follow-up | 99.3% |
+| Users still continuously active at 12 months | 0.5% |
+| Users who later re-engaged | about 25% |
+| Women vs men (hazard of disengagement) | HR 0.96 (95% CI 0.93–0.99) |
+| Type 2 vs Type 1 diabetes | HR 0.88 (95% CI 0.83–0.93) |
+
+The **most deprived and older users were under-represented**, so the platform may reach least the people who could benefit most.
+
+## Implications
+
+Registration was high and similar across demographic groups; sustained engagement was not. The platform's main challenge is **almost immediate disengagement**, not recruitment. Outreach to under-represented groups still matters, but improving the first-session experience and supporting non-activators and re-engagers deserves equal attention.
+
+## Skills demonstrated
+
+Survival analysis (Cox regression, stratification), population benchmarking against national audit data, working with large linked health-platform data under information governance, and translating results into service recommendations. Data privacy, and governance,  Handling research data in a Trusted Research Environment (DataStore, Data Sync)
+
+## Acknowledgements
+
+Supervised by Dr Chris Oldnall and Dr Sophie Marion de Procé (University of Edinburgh), with support from the My Way Digital Health team.

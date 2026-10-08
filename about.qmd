@@ -1,52 +1,87 @@
 ---
 title: "About Me"
 image: profile.jpg
-about: 
+toc: false
+about:
   template: jolla
   image-shape: round
   image-width: 15em
   links:
       - text: Email
         icon: envelope
-        href: mailto:d.mwale@sms.ed.ac.uk
+        href: mailto:mwaledaveed@gmail.com
+      - text: Request resume
+        icon: file-earmark-person
+        href: "mailto:mwaledaveed@gmail.com?subject=Resume%20request%20-%20%5BYour%20organisation%5D&body=Hello%20David%2C%0A%0AI%20would%20like%20to%20request%20your%20resume.%0A%0AOrganisation%3A%20%0ARole%20%2F%20opportunity%3A%20%0A%0AThank%20you."
       - text: GitHub
         icon: github
         href: https://github.com/mwaledaveed99
       - text: LinkedIn
         icon: linkedin
         href: https://www.linkedin.com/in/david-mwale-b47490103
-      - text: Resume
-        icon: file-text
-        href: resume.pdf
-      - text: Shiny Dashboard
+      - text: Power BI sample
         icon: bar-chart
-        href: https://ztv548-david-mwale.shinyapps.io/shiny_app/
+        href: powerbi_dashboard.html
 ---
 
-I am a data scientist with over 10 years of experience working with data in health (SRH), HIV, agriculture, livelihoods, and nutrition. Currently finishing my MSc in Data Science for Health and Social Care at the University of Edinburgh.
+## Professional Summary
 
-My work focuses on statistical modelling, machine learning, data visualization, and building reproducible data pipelines. I lead the [RUsers Malawi](https://www.meetup.com/r-users-malawi/) community in Lilongwe.
+Data Scientist, Monitoring, Evaluation & Learning (MEL) specialist with over ten years building the data systems that health and development programmes use.
 
-## Education & Experience
-- [MSc in Data Science for Health and Social care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care) | [**University of Edinburgh**](https://www.ed.ac.uk/)| 2023- present
-- Diploma in Monitoring and Evaluation | [The Catholic University of Malawi](https://cunima1.online/) | 2018-20
-- BSc Agricultural Economics | [University of Malawi](https://www.luanar.ac.mw/luanar/) | 2011-15
+At [Family Planning Association of Malawi](https://www.fpamalawi.org/) (an IPPF Member Association) I lead the monitoring, evaluation and data function across **over 20 service delivery points** and a team of **at least 15** people . I own an indicator architecture of **over 20 disaggregated KPIs**, wrote the R and ETL pipelines that consolidates data from DHIS2, KoboToolbox and OpenEMR into one governed reporting dataset (**45% faster processing**), and built the Power BI and R Shiny dashboards that management and field teams use for routine decision making. The data quality assessment cycles I lead raised indicator reporting consistency by **25%** and data accuracy by **30%**, and my analysis supported reporting to US Depaertment of State (formerly USAID), Global Fund, FCDO, UNFPA, KfW, IPPF and Global Affairs Canada.
 
-## Current role
+Before FPAM, at ADRA Malawi, I designed baseline and endline household surveys including study protocols, instrument development, data collection, and analysis. Additionally I moved five districts from paper to digital data collection, reducing delays and  reporting errors by a combined **40%**.
 
-Monitoring, Evaluation and Data Use Specialist at [Family Planning Association of Malawi](https://www.fpamalawi.org/).
+I hold an [MSc in Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care) **with Merit** from the [University of Edinburgh](https://www.ed.ac.uk/). My [dissertation](dissertation.qmd) evaluated the reach and engagement of a digital health diabetes platform used by around 15,500 people in NHS England.
+
+## What I Do
+
+- **MEL systems & evaluation:** logframes, indicator reference sheets, data quality assessments, baseline/endline survey design, donor reporting.
+- **Health information systems:** DHIS2 administration and API extraction, OpenEMR/CMIS, KoboToolbox/ODK, and training staff on data use (over 50 trained).
+- **Data engineering & BI:** ETL pipelines in R, SQL and Python; Power BI semantic models, DAX, Power Query and row-level security; R Shiny.
+- **Statistical modelling & machine learning:** regression, survival analysis (Cox models), random forests, tidymodels, reproducible research with Quarto and versioning with Git.
+
+## Experience
+
+**Monitoring, Evaluation and Data Lead** | Family Planning Association of Malawi | Jan 2021 – present
+
+- Lead MEL and data across 20+ service delivery points; own  over 30 KPI indicator architecture and 10+ SOPs on data validation, governance and security.
+- Built R/ETL pipelines consolidating DHIS2, KoboToolbox and OpenEMR, cutting processing time by 45% and feeding Power BI and Shiny dashboards.
+- Improved reporting consistency by 25% and data accuracy by 30% through structured data quality assessment and verification cycles.
+
+**Data Management Officer** | ADRA Malawi | Oct 2016 – Dec 2020
+
+- Designed and analysed baseline and endline surveys for climate-smart agriculture, nutrition and health programmes.
+- Rolled out ODK/KoboToolbox across five districts, cutting paper-based errors by 40% and data entry lag from 14 days to under 48 hours.
+- Built donor dashboards for WFP (BMZ), EU and USAID portfolios, with 100% on-time reporting across a four-year cycle.
+
+## Education
+
+- [MSc Data Science for Health and Social Care](https://mgphs.ed.ac.uk/msc-data-science-for-health-and-social-care), **with Merit** | [University of Edinburgh](https://www.ed.ac.uk/) | 2023 – 2026 · [Dissertation](dissertation.qmd)
+- Diploma in Monitoring and Evaluation | [The Catholic University of Malawi](https://cunima1.online/) | 2018 – 2020
+- BSc Agricultural Economics | [University of Malawi, Bunda College](https://www.luanar.ac.mw/luanar/) | 2011 – 2015
+
+## Certifications
+
+- Complete Guide to Power BI for Data Analysts (Microsoft Press)
+- Introduction to SQL and Intermediate SQL (DataCamp)
+- ETL and ELT in Python (DataCamp) 
+- ETL in Python and SQL (LinkedIn Learning)
+- Machine Learning with tidymodels 
+- Data Wrangling in R 
+- Data Visualization in R with ggplot2
+- Microsoft Azure Fundamentals 
+- Cloud Computing
+- Leveraging AI in Your Nonprofit Organization (Microsoft and NetHope)
 
 ## Community
 
-- [RUsers Malawi](https://www.meetup.com/r-users-malawi/) Lead organiser | Lilongwe, Malawi | 2024- present
+Founder and lead organiser of [R Users Malawi](https://www.meetup.com/r-users-malawi/), Malawi's first national R programming community (50+ members). I've run 10+ workshops and bootcamps for government, academia and NGOs since 2024.
 
-## Business Intelligence \n
-- [PowerBI](https://www.linkedin.com/posts/david-mwale-b47490103_my-first-dashboard-using-powerbi-for-one-activity-7182793443495067649-9TMX?utm_source=share&utm_medium=member_desktop&rcm=ACoAABo7v2cBHZp0USAOOx_yT4rcfXyu6G6iVAw)
+## Contact
 
-### Contact \n
-
-- Email: **d dot mwale at sms dot ed dot ac dot uk**
+- Email: **mwaledaveed at gmail dot com**
 - Phone: +265 993 627 367
-- [LinkedIn](www.linkedin.com/in/david-mwale-b47490103)
+- [LinkedIn](https://www.linkedin.com/in/david-mwale-b47490103)
 
-
+My resume and references are available on request. Use the **Request resume** button at the bottom.

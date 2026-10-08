@@ -1,185 +1,514 @@
 [
   {
-    "objectID": "stat_modelling.html",
-    "href": "stat_modelling.html",
-    "title": "stat_modelling",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "David Mwale",
     "section": "",
-    "text": "Goal: Investigate and quantify risk factors associated with arthritis using data from the CDC Behavioral Risk Factor Surveillance System (BRFSS) in USA.\nData: 359,925 US adults surveyed in 2013. Selected Variables: arthritis status, sex, age (65+), physical activity, and BMI.\nMethods: Chi-square tests, Wilcoxon rank-sum test, relative risk ratios, and multivariate logistic regression.\nKey Findings:\n\nFemales had 54% higher odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57)\nAdults 65+ had 3.5 times the odds of arthritis (OR = 3.56, 95% CI: 3.51-3.62)\nPhysical inactivity increased odds by 45% (OR = 1.45, 95% CI: 1.43-1.47)\nAll associations are significant at p &lt; 0.001\n\nTools: R, tidyverse, gtsummary, epitools, finalfit, reportROC"
+    "text": "I build data systems, data products that health and development programmes use for decision making: from DHIS2 extraction and ETL pipelines to Power BI dashboards, data quality assurance and statistical models. I have nearly ten years of experience with health (SRH, HIV), agriculture and nutrition data across Malawi.\nI hold an MSc in Data Science for Health and Social Care with Merit from the University of Edinburgh. I’m open to Data Science, MEL and health information roles and consultancies.\nAbout me Request my resume"
   },
   {
-    "objectID": "stat_modelling.html#project-summary",
-    "href": "stat_modelling.html#project-summary",
-    "title": "stat_modelling",
-    "section": "",
-    "text": "Goal: Investigate and quantify risk factors associated with arthritis using data from the CDC Behavioral Risk Factor Surveillance System (BRFSS) in USA.\nData: 359,925 US adults surveyed in 2013. Selected Variables: arthritis status, sex, age (65+), physical activity, and BMI.\nMethods: Chi-square tests, Wilcoxon rank-sum test, relative risk ratios, and multivariate logistic regression.\nKey Findings:\n\nFemales had 54% higher odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57)\nAdults 65+ had 3.5 times the odds of arthritis (OR = 3.56, 95% CI: 3.51-3.62)\nPhysical inactivity increased odds by 45% (OR = 1.45, 95% CI: 1.43-1.47)\nAll associations are significant at p &lt; 0.001\n\nTools: R, tidyverse, gtsummary, epitools, finalfit, reportROC"
+    "objectID": "index.html#impact-at-a-glance",
+    "href": "index.html#impact-at-a-glance",
+    "title": "David Mwale",
+    "section": "Impact at a Glance",
+    "text": "Impact at a Glance\n\n45% faster data processing after consolidating DHIS2, KoboToolbox and OpenEMR into one ETL pipeline\n25% better indicator reporting consistency and 30% higher data accuracy from structured data quality cycles\n40% fewer data errors after moving five districts from paper to digital collection\n30+ KPIs across 20+ service delivery points, and 50+ staff trained on DHIS2 and related tools"
   },
   {
-    "objectID": "stat_modelling.html#exploratory-data-analysis",
-    "href": "stat_modelling.html#exploratory-data-analysis",
-    "title": "stat_modelling",
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
+    "title": "David Mwale",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\nMSc Dissertation: Digital Health Engagement in NHS England\nA service evaluation of 15,571 My Way Diabetes users in three NHS localities. I benchmarked users against the National Diabetes Audit and modelled time to disengagement with a stratified Cox regression. Users disengaged almost immediately (median 0.5 days), and the most deprived and older users were under-represented.\n\n\nSACCO Performance Dashboard (Power BI)\nA nine-page Power BI report for a savings and credit co-operative, tracking membership, loan disbursement, exits, complaints and savings against targets across six branches. DAX target and variance measures, gauges and slicers. A view-only, anonymised client work sample.\n\n\nDHIS2 Data Pipeline\nBuilt a reproducible R pipeline to extract, clean and structure family planning service data from DHIS2 using the khisr package. Parsed composite DHIS2 category columns, mapped 61 data elements to their FP method groups, calculated Couple Years of Protection (CYP), and exported analysis-ready data for 59 service delivery points across Malawi.\n\n\nRisk Factors for Arthritis: Statistical Modelling\nInvestigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52–1.57).\n\n\nPredicting Diabetes with Machine Learning\nBuilt logistic regression and random forest classifiers on NHANES data using tidymodels. Random forest improved sensitivity for positive diabetes cases from 4% to 34%, with a ROC-AUC of 0.89, showing better discrimination between diabetic and non-diabetic participants.\n\n\nData Cleaning and Imputation\nA full data cleaning pipeline on deliberately messed Iris data (using the messy package). I standardised 68 “messed” species strings, converted data types, assessed missingness with naniar and imputed missing values with random forest (missForest). The imputed distributions closely matched the original data.\n\n\nInteractive Shiny Dashboard\nA live, interactive R Shiny application deployed on shinyapps.io for real-time project tracking and faster decisions."
+  },
+  {
+    "objectID": "index.html#technical-skills",
+    "href": "index.html#technical-skills",
+    "title": "David Mwale",
+    "section": "Technical Skills",
+    "text": "Technical Skills\nLanguages: R (tidyverse, tidymodels, ggplot2, Shiny), Python (pandas, scikit-learn, matplotlib), SQL (SQLite, MySQL, PostgreSQL)\nBI & data platforms: Power BI (DAX, Power Query, row-level security), DHIS2, KoboToolbox/ODK, OpenEMR, Microsoft Azure Databricks, Git/GitHub, Quarto\nMethods: Logistic regression, survival analysis (Cox models), random forest, ETL pipeline design, data quality assessment, indicator design, survey design, reproducible research"
+  },
+  {
+    "objectID": "index.html#professional-summary",
+    "href": "index.html#professional-summary",
+    "title": "Iris_dataset",
+    "section": "Professional Summary",
+    "text": "Professional Summary\nData and Monitoring, Evaluation & Learning (MEL) specialist with nearly ten years building the data systems that health and development programmes in Malawi run on.\nAt the Family Planning Association of Malawi (an IPPF Member Association) I lead the monitoring, evaluation and data function across 20+ service delivery points and a team of 15+. I own an indicator architecture of 30+ disaggregated KPIs, wrote the R and ETL pipelines that consolidate DHIS2, KoboToolbox and OpenEMR into one governed reporting dataset (45% faster processing), and built the Power BI and R Shiny dashboards that management and field teams use. The data quality assessment cycles I run raised indicator reporting consistency by 25% and data accuracy by 30%, and my analysis supports reporting to USAID, Global Fund, FCDO, UNFPA, KfW, IPPF and Global Affairs Canada.\nBefore FPAM, at ADRA Malawi, I designed baseline and endline household surveys and moved five districts from paper to digital data collection, cutting errors by 40%.\nI hold an MSc in Data Science for Health and Social Care with Merit from the University of Edinburgh. My dissertation evaluated the reach and engagement of a digital diabetes platform used by 15,571 people in NHS England."
+  },
+  {
+    "objectID": "index.html#what-i-do",
+    "href": "index.html#what-i-do",
+    "title": "Iris_dataset",
+    "section": "What I Do",
+    "text": "What I Do\n\nMEL systems & evaluation: logframes, indicator reference sheets, data quality assessments, baseline/endline survey design, donor reporting.\nHealth information systems: DHIS2 administration and API extraction, OpenEMR/CMIS, KoboToolbox/ODK, and training staff to use them (50+ trained).\nData engineering & BI: ETL pipelines in R, SQL and Python; Power BI semantic models, DAX, Power Query and row-level security; R Shiny.\nStatistical modelling & machine learning: regression, survival analysis (Cox models), random forests, tidymodels, reproducible research with Quarto and Git."
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Iris_dataset",
+    "section": "Experience",
+    "text": "Experience\nMonitoring, Evaluation and Data Lead | Family Planning Association of Malawi | Jan 2021 – present\n\nLead MEL and data across 20+ service delivery points; own a 30+ KPI indicator architecture and 10+ SOPs on data validation, governance and security.\nBuilt R/ETL pipelines consolidating DHIS2, KoboToolbox and OpenEMR, cutting processing time by 45% and feeding Power BI and Shiny dashboards.\nImproved reporting consistency by 25% and data accuracy by 30% through structured data quality assessment and verification cycles.\n\nData Management Officer | ADRA Malawi | Oct 2016 – Dec 2020\n\nDesigned and analysed baseline and endline surveys for climate-smart agriculture, nutrition and health programmes.\nRolled out ODK/KoboToolbox across five districts, cutting paper-based errors by 40% and data entry lag from 14 days to under 48 hours.\nBuilt donor dashboards for WFP (BMZ), EU and USAID portfolios, with 100% on-time reporting across a four-year cycle."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Iris_dataset",
+    "section": "Education",
+    "text": "Education\n\nMSc Data Science for Health and Social Care, with Merit | University of Edinburgh | 2023 – 2026 · Dissertation\nDiploma in Monitoring and Evaluation | The Catholic University of Malawi | 2018 – 2020\nBSc Agricultural Economics | University of Malawi, Bunda College | 2011 – 2015"
+  },
+  {
+    "objectID": "index.html#certifications",
+    "href": "index.html#certifications",
+    "title": "Iris_dataset",
+    "section": "Certifications",
+    "text": "Certifications\n\nComplete Guide to Power BI for Data Analysts (Microsoft Press)\nIntroduction to SQL and Intermediate SQL (DataCamp)\nETL and ELT in Python (DataCamp) · ETL in Python and SQL (LinkedIn Learning)\nMachine Learning with tidymodels · Data Wrangling in R · Data Visualization in R with ggplot2\nMicrosoft Azure Fundamentals · Cloud Computing\nLeveraging AI in Your Nonprofit Organization (Microsoft and NetHope)"
+  },
+  {
+    "objectID": "index.html#community",
+    "href": "index.html#community",
+    "title": "Iris_dataset",
+    "section": "Community",
+    "text": "Community\nFounder and lead organiser of R Users Malawi, Malawi’s first national R programming community (50+ members). I’ve run 10+ workshops and bootcamps for government, academia and NGOs since 2024."
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Iris_dataset",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: mwaledaveed at gmail dot com\nPhone: +265 993 627 367\nLinkedIn\n\nMy resume and references are available on request. Use the Request resume button above."
+  },
+  {
+    "objectID": "index.html#lets-get-in-touch",
+    "href": "index.html#lets-get-in-touch",
+    "title": "Iris_dataset",
+    "section": "Let’s Get in Touch",
+    "text": "Let’s Get in Touch\nReach out about MEL, data and analytics roles, consultancies, R workshops or collaborations:\n\nEmail: mwaledaveed@gmail.com\nPhone: +265 993 627 367\nGitHub: mwaledaveed99\nLinkedIn: David Mwale\n\nI’m open to full-time, part-time, remote and consultancy roles.\nRequest my resume\nMy resume and references are shared on request.\n\n\n\n\n\n\nMSc Data Science for Health and Social Care (with Merit), University of Edinburgh, 2026. A work-based placement project with My Way Digital Health. This page summarises the published abstract only; the full dissertation is available on request."
+  },
+  {
+    "objectID": "index.html#why-it-matters",
+    "href": "index.html#why-it-matters",
+    "title": "Iris_dataset",
+    "section": "Why it matters",
+    "text": "Why it matters\nDigital health platforms can only improve outcomes if people register and keep using them. Earlier studies looked at engagement or time to discontinuation, but few asked whether platform users represent the wider population. No previous study in England had done both at once: benchmarking users against the national diabetes population and estimating how long they stay engaged."
+  },
+  {
+    "objectID": "index.html#aims",
+    "href": "index.html#aims",
+    "title": "Iris_dataset",
+    "section": "Aims",
+    "text": "Aims\n\nAssess how representative My Way Diabetes users are of the diabetes population recorded in the National Diabetes Audit in each locality.\nEstimate the time from registration to disengagement."
+  },
+  {
+    "objectID": "index.html#design-and-methods",
+    "href": "index.html#design-and-methods",
+    "title": "Iris_dataset",
+    "section": "Design and methods",
+    "text": "Design and methods\n\nDesign: a retrospective cohort service evaluation in three NHS localities: Somerset, North West London and Greater Manchester.\nRepresentativeness: compared users’ age, sex, deprivation and ethnicity with National Diabetes Audit data, expressing differences in percentage points.\nDisengagement: defined as the first prolonged inactivity, i.e. a 90-day gap after the last qualifying activity.\nModel: a Cox proportional hazards regression stratified by locality."
+  },
+  {
+    "objectID": "index.html#key-findings",
+    "href": "index.html#key-findings",
+    "title": "Iris_dataset",
+    "section": "Key findings",
+    "text": "Key findings\n\n\n\n\n\n\n\nMeasure\nResult\n\n\n\n\nPlatform users analysed\n15,571\n\n\nMedian time from registration to last activity before a 90-day gap\n0.5 days\n\n\nUsers who disengaged during follow-up\n99.3%\n\n\nUsers still continuously active at 12 months\n0.5%\n\n\nUsers who later re-engaged\nabout 25%\n\n\nWomen vs men (hazard of disengagement)\nHR 0.96 (95% CI 0.93–0.99)\n\n\nType 2 vs Type 1 diabetes\nHR 0.88 (95% CI 0.83–0.93)\n\n\n\nThe most deprived and older users were under-represented, so the platform may reach least the people who could benefit most."
+  },
+  {
+    "objectID": "index.html#implications",
+    "href": "index.html#implications",
+    "title": "Iris_dataset",
+    "section": "Implications",
+    "text": "Implications\nRegistration was high and similar across demographic groups; sustained engagement was not. The platform’s main challenge is almost immediate disengagement, not recruitment. Outreach to under-represented groups still matters, but improving the first-session experience and supporting non-activators and re-engagers deserves equal attention."
+  },
+  {
+    "objectID": "index.html#skills-demonstrated",
+    "href": "index.html#skills-demonstrated",
+    "title": "Iris_dataset",
+    "section": "Skills demonstrated",
+    "text": "Skills demonstrated\nSurvival analysis (Cox regression, stratification), population benchmarking against national audit data, working with large linked health-platform data under information governance, and translating results into service recommendations."
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Iris_dataset",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nSupervised by Dr Chris Oldnall and Dr Sophie Marion de Procé (University of Edinburgh), with support from the My Way Digital Health team.\n\n\n\n\n\n\nClient work sample, view only. The organisation’s name and logo have been removed. The images are watermarked, and the source file isn’t published."
+  },
+  {
+    "objectID": "index.html#the-brief",
+    "href": "index.html#the-brief",
+    "title": "Iris_dataset",
+    "section": "The brief",
+    "text": "The brief\nA savings and credit co-operative (SACCO) with six branches needed one place for management to track member growth, loan disbursement, member exits, complaints and savings against annual targets. Before this, the figures came from separate exports and branch spreadsheets."
+  },
+  {
+    "objectID": "index.html#what-i-built",
+    "href": "index.html#what-i-built",
+    "title": "Iris_dataset",
+    "section": "What I built",
+    "text": "What I built\nA nine-page Power BI report, each page answering one management question:\n\n\n\n\n\n\n\nPage\nQuestion it answers\n\n\n\n\nExit report\nHow many members are leaving, from which branches, and why?\n\n\nMembership (weekly & quarterly)\nAre branches recruiting enough new members to hit targets?\n\n\nLoan performance\nHow much has been disbursed against the loan-book target, by branch and product?\n\n\nContact centre\nWhat are members complaining about, through which channel, and how many are resolved?\n\n\nMember engagement\nHow many members, women’s groups and youth are active, and how are they using mobile money?\n\n\nFinancial metrics\nWhat do savings look like by type, and what are the capital adequacy, delinquency and liquidity ratios?\n\n\nOverall\nThe headline view for the board.\n\n\n\nTechniques: DAX measures for targets, variance and percentage achievement; gauges for actual vs target; conditional formatting on variance; date-range, year, quarter and month slicers; a word cloud of free-text exit reasons; and a consistent layout so non-technical users can read every page the same way."
+  },
+  {
+    "objectID": "index.html#gallery",
+    "href": "index.html#gallery",
+    "title": "Iris_dataset",
+    "section": "Gallery",
+    "text": "Gallery\nClick any page to enlarge it.\n\n\n\n\nExit report\n\n\n\n\n\nMembership: weekly performance\n\n\n\n\n\nMembership: quarterly performance\n\n\n\n\n\nLoan performance: by branch\n\n\n\n\n\nLoan performance: by product\n\n\n\n\n\nContact centre\n\n\n\n\n\nMember engagement\n\n\n\n\n\nFinancial metrics\n\n\n\n\n\nOverall dashboard\n\n\n\n\nWould you like to discuss a dashboard like this for your organisation? Get in touch."
+  },
+  {
+    "objectID": "index.html#project-summary",
+    "href": "index.html#project-summary",
+    "title": "Iris_dataset",
+    "section": "Project Summary",
+    "text": "Project Summary\nGoal: Demonstrate a systematic approach to data cleaning: fixing column names, standardizing inconsistent categorical values, handling missing data through Random Forest imputation, and validating results.\nData: The Iris dataset (150 observations, 3 species, 4 numeric features), deliberately messed up using the messy package to simulate real-world data quality issues.\nTechniques: snake_case style standardization (janitor), string matching with case_when (dplyr), missingness assessment using (naniar), Random Forest imputation (missForest), and visualization with ggplot2.\nTools: R, tidyverse, janitor, naniar, missForest, cowplot, gt"
+  },
+  {
+    "objectID": "index.html#loading-of-libraries",
+    "href": "index.html#loading-of-libraries",
+    "title": "Iris_dataset",
+    "section": "Loading of libraries",
+    "text": "Loading of libraries\n{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)\n#| echo: true\n#| message: false\n#| warning: false\nlibrary(tidyverse)\nlibrary(messy) # for creating messy data\nlibrary(naniar) # for assessing missing values\nlibrary(janitor) # Data cleaning\nlibrary(gt) #generating tables\nlibrary(gtExtras)\nlibrary(cowplot)"
+  },
+  {
+    "objectID": "index.html#the-iris-dataset",
+    "href": "index.html#the-iris-dataset",
+    "title": "Iris_dataset",
+    "section": "The Iris dataset",
+    "text": "The Iris dataset\nThe Iris dataset is one of the most famous datasets in statistics and machine learning. It was first introduced by the British biologist and statistician Ronald Fisher in 1936 in his paper “The use of multiple measurements in taxonomic problems.” The dataset consists of 150 samples of iris flowers from three different species: Setosa, Versicolor, and Virginica. Each sample includes four features/columns/variables: sepal length, sepal width, petal length, and petal width\n\nData cleaning & EDA\nThe explorations that I will conduct in this document will involve the following:\n\nMessy column names\nImproper variable types\nInvalid or inconsistent values\nMissing values\nNon-standard data formats"
+  },
+  {
+    "objectID": "index.html#creating-a-messy-dataset",
+    "href": "index.html#creating-a-messy-dataset",
+    "title": "Iris_dataset",
+    "section": "Creating a Messy dataset",
+    "text": "Creating a Messy dataset\nThe messy package introduces realistic data quality problems: inconsistent column names, corrupted string values, changed data types, and missing values.\nset.seed(123456)\nmessy_iris&lt;-messy(iris)\nmessy_iris |&gt; \n  head() |&gt; \n  gt()\n\nKey observations\n\nWe can see that the column names are separated by “.” and are not in lower case. we are going to convert these to lower snake_case.\nEven before we search for missing values, we can note that the dataset has missing values\nFinally we can also see that the species column has more that three variations of the setosa (with over 68 different messed variations of the thre species).\nAll columns are stored as character.\n\n\n\nUnderstanding/Inspecting the Dataset\nmessy_iris |&gt; #Checking the dimensions of the data (The data has 150 rows, and 5 columns)\n  dim()\nmessy_iris |&gt;  # Taking a quick look at our dataset\n  glimpse()\nIt can be immediately observed that all columns are of character type, and the species column needs standardisation.\nmessy_iris |&gt;  # Understanding the column names of the dataset\n  colnames()\nmessy_iris |&gt;  # Checking for unique values of Species. \n  select(Species) |&gt;  \n  distinct()\nThe dataset is supposed to have three different species of the flower namely; setosa, viginica, and versicolor. However, we can quickly note from code output that we have over 68 different variations of these species. Again, we are going to fix this too!!"
+  },
+  {
+    "objectID": "index.html#data-cleaning-process",
+    "href": "index.html#data-cleaning-process",
+    "title": "Iris_dataset",
+    "section": "Data Cleaning process",
+    "text": "Data Cleaning process\n\nStep 1: Fix Column Names\nclean_iris&lt;-messy_iris |&gt; \n  clean_names()\nclean_iris |&gt; \n  head(10)\nNote that our column names are now in lower case using the snake_case format. The next thing that we are going to do is ensure that the species column only has the three different values.\n\n\nStep 2 : Standardise Species Values\nhead(clean_iris$species)\nbad_setosa &lt;- c( \"setos)a\", \"setosa \", \"setosa\",\"setosa\", \"setosa\", \"setosa \", \"seto_sa\",  \"s&etosa\",  \"setosa\", \"SETOSA\", \"setosa\", \"se(tosa\", \"setosa\",\"setosa\", \"setosa\",\"setosa\",\"*setosa\",\"set_osa\",\"setosa\",         \"se@tosa\",\"setosa\", \"(s_etos.a\",      \"set(osa\",\"setos$a\",\"seto-s(a\",\"(SETOSA\",\"setosa \", \"s-eto%sa\",       \"setosa\",\"SETOSA\", \"seto.sa\",\"setosa\",\"setos^a\", \"setosa\",\"set$osa\", \"setosa\", \"se+tosa\",\"seto*sa\",        \"S)ETOSA\",\"setos*a\", \"setosa\",\"set!osa\",\"setosa\",\"setosa\",\"s@et#osa \",\"setosa\",\"setosa\")\nbad_versicolor&lt;-c(\"versic(olor\",\"ver@sicolor\",\"versico_lor\",\"ve#rsicolor\",\"versicolor\",          \"versico@lor\",\"versicolor\",\"versicolor\",\"versicolor\",\"versicolor\",\"versicolor\",\"vers_i%c#ol%or\", \"V*ERSICOLOR\",\"ver!sicolor\",\"+versicolo^r\",\"versicolor\",\"versico)l^or\",\"versicol^or\",\"ve&rsicolor\",\"versicolor\",\"$vers+icolor\",\"versicolor \",\")versicolor\", \"versicolor\",\"versicolor\",\"versicolor\",\"versicolor \",\"ver&sicolor \",\"versico(lo$r\",\"versi_color\",\"versicolor\",\"vers-ic.ol%o&r\", \"versicolor\",\"versicolor\",     \"versicolor\",\"*versicolor\",\"versicolor\",\"versicol!or\",\"&versicolor\",\"%versicol%or \",  \"v%ersicolor\",\"v+ersicolor\")\nbad_virginica &lt;- c(\"virginica\",\"vir!ginica\",\"virginica\",\"VIRGINICA\",\"virginica\",\"virginica\",     \n\"virginica\",\"virg^inica\",\"virginica\",\"$virg(inica\",\"virginica\",\"virginica \",\"virginica\",     \"virginica\",\"virgini+ca\",\"vir-ginica\", \"virginica\",\"virginica\",\"virgin!ica\",\"virginica\",   \".virginic#a\",\"virginica\",\"virginic_a\",\"virginica\",\"v(irgi$nica\",\"virginica\",\"virginic#a\",     \"vir.gini@ca\",\"virginica \",\"v#irgini(ca\", \"virginica\",\"virginica\",\"virginica\",\"virginica\",      \"virgi^nica\",\"virginica\",\"virginica\",\"virginica\",\"VIRGINICA\",\"virginica\",\"virginica\")\nThe code below, is going to replace bad species with the right value using dplyr case_when function\nclean_iris&lt;-clean_iris |&gt;  \n   mutate(species_clean = case_when(species %in% bad_setosa ~ \"setosa\",\n                                    species %in% bad_versicolor ~ \"versicolor\",\n                                    species %in% bad_virginica ~ \"virginica\"))\n\nunique(clean_iris$species_clean)\nSpecies column now only contains the three designated species\n\n\nStep 3 : Converting Data Types\nclean_iris&lt;-clean_iris |&gt; \n  mutate(across(c(sepal_length,\n                  sepal_width,\n                  petal_length,\n                  petal_width),as.numeric),\n         species_clean=factor(species_clean)) \n\nclean_iris |&gt; \n  glimpse()\nAfter conversion, we now have numeric columns converted to double precision, Species (character) converted to factor."
+  },
+  {
+    "objectID": "index.html#imputation-with-missforest",
+    "href": "index.html#imputation-with-missforest",
+    "title": "Iris_dataset",
+    "section": "Imputation with missForest",
+    "text": "Imputation with missForest\nThere are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package; missForest, which uses random forest to train data of observed values of data matrix to predict missing values.\n#install.packages(\"missForest\")\nlibrary(missForest)\n\niris_impute&lt;-clean_iris |&gt; \n  select(-species) |&gt; \n  mutate(across(c(sepal_length,\n                  sepal_width,\n                  petal_length,\n                  petal_width), as.numeric),\n         species_clean = as.factor(species_clean))\n\n\niris_imputed&lt;-missForest(iris_impute,xtrue = ,maxiter = 10,ntree = 100,verbose = FALSE)\n\ndf_imputed&lt;-iris_imputed$ximp\n\ndf_imputed |&gt;  \n  miss_var_summary() |&gt; \n  gt() \nEven though imputing datasets (multiple imputation) is better than methods like list wise deletion, along with it comes ethical implications especially for identity data.\niris_imputed$OOBerror\nOut of the bag error rates for both the categorical and numerical predictions indicating reliable imputation."
+  },
+  {
+    "objectID": "index.html#validation-comparing-imputed-vs-original-data",
+    "href": "index.html#validation-comparing-imputed-vs-original-data",
+    "title": "Iris_dataset",
+    "section": "Validation: Comparing Imputed vs Original Data",
+    "text": "Validation: Comparing Imputed vs Original Data\nIn this section we will compare distributions of the imputed dataset against the original Iris dataset to check whether or not imputation preserved the original data structure.\nplot_sl_1&lt;-df_imputed |&gt; \n  ggplot(aes(x = sepal_length)) +\n  geom_histogram()+\n  theme_bw() +\n  labs(title = \"Histogram - Imputed data\")\niris_sp1&lt;-iris |&gt; \n  ggplot(aes(x = Sepal.Length))+\n  geom_histogram()+\n  theme_bw()+\n  labs(title = \"Histogram - original data\")\n\nplot_sl_2&lt;-df_imputed |&gt; \n  ggplot(aes(sample = sepal_length))+\n  stat_qq()+\n  stat_qq_line(color = \"red\")+\n  theme_bw() +\n  labs(title = \"Q-Q plot for imputed data\")\n\niris_sl_2&lt;-iris |&gt; \n  ggplot(aes(sample = Sepal.Length))+\n  stat_qq()+\n  stat_qq_line(color = \"red\")+\n  theme_bw() +\n  labs(title = \"Q-Q Plot original data\")\n\ncowplot::plot_grid(plot_sl_1, iris_sp1,plot_sl_2,iris_sl_2, ncol = 2)\nThe imputed distributions closely match that of the original dataset, confirming that missForest preserved the underlaying data structure."
+  },
+  {
+    "objectID": "index.html#visualisation",
+    "href": "index.html#visualisation",
+    "title": "Iris_dataset",
+    "section": "VISUALISATION",
+    "text": "VISUALISATION\ndf_imputed |&gt; \n  ggplot(aes(x = sepal_length,y = petal_width))+\n  geom_point(aes(colour = species_clean, size = petal_length), alpha = 0.5) +\n  scale_color_manual(values = c(\"#00AFBB\", \"#e7b800\",\"#FC4E07\"))+\n  scale_size(range = c(0.5, 12)) +\n  theme_bw()+\n  labs(title = \"Plot showing Petal width against Petal length\")\nThe scatter plot shows clear clustering by species, with Setoisa separating distinctly from both Versicolor and Virginica. This confirms that the imputed dataset retains the original grouping or classification structure."
+  },
+  {
+    "objectID": "index.html#project-summary-1",
+    "href": "index.html#project-summary-1",
+    "title": "Iris_dataset",
+    "section": "Project Summary",
+    "text": "Project Summary\nGoal: Investigate and quantify risk factors associated with arthritis using data from the CDC Behavioral Risk Factor Surveillance System (BRFSS) in USA.\nData: 359,925 US adults surveyed in 2013. Selected Variables: arthritis status, sex, age (65+), physical activity, and BMI.\nMethods: Chi-square tests, Wilcoxon rank-sum test, relative risk ratios, and multivariate logistic regression.\nKey Findings:\n\nFemales had 54% higher odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57)\nAdults 65+ had 3.5 times the odds of arthritis (OR = 3.56, 95% CI: 3.51-3.62)\nPhysical inactivity increased odds by 45% (OR = 1.45, 95% CI: 1.43-1.47)\nAll associations are significant at p &lt; 0.001\n\nTools: R, tidyverse, gtsummary, epitools, finalfit, reportROC"
+  },
+  {
+    "objectID": "index.html#exploratory-data-analysis",
+    "href": "index.html#exploratory-data-analysis",
+    "title": "Iris_dataset",
     "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nIn this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. This will be done using histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, Q-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.\n\nlean_brfss |&gt; \n  is.na() |&gt; \n  sum()\n\n[1] 0\n\n\nThe dataset has zero missing values. The visual below show distribution of the data by target variable.\n\nlean_brfss |&gt;  \n  ggplot(aes(x = arthritis, fill = arthritis))+\n  geom_bar(aes(y = after_stat(count/sum(count))), stat = \"count\") +\n  theme_bw() +\n  labs(title = \"Arthritis prevalence\",\n       x = \"Arthritis Status\",\n       y = \"Proportion\",\n       fill = \"Arthritis\") +\n   scale_y_continuous(labels = scales::percent_format(scale = 100))\n\n\n\n\n\n\n\n\n\nOutlier Detection\n\nlean_brfss |&gt; \n  ggplot(aes(x = bmi)) +\n  geom_boxplot(aes(),color = \"steelblue\") +\n  coord_flip() +\n  #facet_grid(~arthritis)+\n  theme_bw()\n\n\n\n\n\n\n\n\nSeeing from the output, the variable bmi, has significant outliers bias the results. In the subsequent section, we are going to remove outliers.\n\n\nOutlier Removal\n\nQ &lt;- quantile(lean_brfss$bmi, probs=c(.25, .75), na.rm = FALSE) # Specifying the lower and upper quatiles\niqr &lt;- IQR(lean_brfss$bmi) # Interquatile range\nup &lt;-  Q[2]+1.5*iqr # Upper Range  \nlow&lt;- Q[1]-1.5*iqr # Lower Range\nbrfss_eliminated&lt;- subset(lean_brfss, lean_brfss$bmi &gt; (Q[1] - 1.5*iqr) & lean_brfss$bmi &lt; (Q[2]+1.5*iqr))\n\n\nwith_outliers&lt;-lean_brfss |&gt; \n  ggplot(aes(x = bmi)) +\n  geom_boxplot(aes(),color = \"steelblue\") +\n  coord_flip() +\n  #facet_grid(~arthritis)+\n  theme_bw() +\n  labs(title = \"With outliers\")\n\n\nwithout_outliers&lt;-brfss_eliminated |&gt; \n  ggplot(aes(x = bmi)) +\n  geom_boxplot(aes(),color = \"steelblue\") +\n  coord_flip() +\n  #facet_grid(~arthritis)+\n  theme_bw() +\n  labs(title = \"Without outliers\")\n\n\ncowplot::plot_grid(with_outliers, without_outliers)\n\n\n\n\n\n\n\n\n\nbrfss_eliminated |&gt; \n  ggplot(aes(x = bmi))+\n  geom_histogram(aes(y = after_stat(density), fill = ..count..),bins = 30)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\nWarning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(count)` instead.\n\n\n\n\n\n\n\n\n\n\n\nContingency Tables\n\nsex_subt&lt;-brfss_eliminated |&gt; \n  select(Sex,arthritis)\n\nactivity_subt&lt;-brfss_eliminated |&gt; \n  select(physical_activity,arthritis)\n\nage_subt&lt;-brfss_eliminated |&gt; \n  select(age_65_or_over,arthritis)\n\n\nsex_subt |&gt; \n  tbl_cross(row = Sex,\n            col = arthritis,\n            percent = \"column\") |&gt; \n  bold_labels()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\narthritis\n\nTotal\n\n\nYes\nNo\n\n\n\n\nSex\n\n\n\n\n\n\n\n\n    Female\n71,737 (63%)\n124,693 (53%)\n196,430 (56%)\n\n\n    Male\n42,144 (37%)\n109,887 (47%)\n152,031 (44%)\n\n\nTotal\n113,881 (100%)\n234,580 (100%)\n348,461 (100%)\n\n\n\n\n\n\n\n\nactivity_subt |&gt; \n  tbl_cross(row = physical_activity,\n            col = arthritis,\n            percent = \"column\") |&gt; \n  bold_labels()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\narthritis\n\nTotal\n\n\nYes\nNo\n\n\n\n\nphysical_activity\n\n\n\n\n\n\n\n\n    No\n36,915 (32%)\n51,544 (22%)\n88,459 (25%)\n\n\n    Yes\n76,966 (68%)\n183,036 (78%)\n260,002 (75%)\n\n\nTotal\n113,881 (100%)\n234,580 (100%)\n348,461 (100%)\n\n\n\n\n\n\n\n\nage_subt |&gt; \n  tbl_cross(row = age_65_or_over,\n            col = arthritis,\n            percent = \"column\") |&gt; \n  bold_labels()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\narthritis\n\nTotal\n\n\nYes\nNo\n\n\n\n\nage_65_or_over\n\n\n\n\n\n\n\n\n    Yes\n56,240 (49%)\n51,271 (22%)\n107,511 (31%)\n\n\n    No\n57,641 (51%)\n183,309 (78%)\n240,950 (69%)\n\n\nTotal\n113,881 (100%)\n234,580 (100%)\n348,461 (100%)\n\n\n\n\n\n\n\n\nbrfss_eliminated |&gt;  \n  count(Sex, arthritis) |&gt; \n  ggplot(aes(x = Sex, \n             y = arthritis)) +\n  geom_tile(aes(fill=n)) +\n  labs(x = \"Sex\",\n       y = \"Arthritis\",\n       fill = \"Count\") +\n  scale_fill_distiller(palette = \"RdPu\") +\n  theme_classic(base_size = 16)"
+    "text": "Exploratory Data Analysis\nIn this section we will conduct an exploratory data analysis which is a way of investigating and understanding the structure of our data. This will be done using histograms, Q-Q plots, and contingency tables. Histograms have been selected because they clearly show the distribution of data (bmi in this case) and provide a quick perspective of whether or not data is skewed. Since one graphical method is rarely sufficient, Q-Q plots have been used to add a further perspective in assessing the normality of the data. Finally, Boxplots will also be used as they conspicuously indicate whether or not we have outliers in a dataset.\nlean_brfss |&gt; \n  is.na() |&gt; \n  sum()\nThe dataset has zero missing values. The visual below show distribution of the data by target variable.\nlean_brfss |&gt;  \n  ggplot(aes(x = arthritis, fill = arthritis))+\n  geom_bar(aes(y = after_stat(count/sum(count))), stat = \"count\") +\n  theme_bw() +\n  labs(title = \"Arthritis prevalence\",\n       x = \"Arthritis Status\",\n       y = \"Proportion\",\n       fill = \"Arthritis\") +\n   scale_y_continuous(labels = scales::percent_format(scale = 100))\n\nOutlier Detection\nlean_brfss |&gt; \n  ggplot(aes(x = bmi)) +\n  geom_boxplot(aes(),color = \"steelblue\") +\n  coord_flip() +\n  #facet_grid(~arthritis)+\n  theme_bw()\nSeeing from the output, the variable bmi, has significant outliers bias the results. In the subsequent section, we are going to remove outliers.\n\n\nOutlier Removal\nQ &lt;- quantile(lean_brfss$bmi, probs=c(.25, .75), na.rm = FALSE) # Specifying the lower and upper quatiles\niqr &lt;- IQR(lean_brfss$bmi) # Interquatile range\nup &lt;-  Q[2]+1.5*iqr # Upper Range  \nlow&lt;- Q[1]-1.5*iqr # Lower Range\nbrfss_eliminated&lt;- subset(lean_brfss, lean_brfss$bmi &gt; (Q[1] - 1.5*iqr) & lean_brfss$bmi &lt; (Q[2]+1.5*iqr))\n\nwith_outliers&lt;-lean_brfss |&gt; \n  ggplot(aes(x = bmi)) +\n  geom_boxplot(aes(),color = \"steelblue\") +\n  coord_flip() +\n  #facet_grid(~arthritis)+\n  theme_bw() +\n  labs(title = \"With outliers\")\nwithout_outliers&lt;-brfss_eliminated |&gt; \n  ggplot(aes(x = bmi)) +\n  geom_boxplot(aes(),color = \"steelblue\") +\n  coord_flip() +\n  #facet_grid(~arthritis)+\n  theme_bw() +\n  labs(title = \"Without outliers\")\ncowplot::plot_grid(with_outliers, without_outliers)\nbrfss_eliminated |&gt; \n  ggplot(aes(x = bmi))+\n  geom_histogram(aes(y = after_stat(density), fill = ..count..),bins = 30)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\n\nContingency Tables\nsex_subt&lt;-brfss_eliminated |&gt; \n  select(Sex,arthritis)\n\nactivity_subt&lt;-brfss_eliminated |&gt; \n  select(physical_activity,arthritis)\n\nage_subt&lt;-brfss_eliminated |&gt; \n  select(age_65_or_over,arthritis)\nsex_subt |&gt; \n  tbl_cross(row = Sex,\n            col = arthritis,\n            percent = \"column\") |&gt; \n  bold_labels()\nactivity_subt |&gt; \n  tbl_cross(row = physical_activity,\n            col = arthritis,\n            percent = \"column\") |&gt; \n  bold_labels()\nage_subt |&gt; \n  tbl_cross(row = age_65_or_over,\n            col = arthritis,\n            percent = \"column\") |&gt; \n  bold_labels()\nbrfss_eliminated |&gt;  \n  count(Sex, arthritis) |&gt; \n  ggplot(aes(x = Sex, \n             y = arthritis)) +\n  geom_tile(aes(fill=n)) +\n  labs(x = \"Sex\",\n       y = \"Arthritis\",\n       fill = \"Count\") +\n  scale_fill_distiller(palette = \"RdPu\") +\n  theme_classic(base_size = 16)"
   },
   {
-    "objectID": "stat_modelling.html#observations",
-    "href": "stat_modelling.html#observations",
-    "title": "stat_modelling",
+    "objectID": "index.html#observations",
+    "href": "index.html#observations",
+    "title": "Iris_dataset",
     "section": "Observations",
     "text": "Observations\nThe box plots show higher median BMI in the arthritis group with just fewer outliers after filtering. Histograms show a right skewed distribution where as contingency tables suggest higher arthritis prevalence among females (63%), those aged 65 or over (49% vs 22%), and those with no physical activity. the distribution of BMI as a variable indicates skewness and presence of outliers. This variables will be transformed prior to analysis."
   },
   {
-    "objectID": "stat_modelling.html#data-dictionary",
-    "href": "stat_modelling.html#data-dictionary",
-    "title": "stat_modelling",
+    "objectID": "index.html#data-dictionary",
+    "href": "index.html#data-dictionary",
+    "title": "Iris_dataset",
     "section": "Data dictionary",
     "text": "Data dictionary\n\nArthritis: A binary outcome variable taking the values of Yes(1), and No(2).\nPhysical activity: A binary explanatory variable taking the values of Yes(1), or No(2) to indicate whether an individual is exercising or not respectively.\nAge 65 or over: A binary explanatory variable taking the values of Yes(1), or No(2) to indicate whether or not the individual is above or below 65 years of age respectively.\nSex: A binary explanatory variable taking the values of Female(1), or Male(2) to indicate whether or not the individual is Female or Male respectively.\nBMI: A numeric continuous variable showing the Body Mass Index (BMI) for an individual."
   },
   {
-    "objectID": "stat_modelling.html#normality-testing",
-    "href": "stat_modelling.html#normality-testing",
-    "title": "stat_modelling",
+    "objectID": "index.html#normality-testing",
+    "href": "index.html#normality-testing",
+    "title": "Iris_dataset",
     "section": "Normality Testing",
     "text": "Normality Testing\n\nHypotheses\n\nNull: The sample data comes from a normally distributed population.\nAlternative: The sample data does not come from a normally distributed population"
   },
   {
-    "objectID": "stat_modelling.html#data-transformation",
-    "href": "stat_modelling.html#data-transformation",
-    "title": "stat_modelling",
+    "objectID": "index.html#data-transformation",
+    "href": "index.html#data-transformation",
+    "title": "Iris_dataset",
     "section": "Data Transformation",
-    "text": "Data Transformation\nObservations from the visual inspection of the data, show that the bmi variable is not normally distributed, as the histograms and Q-Q plots have longer tails to the right, and data points deviating from red line respectively. Below, we are methods to transform the variable (bmi) using the three methods.\n\nLog transformation\n\nlean_brfss |&gt; \n  ggplot(aes(x = log(bmi)))+\n  geom_histogram(aes(y = after_stat(density), \n                     fill = ..count..))+\n  #geom_density(aes(y = after_stat(density)), color = \"red\", linewidth = 1) +\n  geom_vline(xintercept = mean(log(lean_brfss$bmi)), \n             color = \"purple\", linewidth = 0.8)+\n  geom_vline(xintercept = median(log(lean_brfss$bmi)), \n             color = \"orange\", linewidth = 0.8)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nSquare root transformation\n\nlean_brfss |&gt; \n  ggplot(aes(x = sqrt(bmi)))+\n  geom_histogram(aes(y = after_stat(density), \n                     fill = after_stat(count)))+\n  #geom_density(aes(y = after_stat(density)), color = \"red\", linewidth = 1) +\n  geom_vline(xintercept = mean(sqrt(lean_brfss$bmi)), \n             color = \"purple\", linewidth = 0.8)+\n  geom_vline(xintercept = median(sqrt(lean_brfss$bmi)), \n             color = \"orange\", linewidth = 0.8)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nSquare transformation\n\nlean_brfss |&gt; \n  ggplot(aes(x = (bmi^2)))+\n  geom_histogram(aes(y = after_stat(density), \n                     fill = after_stat(count)))+\n  #geom_density(aes(y = after_stat(density)), color = \"red\", linewidth = 1) +\n  geom_vline(xintercept = mean((lean_brfss$bmi^2)), \n             color = \"purple\", linewidth = 0.8)+\n  geom_vline(xintercept = median((lean_brfss$bmi^2)), \n             color = \"orange\", linewidth = 0.8)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nFrom the above outputs we can see that all methods of data transformation have not been able to result in normal distribution of bmi. Since graphic visualizations of tests are necessary but not sufficient we have further used the Shapiro test of significance below."
+    "text": "Data Transformation\nObservations from the visual inspection of the data, show that the bmi variable is not normally distributed, as the histograms and Q-Q plots have longer tails to the right, and data points deviating from red line respectively. Below, we are methods to transform the variable (bmi) using the three methods.\n\nLog transformation\nlean_brfss |&gt; \n  ggplot(aes(x = log(bmi)))+\n  geom_histogram(aes(y = after_stat(density), \n                     fill = ..count..))+\n  #geom_density(aes(y = after_stat(density)), color = \"red\", linewidth = 1) +\n  geom_vline(xintercept = mean(log(lean_brfss$bmi)), \n             color = \"purple\", linewidth = 0.8)+\n  geom_vline(xintercept = median(log(lean_brfss$bmi)), \n             color = \"orange\", linewidth = 0.8)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\n\nSquare root transformation\nlean_brfss |&gt; \n  ggplot(aes(x = sqrt(bmi)))+\n  geom_histogram(aes(y = after_stat(density), \n                     fill = after_stat(count)))+\n  #geom_density(aes(y = after_stat(density)), color = \"red\", linewidth = 1) +\n  geom_vline(xintercept = mean(sqrt(lean_brfss$bmi)), \n             color = \"purple\", linewidth = 0.8)+\n  geom_vline(xintercept = median(sqrt(lean_brfss$bmi)), \n             color = \"orange\", linewidth = 0.8)+\n  facet_grid(~arthritis) +\n  theme_bw()\n\n\nSquare transformation\nlean_brfss |&gt; \n  ggplot(aes(x = (bmi^2)))+\n  geom_histogram(aes(y = after_stat(density), \n                     fill = after_stat(count)))+\n  #geom_density(aes(y = after_stat(density)), color = \"red\", linewidth = 1) +\n  geom_vline(xintercept = mean((lean_brfss$bmi^2)), \n             color = \"purple\", linewidth = 0.8)+\n  geom_vline(xintercept = median((lean_brfss$bmi^2)), \n             color = \"orange\", linewidth = 0.8)+\n  facet_grid(~arthritis) +\n  theme_bw()\nFrom the above outputs we can see that all methods of data transformation have not been able to result in normal distribution of bmi. Since graphic visualizations of tests are necessary but not sufficient we have further used the Shapiro test of significance below."
   },
   {
-    "objectID": "stat_modelling.html#test-of-significance",
-    "href": "stat_modelling.html#test-of-significance",
-    "title": "stat_modelling",
+    "objectID": "index.html#test-of-significance",
+    "href": "index.html#test-of-significance",
+    "title": "Iris_dataset",
     "section": "Test of significance",
-    "text": "Test of significance\nUsing a sample of 4999 observations from the main dataset, we test for normality using the Shapiro Wilks test.\n\nset.seed(1234) # for reproducibility\nbmi_sample&lt;-lean_brfss |&gt;\n  select(bmi) |&gt; \n  drop_na(bmi) |&gt; \n  sample_n(4999) \n\nbmi_sample |&gt; \n  pull(bmi) |&gt; \n  shapiro.test()\n\n\n    Shapiro-Wilk normality test\n\ndata:  pull(bmi_sample, bmi)\nW = 0.91633, p-value &lt; 2.2e-16\n\n\nThe test results from the test show that firstly, the test statistic of 0.69345 is far from 1, indicating the deviation from the mean. The p-value is significant, is extremely low showing that there is strong evidence to reject the null hypothesis, and conclude that data for bmi is not coming from a normally distributed population.\nAll the assumptions except for chi-square test of independence have not been met for both the graphics, and significance tests. Since parametric methods such as students t tests, anova require data to be normally distributed, we are going to use non-parametric methods to analyse the dataset even as these methods have less power."
+    "text": "Test of significance\nUsing a sample of 4999 observations from the main dataset, we test for normality using the Shapiro Wilks test.\nset.seed(1234) # for reproducibility\nbmi_sample&lt;-lean_brfss |&gt;\n  select(bmi) |&gt; \n  drop_na(bmi) |&gt; \n  sample_n(4999) \n\nbmi_sample |&gt; \n  pull(bmi) |&gt; \n  shapiro.test()\nThe test results from the test show that firstly, the test statistic of 0.69345 is far from 1, indicating the deviation from the mean. The p-value is significant, is extremely low showing that there is strong evidence to reject the null hypothesis, and conclude that data for bmi is not coming from a normally distributed population.\nAll the assumptions except for chi-square test of independence have not been met for both the graphics, and significance tests. Since parametric methods such as students t tests, anova require data to be normally distributed, we are going to use non-parametric methods to analyse the dataset even as these methods have less power."
   },
   {
-    "objectID": "stat_modelling.html#analysis-plan-1",
-    "href": "stat_modelling.html#analysis-plan-1",
-    "title": "stat_modelling",
+    "objectID": "index.html#analysis-plan-1",
+    "href": "index.html#analysis-plan-1",
+    "title": "Iris_dataset",
     "section": "Analysis Plan",
     "text": "Analysis Plan\n\nChi-square tests for associations between arthritis and each categorical variable\nWilcoxon rank-sum test for BMI comparison between groups (non-parametric alternative to t-test)\nRelative risk ratios for sex, age, and physical activity\nMultivariate logistic regression for the collective effect of all predictors\n\n\nHypotheses\nChi-square tests:\n\nNull: No association between arthritis and sex. Alternative: Association exists.\nNull: No association between arthritis and physical activity. Alternative: Association exists.\nNull: No association between arthritis and age category (65+). Alternative: Association exists."
   },
   {
-    "objectID": "stat_modelling.html#assessing-relative-risk-rr",
-    "href": "stat_modelling.html#assessing-relative-risk-rr",
-    "title": "stat_modelling",
+    "objectID": "index.html#assessing-relative-risk-rr",
+    "href": "index.html#assessing-relative-risk-rr",
+    "title": "Iris_dataset",
     "section": "Assessing relative risk (RR)",
-    "text": "Assessing relative risk (RR)\n\nsex_subt |&gt; \n  table() |&gt; \n  epitools::epitab(method=\"riskratio\")\n\n$tab\n        arthritis\nSex        Yes        p0     No        p1 riskratio    lower    upper p.value\n  Female 71737 0.3652039 124693 0.6347961  1.000000       NA       NA      NA\n  Male   42144 0.2772066 109887 0.7227934  1.138623 1.133424 1.143845       0\n\n$measure\n[1] \"wald\"\n\n$conf.level\n[1] 0.95\n\n$pvalue\n[1] \"fisher.exact\"\n\n\n\nage_subt |&gt; \n  table() |&gt; \n  epitools::epitab(method=\"riskratio\")\n\n$tab\n              arthritis\nage_65_or_over   Yes        p0     No        p1 riskratio    lower    upper\n           Yes 56240 0.5231093  51271 0.4768907  1.000000       NA       NA\n           No  57641 0.2392239 183309 0.7607761  1.595284 1.584712 1.605926\n              arthritis\nage_65_or_over p.value\n           Yes      NA\n           No        0\n\n$measure\n[1] \"wald\"\n\n$conf.level\n[1] 0.95\n\n$pvalue\n[1] \"fisher.exact\"\n\n\n\nactivity_subt |&gt; \n  table()|&gt; \n  epitools::epitab(method=\"riskratio\")\n\n$tab\n                 arthritis\nphysical_activity   Yes        p0     No        p1 riskratio  lower    upper\n              No  36915 0.4173120  51544 0.5826880  1.000000     NA       NA\n              Yes 76966 0.2960208 183036 0.7039792  1.208158 1.2008 1.215561\n                 arthritis\nphysical_activity p.value\n              No       NA\n              Yes       0\n\n$measure\n[1] \"wald\"\n\n$conf.level\n[1] 0.95\n\n$pvalue\n[1] \"fisher.exact\"\n\n\n\nmodel_data&lt;-brfss_eliminated |&gt; \n  select(arthritis,bmi,age_65_or_over,Sex,physical_activity)\n\nmodel_lr&lt;-glm(arthritis~.,data = model_data,family = binomial(\"logit\"))\nsummary(model_lr)\n\n\nCall:\nglm(formula = arthritis ~ ., family = binomial(\"logit\"), data = model_data)\n\nCoefficients:\n                       Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)           1.2621793  0.0228869   55.15   &lt;2e-16 ***\nbmi                  -0.0660347  0.0007623  -86.62   &lt;2e-16 ***\nage_65_or_overNo      1.2707663  0.0079701  159.44   &lt;2e-16 ***\nSexMale               0.4330701  0.0078421   55.22   &lt;2e-16 ***\nphysical_activityYes  0.3712731  0.0085998   43.17   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 440383  on 348460  degrees of freedom\nResidual deviance: 400874  on 348456  degrees of freedom\nAIC: 400884\n\nNumber of Fisher Scoring iterations: 4\n\nmodel_lr |&gt; \n  tbl_regression(exponentiate = TRUE, conf.int = TRUE) |&gt; \n  add_global_p() |&gt; \n  bold_labels() |&gt; \n  add_glance_table(include = c(nobs,BIC,AIC,logLik))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nbmi\n0.94\n0.93, 0.94\n&lt;0.001\n\n\nage_65_or_over\n\n\n\n\n&lt;0.001\n\n\n    Yes\n—\n—\n\n\n\n\n    No\n3.56\n3.51, 3.62\n\n\n\n\nSex\n\n\n\n\n&lt;0.001\n\n\n    Female\n—\n—\n\n\n\n\n    Male\n1.54\n1.52, 1.57\n\n\n\n\nphysical_activity\n\n\n\n\n&lt;0.001\n\n\n    No\n—\n—\n\n\n\n\n    Yes\n1.45\n1.43, 1.47\n\n\n\n\nNo. Obs.\n348,461\n\n\n\n\n\n\nBIC\n400,938\n\n\n\n\n\n\nAIC\n400,884\n\n\n\n\n\n\nLog-likelihood\n-200,437\n\n\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio"
+    "text": "Assessing relative risk (RR)\nsex_subt |&gt; \n  table() |&gt; \n  epitools::epitab(method=\"riskratio\")\nage_subt |&gt; \n  table() |&gt; \n  epitools::epitab(method=\"riskratio\")\nactivity_subt |&gt; \n  table()|&gt; \n  epitools::epitab(method=\"riskratio\")\nmodel_data&lt;-brfss_eliminated |&gt; \n  select(arthritis,bmi,age_65_or_over,Sex,physical_activity)\n\nmodel_lr&lt;-glm(arthritis~.,data = model_data,family = binomial(\"logit\"))\nsummary(model_lr)\n\nmodel_lr |&gt; \n  tbl_regression(exponentiate = TRUE, conf.int = TRUE) |&gt; \n  add_global_p() |&gt; \n  bold_labels() |&gt; \n  add_glance_table(include = c(nobs,BIC,AIC,logLik))"
   },
   {
-    "objectID": "stat_modelling.html#sex-and-arthritis",
-    "href": "stat_modelling.html#sex-and-arthritis",
-    "title": "stat_modelling",
+    "objectID": "index.html#sex-and-arthritis",
+    "href": "index.html#sex-and-arthritis",
+    "title": "Iris_dataset",
     "section": "1. Sex, and Arthritis",
     "text": "1. Sex, and Arthritis\n\nChi-square test of indeoendence shows a statistically significant relationship between sex and arthritis (X-squared = 3016, df = 1, p&lt;0.001), indicating that arthritis prevalence is different in males and females.\nRisk Ratio: Males have a lower risk of arthritis compared to females (RR = 0.86, 95% CI: 0.86-0.88, p&lt;0.001). This means that the risk of arthritis in males is about 14% lower than in females.\nLogistic regression: Adjusted OR = 1.54 (95% CI: 1.52-1.57), p&lt;0.001. This means that after adjusting for BMI, age, and physical activity, females have 54% higher odds of having arthritis compared to males. The 95% confidence interval does not include 1, and extremely narrow indicating that the estimate is quite precise."
   },
   {
-    "objectID": "stat_modelling.html#age-and-arthritis",
-    "href": "stat_modelling.html#age-and-arthritis",
-    "title": "stat_modelling",
+    "objectID": "index.html#age-and-arthritis",
+    "href": "index.html#age-and-arthritis",
+    "title": "Iris_dataset",
     "section": "2. Age and Arthritis",
     "text": "2. Age and Arthritis\n\nChi-square test results show that there is a strong evidence of association between age (65and over) and arthritis (X-squared = 27231, df = 1, p &lt; 0.001). The p-value is less than 0.05, we therefore reject the null hypothesis, and conclude that the association between age and arthritis is not by chance.\nRisk Ratio: Individuals aged 65 or older have a relative risk of 2.18 (95% CI: 2.15-2.20, p &lt; 0.001), suggesting that they are more than twice as likely to have arthritis compared to individuals below 65.\n\nLogistic regression: Adjusted OR = 3.56 (95% CI: 3.51-3.62, p &lt; 0.001), showing that being 65 or older increases the odds of having arthritis by 3.5 times after adjusting for other variables. Again, the low p - value (less than 0.05) as well as the narrow confidence interval shows that the estimate is both significant and quite precise."
   },
   {
-    "objectID": "stat_modelling.html#physical-activity-and-arthritis",
-    "href": "stat_modelling.html#physical-activity-and-arthritis",
-    "title": "stat_modelling",
+    "objectID": "index.html#physical-activity-and-arthritis",
+    "href": "index.html#physical-activity-and-arthritis",
+    "title": "Iris_dataset",
     "section": "3. Physical Activity and Arthritis",
     "text": "3. Physical Activity and Arthritis\n\nChi-square test: The association between physical activity, and arthritis is significant (X-squared = 4413, df = 1, p &lt; 0.001). Given the small p value (less than 0.05), we reject the null hypothesis, and conclude that the difference is unlikely to be due to random variation alone.\nRisk Ratio: Individuals who are physically inactive have higher risk of developing athritis (RR = 1.21, 95% CI: 1.20-1.22, p &lt; 0.001), showing that there is a 21% increased risk compared to physically active individuals.\nLogistic regression: With Adjusted OR = 1.45 (95% CI: 1.43-1.47, p &lt; 0.001). This means that physical inactivity increases the odds of arthritis by 45% holding other variables constant.The p value is less than 0.05 (given alpha level), and therefore significant. Note that the confidence interval is narrow, and does not include 1 making the estimate so certain and precise."
   },
   {
-    "objectID": "stat_modelling.html#bmi-and-arthritis",
-    "href": "stat_modelling.html#bmi-and-arthritis",
-    "title": "stat_modelling",
+    "objectID": "index.html#bmi-and-arthritis",
+    "href": "index.html#bmi-and-arthritis",
+    "title": "Iris_dataset",
     "section": "4. BMI and Arthritis",
     "text": "4. BMI and Arthritis\n\nWilcoxon Rank-Sum Test (Mann-Whitney U Test): Since BMI is numeric and skewed, this test is ideal because it is non-parametric. The p - value is less than 0.05 (0.001), and the confidence interval is narrow(W-Statistic 1.52, 95% CI:1.49-1.56, p &lt; 0.001) and does not include 0, we reject the null hypothesis, and conclude that individuals with arthritis tend to have higher BMI than those without arthritis.\nLogistic regression: The adjusted OR = 0.94 (95% CI: 0.93-0.94, p &lt; 0.001) suggests that there is a 6% decrease in the odds of arthritis for every unit of BMI gained. Even as this is significant the result’s inverse relationship could suggest possible confounding in our model."
   },
   {
-    "objectID": "iris_back_up.html",
-    "href": "iris_back_up.html",
+    "objectID": "index.html#project-summary-2",
+    "href": "index.html#project-summary-2",
     "title": "Iris_dataset",
-    "section": "",
-    "text": "library(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.5.2\n\n\nWarning: package 'ggplot2' was built under R version 4.5.2\n\n\nWarning: package 'tidyr' was built under R version 4.5.2\n\n\nWarning: package 'purrr' was built under R version 4.5.2\n\n\nWarning: package 'dplyr' was built under R version 4.5.2\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   4.0.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(messy) # for creating messy data\nlibrary(naniar) # for assessing missing values\nlibrary(janitor) # Data cleaning\n\n\nAttaching package: 'janitor'\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\nlibrary(gt) # generatiung tables"
+    "section": "Project Summary",
+    "text": "Project Summary\nGoal: Predict diabetes status from demographic and clinical risk factors using the NHANES dataset.\nData: National Health and Nutrition Examination Survey collected in the US. Variables include age, BMI, direct cholesterol, marital status, and gender.\nModels: Logistic Regression and Random Forest (tidymodels framework).\nKey Finding: Random Forest outperformed logistic regression across all metrics. Sensitivity improved from 4% (logistic regression) to 34% (Random Forest), with ROC-AUC of 0.89. Both models struggled with the minority class due to class imbalance.\nTools: R, tidymodels, ranger, ggstatsplot, cowplot, gtsummary"
   },
   {
-    "objectID": "iris_back_up.html#data-cleaning-eda",
-    "href": "iris_back_up.html#data-cleaning-eda",
+    "objectID": "index.html#introduction-1",
+    "href": "index.html#introduction-1",
+    "title": "Iris_dataset",
+    "section": "Introduction",
+    "text": "Introduction\nIn this project we will use the NHANES dataset to predict diabetes given the available risk factors. The National Health ans Nutrition Survey is a a program in the US designed to assess the health and nutritional status pf adults, and children in the US. The data includes demographic, socio-economic, dietary, and health-related information.\n\nLoading packages including the dataset.\n#| include: false\nlibrary(NHANES)\nlibrary(tidymodels)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(cowplot)\nlibrary(gtsummary)\nlibrary(ranger)\nlibrary(randomForest)\n#install.packages(\"ggstatsplot\")\nlibrary(ggstatsplot)\n\n\nData Preparation\nWe are going to save the dataset into the nhanes_df object to maintain the original dataset intact.\nnhanes_df&lt;-NHANES |&gt; \n  select(Diabetes,DirectChol,BMI,MaritalStatus,Age,Gender) |&gt;\n  drop_na() |&gt; # Assuming variables are missing completely at Random\n  clean_names()\n\n# Changing the levels for appropriate analysis\nnhanes_df&lt;-nhanes_df |&gt; \n  mutate(diabetes=factor(diabetes, \n                         levels = c(\"Yes\", \"No\"))) |&gt; \n           glimpse()"
+  },
+  {
+    "objectID": "index.html#traintest-split",
+    "href": "index.html#traintest-split",
+    "title": "Iris_dataset",
+    "section": "Train/Test Split",
+    "text": "Train/Test Split\nIn the code below, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the diabetes to preserve class proportions.\nset.seed(123) #For reproducubility\nml_split&lt;-initial_split(nhanes_df,\n                        prop = 0.8,\n                        strata = diabetes)\n\nml_training&lt;-ml_split |&gt; \n  training()\n\nml_test&lt;-ml_split |&gt;\n  testing()"
+  },
+  {
+    "objectID": "index.html#logistic-regression",
+    "href": "index.html#logistic-regression",
+    "title": "Iris_dataset",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\n\nlr_model&lt;-logistic_reg() |&gt; \n  set_engine(\"glm\") |&gt; \n  set_mode(\"classification\") \n\n\nCorrelation Check\nml_training |&gt; \n  select_if(is.numeric) |&gt; \n  ggcorrmat(colors = c(\"#B2182B\", \"White\", \"#4D4D4D\"),\n            title = \"Colleration Matrix\"\n            )\nUsing the hypothetical threshold of 0.8, we can conclude that the predictors are not collerated. In the code below, we are going to fit both models using the fit function. After which we are going to collect and combine predictions, and load them.\nIn the code below we are going to specify a recipe object after which we will add steps for engineering our features (feature engineering). The steps are to preprocess the data into a form that will allegedly improve our analysis.\n\n\nWorkflow and Fit\nset.seed(123)\nlr_recipe&lt;-recipe(diabetes~.,data = ml_training) |&gt;\n  step_log(all_numeric()) |&gt; \n  step_normalize(all_numeric()) |&gt; #Centering and scaling\n  step_dummy(all_nominal(), -all_outcomes())\nlr_worflow&lt;-workflow() |&gt; \n  add_model(lr_model) |&gt; \n  add_recipe(lr_recipe)\nset.seed(123)\nlr_worflow_fit&lt;-lr_worflow |&gt; \n  last_fit(split = ml_split)\n\nlr_worflow_fit |&gt; \n  collect_metrics()\n\nlr_resultss&lt;-lr_worflow_fit |&gt; \n  collect_predictions()\n\nlr_resultss"
+  },
+  {
+    "objectID": "index.html#logistic-regression-results",
+    "href": "index.html#logistic-regression-results",
+    "title": "Iris_dataset",
+    "section": "Logistic Regression Results",
+    "text": "Logistic Regression Results\n\nConfusion Matrix\nIn this section we are going to visualize the model results. We will start with the confusion matrix.\nset.seed(123)\nlr_resultss |&gt; \n  conf_mat(truth = diabetes,\n           estimate = .pred_class)\n\nThe logistic regression correctly classifies 1,237 out of 1,358 individuals (91%). 116 false negatives and 8 false positives.\nPerformance Metrics\n\nset.seed(112)\nlr_metric&lt;-metric_set(sens,accuracy, yardstick::spec)\n\n\n\nlr_resultss |&gt; \n  lr_metric(truth = diabetes, \n            estimate = .pred_class)\n\nset.seed(123)\nlr_resultss |&gt;\n  roc_curve(truth = diabetes,.pred_Yes) |&gt;\n  autoplot()\n\n\nroc_auc(lr_resultss, truth = diabetes, .pred_Yes)\n\nset.seed(123)\nheatmap_lr&lt;-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |&gt; \n  autoplot(type = \"heatmap\")\n\n\nmosaic_lr&lt;-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |&gt; \n  autoplot(type = \"mosaic\")\n\ncowplot::plot_grid(mosaic_lr,heatmap_lr)\nThe 91.1% accuracy is misleading. The model predicts negative cases well (high specificity) but identifies only 4 out of 120 positive cases. Accuracy alone is not a useful metric here due to class imbalance.\nset.seed(123)\nroc_auc(lr_resultss,truth = diabetes,.pred_Yes)\n\nlr_roc_plot&lt;-lr_resultss |&gt; \n  roc_curve(truth = diabetes, .pred_Yes) |&gt; \n  autoplot()\n  \nlr_roc_plot\n\n\nRandom Forest\nLogistic regression failed to correctly identify positive cases. Random Forest offers more flexibility for nonlinear relationships and imbalanced data.\n\n\nModel Specification\nrf&lt;-rand_forest() |&gt; \n  set_args(mtry = 9) |&gt; \n  set_engine(\"ranger\", importance = \"impurity\") |&gt; \n  set_mode(\"classification\")\nset.seed(123)\nrf_recipe&lt;-recipe(diabetes~.,data = ml_training) |&gt; \n  step_log(all_numeric()) |&gt; \n  step_normalize(all_numeric()) |&gt; \n  step_dummy(all_nominal(),-all_outcomes())\nrf_workflow&lt;-workflow() |&gt; \n  add_model(rf) |&gt; \n  add_recipe(rf_recipe)\nset.seed(123)\nrf_wrkflw_fit&lt;-rf_workflow |&gt; \n  tune::last_fit(split = ml_split)\n\nrf_wrkflw_fit |&gt; \n  collect_metrics()\n\nrf_results&lt;-rf_wrkflw_fit |&gt; \n  collect_predictions()\n\n\nRandom Forest Results\nset.seed(123)\nmosaic_rf&lt;-rf_results |&gt; \n  conf_mat(truth = diabetes,.pred_class) |&gt; \n  autoplot(type = \"mosaic\")\n\nheatmap_rf&lt;-rf_results |&gt; \n  conf_mat(truth = diabetes,.pred_class) |&gt;\n  autoplot(type = \"heatmap\")\n  \ncowplot::plot_grid(heatmap_rf,mosaic_rf)\nset.seed(123)\nrf_metrics&lt;-metric_set(yardstick::sens, yardstick::spec, yardstick::accuracy)\n\n\nlr_resultss |&gt; \n  rf_metrics(truth = diabetes, \n            estimate = .pred_class)\n\nrf_results |&gt; \n  rf_metrics(truth = diabetes, estimate = .pred_class)\n\nrf_results |&gt; \n  roc_auc(truth = diabetes,.pred_Yes)\nrf_roc_plot&lt;-rf_results |&gt; \n  roc_curve(truth = diabetes,.pred_Yes) |&gt; \n  autoplot()\n\n\nModel comparison\n\ncowplot::plot_grid(rf_roc_plot, lr_roc_plot,labels = c(\"Random Forest\", \"Logistic Regression\"),label_size = 12)\nRandom Forest outperforms logistic regression on all metrics:\n\nThe Random Forest improves sensitivity from 4% to 34%. The model still misses 64% of positive cases due to class imbalance.\n\n\nMetric\nLogistic Regression\nRandom Forest\n\n\n\n\nAccuracy\n0.91\n0.93\n\n\nSensitivity\n0.04\n0.35\n\n\nSpecificity\n0.99\n0.99\n\n\nROC-AUC\n0.83\n0.89\n\n\n\n\n\nPrediction Example (Use case)\npatient1&lt;-tribble(~age,~bmi,~direct_chol,~marital_status,~gender,\n                  40,27.3,1.5,\"Divorced\",\"female\")\n\nrf_pred&lt;-rf_wrkflw_fit |&gt; \n  extract_workflow()\n\npredict(rf_pred, new_data = patient1)\nThe model predicts this patient does not have diabetes. Given the model’s high specificity, negative predictions are reliable."
+  },
+  {
+    "objectID": "index.html#limitations-and-next-steps",
+    "href": "index.html#limitations-and-next-steps",
+    "title": "Iris_dataset",
+    "section": "Limitations and Next Steps",
+    "text": "Limitations and Next Steps\nThis analysis skipped hyperparameter tuning (k-fold cross validation) and did not address class imbalance through oversampling (SMOTE) or threshold adjustment. These are the clear next steps for improving sensitivity on the minority class."
+  },
+  {
+    "objectID": "index.html#data-cleaning-eda-1",
+    "href": "index.html#data-cleaning-eda-1",
     "title": "Iris_dataset",
     "section": "Data cleaning & EDA",
     "text": "Data cleaning & EDA\nThe explorations that I will conduct in this document will involve the following:\n\nMessy column names\nImproper variable types\nInvalid or inconsistent values\nMissing values\nNon-standard data formats"
   },
   {
-    "objectID": "iris_back_up.html#undersdaning-the-dataset",
-    "href": "iris_back_up.html#undersdaning-the-dataset",
+    "objectID": "index.html#undersdaning-the-dataset",
+    "href": "index.html#undersdaning-the-dataset",
     "title": "Iris_dataset",
     "section": "Undersdaning the dataset",
-    "text": "Undersdaning the dataset\nNow, we are going to run diffrent codes, just to understand our dataset.\n\nmessy_iris |&gt; #Checking the dimensions of the data (The data has 150 rows, and 5 columns)\n  dim()\n\n[1] 150   5\n\n\n\nmessy_iris %&gt;% # Taking a quick look at our dataset\n  glimpse()\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;chr&gt; \"5.1\", \"4.9\", \"4.7\", \"4.6\", \"5\", \"5.4\", \"4.6\", \"5\", \"4.4\"…\n$ Sepal.Width  &lt;chr&gt; \"3.5\", NA, \"3.2\", \"3.1\", \"3.6\", \"3.9\", \"3.4\", \"3.4\", \"2.9…\n$ Petal.Length &lt;chr&gt; \"1.4\", \"1.4\", \"1.3\", \"1.5\", NA, NA, \"1.4 \", \"1.5\", \"1.4 \"…\n$ Petal.Width  &lt;chr&gt; \"0.2\", \"0.2\", \"0.2\", \"0.2\", \"0.2 \", \"0.4\", \"0.3 \", \"0.2\",…\n$ Species      &lt;chr&gt; \"s!eto(sa\", \"setosa\", \"setos&a\", \"setosa\", \"seto)sa\", \"se…\n\n\nIt’s good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.\n\nmessy_iris %&gt;% # Understanding the column names of the dataset\n  colnames()\n\n[1] \"Sepal.Length\" \"Sepal.Width\"  \"Petal.Length\" \"Petal.Width\"  \"Species\"     \n\n\n\nmessy_iris %&gt;% # Checking for unique values of Species. \n  select(Species) %&gt;% \n  distinct()\n\n          Species\n1        s!eto(sa\n2          setosa\n3         setos&a\n4         seto)sa\n5         se$tosa\n6         setosa \n7            &lt;NA&gt;\n8         set!osa\n9         setos$a\n10        seto^sa\n11        SE#TOSA\n12        seto_sa\n13        seto+sa\n14        set%osa\n15        SET*OSA\n16        s*etosa\n17        s$etosa\n18        .setosa\n19       se#t%osa\n20       set-os$a\n21         SETOSA\n22       s.eto#sa\n23        set&osa\n24  ^versic_ol-or\n25   VER@SICOLOR \n26   ver+sic-olor\n27     versicolor\n28   #versicolor \n29    VER-SICOLOR\n30    versicol.or\n31    versicol@or\n32  #versi*colo^r\n33     VERSICOLOR\n34   *versicol!or\n35  versico&l.or \n36 versi-co$lo*r \n37    versicolor \n38    v%ersicolor\n39   $versic(olor\n40 v*e.r%sicol!or\n41   versicolo@r \n42    versicol&or\n43  v+e%rsico-lor\n44    versicolo_r\n45    +versicolor\n46    versicolo-r\n47   -versicolor \n48   +vers*icolor\n49   VE+RSI+COLOR\n50   versico)lo-r\n51    versic-olor\n52    vers@icolor\n53   ver$sicol$or\n54    versic)olor\n55    ver^sicolor\n56   ve%rsicolo_r\n57      virginica\n58     virg!inica\n59    vi@rg%inica\n60   virgi+n@ic%a\n61     virgini%ca\n62     virg$inica\n63     vir-ginica\n64    v+i*rginica\n65     virginic+a\n66     virgin-ica\n67     virgini$ca\n68    *virgini-ca\n69     virg-inica\n70     virgi_nica\n71    %virgi%nica\n72   vir&gini-c*a\n73     virginica \n74    vi#rginica \n75     virgini+ca\n76     VIRGI@NICA\n77     virgini_ca\n78    virg!inica \n79    -virgini)ca\n80     virginic.a\n81    virg-in&ica\n82     vir!ginica\n83     vir+ginica\n84    virg%ini#ca\n85     #virginica\n86   v%i+rgini*ca\n87     +virginica\n88    virgi_nic%a\n89     vi&rginica\n90     %virginica\n91    vir)ginic^a"
+    "text": "Undersdaning the dataset\nNow, we are going to run diffrent codes, just to understand our dataset.\nmessy_iris |&gt; #Checking the dimensions of the data (The data has 150 rows, and 5 columns)\n  dim()\nmessy_iris %&gt;% # Taking a quick look at our dataset\n  glimpse()\nIt’s good to understand our data. We have also noted that the data type for all the columns is character (chr). This can limit certain operations that require our data to be in numeric form. We are also going to fix this.\nmessy_iris %&gt;% # Understanding the column names of the dataset\n  colnames()\nmessy_iris %&gt;% # Checking for unique values of Species. \n  select(Species) %&gt;% \n  distinct()"
   },
   {
-    "objectID": "Data_extraction.html",
-    "href": "Data_extraction.html",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
     "section": "",
-    "text": "Goal: Extract family planning service delivery data from a FPAM’s DHIS2 instance using R, clean and reshape the raw output, create derived indicators (service type, client category, CYP), and produce an analysis-ready dataset.\nContext: DHIS2 is the most widely used health management information system in low- and middle-income countries. Manual data exports from the DHIS2 web interface are slow, error-prone, and not reproducible. This project demonstrates a fully programmatic pipeline from API connection to clean a CSV output.\nPipeline: API authentication, metadata exploration (org units, data elements, indicators), bulk analytics extraction, string parsing of composite category fields, indicator classification, and CYP (Couple Years of Protection) calculation.\nTools: R, khisr, tidyverse, janitor, naniar, here"
+    "text": "Data Scientist, Monitoring, Evaluation & Learning (MEL) specialist with over ten years building the data systems that health and development programmes use.\nAt Family Planning Association of Malawi (an IPPF Member Association) I lead the monitoring, evaluation and data function across over 20 service delivery points and a team of at least 15 people . I own an indicator architecture of over 20 disaggregated KPIs, wrote the R and ETL pipelines that consolidates data from DHIS2, KoboToolbox and OpenEMR into one governed reporting dataset (45% faster processing), and built the Power BI and R Shiny dashboards that management and field teams use for routine decision making. The data quality assessment cycles I lead raised indicator reporting consistency by 25% and data accuracy by 30%, and my analysis supported reporting to US Depaertment of State (formerly USAID), Global Fund, FCDO, UNFPA, KfW, IPPF and Global Affairs Canada.\nBefore FPAM, at ADRA Malawi, I designed baseline and endline household surveys including study protocols, instrument development, data collection, and analysis. Additionally I moved five districts from paper to digital data collection, reducing delays and reporting errors by a combined 40%.\nI hold an MSc in Data Science for Health and Social Care with Merit from the University of Edinburgh. My dissertation evaluated the reach and engagement of a digital health diabetes platform used by around 15,500 people in NHS England."
   },
   {
-    "objectID": "Data_extraction.html#project-summary",
-    "href": "Data_extraction.html#project-summary",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
+    "objectID": "about.html#professional-summary",
+    "href": "about.html#professional-summary",
+    "title": "About Me",
     "section": "",
-    "text": "Goal: Extract family planning service delivery data from a FPAM’s DHIS2 instance using R, clean and reshape the raw output, create derived indicators (service type, client category, CYP), and produce an analysis-ready dataset.\nContext: DHIS2 is the most widely used health management information system in low- and middle-income countries. Manual data exports from the DHIS2 web interface are slow, error-prone, and not reproducible. This project demonstrates a fully programmatic pipeline from API connection to clean a CSV output.\nPipeline: API authentication, metadata exploration (org units, data elements, indicators), bulk analytics extraction, string parsing of composite category fields, indicator classification, and CYP (Couple Years of Protection) calculation.\nTools: R, khisr, tidyverse, janitor, naniar, here"
+    "text": "Data Scientist, Monitoring, Evaluation & Learning (MEL) specialist with over ten years building the data systems that health and development programmes use.\nAt Family Planning Association of Malawi (an IPPF Member Association) I lead the monitoring, evaluation and data function across over 20 service delivery points and a team of at least 15 people . I own an indicator architecture of over 20 disaggregated KPIs, wrote the R and ETL pipelines that consolidates data from DHIS2, KoboToolbox and OpenEMR into one governed reporting dataset (45% faster processing), and built the Power BI and R Shiny dashboards that management and field teams use for routine decision making. The data quality assessment cycles I lead raised indicator reporting consistency by 25% and data accuracy by 30%, and my analysis supported reporting to US Depaertment of State (formerly USAID), Global Fund, FCDO, UNFPA, KfW, IPPF and Global Affairs Canada.\nBefore FPAM, at ADRA Malawi, I designed baseline and endline household surveys including study protocols, instrument development, data collection, and analysis. Additionally I moved five districts from paper to digital data collection, reducing delays and reporting errors by a combined 40%.\nI hold an MSc in Data Science for Health and Social Care with Merit from the University of Edinburgh. My dissertation evaluated the reach and engagement of a digital health diabetes platform used by around 15,500 people in NHS England."
   },
   {
-    "objectID": "Data_extraction.html#step-1-load-packages",
-    "href": "Data_extraction.html#step-1-load-packages",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Step 1: Load Packages",
-    "text": "Step 1: Load Packages\n\nlibrary(khisr)\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(naniar)\nlibrary(here)"
+    "objectID": "about.html#what-i-do",
+    "href": "about.html#what-i-do",
+    "title": "About Me",
+    "section": "What I Do",
+    "text": "What I Do\n\nMEL systems & evaluation: logframes, indicator reference sheets, data quality assessments, baseline/endline survey design, donor reporting.\nHealth information systems: DHIS2 administration and API extraction, OpenEMR/CMIS, KoboToolbox/ODK, and training staff on data use (over 50 trained).\nData engineering & BI: ETL pipelines in R, SQL and Python; Power BI semantic models, DAX, Power Query and row-level security; R Shiny.\nStatistical modelling & machine learning: regression, survival analysis (Cox models), random forests, tidymodels, reproducible research with Quarto and versioning with Git."
   },
   {
-    "objectID": "Data_extraction.html#step-2-connect-to-dhis2",
-    "href": "Data_extraction.html#step-2-connect-to-dhis2",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Step 2: Connect to DHIS2",
-    "text": "Step 2: Connect to DHIS2\nThe khisr package provides R bindings to the DHIS2 Web API. Authentication uses a base URL, username, and password. Credentials are stored securely and never hardcoded in shared scripts like this one.\n\n# Credentials stored in .Renviron for security\n# DHIS2_BASE_URL, DHIS2_USERNAME, DHIS2_PASSWORD\n\nbase_url &lt;- Sys.getenv(\"FPAM_DHIS2_BASE_URL\")\nusername &lt;- Sys.getenv(\"FPAM_DHIS2_USERNAME\")\npassword &lt;- Sys.getenv(\"FPAM_DHIS2_PASSWORD\")\n\ndhis2_connection &lt;- khis_cred(\n  username = username,\n  password = password,\n  server   = base_url\n)\n\nIn practice, I set these environment variables in my .Renviron file so credentials stay out of version control."
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About Me",
+    "section": "Experience",
+    "text": "Experience\nMonitoring, Evaluation and Data Lead | Family Planning Association of Malawi | Jan 2021 – present\n\nLead MEL and data across 20+ service delivery points; own over 30 KPI indicator architecture and 10+ SOPs on data validation, governance and security.\nBuilt R/ETL pipelines consolidating DHIS2, KoboToolbox and OpenEMR, cutting processing time by 45% and feeding Power BI and Shiny dashboards.\nImproved reporting consistency by 25% and data accuracy by 30% through structured data quality assessment and verification cycles.\n\nData Management Officer | ADRA Malawi | Oct 2016 – Dec 2020\n\nDesigned and analysed baseline and endline surveys for climate-smart agriculture, nutrition and health programmes.\nRolled out ODK/KoboToolbox across five districts, cutting paper-based errors by 40% and data entry lag from 14 days to under 48 hours.\nBuilt donor dashboards for WFP (BMZ), EU and USAID portfolios, with 100% on-time reporting across a four-year cycle."
   },
   {
-    "objectID": "Data_extraction.html#step-3-explore-dhis2-metadata",
-    "href": "Data_extraction.html#step-3-explore-dhis2-metadata",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Step 3: Explore DHIS2 Metadata",
-    "text": "Step 3: Explore DHIS2 Metadata\nBefore extracting data, I explore the DHIS2 metadata to identify the correct IDs for organisation units, data elements, indicators, and category combinations. This step is necessary because DHIS2 stores everything by UID, not by name.\n\nOrganisation Units\nOrganisation units represent the geographic and administrative hierarchy: national, regional, district, and service delivery point (SDP) levels.\n\norg_units &lt;- get_organisation_units()\n\n# Preview the org unit hierarchy\norg_units |&gt; \n  head(20)\n\nI filtered the full list down to 59 SDPs by selecting only relevant organisation units ids to our projects:\n\norg_id &lt;- c(\"oFHX9KdPmvq\", \"pWgcJqTDaR6\", \"ZBJZ84GRg8T\", \"FioTrY26WbQ\",  \"qADMYLLGeof\", \"KtvkHQyYVrM\", \"FFB1iq38BbR\", \"k0lDJ1PtPic\",  \"JqBOUCD9fy6\", \"uYGZAP1vriT\", \"Oay6QzUgYuL\", \"Ny1hpCtux3y\",  \"PU2zDIptR7U\", \"EB7epqcMzF4\", \"D5qiBUI3k8G\", \"ike32nYVxfD\",  \"VQY6DZDlC29\", \"wNY0hZm1WOI\", \"CM2IVSh3Atq\", \"iwmLCeYmDms\",\n  \"BG1pb5DtYhg\", \"AzeIukoY6lH\", \"Ro9iFw5Kyd8\", \"jXpsTENuryd\",  \"kzTLZPcEuIJ\", \"KBa6xDhcUnO\", \"AOeFNxC7zRn\", \"ycdjNkkY8LK\",  \"tWrBEq7DpeQ\", \"xqKcIvkUpDr\", \"mNOLTn5nj71\", \"i2smYapUm85\",  \"Uu3xAwwG6Q6\", \"ouj5uTN3ecR\", \"ISyZ4sSvcAN\", \"n3ROWDE4oxm\",  \"Y0eMusceYzl\", \"GAmB6ajj1E0\", \"StMM0959QJU\", \"iaV1nG9GEPS\",  \"mXwvMIb1z40\", \"lWpazEuoOil\", \"YcUVBPS3DYO\", \"LgAGspUhatq\",  \"iAFjbgJukkc\", \"rLBCWv3QtOM\", \"E4IIABpkuT1\", \"pd6s2OsPnrs\",\n  \"x0Bo9zDgE85\", \"U5FGVOxMHPG\", \"z64iYPQFfgz\", \"qF5j8wHj8ax\",  \"nxSuQduPyAI\", \"Pk43HlRvlxK\", \"QiiJs70qbiR\", \"BJ7NARvScbH\",  \"xeZFQsKcoQL\", \"Khd1okEVaHz\", \"b53t9dVC7g1\")\n\n\n\nDimensions and Category Combinations\nDHIS2 disaggregates data by category combinations (age group, client type, gender). Understanding these is necessary for parsing extracted data.\n\ndimensions &lt;- get_dimensions()\ndimensions\n\ncat_combos &lt;- get_category_option_combos()\ncat_combos |&gt; \n  head(20)\n\n\n\nIndicators and Data Elements\nIndicators are calculated values (e.g., percentages). Data elements are raw reported values (e.g., number of clients served).\n\nindicators &lt;- get_indicators()\nindicators |&gt; \n  head(20)\n\n\ndata_element_group &lt;- get_data_element_groups()\ndata_element_group |&gt; \n  head(20)\n\n# 61 data element IDs covering SRV (service) and Items (commodities) data\nd_elements_ids &lt;- c(\"pFMjZXlfAf7\", \"Krdr1AlUQ8N\", \"aOz9WW0pPO4\", \"C5P131CTInb\",  \"N057bnpkZkx\", \"vMPhO6JOlnk\", \"fG5OLScYkeK\", \"aPUhz2LnX5X\",\"icy8aA0g0kl\", \"ksuWY4XNe2T\", \"Wt9yNZBo8nP\", \"ve4iq3vU00H\",  \"vTjYQWr90ry\", \"wD2kg2pbHpx\", \"gVIx8BrlUne\", \"L5yXk6pkft7\",  \"QJsqAcTX3GQ\", \"Kh7aznnxzgp\", \"CBbJFfDj55n\", \"J1xTOgyF6uy\",  \"mSIGrBYiRGe\", \"dINzbge9RMX\", \"N1sig4akeCt\", \"tDhThTdnFXZ\",  \"Stj1UElUNLq\", \"zezfiM6WS8c\", \"j9OOIxKU1Il\", \"P6RUHBiShIk\",  \"wqkK7PhnyQ9\", \"yuoB7pCFfsG\", \"lCyEE5JH8Dz\", \"gXki5ZovDDB\",  \"erac6GM8IoY\", \"WPGYUvPGant\", \"UGF1QZsTdlW\", \"xzdCm0QxCO5\",  \"We91kItyQ7B\", \"a65L6xsaSGc\", \"XZgcxmmwSdr\", \"lAJqjUjXqoU\",  \"rYj5ng5yFZF\", \"wMn75u7Ng7t\", \"VnOGlJ5KaJS\", \"zaFd5ecHFT9\",  \"fpNvBVNaS4m\", \"O5hC9FtmEbe\", \"KncZyhzMrN0\", \"oUNffjs9rOa\",  \"feSIdEJFMHR\", \"tLqkd0OcZ4k\", \"pcDpDC9obr8\", \"DsTTM3lqCW4\",  \"txTi3OALHRL\", \"EMmmVwlCTRp\", \"EAe58lagJ0W\", \"r5UEluRz1TA\",  \"tyFGIFRt2S2\", \"kULUnkOQtaF\", \"cu0ukG91Zc0\", \"GT09A1kzoAg\",  \"rOHUZld4vO6\")"
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About Me",
+    "section": "Education",
+    "text": "Education\n\nMSc Data Science for Health and Social Care, with Merit | University of Edinburgh | 2023 – 2026 · Dissertation\nDiploma in Monitoring and Evaluation | The Catholic University of Malawi | 2018 – 2020\nBSc Agricultural Economics | University of Malawi, Bunda College | 2011 – 2015"
   },
   {
-    "objectID": "Data_extraction.html#step-4-extract-data-from-the-analytics-api",
-    "href": "Data_extraction.html#step-4-extract-data-from-the-analytics-api",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Step 4: Extract Data from the Analytics API",
-    "text": "Step 4: Extract Data from the Analytics API\nThe get_analytics_by_level() function pulls aggregated data across all specified org units, data elements, and time periods in a single API call. Level 5 corresponds to individual service delivery points.\n\nfpam_dhis2 &lt;- get_analytics_by_level(\n  element_ids = d_elements_ids,\n  start_date  = \"2023-01-01\",\n  end_date    = NULL,\n  level       = 5,\n  org_ids     = org_id)\n\n# Check the disaggregation categories returned\nunique(fpam_dhis2$category)\n\nThe raw output contains one row per data element, per org unit, per period, per category combination. The category column is a comma-separated string combining age group, client type (New/Revisit), and gender."
+    "objectID": "about.html#certifications",
+    "href": "about.html#certifications",
+    "title": "About Me",
+    "section": "Certifications",
+    "text": "Certifications\n\nComplete Guide to Power BI for Data Analysts (Microsoft Press)\nIntroduction to SQL and Intermediate SQL (DataCamp)\nETL and ELT in Python (DataCamp)\nETL in Python and SQL (LinkedIn Learning)\nMachine Learning with tidymodels\nData Wrangling in R\nData Visualization in R with ggplot2\nMicrosoft Azure Fundamentals\nCloud Computing\nLeveraging AI in Your Nonprofit Organization (Microsoft and NetHope)"
   },
   {
-    "objectID": "Data_extraction.html#step-5-clean-and-reshape",
-    "href": "Data_extraction.html#step-5-clean-and-reshape",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Step 5: Clean and Reshape",
-    "text": "Step 5: Clean and Reshape\n\n5.1 Parse the Category Column\nThe category field after extraction arrives as a single string (e.g., “15-19, RVT, Female”). I split this into three separate columns using separate() and then standardize the values with case_when().\n\nfpam_clean &lt;- fpam_dhis2 |&gt; \n  select(year, sdp, ta_town, district, region, national,\n         element, category, period, month, value) |&gt; \n  separate(category,\n    into  = c(\"age_raw\", \"client_raw\", \"gender_raw\"),\n    sep   = \", \",\n    fill  = \"right\",\n    extra = \"drop\") |&gt; \n  mutate(age_category = age_raw,\n    client_category = case_when(client_raw %in% c(\"RVT\", \"NU\") ~ client_raw,\n      TRUE ~ NA_character_),\n    gender = case_when(client_raw %in% c(\"Male\", \"Female\") ~ client_raw,\n      gender_raw %in% c(\"Male\", \"Female\") ~ gender_raw,\n      TRUE ~ NA_character_)) |&gt; \n  mutate(client_category = case_when(\n      client_category == \"NU\"  ~ \"New\",\n      client_category == \"RVT\" ~ \"Revisit\",\n      .default = NA))\n\n\n\n5.2 Classify Contraceptive Methods\nEach data element name contains the method type. I use str_detect() to group these into broad method categories.\n\nfpam_clean &lt;- fpam_clean |&gt; \n  mutate(methods_group = case_when(\n      str_detect(element, \"Implant\") ~ \"Implants\",\n      str_detect(element, \"Injectable\") ~ \"Injectables\",\n      str_detect(element, \"Oral Contraceptives\") ~ \"Pills\",\n      str_detect(element, \"Pills\") ~ \"Pills\",\n      str_detect(element, \"condom\") ~ \"Condoms\",\n      str_detect(element, \"IUCD\") ~ \"IUD\",\n      str_detect(element, \"MVSC\")  ~ \"Surgical Contraception\",\n      str_detect(element, \"FVSC\")  ~ \"Surgical Contraception\"))\n\n\n\n5.3 Create Service Indicators\nI classify each data element into a high-level service indicator (Family Planning, Abortion, HIV, STI, etc.) for reporting.\n\nFP &lt;- c(\n  \"SRV - FP - Injectable - Consultation ( 3 month)-DEPO\",\n  \"SRV - FP - Implant - Consultation (3 years)\",\n  \"SRV - FP - Injectable - Consultation -3 month ( Sayana press)\",\n  \"SRV - FP - Male condom - Consultation\",\n  \"SRV - FP - Implant - Consultation (4 years)\",\n  \"SRV - FP - Implant - Consultation - Removal - 5 Yrs\",\n  \"SRV - FP - Implant - Consultation (5 years)\",\n  \"SRV - FP - Oral Contraceptives - Consultation-COC\",\n  \"SRV - FP - Implant - Consultation - Removal -3 Yrs\",\n  \"SRV - FP - Implant - Consultation - Removal - 4 Yrs\",\n  \"SRV - FP - Injectable - Consultation ( 2 month)\",\n  \"SRV - FP - IUCD - Consultation (10 years)\",\n  \"SRV - FP - EC - Consultation - Pills\",\n  \"SRV - FP - Oral Contraceptives - Consultation-POP\",\n  \"SRV - FP - IUCD - Consultation - Removal - 10 Yrs\",\n  \"SRV - FP - IUCD - Consultation (5 years)\",\n  \"SRV - FP - EC - Consultation - IUCD\",\n  \"SRV - FP - FVSC - Consultation\",\n  \"SRV - FP - Female condom - Consultation\",\n  \"SRV - FP - IUCD - Consultation - Removal - 5 Yrs\",\n  \"SRV - FP - Injectable - Consultation (1 month)\",\n  \"SRV - FP - MVSC - Consultation\")\n\nfpam_clean &lt;- fpam_clean |&gt; \n  mutate(indicator = case_when(element %in% FP ~ \"Family Planning\",\n      str_detect(element, \"Abortion\")  ~ \"Abortion\",\n      str_detect(element, \"Subfertility\") ~ \"Infertility\",\n      str_detect(element, \"HIV and AIDS\") ~ \"HIV\",\n      str_detect(element, \"STI/RTI\") ~ \"STI\",\n      str_detect(element, \"Gynaecology\") ~ \"Cervical Cancer Screening\",\n      str_detect(element, \"Other\")  ~ \"GBV Screening\",\n      str_detect(element, \"Obstetrics\") ~ \"Pregnancy Test\"))\n\n\n\n5.4 Classify Service Delivery Points\nSDPs are grouped by type: static clinics, associated facilities (public health facilities supported by FPAM), outreach teams, and community-based reproductive health providers (CRHP).\n\nstatic_clinics &lt;- c(\"Kasungu FPAM Static\", \"Dowa Static\", \"Ntcheu Static\",  \"Mangochi Static\", \"Kawale Static\", \"Mzuzu Static\", \"Dedza Static\")\n\nassociated &lt;- c(\"Nandumbo Static\", \"Mwima Static\", \"Namanolo Static\",  \"Kalembo Static\", \"Neno District Hospital\", \"Ntcheu District Hospital\")\n\noutreach &lt;- c(\"Salima Outreach\", \"Kawale Outreach Team B\", \"Chitipa Outreach Team A\", \"Ntcheu Outreach Team A\", \"Mzuzu Outreach Team B\", \"Ntcheu Outreach Team B\",\"Dedza Outreach Team C\", \"Dedza Outreach Team A\", \"Dedza Outreach Team B\",\"Kasungu Outreach Team D\", \"Mchinji Outreach Team A\", \"Mangochi Outreach Team A\",\n\"Kasungu Outreach Team C\", \"Kasungu Outreach Team B\", \"Kasungu Outreach\",  \"Mchinji Outreach Team B\", \"Mangochi Outreach Team B\", \"Kawale Outreach Team C\",  \"Kawale Outreach Team E\", \"Dowa Outreach\", \"Balaka Outreach\",  \"Karonga Outreach Team A\", \"Dowa Outreach Team C\", \"Dowa Outreach Team B\",  \"Salima Outreach Team C\", \"Mzuzu Outreach\", \"Salima Outreach Team B\", \"Kawale Outreach Team A\", \"Kawale Outreach Team D\", \"Karonga Outreach Team B\")\n\nCRHP &lt;- c(\"Ntcheu CBD - CRHP 2\", \"Ntcheu CBD - CRHP 3\", \"Ntcheu CBD - CRHP 1\",\"Salima CBDA - CRHP\", \"Neno CBD - CRHP\", \"Mchinji CBD-CRHP\",  \"Mangochi CBD - CRHP\", \"Balaka  CBD\", \"Dedza CBD - CRHP\", \"Mzuzu CBD - CRHP\", \"Dowa CBD-CRHP\", \"Salima CBDA - CRHP 2\")\n\nfpam_clean &lt;- fpam_clean |&gt; \n  mutate(sdp_group = case_when(\n      sdp %in% static_clinics ~ \"Static Clinic\",\n      sdp %in% associated  ~ \"Associated Facility\",\n      sdp %in% outreach  ~ \"Outreach\",\n      sdp %in% CRHP  ~ \"CRHP\"))\n\n\n\n5.5 Calculate Couple Years of Protection (CYP)\nCYP is a standard family planning metric defined by IPPF and other SRH organisations. Each contraceptive method has a fixed conversion factor. In this analysis each data element has been mapped to its CYP value.\n\nfpam_cleaner &lt;- fpam_clean |&gt; \n  mutate(CYP = case_when(\n      element == \"Items - FP - BTL-Caesarian Section\" ~ 10,\n      element == \"Items - FP - BTL-Interval\"  ~ 10,\n      element == \"Items - FP - BTL-Postpartum\"  ~ 10,\n      element == \"Items - FP - EC - IUCD\"      ~ 4.6,\n      element == \"Items - FP - EC - Pills\"        ~ 0.05,\n      element == \"Items - FP - Female condom (Registered FP)\"  ~ 0.00833,\n      element == \"Items - FP - Female condom back up\"  ~ 0.00833,\n      element == \"Items - FP - Implant - 3 years-Implanon-Insertion\"   ~ 2.5,\n      element == \"Items - FP - Implant - 4 years- Levoplant-Insertion\" ~ 2.5,\n      element == \"Items - FP - Implant - 5 years-Jadelle Insertion\"    ~ 3.8,\n      element == \"Items - FP - Injectable - 1 month\"  ~ 0.25,\n      element == \"Items - FP - Injectable - 2 month\"  ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month Sayana press\" ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month-DEPO-IM\"   ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month-DEPO-SC P\"  ~ 0.25,\n      element == \"Items - FP - Injectable - 3 month-DEPO-SC SI\"~ 0.25,\n      element == \"Items - FP - IUCD Insertion-  (5 years)\"   ~ 4.6,\n      element == \"Items - FP - IUCD Insertion- (10 years)\"    ~ 4.6,\n      element == \"Items - FP - Male condom (Registered FP)\"~ 0.00833,\n      element == \"Items - FP - Male condom back up\" ~ 0.00833,\n      element == \"Items - FP - Oral Contraceptives (COC)\" ~ 0.0667,\n      element == \"Items - FP - Oral Contraceptives (POP)\"    ~ 0.0833,\n      element == \"Items - FP - Vasectomy\"   ~ 10))"
+    "objectID": "about.html#community",
+    "href": "about.html#community",
+    "title": "About Me",
+    "section": "Community",
+    "text": "Community\nFounder and lead organiser of R Users Malawi, Malawi’s first national R programming community (50+ members). I’ve run 10+ workshops and bootcamps for government, academia and NGOs since 2024."
   },
   {
-    "objectID": "Data_extraction.html#step-6-final-dataset",
-    "href": "Data_extraction.html#step-6-final-dataset",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Step 6: Final Dataset",
-    "text": "Step 6: Final Dataset\nSubsetting columns analysis.\n\nfpam_cleaner &lt;- fpam_cleaner |&gt;\n  select(region, district, ta_town, sdp, sdp_group,\n         methods_group, element, indicator,  gender, \n         client_category, age_category,\n         year, month, period, CYP, value) |&gt; \n  mutate(across(c(district, age_category, methods_group,\n        indicator, gender, client_category),as.factor))\n\n\nwrite_csv(fpam_cleaner, here(\"fpam_data.csv\"))"
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: mwaledaveed at gmail dot com\nPhone: +265 993 627 367\nLinkedIn\n\nMy resume and references are available on request. Use the Request resume button at the bottom."
   },
   {
-    "objectID": "Data_extraction.html#summary",
-    "href": "Data_extraction.html#summary",
-    "title": "Extracting and Cleaning DHIS2 Data with R",
-    "section": "Summary",
-    "text": "Summary\nThe complete pipeline moves from raw DHIS2 API output to an analysis-ready dataset in six steps:\n\nConnect to the DHIS2 API using secure credentials\nExplore metadata to identify relevant org units, data elements, and category combinations\nExtract disaggregated analytics data for 59 SDPs and 61 data elements from January 2023 up to date.\nParsing of the the category column into age group, client type, and gender\nClassifying each record by contraceptive method group, service indicator, and SDP type\nCalculating and assigning CYP conversion factors for each commodity line\n\nThe output CSV feeds directely into downstream dashboards (Shiny, Power BI) and routine programme reports. This approach replaces manual DHIS2 exports, reduces errors, and makes the extraction fully reproducible."
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Reach out about MEL, data and analytics roles, consultancies, R workshops or collaborations:\n\nEmail: mwaledaveed@gmail.com\nPhone: +265 993 627 367\nGitHub: mwaledaveed99\nLinkedIn: David Mwale\n\nI’m open to full-time, part-time, remote and consultancy roles.\nRequest my resume\nMy resume and references are shared on request."
+  },
+  {
+    "objectID": "contact.html#lets-get-in-touch",
+    "href": "contact.html#lets-get-in-touch",
+    "title": "Contact",
+    "section": "",
+    "text": "Reach out about MEL, data and analytics roles, consultancies, R workshops or collaborations:\n\nEmail: mwaledaveed@gmail.com\nPhone: +265 993 627 367\nGitHub: mwaledaveed99\nLinkedIn: David Mwale\n\nI’m open to full-time, part-time, remote and consultancy roles.\nRequest my resume\nMy resume and references are shared on request."
+  },
+  {
+    "objectID": "dissertation.html",
+    "href": "dissertation.html",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "",
+    "text": "MSc Data Science for Health and Social Care (with Merit), University of Edinburgh, 2026. A work-based placement project with My Way Digital Health. This page summarises the abstract only; the full dissertation is available on request."
+  },
+  {
+    "objectID": "dissertation.html#why-it-matters",
+    "href": "dissertation.html#why-it-matters",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Why it matters",
+    "text": "Why it matters\nDigital health platforms can only improve outcomes if people register and keep using them. Earlier studies looked at engagement or time to discontinuation, but few asked whether platform users represent the wider population. No previous study in England had done both at once: benchmarking users against the national diabetes population and estimating how long they stay engaged."
+  },
+  {
+    "objectID": "dissertation.html#aims",
+    "href": "dissertation.html#aims",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Aims",
+    "text": "Aims\n\nAssess how representative My Way Diabetes users are of the diabetes population recorded in the National Diabetes Audit in each locality.\nEstimate the time from registration to disengagement."
+  },
+  {
+    "objectID": "dissertation.html#design-and-methods",
+    "href": "dissertation.html#design-and-methods",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Design and methods",
+    "text": "Design and methods\n\nDesign: a retrospective cohort service evaluation in three NHS localities: Somerset, North West London and Greater Manchester.\nRepresentativeness: compared users’ age, sex, deprivation and ethnicity with National Diabetes Audit data, expressing differences in percentage points.\nDisengagement: defined as the first prolonged inactivity, i.e. a 90-day gap after the last qualifying activity.\nModel: a Cox proportional hazards regression stratified by locality."
+  },
+  {
+    "objectID": "dissertation.html#key-findings",
+    "href": "dissertation.html#key-findings",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Key findings",
+    "text": "Key findings\n\n\n\n\n\n\n\nMeasure\nResult\n\n\n\n\nPlatform users analysed\n15,571\n\n\nMedian time from registration to last activity before a 90-day gap\n0.5 days\n\n\nUsers who disengaged during follow-up\n99.3%\n\n\nUsers still continuously active at 12 months\n0.5%\n\n\nUsers who later re-engaged\nabout 25%\n\n\nWomen vs men (hazard of disengagement)\nHR 0.96 (95% CI 0.93–0.99)\n\n\nType 2 vs Type 1 diabetes\nHR 0.88 (95% CI 0.83–0.93)\n\n\n\nThe most deprived and older users were under-represented, so the platform may reach least the people who could benefit most."
+  },
+  {
+    "objectID": "dissertation.html#implications",
+    "href": "dissertation.html#implications",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Implications",
+    "text": "Implications\nRegistration was high and similar across demographic groups; sustained engagement was not. The platform’s main challenge is almost immediate disengagement, not recruitment. Outreach to under-represented groups still matters, but improving the first-session experience and supporting non-activators and re-engagers deserves equal attention."
+  },
+  {
+    "objectID": "dissertation.html#skills-demonstrated",
+    "href": "dissertation.html#skills-demonstrated",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Skills demonstrated",
+    "text": "Skills demonstrated\nSurvival analysis (Cox regression, stratification), population benchmarking against national audit data, working with large linked health-platform data under information governance, and translating results into service recommendations. Data privacy, and governance, Handling research data in a Trusted Research Environment (DataStore, Data Sync)"
+  },
+  {
+    "objectID": "dissertation.html#acknowledgements",
+    "href": "dissertation.html#acknowledgements",
+    "title": "MSc Dissertation: Digital Health Engagement in NHS England",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nSupervised by Dr Chris Oldnall and Dr Sophie Marion de Procé (University of Edinburgh), with support from the My Way Digital Health team."
+  },
+  {
+    "objectID": "powerbi_dashboard.html",
+    "href": "powerbi_dashboard.html",
+    "title": "SACCO Performance Dashboard (Power BI)",
+    "section": "",
+    "text": "Client work sample, view only. The organisation’s name and logo have been removed."
+  },
+  {
+    "objectID": "powerbi_dashboard.html#the-brief",
+    "href": "powerbi_dashboard.html#the-brief",
+    "title": "SACCO Performance Dashboard (Power BI)",
+    "section": "The brief",
+    "text": "The brief\nA savings and credit co-operative (SACCO) with six branches needed one place for management to track member growth, loan disbursement, member exits, complaints and savings against annual targets. Before this, the figures came from separate exports and branch spreadsheets."
+  },
+  {
+    "objectID": "powerbi_dashboard.html#what-i-built",
+    "href": "powerbi_dashboard.html#what-i-built",
+    "title": "SACCO Performance Dashboard (Power BI)",
+    "section": "What I built",
+    "text": "What I built\nA nine-page Power BI report, each page answering one management question:\n\n\n\n\n\n\n\nPage\nQuestion it answers\n\n\n\n\nExit report\nHow many members are leaving, from which branches, and why?\n\n\nMembership (weekly & quarterly)\nAre branches recruiting enough new members to hit targets?\n\n\nLoan performance\nHow much has been disbursed against the loan-book target, by branch and product?\n\n\nContact centre\nWhat are members complaining about, through which channel, and how many are resolved?\n\n\nMember engagement\nHow many members, women’s groups and youth are active, and how are they using mobile money?\n\n\nFinancial metrics\nWhat do savings look like by type, and what are the capital adequacy, delinquency and liquidity ratios?\n\n\nOverall\nThe headline view for the board.\n\n\n\nTechniques: DAX measures for targets, variance and percentage achievement; gauges for actual vs target; conditional formatting on variance; date-range, year, quarter and month slicers; a word cloud of free-text exit reasons; and a consistent layout so non-technical users can read every page the same way."
+  },
+  {
+    "objectID": "powerbi_dashboard.html#gallery",
+    "href": "powerbi_dashboard.html#gallery",
+    "title": "SACCO Performance Dashboard (Power BI)",
+    "section": "Gallery",
+    "text": "Gallery\nClick any page to enlarge it.\n\n\n\n\nExit report\n\n\n\n\n\nMembership: weekly performance\n\n\n\n\n\nMembership: quarterly performance\n\n\n\n\n\nLoan performance: by branch\n\n\n\n\n\nLoan performance: by product\n\n\n\n\n\nContact centre\n\n\n\n\n\nMember engagement\n\n\n\n\n\nFinancial metrics\n\n\n\n\n\nOverall dashboard\n\n\n\n\nWould you like to discuss a dashboard like this for your organisation? Get in touch."
   },
   {
     "objectID": "cleaning.html",
@@ -228,7 +557,7 @@
     "href": "cleaning.html#imputation-with-missforest",
     "title": "Data Cleaning and Imputation",
     "section": "Imputation with missForest",
-    "text": "Imputation with missForest\nThere are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package; missForest, which uses random forest to train data of observed values of data matrix to predict missing values.\n\n#install.packages(\"missForest\")\nlibrary(missForest)\n\niris_impute&lt;-clean_iris |&gt; \n  select(-species) |&gt; \n  mutate(across(c(sepal_length,\n                  sepal_width,\n                  petal_length,\n                  petal_width), as.numeric),\n         species_clean = as.factor(species_clean))\n\n\niris_imputed&lt;-missForest(iris_impute,xtrue = ,maxiter = 10,ntree = 100,verbose = FALSE)\n\ndf_imputed&lt;-iris_imputed$ximp\n\ndf_imputed |&gt;  \n  miss_var_summary() |&gt; \n  gt() \n\n\n\n\n\n\n\nvariable\nn_miss\npct_miss\n\n\n\n\nsepal_length\n0\n0\n\n\nsepal_width\n0\n0\n\n\npetal_length\n0\n0\n\n\npetal_width\n0\n0\n\n\nspecies_clean\n0\n0\n\n\n\n\n\n\n\nEven though imputing datasets (multiple imputation) is better than methods like list wise deletion, along with it comes ethical implications especially for identity data.\n\niris_imputed$OOBerror\n\n     NRMSE        PFC \n0.13960904 0.01587302 \n\n\nOut of the bag error rates for both the categorical and numerical predictions indicating reliable imputation."
+    "text": "Imputation with missForest\nThere are many ways of working with missing values including methods such as listwise deletion, pairwise deletion, imputation etc. In this section we are going to use imputation by employing a package; missForest, which uses random forest to train data of observed values of data matrix to predict missing values.\n\n#install.packages(\"missForest\")\nlibrary(missForest)\n\niris_impute&lt;-clean_iris |&gt; \n  select(-species) |&gt; \n  mutate(across(c(sepal_length,\n                  sepal_width,\n                  petal_length,\n                  petal_width), as.numeric),\n         species_clean = as.factor(species_clean))\n\n\niris_imputed&lt;-missForest(iris_impute,xtrue = ,maxiter = 10,ntree = 100,verbose = FALSE)\n\ndf_imputed&lt;-iris_imputed$ximp\n\ndf_imputed |&gt;  \n  miss_var_summary() |&gt; \n  gt() \n\n\n\n\n\n\n\nvariable\nn_miss\npct_miss\n\n\n\n\nsepal_length\n0\n0\n\n\nsepal_width\n0\n0\n\n\npetal_length\n0\n0\n\n\npetal_width\n0\n0\n\n\nspecies_clean\n0\n0\n\n\n\n\n\n\n\nEven though imputing datasets (multiple imputation) is better than methods like list wise deletion, along with it comes ethical implications especially for identity data.\n\niris_imputed$OOBerror\n\n     NRMSE        PFC \n0.13968505 0.01587302 \n\n\nOut of the bag error rates for both the categorical and numerical predictions indicating reliable imputation."
   },
   {
     "objectID": "cleaning.html#validation-comparing-imputed-vs-original-data",
@@ -245,122 +574,17 @@
     "text": "VISUALISATION\n\ndf_imputed |&gt; \n  ggplot(aes(x = sepal_length,y = petal_width))+\n  geom_point(aes(colour = species_clean, size = petal_length), alpha = 0.5) +\n  scale_color_manual(values = c(\"#00AFBB\", \"#e7b800\",\"#FC4E07\"))+\n  scale_size(range = c(0.5, 12)) +\n  theme_bw()+\n  labs(title = \"Plot showing Petal width against Petal length\")\n\n\n\n\n\n\n\n\nThe scatter plot shows clear clustering by species, with Setoisa separating distinctly from both Versicolor and Virginica. This confirms that the imputed dataset retains the original grouping or classification structure."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I am a data scientist with over 10 years of experience working with data in health (SRH), HIV, agriculture, livelihoods, and nutrition. Currently finishing my MSc in Data Science for Health and Social Care at the University of Edinburgh.\nMy work focuses on statistical modelling, machine learning, data visualization, and building reproducible data pipelines. I lead the RUsers Malawi community in Lilongwe."
-  },
-  {
-    "objectID": "about.html#education-experience",
-    "href": "about.html#education-experience",
-    "title": "About Me",
-    "section": "Education & Experience",
-    "text": "Education & Experience\n\nMSc in Data Science for Health and Social care | University of Edinburgh| 2023- present\nDiploma in Monitoring and Evaluation | The Catholic University of Malawi | 2018-20\nBSc Agricultural Economics | University of Malawi | 2011-15"
-  },
-  {
-    "objectID": "about.html#current-role",
-    "href": "about.html#current-role",
-    "title": "About Me",
-    "section": "Current role",
-    "text": "Current role\nMonitoring, Evaluation and Data Use Specialist at Family Planning Association of Malawi."
-  },
-  {
-    "objectID": "about.html#community",
-    "href": "about.html#community",
-    "title": "About Me",
-    "section": "Community",
-    "text": "Community\n\nRUsers Malawi Lead organiser | Lilongwe, Malawi | 2024- present"
-  },
-  {
-    "objectID": "about.html#business-intelligence",
-    "href": "about.html#business-intelligence",
-    "title": "About Me",
-    "section": "Business Intelligence ",
-    "text": "Business Intelligence \n\nPowerBI\n\n\nContact \n\nEmail: d dot mwale at sms dot ed dot ac dot uk\nPhone: +265 993 627 367\nLinkedIn"
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "Reach out for collaborations, R workshops, or data science opportunities:\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265993627367\nGitHub: mwaledaveed99\n\nI am willing to take full-time, part-time, and remote data science related roles."
-  },
-  {
-    "objectID": "contact.html#lets-get-in-touch",
-    "href": "contact.html#lets-get-in-touch",
-    "title": "Contact",
-    "section": "",
-    "text": "Reach out for collaborations, R workshops, or data science opportunities:\n\nEmail: d.mwale@sms.ed.ac.uk\nPhone: +265993627367\nGitHub: mwaledaveed99\n\nI am willing to take full-time, part-time, and remote data science related roles."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "index.html#key-achievement",
+    "href": "index.html#key-achievement",
     "title": "David Mwale",
-    "section": "",
-    "text": "I build data science products that improve health outcomes. With over 10 years of experience working with health, agriculture, and nutrition data across Malawi, I apply statistical modelling, machine learning, and reproducible research to solve real problems.\nCurrently finalising my MSc at the University of Edinburgh in Data Science for Health and Social Care. Open to Data Science roles."
+    "section": "Key Achievement",
+    "text": "Key Achievement\n\n45% faster data processing after consolidating DHIS2, KoboToolbox and OpenEMR into one ETL pipeline\n25% better indicator reporting consistency and 30% higher data accuracy from structured data quality exercises\n40% fewer data errors after migrating to digital collection\nOver 30 KPIs across 20 service delivery points, and at least 50 staff trained on data use (dashboards - DHIS2, RShiny) and related tools"
   },
   {
-    "objectID": "index.html#featured-projects",
-    "href": "index.html#featured-projects",
+    "objectID": "index.html#key-achievements",
+    "href": "index.html#key-achievements",
     "title": "David Mwale",
-    "section": "Featured Projects",
-    "text": "Featured Projects\n\nData Cleaning and Imputation\nDemonstrated a full data cleaning pipeline on deliberately messed Iris data (using messy package): standardized over 68 “messed” species strings, converted data types, assessed missinginess with naniar, and imputed missing values using Random Forest (missForest).Finally, I Validated that imputed distributions almost matched the original dataset.\n\n\nPredicting Diabetes with Machine Learning\nBuilt logistic regression and Random Forest classifiers on NHANES data using tidymodels. Random Forest improved sensitivity from 4% to 34% for positive diabetes cases. Model evaluation showed a ROC-AUC of 0.89, indicating better performance interms of distinguishing non diabetic, and diabetic participants.\n\n\nRisk Factors for Arthritis: Statistical Modelling\nInvestigated associations between arthritis and risk factors (sex, age, BMI, physical activity) using 360,000 observations from the CDC BRFSS survey. Applied chi-square tests, Wilcoxon rank-sum tests, relative risk ratios, and logistic regression. Females had 54% higher adjusted odds of arthritis (OR = 1.54, 95% CI: 1.52-1.57).\n\n\nInteractive Shiny Dashboard\nA live, interactive R Shiny application deployed on shinyapps.io. to enable realtime tracking and fastracking project decisions.\n\n\nDHIS2 Data Pipeline\nBuilt a reproducible R pipeline to extract, clean, and structure family planning service data from DHIS2 using the khisr package. Parsed composite DHIS2 category column with strings, mapped 61 data elements to respective FP method groups, calculated Couple Years of Protection (CYP), and exported analysis-ready data for 59 service delivery points across Malawi."
-  },
-  {
-    "objectID": "index.html#technical-skills",
-    "href": "index.html#technical-skills",
-    "title": "David Mwale",
-    "section": "Technical Skills",
-    "text": "Technical Skills\nLanguages: R (tidyverse, tidymodels, ggplot2, Shiny), Python (pandas, matplotlib, seaborn), SQL (SQLite, MySQL, PostgreSQL)\nTools: Git/GitHub, Quarto, RMarkdown, Microsoft Azure Databricks, Power BI\nMethods: Logistic regression, random forests, data wrangling, reproducible research, epidemiological analysis"
-  },
-  {
-    "objectID": "nhanes_ml_project.html",
-    "href": "nhanes_ml_project.html",
-    "title": "MLearning",
-    "section": "",
-    "text": "Goal: Predict diabetes status from demographic and clinical risk factors using the NHANES dataset.\nData: National Health and Nutrition Examination Survey collected in the US. Variables include age, BMI, direct cholesterol, marital status, and gender.\nModels: Logistic Regression and Random Forest (tidymodels framework).\nKey Finding: Random Forest outperformed logistic regression across all metrics. Sensitivity improved from 4% (logistic regression) to 34% (Random Forest), with ROC-AUC of 0.89. Both models struggled with the minority class due to class imbalance.\nTools: R, tidymodels, ranger, ggstatsplot, cowplot, gtsummary"
-  },
-  {
-    "objectID": "nhanes_ml_project.html#project-summary",
-    "href": "nhanes_ml_project.html#project-summary",
-    "title": "MLearning",
-    "section": "",
-    "text": "Goal: Predict diabetes status from demographic and clinical risk factors using the NHANES dataset.\nData: National Health and Nutrition Examination Survey collected in the US. Variables include age, BMI, direct cholesterol, marital status, and gender.\nModels: Logistic Regression and Random Forest (tidymodels framework).\nKey Finding: Random Forest outperformed logistic regression across all metrics. Sensitivity improved from 4% (logistic regression) to 34% (Random Forest), with ROC-AUC of 0.89. Both models struggled with the minority class due to class imbalance.\nTools: R, tidymodels, ranger, ggstatsplot, cowplot, gtsummary"
-  },
-  {
-    "objectID": "nhanes_ml_project.html#introduction",
-    "href": "nhanes_ml_project.html#introduction",
-    "title": "MLearning",
-    "section": "Introduction",
-    "text": "Introduction\nIn this project we will use the NHANES dataset to predict diabetes given the available risk factors. The National Health ans Nutrition Survey is a a program in the US designed to assess the health and nutritional status pf adults, and children in the US. The data includes demographic, socio-economic, dietary, and health-related information.\n\nLoading packages including the dataset.\n\n\nData Preparation\nWe are going to save the dataset into the nhanes_df object to maintain the original dataset intact.\n\nnhanes_df&lt;-NHANES |&gt; \n  select(Diabetes,DirectChol,BMI,MaritalStatus,Age,Gender) |&gt;\n  drop_na() |&gt; # Assuming variables are missing completely at Random\n  clean_names()\n\n# Changing the levels for appropriate analysis\nnhanes_df&lt;-nhanes_df |&gt; \n  mutate(diabetes=factor(diabetes, \n                         levels = c(\"Yes\", \"No\"))) |&gt; \n           glimpse()\n\nRows: 6,786\nColumns: 6\n$ diabetes       &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, No,…\n$ direct_chol    &lt;dbl&gt; 1.29, 1.29, 1.29, 1.16, 2.12, 2.12, 2.12, 0.67, 0.96, 1…\n$ bmi            &lt;dbl&gt; 32.22, 32.22, 32.22, 30.57, 27.24, 27.24, 27.24, 23.67,…\n$ marital_status &lt;fct&gt; Married, Married, Married, LivePartner, Married, Marrie…\n$ age            &lt;int&gt; 34, 34, 34, 49, 45, 45, 45, 66, 58, 54, 58, 50, 33, 60,…\n$ gender         &lt;fct&gt; male, male, male, female, female, female, female, male,…"
-  },
-  {
-    "objectID": "nhanes_ml_project.html#traintest-split",
-    "href": "nhanes_ml_project.html#traintest-split",
-    "title": "MLearning",
-    "section": "Train/Test Split",
-    "text": "Train/Test Split\nIn the code below, we are splitting our data into training and testing sets (0.8, 0.2) and stratify by the diabetes to preserve class proportions.\n\nset.seed(123) #For reproducubility\nml_split&lt;-initial_split(nhanes_df,\n                        prop = 0.8,\n                        strata = diabetes)\n\nml_training&lt;-ml_split |&gt; \n  training()\n\nml_test&lt;-ml_split |&gt;\n  testing()"
-  },
-  {
-    "objectID": "nhanes_ml_project.html#logistic-regression",
-    "href": "nhanes_ml_project.html#logistic-regression",
-    "title": "MLearning",
-    "section": "Logistic Regression",
-    "text": "Logistic Regression\n\nlr_model&lt;-logistic_reg() |&gt; \n  set_engine(\"glm\") |&gt; \n  set_mode(\"classification\") \n\n\nCorrelation Check\n\nml_training |&gt; \n  select_if(is.numeric) |&gt; \n  ggcorrmat(colors = c(\"#B2182B\", \"White\", \"#4D4D4D\"),\n            title = \"Colleration Matrix\"\n            )\n\n\n\n\n\n\n\n\nUsing the hypothetical threshold of 0.8, we can conclude that the predictors are not collerated. In the code below, we are going to fit both models using the fit function. After which we are going to collect and combine predictions, and load them.\nIn the code below we are going to specify a recipe object after which we will add steps for engineering our features (feature engineering). The steps are to preprocess the data into a form that will allegedly improve our analysis.\n\n\nWorkflow and Fit\n\nset.seed(123)\nlr_recipe&lt;-recipe(diabetes~.,data = ml_training) |&gt;\n  step_log(all_numeric()) |&gt; \n  step_normalize(all_numeric()) |&gt; #Centering and scaling\n  step_dummy(all_nominal(), -all_outcomes())\n\n\nlr_worflow&lt;-workflow() |&gt; \n  add_model(lr_model) |&gt; \n  add_recipe(lr_recipe)\n\n\nset.seed(123)\nlr_worflow_fit&lt;-lr_worflow |&gt; \n  last_fit(split = ml_split)\n\nlr_worflow_fit |&gt; \n  collect_metrics()\n\n# A tibble: 3 × 4\n  .metric     .estimator .estimate .config             \n  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n1 accuracy    binary        0.909  Preprocessor1_Model1\n2 roc_auc     binary        0.790  Preprocessor1_Model1\n3 brier_class binary        0.0743 Preprocessor1_Model1\n\nlr_resultss&lt;-lr_worflow_fit |&gt; \n  collect_predictions()\n\nlr_resultss\n\n# A tibble: 1,358 × 7\n   .pred_class .pred_Yes .pred_No id                .row diabetes .config       \n   &lt;fct&gt;           &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;int&gt; &lt;fct&gt;    &lt;chr&gt;         \n 1 No             0.0774    0.923 train/test split     4 No       Preprocessor1…\n 2 No             0.0941    0.906 train/test split    10 No       Preprocessor1…\n 3 No             0.103     0.897 train/test split    11 No       Preprocessor1…\n 4 No             0.101     0.899 train/test split    12 No       Preprocessor1…\n 5 No             0.112     0.888 train/test split    14 No       Preprocessor1…\n 6 No             0.0235    0.976 train/test split    15 No       Preprocessor1…\n 7 No             0.207     0.793 train/test split    19 No       Preprocessor1…\n 8 No             0.131     0.869 train/test split    22 Yes      Preprocessor1…\n 9 No             0.122     0.878 train/test split    24 Yes      Preprocessor1…\n10 No             0.0877    0.912 train/test split    28 No       Preprocessor1…\n# ℹ 1,348 more rows"
-  },
-  {
-    "objectID": "nhanes_ml_project.html#logistic-regression-results",
-    "href": "nhanes_ml_project.html#logistic-regression-results",
-    "title": "MLearning",
-    "section": "Logistic Regression Results",
-    "text": "Logistic Regression Results\n\nConfusion Matrix\nIn this section we are going to visualize the model results. We will start with the confusion matrix.\n\nset.seed(123)\nlr_resultss |&gt; \n  conf_mat(truth = diabetes,\n           estimate = .pred_class)\n\n          Truth\nPrediction  Yes   No\n       Yes    4    8\n       No   116 1230\n\n\n\nThe logistic regression correctly classifies 1,237 out of 1,358 individuals (91%). 116 false negatives and 8 false positives.\nPerformance Metrics\n\n\nset.seed(112)\nlr_metric&lt;-metric_set(sens,accuracy, yardstick::spec)\n\n\n\nlr_resultss |&gt; \n  lr_metric(truth = diabetes, \n            estimate = .pred_class)\n\n# A tibble: 3 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 sens     binary        0.0333\n2 accuracy binary        0.909 \n3 spec     binary        0.994 \n\n\n\nset.seed(123)\nlr_resultss |&gt;\n  roc_curve(truth = diabetes,.pred_Yes) |&gt;\n  autoplot()\n\n\n\n\n\n\n\nroc_auc(lr_resultss, truth = diabetes, .pred_Yes)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 roc_auc binary         0.790\n\n\n\nset.seed(123)\nheatmap_lr&lt;-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |&gt; \n  autoplot(type = \"heatmap\")\n\n\nmosaic_lr&lt;-conf_mat(lr_resultss, truth = diabetes, estimate = .pred_class) |&gt; \n  autoplot(type = \"mosaic\")\n\ncowplot::plot_grid(mosaic_lr,heatmap_lr)\n\n\n\n\n\n\n\n\nThe 91.1% accuracy is misleading. The model predicts negative cases well (high specificity) but identifies only 4 out of 120 positive cases. Accuracy alone is not a useful metric here due to class imbalance.\n\nset.seed(123)\nroc_auc(lr_resultss,truth = diabetes,.pred_Yes)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 roc_auc binary         0.790\n\nlr_roc_plot&lt;-lr_resultss |&gt; \n  roc_curve(truth = diabetes, .pred_Yes) |&gt; \n  autoplot()\n  \nlr_roc_plot\n\n\n\n\n\n\n\n\n\n\nRandom Forest\nLogistic regression failed to correctly identify positive cases. Random Forest offers more flexibility for nonlinear relationships and imbalanced data.\n\n\nModel Specification\n\nrf&lt;-rand_forest() |&gt; \n  set_args(mtry = 9) |&gt; \n  set_engine(\"ranger\", importance = \"impurity\") |&gt; \n  set_mode(\"classification\")\n\n\nset.seed(123)\nrf_recipe&lt;-recipe(diabetes~.,data = ml_training) |&gt; \n  step_log(all_numeric()) |&gt; \n  step_normalize(all_numeric()) |&gt; \n  step_dummy(all_nominal(),-all_outcomes())\n\n\nrf_workflow&lt;-workflow() |&gt; \n  add_model(rf) |&gt; \n  add_recipe(rf_recipe)\n\n\nset.seed(123)\nrf_wrkflw_fit&lt;-rf_workflow |&gt; \n  tune::last_fit(split = ml_split)\n\nrf_wrkflw_fit |&gt; \n  collect_metrics()\n\n# A tibble: 3 × 4\n  .metric     .estimator .estimate .config             \n  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n1 accuracy    binary        0.935  Preprocessor1_Model1\n2 roc_auc     binary        0.896  Preprocessor1_Model1\n3 brier_class binary        0.0551 Preprocessor1_Model1\n\nrf_results&lt;-rf_wrkflw_fit |&gt; \n  collect_predictions()\n\n\n\nRandom Forest Results\n\nset.seed(123)\nmosaic_rf&lt;-rf_results |&gt; \n  conf_mat(truth = diabetes,.pred_class) |&gt; \n  autoplot(type = \"mosaic\")\n\nheatmap_rf&lt;-rf_results |&gt; \n  conf_mat(truth = diabetes,.pred_class) |&gt;\n  autoplot(type = \"heatmap\")\n  \ncowplot::plot_grid(heatmap_rf,mosaic_rf)\n\n\n\n\n\n\n\n\n\nset.seed(123)\nrf_metrics&lt;-metric_set(yardstick::sens, yardstick::spec, yardstick::accuracy)\n\n\nlr_resultss |&gt; \n  rf_metrics(truth = diabetes, \n            estimate = .pred_class)\n\n# A tibble: 3 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 sens     binary        0.0333\n2 spec     binary        0.994 \n3 accuracy binary        0.909 \n\nrf_results |&gt; \n  rf_metrics(truth = diabetes, estimate = .pred_class)\n\n# A tibble: 3 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 sens     binary         0.35 \n2 spec     binary         0.992\n3 accuracy binary         0.935\n\nrf_results |&gt; \n  roc_auc(truth = diabetes,.pred_Yes)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 roc_auc binary         0.896\n\n\n\nrf_roc_plot&lt;-rf_results |&gt; \n  roc_curve(truth = diabetes,.pred_Yes) |&gt; \n  autoplot()\n\n\n\nModel comparison\n\ncowplot::plot_grid(rf_roc_plot, lr_roc_plot,labels = c(\"Random Forest\", \"Logistic Regression\"),label_size = 12)\n\n\n\n\n\n\n\n\nRandom Forest outperforms logistic regression on all metrics:\n\nThe Random Forest improves sensitivity from 4% to 34%. The model still misses 64% of positive cases due to class imbalance.\n\n\nMetric\nLogistic Regression\nRandom Forest\n\n\n\n\nAccuracy\n0.91\n0.93\n\n\nSensitivity\n0.04\n0.35\n\n\nSpecificity\n0.99\n0.99\n\n\nROC-AUC\n0.83\n0.89\n\n\n\n\n\nPrediction Example (Use case)\n\npatient1&lt;-tribble(~age,~bmi,~direct_chol,~marital_status,~gender,\n                  40,27.3,1.5,\"Divorced\",\"female\")\n\nrf_pred&lt;-rf_wrkflw_fit |&gt; \n  extract_workflow()\n\npredict(rf_pred, new_data = patient1)\n\n# A tibble: 1 × 1\n  .pred_class\n  &lt;fct&gt;      \n1 No         \n\n\nThe model predicts this patient does not have diabetes. Given the model’s high specificity, negative predictions are reliable."
-  },
-  {
-    "objectID": "nhanes_ml_project.html#limitations-and-next-steps",
-    "href": "nhanes_ml_project.html#limitations-and-next-steps",
-    "title": "MLearning",
-    "section": "Limitations and Next Steps",
-    "text": "Limitations and Next Steps\nThis analysis skipped hyperparameter tuning (k-fold cross validation) and did not address class imbalance through oversampling (SMOTE) or threshold adjustment. These are the clear next steps for improving sensitivity on the minority class."
+    "section": "Key Achievements",
+    "text": "Key Achievements\n\n45% faster data processing after consolidating DHIS2, KoboToolbox and OpenEMR into one ETL pipeline\n25% better indicator reporting consistency and 30% higher data accuracy from structured data quality exercises\n40% fewer data errors after migrating to digital collection\nOver 30 KPIs across 20 service delivery points, and at least 50 staff trained on data use (dashboards - DHIS2, RShiny) and related tools"
   }
 ]
